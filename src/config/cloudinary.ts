@@ -5,8 +5,9 @@
      const url = cloudinary.url('folder/image-name', { w: 800, q: 'auto' });
    ═══════════════════════════════════════════════════════════════ */
 
-const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string;
-const BASE = `https://res.cloudinary.com/${CLOUD_NAME}`;
+import { env } from './env';
+
+const BASE = `https://res.cloudinary.com/${env.CLOUDINARY_CLOUD_NAME}`;
 
 type TransformOptions = {
   w?: number;

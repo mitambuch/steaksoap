@@ -45,6 +45,7 @@ On n'installe rien "parce que ça pourrait servir". Chaque package a une raison 
 | `@typescript-eslint/parser` | ^8.54.0 | Permet à ESLint de lire le TypeScript |
 | `eslint-plugin-react-hooks` | ^7.0.1 | Vérifie l'utilisation correcte des hooks React |
 | `eslint-plugin-react-refresh` | ^0.4.24 | Vérifie la compatibilité avec le Hot Module Replacement |
+| `eslint-plugin-jsx-a11y` | ^6.10.2 | Vérifie l'accessibilité du JSX (alt manquant, rôles ARIA, etc.) |
 | `prettier` | ^3.5.0 | Formatage automatique du code. Zéro débat sur le style |
 | `globals` | ^16.5.0 | Variables globales du navigateur pour ESLint |
 
@@ -63,6 +64,12 @@ On n'installe rien "parce que ça pourrait servir". Chaque package a une raison 
 | `lint-staged` | ^16.2.7 | Lint uniquement les fichiers stagés (pas tout le projet) |
 | `@commitlint/cli` | ^20.4.2 | Valide que chaque message de commit suit Conventional Commits |
 | `@commitlint/config-conventional` | ^20.4.2 | Règles par défaut pour commitlint |
+
+### Tests
+
+| Package | Version | Pourquoi |
+|---|---|---|
+| `vitest` | ^4.0.18 | Framework de tests rapide, compatible Vite, remplace Jest |
 
 ### Releases
 
