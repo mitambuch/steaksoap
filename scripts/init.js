@@ -147,12 +147,19 @@ envContent = envContent.replace(/VITE_APP_NAME=.*/, `VITE_APP_NAME=${displayName
 writeFileSync(envLocal, envContent);
 console.log(green(`  ✓ .env.local créé avec APP_NAME="${displayName}"`));
 
-// ─── 7. Install dependencies ─────────────────────────────────
+// ─── 7. Reset CHANGELOG.md ──────────────────────────────────
+console.log(yellow('\n  → Réinitialisation du CHANGELOG...'));
+const today = new Date().toISOString().split('T')[0];
+const freshChangelog = `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### ✨ Features\n\n- project initialized from starter\n`;
+writeFileSync(resolve(root, 'CHANGELOG.md'), freshChangelog);
+console.log(green('  ✓ CHANGELOG.md remis à zéro'));
+
+// ─── 8. Install dependencies ─────────────────────────────────
 console.log(yellow('\n  → Installation des dépendances...'));
 runVisible('pnpm install');
 console.log(green('  ✓ Dépendances installées'));
 
-// ─── 8. Validate ─────────────────────────────────────────────
+// ─── 9. Validate ─────────────────────────────────────────────
 console.log(yellow('\n  → Validation (lint + typecheck + tests + build)...'));
 try {
   runVisible('pnpm validate');
@@ -161,7 +168,7 @@ try {
   console.log(yellow('  ⚠ Validation échouée — corrige les erreurs avant de push.'));
 }
 
-// ─── 9. Initial commit + push ────────────────────────────────
+// ─── 10. Initial commit + push ───────────────────────────────
 console.log(yellow('\n  → Commit initial...'));
 try {
   run('git add -A');
