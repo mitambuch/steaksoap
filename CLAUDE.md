@@ -136,6 +136,73 @@ Règles actives (voir [commitlint.config.js](commitlint.config.js)) :
 
 ---
 
+## Releases — Semantic Versioning
+
+### Numérotation (SemVer)
+
+```
+v MAJOR . MINOR . PATCH
+  │       │       └── fix: bug fixes, corrections
+  │       └────────── feat: nouvelles fonctionnalités
+  └────────────────── breaking change (BREAKING CHANGE: dans le commit)
+```
+
+**Conventions pre-1.0 (phase de dev) :**
+- `0.y.z` = projet en développement, rien n'est stable
+- `0.1.0` → `0.2.0` : nouvelle feature
+- `0.1.0` → `0.1.1` : bug fix
+- `1.0.0` = première release publique stable
+
+### Commandes
+
+```bash
+pnpm release          # release interactive (release-it détecte le bump)
+pnpm release:patch    # force patch  → 0.1.0 → 0.1.1
+pnpm release:minor    # force minor  → 0.1.0 → 0.2.0
+pnpm release:major    # force major  → 0.1.0 → 1.0.0
+```
+
+### Ce que fait `pnpm release` automatiquement
+
+1. `pnpm validate` — lint + typecheck + build (bloque si cassé)
+2. Calcule le bump de version depuis le dernier tag git
+3. Bumpe `package.json` → `version`
+4. Génère / met à jour `CHANGELOG.md`
+5. Commit `chore(release): vX.Y.Z`
+6. Crée le tag git `vX.Y.Z`
+7. Push le commit + le tag
+8. Crée la GitHub Release avec les notes auto-générées
+
+### Quand releaser ?
+
+- Après un ensemble de features / fixes mergés dans `main`
+- **Toujours depuis `main`**, working tree clean
+- **Jamais** en plein milieu d'un développement
+- `pnpm release` = acte intentionnel, pas automatique
+
+### Ce qui apparaît dans le CHANGELOG
+
+| Type de commit | Dans le changelog |
+|----------------|------------------|
+| `feat:` | ✅ ✨ Features |
+| `fix:` | ✅ 🐛 Bug Fixes |
+| `perf:` | ✅ ⚡ Performance |
+| `refactor:` | ✅ ♻️ Refactoring |
+| `docs:` | ✅ 📚 Documentation |
+| `chore:` / `style:` / `test:` / `merge:` | ❌ caché |
+
+### Breaking changes
+
+Dans le body ou footer du commit :
+```
+feat(api): change image URL structure
+
+BREAKING CHANGE: publicId format changed from "folder/name" to "folder__name"
+```
+→ bumpe automatiquement le MAJOR (ex: `0.3.0` → `1.0.0`)
+
+---
+
 ## Rappels pour Claude Code
 
 - **Toujours demander** avant de push sur main.
