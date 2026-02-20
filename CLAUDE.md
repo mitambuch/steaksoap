@@ -106,6 +106,36 @@ Si le repo est public et collaboratif :
 
 ---
 
+## Hooks automatiques (Husky)
+
+Chaque `git commit` déclenche automatiquement deux validations :
+
+### 1. `pre-commit` → lint-staged
+Lance ESLint + Prettier uniquement sur les fichiers stagés.
+- `*.{ts,tsx}` : eslint --fix + prettier --write
+- `*.css` : prettier --write
+
+Si un fichier a une erreur ESLint **non auto-fixable** → commit **BLOQUÉ**.
+
+### 2. `commit-msg` → commitlint
+Valide le message de commit selon Conventional Commits.
+
+| Exemple | Résultat |
+|---------|---------|
+| `wip` | ❌ BLOQUÉ |
+| `fix stuff` | ❌ BLOQUÉ |
+| `fix(router): handle 404 redirect` | ✅ OK |
+| `feat(ui): add button component` | ✅ OK |
+
+Règles actives (voir [commitlint.config.js](commitlint.config.js)) :
+- Type doit être dans la liste autorisée
+- Scope recommandé (warning si absent)
+- Max 72 caractères
+- Tout en minuscules
+- Pas de point final
+
+---
+
 ## Rappels pour Claude Code
 
 - **Toujours demander** avant de push sur main.
