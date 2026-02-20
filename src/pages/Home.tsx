@@ -25,7 +25,7 @@ export default function Home() {
 
       {/* Radial glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full sm:h-[450px] sm:w-[450px] md:h-[600px] md:w-[600px]"
         style={{
           background: 'radial-gradient(circle, rgba(200,255,0,0.04) 0%, transparent 70%)',
         }}
@@ -41,13 +41,15 @@ export default function Home() {
         </div>
 
         {/* Title */}
-        <h1 className="text-center text-5xl font-bold leading-tight sm:text-6xl">
+        <h1 className="text-center text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
           Ready to <span className="text-accent">build</span>
           <span className="animate-blink text-accent">_</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-center text-lg text-muted">Your next project starts here.</p>
+        <p className="text-center text-base text-muted sm:text-lg">
+          Your next project starts here.
+        </p>
 
         {/* Stack badges */}
         <div className="flex flex-wrap justify-center gap-2">
