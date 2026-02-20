@@ -42,7 +42,7 @@
         ]
       },
       "infile": "CHANGELOG.md",
-      "header": ""
+      "header": "# Changelog\n\n"
     }
   }
 }
