@@ -1,8 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
    cn() — merge de classes Tailwind sans conflit
-   Usage : className={cn('base-class', condition && 'extra', props.className)}
+   Utilise clsx (concaténation conditionnelle) + tailwind-merge (résolution des conflits).
+   Usage : className={cn('px-4', condition && 'px-8', props.className)}
    ═══════════════════════════════════════════════════════════════ */
 
-export function cn(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(' ');
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]): string {
+  return twMerge(clsx(inputs));
 }
