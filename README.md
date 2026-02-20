@@ -1,6 +1,6 @@
-# Project Name
+# Starter
 
-> Remplace ce README au premier commit réel.
+> Boilerplate React 19 + Vite 7 + TypeScript + Tailwind CSS de l'agence.
 
 ---
 

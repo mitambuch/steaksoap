@@ -25,4 +25,4 @@ First development release — project scaffold only, no public API yet.
 
 > 🚧 Pre-1.0 — development phase, nothing is stable yet.
 
-[0.1.0]: https://github.com/Mircooo/cdn/releases/tag/v0.1.0
+[0.1.0]: https://github.com/Mircooo/starter/releases/tag/v0.1.0

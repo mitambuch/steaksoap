@@ -36,8 +36,8 @@ gh auth login
 
 ```bash
 # 1. Cloner le repo
-git clone https://github.com/Mircooo/cdn.git
-cd cdn
+git clone https://github.com/Mircooo/starter.git
+cd starter
 
 # 2. Installer les dépendances
 pnpm install
@@ -107,7 +107,7 @@ pnpm dev               # → serveur démarre sans erreur
 
 ```bash
 # 1. Cloner ce repo comme base
-git clone https://github.com/Mircooo/cdn.git nom-du-client
+git clone https://github.com/Mircooo/starter.git nom-du-client
 cd nom-du-client
 
 # 2. Supprimer l'historique git et repartir à zéro
