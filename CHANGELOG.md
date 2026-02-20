@@ -11,13 +11,6 @@ Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic 
 
 * **docs:** complete changelog with all commits since v0.1.0 ([9c38c80](https://github.com/Mircooo/starter/commit/9c38c803d2e13db78542f1e1e9a4c95268b84e1e))
 
-# Changelog
-
-All notable changes to this project are documented here.
-
-Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic Versioning](https://semver.org)
-
-
 ## [0.3.3](https://github.com/Mircooo/starter/compare/v0.3.2...v0.3.3) (2026-02-20)
 
 ### 🐛 Bug Fixes
