@@ -71,6 +71,10 @@ On n'installe rien "parce que ça pourrait servir". Chaque package a une raison 
 | Package | Version | Pourquoi |
 |---|---|---|
 | `vitest` | ^4.0.18 | Framework de tests rapide, compatible Vite, remplace Jest |
+| `jsdom` | ^28.1.0 | Simule un navigateur en mémoire pour tester des composants React |
+| `@testing-library/react` | ^16.3.2 | Utilitaires pour tester les composants React (render, screen, queries) |
+| `@testing-library/jest-dom` | ^6.9.1 | Matchers DOM supplémentaires (toBeVisible, toHaveTextContent…) |
+| `@testing-library/user-event` | ^14.6.1 | Simule les interactions utilisateur (click, type, hover…) |
 
 ### SEO
 
