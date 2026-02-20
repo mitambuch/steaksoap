@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    // TypeScript & React
+    "ms-vscode.vscode-typescript-next",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+
+    // Tailwind CSS
+    "bradlc.vscode-tailwindcss",
+
+    // Git
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "vivaxy.vscode-conventional-commits",
+
+    // DX
+    "usernamehw.errorlens",
+    "christian-kohler.path-intellisense",
+    "mikestead.dotenv"
+  ]
+}

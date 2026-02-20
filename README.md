@@ -142,24 +142,33 @@ import { cloudinary } from '@config/cloudinary';
 
 ## Git
 
-```bash
-git init
-git add .
-git commit -m "feat: initial project setup"
+Voir [CLAUDE.md](CLAUDE.md) pour les conventions complètes.
 
-# Workflow quotidien
-git add .
-git commit -m "feat|fix|refactor|style|chore: description"
-git push
+```bash
+# Nouvelle feature
+git checkout -b feat/<scope>
+# ... commits ...
+git checkout main
+git merge --no-ff feat/<scope>
+git push origin main
+
+# Release
+pnpm release         # bump auto + CHANGELOG + GitHub Release
+pnpm release:minor   # force minor bump
 ```
 
 ### Convention commits
 
-| Prefix | Usage |
+Format : `type(scope): description` — commitlint valide automatiquement.
+
+| Type | Usage |
 |---|---|
-| `feat:` | Nouvelle feature |
-| `fix:` | Correction de bug |
-| `refactor:` | Refactoring sans changement de comportement |
-| `style:` | CSS / design uniquement |
-| `chore:` | Config, deps, tooling |
-| `docs:` | Documentation |
+| `feat` | Nouvelle feature |
+| `fix` | Correction de bug |
+| `refactor` | Refactoring sans changement de comportement |
+| `style` | CSS / design uniquement |
+| `chore` | Config, deps, tooling |
+| `docs` | Documentation |
+| `perf` | Performance |
+
+Exemples : `feat(ui): add button component` · `fix(router): handle 404 redirect`
