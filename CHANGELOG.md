@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2](https://github.com/Mircooo/starter/compare/v0.4.1...v0.4.2) (2026-02-20)
+
+### 🐛 Bug Fixes
+
+* **release:** re-stage changelog after dedup to include fix in commit ([7852c1c](https://github.com/Mircooo/starter/commit/7852c1c77d231efd05f4f9f968acbe3093d40d6b))
+
 ## [0.4.1](https://github.com/Mircooo/starter/compare/v0.4.0...v0.4.1) (2026-02-20)
 
 ### 🐛 Bug Fixes
