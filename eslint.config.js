@@ -25,6 +25,8 @@ export default defineConfig([
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
+        project: './tsconfig.eslint.json',
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: {
         ...globals.browser,
@@ -54,12 +56,16 @@ export default defineConfig([
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'no-multiple-empty-lines': ['warn', { max: 2 }],
       'comma-dangle': ['warn', 'always-multiline'],
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/require-await': 'error',
     },
   },
 
   // Config files (vite, vitest, etc.) → Node globals
   {
-    files: ['*.config.{ts,js}'],
+    files: ['*.config.{ts,js}', 'scripts/**/*.{ts,js}'],
     languageOptions: {
       globals: globals.node,
     },

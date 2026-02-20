@@ -1,10 +1,13 @@
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import Sitemap from 'vite-plugin-sitemap';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
 const isProd = process.env.NODE_ENV === 'production';
 

@@ -12,7 +12,7 @@ Chaque nouveau client = un clone de ce repo + adaptation.
 
 - **Cible** : PME suisses (garages, hôtels, artisans…)
 - **Stack** : React 19 · TypeScript · Vite 7 · Tailwind CSS · pnpm
-- **SEO** : local, multilingue possible (FR/DE)
+- **SEO** : SPA-level (meta tags client-side, sitemap auto). Pour du SEO réel (crawlers, previews OG fiables), prévoir SSR ou prerender.
 - **Mobile-first** : 70%+ du trafic est mobile en Suisse
 
 > Ce projet a été construit en **vibe coding** avec des agents IA.
