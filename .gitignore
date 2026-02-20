@@ -29,3 +29,6 @@ Thumbs.db
 
 # TS cache
 *.tsbuildinfo
+
+# Claude Code (agent local settings)
+.claude/
