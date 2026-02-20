@@ -44,7 +44,10 @@ pnpm install
 # → Installe aussi Husky automatiquement (script "prepare")
 
 # 3. Configurer les variables d'environnement
+# Linux/macOS :
 cp .env.example .env.local
+# Windows (PowerShell) :
+# Copy-Item .env.example .env.local
 # → Ouvrir .env.local et remplir les valeurs :
 #   VITE_CLOUDINARY_CLOUD_NAME=ton_cloud_name
 #   VITE_APP_NAME=Nom du projet
@@ -68,7 +71,9 @@ pnpm dev
 | `pnpm lint:fix` | Corrige automatiquement ce qui peut l'être |
 | `pnpm format` | Formate tout le code avec Prettier |
 | `pnpm typecheck` | Vérifie les types TypeScript |
-| `pnpm validate` | Lint + typecheck + build — **la commande de vérification finale** |
+| `pnpm test` | Lance les tests unitaires (Vitest) |
+| `pnpm test:watch` | Lance les tests en mode watch |
+| `pnpm validate` | Lint + typecheck + tests + build — **la commande de vérification finale** |
 | `pnpm release` | Release interactive : bump + CHANGELOG + tag + GitHub Release |
 | `pnpm release:patch` | Force un bump patch (0.1.0 → 0.1.1) |
 | `pnpm release:minor` | Force un bump minor (0.1.0 → 0.2.0) |
@@ -97,7 +102,7 @@ A l'ouverture du projet, VS Code proposera d'installer les extensions recommand�
 
 ```bash
 # Après installation, ces commandes doivent toutes passer :
-pnpm validate          # → lint OK, types OK, build OK
+pnpm validate          # → lint OK, types OK, tests OK, build OK
 pnpm dev               # → serveur démarre sans erreur
 ```
 
@@ -111,7 +116,10 @@ git clone https://github.com/Mircooo/starter.git nom-du-client
 cd nom-du-client
 
 # 2. Supprimer l'historique git et repartir à zéro
+# Linux/macOS :
 rm -rf .git
+# Windows (PowerShell) :
+# Remove-Item -Recurse -Force .git
 git init
 git add -A
 git commit -m "chore: initial scaffold from cdn template"
@@ -122,8 +130,10 @@ git push -u origin main
 
 # 4. Adapter :
 #    - package.json → "name"
-#    - index.html → <title>, meta description
-#    - .env.local → Cloudinary cloud name
+#    - .env.local → Cloudinary cloud name, nom de l'app, URL
+#    - src/config/site.ts → contact, réseaux sociaux, SEO defaults
 #    - src/styles/tokens.css → couleurs, fonts du client
 #    - tailwind.config.js → si tokens changent
+#    - public/robots.txt → URL du sitemap
+#    - public/images/og-image.jpg → image de partage réseaux sociaux
 ```

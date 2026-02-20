@@ -14,8 +14,8 @@ export default {
       'test',
       'merge',
     ]],
-    // Scope obligatoire (warning si absent)
-    'scope-empty': [1, 'never'],
+    // Scope obligatoire
+    'scope-empty': [2, 'never'],
     // Max 72 chars sur la première ligne
     'subject-max-length': [2, 'always', 72],
     // Minuscules uniquement
