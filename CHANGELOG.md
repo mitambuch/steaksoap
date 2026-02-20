@@ -1,12 +1,10 @@
-
+# Changelog
 
 ## [0.4.0](https://github.com/Mircooo/starter/compare/v0.3.7...v0.4.0) (2026-02-20)
 
 ### ✨ Features
 
 * **dx:** upgrade tailwind v4, add vercel config, add feature example ([1b44fc1](https://github.com/Mircooo/starter/commit/1b44fc1619d4664af93ee8bc3d78acdbc733329c))
-
-# Changelog
 
 ## [0.3.7](https://github.com/Mircooo/starter/compare/v0.3.6...v0.3.7) (2026-02-20)
 
