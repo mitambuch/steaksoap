@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    ANIMATIONS — keyframes globaux
-   Importer dans le composant qui en a besoin :
-   import '@styles/animations.css'
+   Importé automatiquement via index.css.
    ═══════════════════════════════════════════════════════════════ */
 
 @keyframes fadeIn {
@@ -43,12 +42,14 @@
   }
 }
 
-.animate-fade-in {
+@utility animate-fade-in {
   animation: fadeIn 0.4s ease forwards;
 }
-.animate-slide-right {
+
+@utility animate-slide-right {
   animation: slideInRight 0.3s ease forwards;
 }
-.animate-pulse-slow {
+
+@utility animate-pulse-slow {
   animation: pulse 2s ease infinite;
 }

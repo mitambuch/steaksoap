@@ -126,7 +126,7 @@ Le script `init.js` fait tout automatiquement :
 Ensuite, adapter les fichiers du client :
 - `.env.local` → Cloudinary cloud name, URL de prod
 - `src/config/site.ts` → contact, réseaux sociaux, SEO defaults
-- `src/styles/tokens.css` → couleurs, fonts du client
+- `src/index.css` → couleurs, fonts du client (bloc `@theme`)
 - `public/robots.txt` → URL du sitemap
 - `public/images/og-image.jpg` → image de partage réseaux sociaux
 

@@ -146,7 +146,7 @@ Fonctions pures et utilitaires : `cn()` (class merge), formatters, parsers…
 | Utilitaire | camelCase | `formatDate.ts` |
 | Constante | UPPER_SNAKE_CASE | `MAX_RETRIES` |
 | Type/Interface | PascalCase | `CloudinaryImage` |
-| Fichier CSS | kebab-case | `tokens.css` |
+| Fichier CSS | kebab-case | `animations.css` |
 | Dossier | kebab-case | `hero-section/` |
 
 ---

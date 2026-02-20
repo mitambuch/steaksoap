@@ -155,7 +155,7 @@ GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
 | **Vite 7** | Bundler + dev server |
 | **React 19** | UI |
 | **TypeScript** | Typage strict — `any` interdit |
-| **Tailwind CSS 3** | Styles (utility-first) |
+| **Tailwind CSS 4** | Styles (utility-first, config CSS-first via `@theme`) |
 | **React Router 7** | Routing SPA |
 | **Cloudinary** | CDN images (via `@config/cloudinary.ts`) |
 | **pnpm** | Package manager |
@@ -189,7 +189,7 @@ src/
 ├── hooks/            → Custom hooks (useX.ts)
 ├── lib/              → Wrappers tiers (analytics, i18n…)
 ├── pages/            → Une page = une route = un fichier
-├── styles/           → Design tokens, fonts, animations
+├── styles/           → Fonts, animations (tokens dans @theme de index.css)
 ├── types/            → Types TypeScript partagés
 └── utils/            → Fonctions pures (cn, format, parse…)
 ```
