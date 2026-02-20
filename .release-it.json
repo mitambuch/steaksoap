@@ -22,7 +22,8 @@
   },
 
   "hooks": {
-    "before:init": ["pnpm validate"]
+    "before:init": ["pnpm validate"],
+    "after:bump": ["node scripts/fix-changelog.js"]
   },
 
   "plugins": {
@@ -42,7 +43,7 @@
         ]
       },
       "infile": "CHANGELOG.md",
-      "header": "# Changelog\n\n"
+      "header": ""
     }
   }
 }
