@@ -6,18 +6,21 @@ import { defineConfig } from 'vite';
 import Sitemap from 'vite-plugin-sitemap';
 
 const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
+const isProd = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
-    Sitemap({
-      hostname: process.env.VITE_APP_URL || 'http://localhost:5173',
-      // SPA : ajouter ici les routes client-side quand le projet grandit
-      // dynamicRoutes: ['/about', '/contact'],
-      exclude: ['/404'],
-      generateRobotsTxt: true,
-    }),
+    // Sitemap + robots.txt only in production build (not in dev/preview)
+    isProd &&
+      Sitemap({
+        hostname: process.env.VITE_APP_URL || 'http://localhost:5173',
+        // SPA : ajouter ici les routes client-side quand le projet grandit
+        // dynamicRoutes: ['/about', '/contact'],
+        exclude: ['/404'],
+        generateRobotsTxt: true,
+      }),
   ],
 
   define: {
