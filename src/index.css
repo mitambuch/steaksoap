@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset minimal */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; min-height: 100%; }
-
 /* Smooth scroll global */
 html { scroll-behavior: smooth; }
 
