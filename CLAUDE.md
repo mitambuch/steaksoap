@@ -327,6 +327,22 @@ Fichiers de documentation obligatoires :
 
 ---
 
+## Responsive — OBLIGATOIRE
+
+**Chaque composant, chaque page, chaque effet doit fonctionner sur TOUS les écrans.**
+
+- **Mobile-first** : coder d'abord pour mobile, puis `sm:`, `md:`, `lg:`
+- **Breakpoints Tailwind** : `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
+- Si un effet/layout ne fonctionne pas sur mobile → **ne pas le livrer**
+- Tester mentalement : mobile (375px) → tablette (768px) → desktop (1440px)
+- Touch targets : minimum 44×44px sur mobile
+- Texte : jamais plus petit que `text-sm` (14px) sur mobile
+- Pas de scroll horizontal non voulu
+
+**Sauf si Mirco dit explicitement "que desktop"**, tout est responsive. Sans exception.
+
+---
+
 ## Performance — standards minimum
 
 - **Lighthouse** : 90+ sur les 4 catégories

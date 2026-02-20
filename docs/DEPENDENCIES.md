@@ -48,6 +48,7 @@ On n'installe rien "parce que ça pourrait servir". Chaque package a une raison 
 | `eslint-plugin-jsx-a11y` | ^6.10.2 | Vérifie l'accessibilité du JSX (alt manquant, rôles ARIA, etc.) |
 | `eslint-plugin-simple-import-sort` | ^12.1.1 | Tri automatique des imports — ordre cohérent partout |
 | `prettier` | ^3.5.0 | Formatage automatique du code. Zéro débat sur le style |
+| `prettier-plugin-tailwindcss` | ^0.7.2 | Tri automatique des classes Tailwind dans l'ordre recommandé |
 | `globals` | ^16.5.0 | Variables globales du navigateur pour ESLint |
 
 ### Types
