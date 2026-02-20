@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -79,6 +79,9 @@
     "overrides": {
       "minimatch": ">=10.2.1"
     }
+  },
+  "engines": {
+    "node": ">=20"
   },
   "packageManager": "pnpm@10.28.0"
 }

@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate:
-    name: Lint · Typecheck · Build
+    name: Lint · Typecheck · Test · Build
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Validate (lint + typecheck + build)
+      - name: Validate (lint + typecheck + test + build)
         run: pnpm validate
         env:
           VITE_CLOUDINARY_CLOUD_NAME: ci_placeholder
