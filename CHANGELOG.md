@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.5.0](https://github.com/Mircooo/starter/compare/v0.4.4...v0.5.0) (2026-02-20)
+
+### ✨ Features
+
+* **lint:** enable type-aware eslint rules ([9ef66ff](https://github.com/Mircooo/starter/commit/9ef66fff7f7df0320febde9aa322de6e172d1d3f))
+
+### 🐛 Bug Fixes
+
+* **a11y:** respect prefers-reduced-motion for smooth scroll ([713b08d](https://github.com/Mircooo/starter/commit/713b08d706c56fee82e99110dc0aa463f60ff8bd))
+* **config:** use esm-safe __dirname in vite config ([8e26ff2](https://github.com/Mircooo/starter/commit/8e26ff2e41c15ec7ac836e48811a4e89e5c3b998))
+* **lint:** extend node globals to scripts directory ([375dce2](https://github.com/Mircooo/starter/commit/375dce23b2a335f7654661dc6784d0e45ffe5b58))
+
+### 📚 Documentation
+
+* **claude:** clarify spa seo limitations ([30491b6](https://github.com/Mircooo/starter/commit/30491b68e1d80fc05bb9eae0573fc0b439d345ab))
+
 ## [0.4.4](https://github.com/Mircooo/starter/compare/v0.4.3...v0.4.4) (2026-02-20)
 
 ### 🔧 Chores
