@@ -1,12 +1,17 @@
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
-import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsParser from '@typescript-eslint/parser'
 import { defineConfig, globalIgnores } from 'eslint/config'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import globals from 'globals'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig([
   globalIgnores(['dist', 'node_modules']),
@@ -26,7 +31,7 @@ export default defineConfig([
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
         project: './tsconfig.eslint.json',
-        tsconfigRootDir: import.meta.dirname,
+        tsconfigRootDir: __dirname,
       },
       globals: {
         ...globals.browser,
