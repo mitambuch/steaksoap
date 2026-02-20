@@ -1,12 +1,12 @@
-import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { ROUTES } from '@constants/routes';
 import RootLayout from '@app/layouts/RootLayout';
+import { ROUTES } from '@constants/routes';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 /* ─── Lazy loading — chaque page est un chunk séparé ────────────
    Pattern : const PageName = lazy(() => import('@pages/PageName'))
    ──────────────────────────────────────────────────────────── */
-const Home     = lazy(() => import('@pages/Home'));
+const Home = lazy(() => import('@pages/Home'));
 const NotFound = lazy(() => import('@pages/NotFound'));
 
 /* ─── Fallback pendant le chargement ─────────────────────────── */

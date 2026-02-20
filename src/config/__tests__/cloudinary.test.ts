@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 // Mock import.meta.env before importing the module
 vi.stubEnv('VITE_CLOUDINARY_CLOUD_NAME', 'test-cloud');

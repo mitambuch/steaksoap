@@ -46,6 +46,7 @@ On n'installe rien "parce que ça pourrait servir". Chaque package a une raison 
 | `eslint-plugin-react-hooks` | ^7.0.1 | Vérifie l'utilisation correcte des hooks React |
 | `eslint-plugin-react-refresh` | ^0.4.24 | Vérifie la compatibilité avec le Hot Module Replacement |
 | `eslint-plugin-jsx-a11y` | ^6.10.2 | Vérifie l'accessibilité du JSX (alt manquant, rôles ARIA, etc.) |
+| `eslint-plugin-simple-import-sort` | ^12.1.1 | Tri automatique des imports — ordre cohérent partout |
 | `prettier` | ^3.5.0 | Formatage automatique du code. Zéro débat sur le style |
 | `globals` | ^16.5.0 | Variables globales du navigateur pour ESLint |
 

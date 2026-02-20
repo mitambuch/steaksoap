@@ -4,7 +4,7 @@
    Usage : className={cn('px-4', condition && 'px-8', props.className)}
    ═══════════════════════════════════════════════════════════════ */
 
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]): string {
