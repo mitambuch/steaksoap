@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# → Update this URL before deploying to production
-# Sitemap: https://your-domain.com/sitemap.xml

@@ -2,11 +2,21 @@ import react from '@vitejs/plugin-react';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import Sitemap from 'vite-plugin-sitemap';
 
 const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    Sitemap({
+      hostname: process.env.VITE_APP_URL || 'http://localhost:5173',
+      // SPA : ajouter ici les routes client-side quand le projet grandit
+      // dynamicRoutes: ['/about', '/contact'],
+      exclude: ['/404'],
+      generateRobotsTxt: true,
+    }),
+  ],
 
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),

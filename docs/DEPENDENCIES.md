@@ -72,6 +72,12 @@ On n'installe rien "parce que ça pourrait servir". Chaque package a une raison 
 |---|---|---|
 | `vitest` | ^4.0.18 | Framework de tests rapide, compatible Vite, remplace Jest |
 
+### SEO
+
+| Package | Version | Pourquoi |
+|---|---|---|
+| `vite-plugin-sitemap` | ^0.8.2 | Génère automatiquement `sitemap.xml` + `robots.txt` au build |
+
 ### Releases
 
 | Package | Version | Pourquoi |

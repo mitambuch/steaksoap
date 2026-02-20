@@ -159,6 +159,7 @@ GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
 | **commitlint** | Force le format des commits |
 | **lint-staged** | Lint uniquement les fichiers modifiés |
 | **release-it** | Releases automatisées + CHANGELOG |
+| **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build |
 
 ---
 

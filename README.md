@@ -39,6 +39,7 @@ Le script `init.js` gère tout : remotes, GitHub repo, package.json, .env.local,
 | **commitlint** | Validation Conventional Commits |
 | **lint-staged** | Lint uniquement les fichiers modifiés |
 | **release-it** | Releases automatisées + CHANGELOG |
+| **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build |
 | **Vitest** | Tests unitaires |
 | **GitHub Actions** | CI (lint + typecheck + build) |
 
@@ -113,10 +114,10 @@ pnpm release:major    # 0.2.0 → 1.0.0
 ## Adapter pour un client
 
 Après `node scripts/init.js`, modifier :
-- `.env.local` → Cloudinary, nom de l'app, URL
+- `.env.local` → Cloudinary, nom de l'app, URL (utilisé aussi pour le hostname du sitemap)
 - `src/config/site.ts` → contact, réseaux sociaux, SEO
 - `src/styles/tokens.css` → couleurs, fonts
-- `public/robots.txt` → URL du sitemap
+- `vite.config.ts` → ajouter les nouvelles routes SPA dans `dynamicRoutes` du plugin Sitemap
 
 ## Mettre à jour depuis le starter
 
