@@ -23,7 +23,7 @@
 
   "hooks": {
     "before:init": ["pnpm validate"],
-    "after:bump": ["node scripts/fix-changelog.js"]
+    "before:release": ["node scripts/fix-changelog.js"]
   },
 
   "plugins": {
