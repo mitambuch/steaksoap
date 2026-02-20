@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.2](https://github.com/Mircooo/starter/compare/v0.5.1...v0.5.2) (2026-02-20)
+
+### 📚 Documentation
+
+* **readme:** sync docs with current stack and config ([a460e1c](https://github.com/Mircooo/starter/commit/a460e1ce972ceb289f6c6b63ae726fdb5f4249fb))
+
 ## [0.5.1](https://github.com/Mircooo/starter/compare/v0.5.0...v0.5.1) (2026-02-20)
 
 ### 🐛 Bug Fixes
