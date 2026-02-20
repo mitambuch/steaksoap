@@ -115,6 +115,12 @@ GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
 # 4. Confirmer à Mirco : "Release v0.2.1 publiée — 3 fix, 1 doc"
 ```
 
+**CHANGELOG — TOUS les types visibles :**
+- Le fichier `.release-it.json` définit quels types de commits apparaissent dans le CHANGELOG.
+- **JAMAIS** mettre `"hidden": true` sur un type de commit (sauf `merge`).
+- Chaque `feat`, `fix`, `chore`, `docs`, `refactor`, `style`, `test`, `perf` DOIT apparaître.
+- Si Mirco signale un CHANGELOG vide → c'est un bug de config, pas un problème de commit.
+
 **Ceci s'applique à TOUS les projets basés sur ce starter. Sans exception.**
 
 ### Quand Mirco dit...
@@ -362,6 +368,20 @@ Tu vérifies tout ça toi-même AVANT de merge. Mirco ne check rien.
 3. Pas de code mort / commenté inutilement
 4. Commits propres, atomiques, conventionnels
 5. Mobile-first respecté (si du CSS/UI a changé)
+
+---
+
+## Quand Mirco signale un bug
+
+**Corriger le bug ne suffit PAS.** Tu dois aussi :
+
+1. **Corriger** le problème immédiatement
+2. **Comprendre** pourquoi c'est arrivé (quelle règle manquait ?)
+3. **Ajouter une règle** dans CLAUDE.md pour que ça n'arrive plus JAMAIS
+4. **Documenter** : commit avec explication claire du fix + de la nouvelle règle
+
+> Si Mirco a dû te signaler un problème, c'est que la prévention a échoué.
+> L'objectif : que chaque erreur n'arrive qu'UNE SEULE FOIS.
 
 ---
 

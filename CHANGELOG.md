@@ -9,14 +9,7 @@ Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic 
 
 ### 🐛 Bug Fixes
 
-* **release:** show all commit types in changelog and github releases ([907db57](https://github.com/Mircooo/starter/commit/907db57e2f66f7839303022efc1855f189a00a0a))
-
-# Changelog
-
-All notable changes to this project are documented here.
-
-Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic Versioning](https://semver.org)
-
+* **release:** show all commit types in changelog and github releases ([907db57](https://github.com/Mircooo/starter/commit/907db57))
 
 ## [0.3.2](https://github.com/Mircooo/starter/compare/v0.3.1...v0.3.2) (2026-02-20)
 
@@ -34,80 +27,102 @@ Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic 
 
 ### ✨ Features
 
-* **seo:** add automatic sitemap + robots.txt generation ([bf5c518](https://github.com/Mircooo/starter/commit/bf5c518761e92e942fdf5b5734a789997f69b932))
+* **seo:** add automatic sitemap + robots.txt generation ([bf5c518](https://github.com/Mircooo/starter/commit/bf5c518))
 
 ## [0.2.1](https://github.com/Mircooo/starter/compare/v0.2.0...v0.2.1) (2026-02-20)
 
 ### 🐛 Bug Fixes
 
-* **dx:** graceful env fallback in dev and update readme ([9b6422d](https://github.com/Mircooo/starter/commit/9b6422d53e12659cb47ba73596eb06724bf7d867))
+* **dx:** graceful env fallback in dev and update readme ([9b6422d](https://github.com/Mircooo/starter/commit/9b6422d))
 
 ### 📚 Documentation
 
-* **claude:** add standard workflow and simplify instructions ([2af8d30](https://github.com/Mircooo/starter/commit/2af8d30405dc56e291749666d70712a7a7e09d9a))
-* **claude:** enforce mandatory release after every session ([9736f4d](https://github.com/Mircooo/starter/commit/9736f4dc963c6dd2f67386b240124a77fbe49161))
+* **claude:** add standard workflow and simplify instructions ([2af8d30](https://github.com/Mircooo/starter/commit/2af8d30))
+* **claude:** enforce mandatory release after every session ([9736f4d](https://github.com/Mircooo/starter/commit/9736f4d))
 
 ## [0.2.0](https://github.com/Mircooo/starter/compare/v0.1.0...v0.2.0) (2026-02-20)
 
 ### ✨ Features
 
-* **ci:** add github actions workflow for lint, typecheck, and build ([fa402ba](https://github.com/Mircooo/starter/commit/fa402ba7ff40b0b144fb9ccf4d80ec01f3b63909))
-* **components:** add error boundary and wrap app ([a8209ad](https://github.com/Mircooo/starter/commit/a8209ad5b42ca2f6c33cbe7caf18e066880e6a86))
-* **config:** add env validation with clear error messages ([7789c61](https://github.com/Mircooo/starter/commit/7789c611367827120b245cbaae659bd2ce9a077a))
-* **dx:** add setup and update scripts ([01b3d93](https://github.com/Mircooo/starter/commit/01b3d930c299e080fd3108db6a02c6f3e9223b06))
-* **lint:** add eslint-plugin-jsx-a11y for accessibility checks ([90f7266](https://github.com/Mircooo/starter/commit/90f7266f7c73bec34b2a7a7aefde06d78a810da1))
-* **lint:** add eslint-plugin-simple-import-sort ([0b0e4f1](https://github.com/Mircooo/starter/commit/0b0e4f1c9431c4225f44493b6f03a8742c90b3f0))
-* **seo:** add seohead component and site config ([56b0b98](https://github.com/Mircooo/starter/commit/56b0b980bc71d6a0d1b5fe6bd595e086a041649e))
-* **ui:** add welcome page and init:project script ([c908d5c](https://github.com/Mircooo/starter/commit/c908d5c2f8a5a2860e27315d74dac8aa4c7d0f0e)), closes [#c8ff00](https://github.com/Mircooo/starter/issues/c8ff00)
+* **ci:** add github actions workflow for lint, typecheck, and build ([fa402ba](https://github.com/Mircooo/starter/commit/fa402ba))
+* **components:** add error boundary and wrap app ([a8209ad](https://github.com/Mircooo/starter/commit/a8209ad))
+* **config:** add env validation with clear error messages ([7789c61](https://github.com/Mircooo/starter/commit/7789c61))
+* **dx:** add setup and update scripts ([01b3d93](https://github.com/Mircooo/starter/commit/01b3d93))
+* **lint:** add eslint-plugin-jsx-a11y for accessibility checks ([90f7266](https://github.com/Mircooo/starter/commit/90f7266))
+* **lint:** add eslint-plugin-simple-import-sort ([0b0e4f1](https://github.com/Mircooo/starter/commit/0b0e4f1))
+* **seo:** add seohead component and site config ([56b0b98](https://github.com/Mircooo/starter/commit/56b0b98))
+* **ui:** add welcome page and init:project script ([c908d5c](https://github.com/Mircooo/starter/commit/c908d5c))
 
 ### 🐛 Bug Fixes
 
-* **build:** remove manual chunks causing empty react-vendor warning ([ad265b4](https://github.com/Mircooo/starter/commit/ad265b438742efff7d63a347d4b67b6d339e3466))
-* **git:** remove .claude/ from repo and add to .gitignore ([ebc3893](https://github.com/Mircooo/starter/commit/ebc38938c63b480a7804417d827898f4982cabf2))
-* **release:** make release scripts cross-platform ([3d833b0](https://github.com/Mircooo/starter/commit/3d833b027ac7d3ff58d74e4639c1dd43229bbc32))
-* **seo:** fix placeholders and add canonical url support ([dba4705](https://github.com/Mircooo/starter/commit/dba4705a3fca00791df96bc1ea9b2d83163e65a7))
-* **styles:** use valid easing value in animations.css ([2f5562a](https://github.com/Mircooo/starter/commit/2f5562adeb7572d1caa69f5f3015ede9406f59df))
-* **types:** use inline import for react types in common.ts ([c749210](https://github.com/Mircooo/starter/commit/c749210af4e693cae9f44c8bb9c43a3349fcc26d))
+* **build:** remove manual chunks causing empty react-vendor warning ([ad265b4](https://github.com/Mircooo/starter/commit/ad265b4))
+* **git:** remove .claude/ from repo and add to .gitignore ([ebc3893](https://github.com/Mircooo/starter/commit/ebc3893))
+* **release:** make release scripts cross-platform ([3d833b0](https://github.com/Mircooo/starter/commit/3d833b0))
+* **seo:** fix placeholders and add canonical url support ([dba4705](https://github.com/Mircooo/starter/commit/dba4705))
+* **styles:** use valid easing value in animations.css ([2f5562a](https://github.com/Mircooo/starter/commit/2f5562a))
+* **types:** use inline import for react types in common.ts ([c749210](https://github.com/Mircooo/starter/commit/c749210))
 
 ### ♻️  Refactoring
 
-* **config:** centralize aliases via vitest mergeconfig ([c216c53](https://github.com/Mircooo/starter/commit/c216c5397523aa07eeb747794428de1a2f36e2e7))
+* **config:** centralize aliases via vitest mergeconfig ([c216c53](https://github.com/Mircooo/starter/commit/c216c53))
+
+### 🔧 Chores
+
+* **config:** add .prettierignore ([099083d](https://github.com/Mircooo/starter/commit/099083d))
+* **github:** add pr template and issue templates ([a621a8d](https://github.com/Mircooo/starter/commit/a621a8d))
+* **quality:** harden gitignore, logging, commitlint, and docs ([8bbfe3e](https://github.com/Mircooo/starter/commit/8bbfe3e))
+* **repo:** rename project to starter ([7406383](https://github.com/Mircooo/starter/commit/7406383))
+* **seo:** add public/robots.txt ([f080c64](https://github.com/Mircooo/starter/commit/f080c64))
+* **structure:** add missing folders (hooks, context, data, lib) ([57cc0e9](https://github.com/Mircooo/starter/commit/57cc0e9))
+* **test:** add explicit vitest.config.ts with path aliases ([f049433](https://github.com/Mircooo/starter/commit/f049433))
+* **vscode:** add versioned editor config with recommended extensions ([2e3e6db](https://github.com/Mircooo/starter/commit/2e3e6db))
+* **vscode:** disable editor as commit input ([5d85b0a](https://github.com/Mircooo/starter/commit/5d85b0a))
+* add .gitattributes to enforce lf line endings ([ebf8b8e](https://github.com/Mircooo/starter/commit/ebf8b8e))
+* create missing directories referenced in readme ([d7a1ff5](https://github.com/Mircooo/starter/commit/d7a1ff5))
+
+### ✅ Tests
+
+* **utils:** add vitest with tests for cn() and cloudinary ([84e5fe7](https://github.com/Mircooo/starter/commit/84e5fe7))
 
 ### 📚 Documentation
 
-* **architecture:** add complete folder structure documentation ([7522155](https://github.com/Mircooo/starter/commit/7522155fd8fa0828b089d31e38abdab2c5980e1e))
-* **changelog:** add initial changelog for v0.1.0 ([f7c1fae](https://github.com/Mircooo/starter/commit/f7c1faef4e4d232383ac107cc5cde0edfdf588fa))
-* **claude:** add release workflow and semver conventions ([6084045](https://github.com/Mircooo/starter/commit/60840452e8314283e40faf5c474165b6c3131fcb))
-* **claude:** rewrite claude.md with full agency conventions ([af0a537](https://github.com/Mircooo/starter/commit/af0a53780486803d712f731c2f3e4868d07f28a5))
-* **deps:** add dependencies documentation with justifications ([9208a2f](https://github.com/Mircooo/starter/commit/9208a2f181020bfc9fffe0e8a40a760bd8f54da8))
-* **readme:** update git section to match current conventions ([5eb0e13](https://github.com/Mircooo/starter/commit/5eb0e1393768cd0aa3f193b82b32670ceec4892f))
-* **setup:** add step-by-step installation guide ([da7a85d](https://github.com/Mircooo/starter/commit/da7a85d97cc1f0851ea83b28c2155a1c35ca44f4))
+* **architecture:** add complete folder structure documentation ([7522155](https://github.com/Mircooo/starter/commit/7522155))
+* **changelog:** add initial changelog for v0.1.0 ([f7c1fae](https://github.com/Mircooo/starter/commit/f7c1fae))
+* **claude:** add release workflow and semver conventions ([6084045](https://github.com/Mircooo/starter/commit/6084045))
+* **claude:** document automated git hooks ([3572ebb](https://github.com/Mircooo/starter/commit/3572ebb))
+* **claude:** rewrite claude.md with full agency conventions ([af0a537](https://github.com/Mircooo/starter/commit/af0a537))
+* **deps:** add dependencies documentation with justifications ([9208a2f](https://github.com/Mircooo/starter/commit/9208a2f))
+* **readme:** update git section to match current conventions ([5eb0e13](https://github.com/Mircooo/starter/commit/5eb0e13))
+* **setup:** add step-by-step installation guide ([da7a85d](https://github.com/Mircooo/starter/commit/da7a85d))
 
-# Changelog
-
-All notable changes to this project are documented here.
-
-Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic Versioning](https://semver.org)
-
----
-
-## [0.1.0] — 2026-02-20
+## [0.1.0](https://github.com/Mircooo/starter/releases/tag/v0.1.0) (2026-02-20)
 
 ### Initial Release
 
-First development release — project scaffold only, no public API yet.
+First development release — project scaffold.
 
-#### Included
-- React 19 + Vite 7 + TypeScript + Tailwind CSS boilerplate
-- Feature-based folder structure with path aliases (`@components`, `@hooks`, `@pages`…)
-- Cloudinary URL builder with responsive `srcSet` helper
-- Design tokens (CSS custom properties synced with Tailwind)
-- `cn()` utility via `clsx` + `tailwind-merge`
-- Husky v9 git hooks (pre-commit + commit-msg)
-- commitlint — Conventional Commits enforced on every commit
-- lint-staged — ESLint + Prettier on staged files only
-- `CLAUDE.md` — git workflow conventions and release process
+### 🔧 Chores
 
-> 🚧 Pre-1.0 — development phase, nothing is stable yet.
+* initial project scaffold ([2bf78d4](https://github.com/Mircooo/starter/commit/2bf78d4))
+* add src/assets/ directory to match @assets path alias ([0680298](https://github.com/Mircooo/starter/commit/0680298))
+* remove empty barrel exports ([ab56bbb](https://github.com/Mircooo/starter/commit/ab56bbb))
+* **deps:** add husky, commitlint, lint-staged ([9f82b8e](https://github.com/Mircooo/starter/commit/9f82b8e))
+* **deps:** add release-it and conventional-changelog plugin ([a11dc8f](https://github.com/Mircooo/starter/commit/a11dc8f))
+* **commitlint:** add commitlint config with conventional commits rules ([03393f0](https://github.com/Mircooo/starter/commit/03393f0))
+* **commitlint:** add merge type to allowed list ([a2adb16](https://github.com/Mircooo/starter/commit/a2adb16))
+* **husky:** add pre-commit and commit-msg hooks ([964972a](https://github.com/Mircooo/starter/commit/964972a))
+* **release:** add release-it config with conventional changelog ([4717cf2](https://github.com/Mircooo/starter/commit/4717cf2))
 
-[0.1.0]: https://github.com/Mircooo/starter/releases/tag/v0.1.0
+### ♻️  Refactoring
+
+* **utils:** replace manual cn() with clsx + tailwind-merge ([37c56a3](https://github.com/Mircooo/starter/commit/37c56a3))
+
+### 🎨 Styles
+
+* **css:** remove redundant reset already handled by Tailwind Preflight ([e74222b](https://github.com/Mircooo/starter/commit/e74222b))
+
+### 🐛 Bug Fixes
+
+* **config:** remove unused VITE_CLOUDINARY_BASE_URL from .env.example ([b08e4df](https://github.com/Mircooo/starter/commit/b08e4df))
+
+> Pre-1.0 — development phase, nothing is stable yet.
