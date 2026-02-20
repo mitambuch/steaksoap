@@ -1,3 +1,12 @@
+
+
+## [0.3.6](https://github.com/Mircooo/starter/compare/v0.3.5...v0.3.6) (2026-02-20)
+
+### 🐛 Bug Fixes
+
+* **release:** add post-bump script to deduplicate changelog header ([e7cc3e3](https://github.com/Mircooo/starter/commit/e7cc3e37bf894bbaa94b0c64f6711d407d2d3ab3))
+* **release:** fix changelog header deduplication ([2fee06b](https://github.com/Mircooo/starter/commit/2fee06b5ac8eea4695be72017bd265ca62b4348e))
+
 # Changelog
 
 ## [0.3.5](https://github.com/Mircooo/starter/compare/v0.3.4...v0.3.5) (2026-02-20)
