@@ -159,13 +159,14 @@ GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
 | **React Router 7** | Routing SPA |
 | **Cloudinary** | CDN images (via `@config/cloudinary.ts`) |
 | **pnpm** | Package manager |
-| **ESLint** | Le correcteur d'orthographe du code |
+| **ESLint** | Le correcteur d'orthographe du code (type-aware) |
 | **Prettier** | Le mec qui met le code au propre automatiquement |
 | **Husky** | Les hooks git (validation automatique) |
 | **commitlint** | Force le format des commits |
 | **lint-staged** | Lint uniquement les fichiers modifiés |
 | **release-it** | Releases automatisées + CHANGELOG |
-| **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build |
+| **Vitest** | Tests unitaires + composants (jsdom + testing-library) |
+| **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build (prod only) |
 
 ---
 

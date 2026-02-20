@@ -30,7 +30,7 @@ Le script `init.js` gère tout : remotes, GitHub repo, package.json, .env.local,
 | **React 19** | UI |
 | **TypeScript 5** | Typage strict (`any` interdit) |
 | **Vite 7** | Build + Dev server (HMR) |
-| **Tailwind CSS 3** | Styling utility-first |
+| **Tailwind CSS 4** | Styling utility-first (CSS-first via `@theme`) |
 | **React Router 7** | Routing SPA |
 | **Cloudinary** | CDN images optimisées |
 | **ESLint** | Lint (a11y + import sort + hooks) |
@@ -41,7 +41,7 @@ Le script `init.js` gère tout : remotes, GitHub repo, package.json, .env.local,
 | **release-it** | Releases automatisées + CHANGELOG |
 | **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build |
 | **Vitest** | Tests unitaires |
-| **GitHub Actions** | CI (lint + typecheck + build) |
+| **GitHub Actions** | CI (lint + typecheck + tests + build) |
 
 ---
 
@@ -116,7 +116,7 @@ pnpm release:major    # 0.2.0 → 1.0.0
 Après `node scripts/init.js`, modifier :
 - `.env.local` → Cloudinary, nom de l'app, URL (utilisé aussi pour le hostname du sitemap)
 - `src/config/site.ts` → contact, réseaux sociaux, SEO
-- `src/styles/tokens.css` → couleurs, fonts
+- `src/index.css` → couleurs, fonts (bloc `@theme`)
 - `vite.config.ts` → ajouter les nouvelles routes SPA dans `dynamicRoutes` du plugin Sitemap
 
 ## Mettre à jour depuis le starter
