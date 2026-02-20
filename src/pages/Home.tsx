@@ -1,95 +1,357 @@
 import { SeoHead } from '@components/features/SeoHead';
+import Noise from '@components/ui/Noise';
+import { useEffect, useRef, useState } from 'react';
 
-const stack = ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS'] as const;
+/* ─── Data ────────────────────────────────────────────────────── */
 
-const commands = [
-  { cmd: 'pnpm dev', desc: 'start dev server' },
-  { cmd: 'pnpm build', desc: 'build for production' },
-  { cmd: 'pnpm validate', desc: 'lint + types + tests + build' },
-  { cmd: 'pnpm setup:update', desc: 'pull template updates' },
+const stackLinks = [
+  { label: 'React 19', href: 'https://react.dev' },
+  { label: 'TypeScript', href: 'https://www.typescriptlang.org' },
+  { label: 'Vite 7', href: 'https://vitejs.dev' },
+  { label: 'Tailwind CSS 4', href: 'https://tailwindcss.com' },
 ] as const;
 
-export default function Home() {
+const terminalLines = [
+  { cmd: 'git clone starter && cd starter', out: null, delay: 0 },
+  { cmd: 'pnpm install', out: '✓ 661 packages installed', delay: 600 },
+  { cmd: 'pnpm dev', out: 'VITE v7.3 ready in 258ms', delay: 500 },
+  { cmd: 'pnpm validate', out: '✓ lint ✓ types ✓ 18 tests ✓ build', delay: 700 },
+  { cmd: 'pnpm release', out: '✓ v0.6.0 published', delay: 600 },
+] as const;
+
+type TypewriterStep = { text: string; pause: number; correction?: boolean };
+
+const typewriterSequence: TypewriterStep[] = [
+  { text: 'vibing', pause: 3500 },
+  { text: 'pondr', pause: 500, correction: true },
+  { text: 'pondering', pause: 3200 },
+  { text: 'cogitating', pause: 3000 },
+  { text: 'noodling', pause: 2800 },
+  { text: 'percolat', pause: 600, correction: true },
+  { text: 'percolating', pause: 3500 },
+  { text: 'simmering', pause: 3000 },
+  { text: 'brewing', pause: 2800 },
+  { text: 'manifesting', pause: 3200 },
+  { text: 'channel', pause: 500, correction: true },
+  { text: 'channeling', pause: 3000 },
+  { text: 'compiling', pause: 3400 },
+  { text: 'iterating', pause: 2600 },
+  { text: 'shipping', pause: 3000 },
+  { text: 'deploying', pause: 2800 },
+  { text: 'marinating', pause: 3200 },
+  { text: 'fermenti', pause: 400, correction: true },
+  { text: 'fermenting', pause: 3000 },
+  { text: 'gestating', pause: 2600 },
+  { text: 'crafting', pause: 3500 },
+];
+
+/* ─── Hooks ───────────────────────────────────────────────────── */
+
+function useTypewriter(sequence: TypewriterStep[]) {
+  const [displayed, setDisplayed] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const state = useRef({
+    seqIndex: 0,
+    charIndex: 0,
+    isDeleting: false,
+    isCorrecting: Boolean(sequence[0]?.correction),
+  });
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const s = state.current;
+
+    function tick() {
+      const current = sequence[s.seqIndex % sequence.length]!;
+
+      if (!s.isDeleting) {
+        const target = s.isCorrecting ? current.text.slice(0, -1) : current.text;
+
+        if (s.charIndex <= target.length) {
+          setDisplayed(target.slice(0, s.charIndex));
+          s.charIndex++;
+          const delay = Math.random() < 0.1 ? 400 + Math.random() * 350 : 140 + Math.random() * 160;
+          timeoutRef.current = setTimeout(tick, delay);
+        } else if (s.isCorrecting) {
+          s.isCorrecting = false;
+          s.isDeleting = true;
+          timeoutRef.current = setTimeout(tick, 500 + Math.random() * 400);
+        } else {
+          timeoutRef.current = setTimeout(() => {
+            s.isDeleting = true;
+            tick();
+          }, current.pause);
+        }
+      } else {
+        const current2 = sequence[s.seqIndex % sequence.length]!;
+        if (s.charIndex > 0) {
+          s.charIndex--;
+          setDisplayed(current2.text.slice(0, s.charIndex));
+          timeoutRef.current = setTimeout(tick, 35 + Math.random() * 25);
+        } else {
+          s.isDeleting = false;
+          s.seqIndex = (s.seqIndex + 1) % sequence.length;
+          const next = sequence[s.seqIndex]!;
+          s.isCorrecting = Boolean(next.correction);
+          timeoutRef.current = setTimeout(tick, 400 + Math.random() * 500);
+        }
+      }
+    }
+
+    tick();
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [sequence]);
+
+  useEffect(() => {
+    const blink = setInterval(() => setShowCursor(prev => !prev), 530);
+    return () => clearInterval(blink);
+  }, []);
+
+  return { displayed, showCursor };
+}
+
+function useCursorGlow() {
+  const [pos, setPos] = useState({ x: -200, y: -200 });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      setPos({ x: e.clientX, y: e.clientY });
+      if (!visible) setVisible(true);
+    };
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
+  }, [visible]);
+
+  return { pos, visible };
+}
+
+/* ─── Components ──────────────────────────────────────────────── */
+
+function CursorGlow({ pos, visible }: { pos: { x: number; y: number }; visible: boolean }) {
+  if (!visible) return null;
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-bg text-fg overflow-hidden">
-      <SeoHead title="Welcome" description="Starter — professional React boilerplate." />
-
-      {/* Dot grid background */}
+    <>
+      {/* Glow halo */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none fixed top-0 left-0 z-[9990] mix-blend-difference"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(200,255,0,0.06) 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
+          transform: `translate3d(${pos.x - 200}px, ${pos.y - 200}px, 0)`,
+          transition: 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)',
         }}
-      />
+      >
+        <div
+          className="h-[400px] w-[400px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(212, 255, 0, 0.5) 0%, transparent 55%)',
+            filter: 'blur(50px)',
+            opacity: 0.25,
+          }}
+        />
+      </div>
 
-      {/* Radial glow */}
+      {/* Yellow dot */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full sm:h-[450px] sm:w-[450px] md:h-[600px] md:w-[600px]"
+        className="pointer-events-none fixed top-0 left-0 z-[10000] flex items-center justify-center"
         style={{
-          background: 'radial-gradient(circle, rgba(200,255,0,0.04) 0%, transparent 70%)',
+          transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`,
+          transition: 'transform 75ms ease-out',
         }}
-      />
+      >
+        <div
+          className="bg-accent h-3 w-3 rounded-full"
+          style={{
+            boxShadow: '0 0 12px rgba(212, 255, 0, 0.8), 0 0 24px rgba(212, 255, 0, 0.4)',
+          }}
+        />
+      </div>
+    </>
+  );
+}
 
-      {/* Content */}
-      <div className="relative z-10 flex w-full max-w-2xl flex-col items-center gap-10 px-6 py-16">
-        {/* Version badge */}
-        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">
-          <span>Starter</span>
-          <span className="text-accent/30">—</span>
-          <span className="text-accent/70">v{__APP_VERSION__}</span>
-        </div>
+function AnimatedTerminal() {
+  const [hovering, setHovering] = useState(false);
+  const [visibleLines, setVisibleLines] = useState(0);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-        {/* Title */}
-        <h1 className="text-center text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
-          Ready to <span className="text-accent">build</span>
-          <span className="animate-blink text-accent">_</span>
-        </h1>
+  useEffect(() => {
+    if (hovering) {
+      setVisibleLines(0);
+      let i = 0;
 
-        {/* Subtitle */}
-        <p className="text-center text-base text-muted sm:text-lg">
-          Your next project starts here.
-        </p>
+      function showNext() {
+        i++;
+        setVisibleLines(i);
+        if (i < terminalLines.length) {
+          const nextDelay = terminalLines[i]?.delay ?? 500;
+          timeoutRef.current = setTimeout(showNext, nextDelay);
+        }
+      }
 
-        {/* Stack badges */}
-        <div className="flex flex-wrap justify-center gap-2">
-          {stack.map(tech => (
-            <span
-              key={tech}
-              className="rounded-full border border-accent/20 px-3 py-1 font-mono text-xs text-accent/80"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+      timeoutRef.current = setTimeout(showNext, 200);
+    } else {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      setVisibleLines(0);
+    }
 
-        {/* Terminal block */}
-        <div className="w-full overflow-hidden rounded-lg border border-white/10 bg-white/[0.02]">
-          {/* Terminal title bar */}
-          <div className="flex items-center gap-1.5 border-b border-white/5 px-4 py-2.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-white/10" />
-            <div className="h-2.5 w-2.5 rounded-full bg-white/10" />
-            <div className="h-2.5 w-2.5 rounded-full bg-white/10" />
-            <span className="ml-2 font-mono text-[10px] text-muted/60">terminal</span>
-          </div>
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [hovering]);
 
-          {/* Commands */}
-          <div className="space-y-1.5 px-4 py-3 font-mono text-sm">
-            {commands.map(({ cmd, desc }) => (
-              <div key={cmd} className="flex items-center justify-between gap-4">
-                <span>
-                  <span className="text-accent">$</span> <span className="text-fg/80">{cmd}</span>
-                </span>
-                <span className="hidden text-[11px] text-muted/50 sm:block">{desc}</span>
+  return (
+    <div
+      className="h-[220px] w-full max-w-sm overflow-hidden rounded-lg border border-white/8 bg-white/[0.02] backdrop-blur-sm transition-all duration-500"
+      style={{
+        borderColor: hovering ? 'rgba(212,255,0,0.15)' : undefined,
+        boxShadow: hovering
+          ? '0 0 30px rgba(212,255,0,0.04), 0 0 60px rgba(212,255,0,0.02)'
+          : 'none',
+      }}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+    >
+      <div className="flex items-center gap-1.5 border-b border-white/5 px-3 py-1.5">
+        <div
+          className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
+          style={{ backgroundColor: hovering ? 'rgba(239,68,68,0.8)' : 'rgba(239,68,68,0.35)' }}
+        />
+        <div
+          className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
+          style={{ backgroundColor: hovering ? 'rgba(234,179,8,0.8)' : 'rgba(234,179,8,0.35)' }}
+        />
+        <div
+          className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
+          style={{ backgroundColor: hovering ? 'rgba(34,197,94,0.8)' : 'rgba(34,197,94,0.35)' }}
+        />
+        <span className="text-muted/50 ml-2 font-mono text-[9px]">~/starter</span>
+      </div>
+      <div className="space-y-1 px-3 py-2.5 font-mono text-[11px]">
+        {terminalLines.map((line, i) => {
+          const show = hovering && i < visibleLines;
+          const idle = !hovering;
+
+          return (
+            <div key={i}>
+              {/* Command */}
+              <div
+                className="flex items-center gap-2 transition-opacity duration-300"
+                style={{ opacity: idle ? 0.4 : show ? 1 : 0.15 }}
+              >
+                <span className="text-accent/80">$</span>
+                <span className="text-fg/80">{line.cmd}</span>
               </div>
-            ))}
+              {/* Output */}
+              {line.out && (
+                <div
+                  className="ml-4 overflow-hidden transition-all duration-300"
+                  style={{
+                    opacity: show ? 0.5 : 0,
+                    maxHeight: show ? '18px' : '0px',
+                  }}
+                >
+                  <span className="text-accent/60 text-[10px]">{line.out}</span>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ─── Page ─────────────────────────────────────────────────────── */
+
+export default function Home() {
+  const { displayed, showCursor } = useTypewriter(typewriterSequence);
+  const { pos, visible } = useCursorGlow();
+
+  return (
+    <section className="bg-bg text-fg relative h-screen overflow-hidden">
+      <SeoHead title="Starter" description="Professional React boilerplate — ready to build." />
+      <Noise />
+      <CursorGlow pos={pos} visible={visible} />
+
+      {/* ── Layout ─────────────────────────────────────────────── */}
+      <div className="relative z-10 flex h-full flex-col px-4 py-6 md:px-8 md:py-8">
+        {/* ── Top ──────────────────────────────────────────────── */}
+        <header className="flex items-start justify-between">
+          {/* Left — Branding */}
+          <div className="flex flex-col gap-1">
+            <span className="text-fg/90 font-mono text-sm">starter</span>
+            <span className="text-fg/40 font-mono text-[11px]">
+              Production-ready React boilerplate
+            </span>
           </div>
+
+          {/* Right — Stack links */}
+          <nav className="flex flex-wrap justify-end gap-2">
+            {stackLinks.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-accent/10 bg-accent/[0.03] text-fg/50 hover:border-accent/40 hover:text-accent rounded-full border px-3 py-1 font-mono text-[10px] transition-all duration-300 hover:shadow-[0_0_12px_rgba(212,255,0,0.15)]"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </header>
+
+        {/* ── Center — "Ready to [word]" ───────────────────────── */}
+        <div className="flex flex-1 items-center">
+          <h1 className="leading-none" style={{ fontSize: 'clamp(2rem, 6vw, 5rem)' }}>
+            <span className="text-fg/80 font-medium">Ready to </span>
+            <span className="text-accent font-medium">
+              {displayed}
+              <span
+                className="bg-accent ml-0.5 inline-block"
+                style={{
+                  width: 'clamp(2px, 0.3vw, 4px)',
+                  height: '0.85em',
+                  opacity: showCursor ? 1 : 0,
+                  verticalAlign: 'baseline',
+                  transform: 'translateY(2px)',
+                }}
+              />
+            </span>
+          </h1>
         </div>
 
-        {/* Footer hint */}
-        <p className="text-center font-mono text-xs text-muted/40">
-          Edit <span className="text-accent/30">src/pages/Home.tsx</span> to start.
-        </p>
+        {/* ── Bottom ───────────────────────────────────────────── */}
+        <footer className="mb-4 flex items-end justify-between gap-6">
+          {/* Left — Animated terminal */}
+          <AnimatedTerminal />
+
+          {/* Right — tagline + GitHub */}
+          <div className="flex flex-shrink-0 items-center gap-4">
+            <p className="text-fg/25 hidden font-mono text-[10px] md:block">Clone. Build. Ship.</p>
+            <a
+              href="https://github.com/Mircooo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent/60 hover:text-accent transition-all duration-300 hover:drop-shadow-[0_0_16px_rgba(212,255,0,0.6)]"
+              aria-label="GitHub profile"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
+        </footer>
       </div>
     </section>
   );

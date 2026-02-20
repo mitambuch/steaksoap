@@ -9,8 +9,8 @@
 
 @theme {
   --color-bg: #0a0a0a;
-  --color-fg: #f5f5f5;
-  --color-accent: #c8ff00;
+  --color-fg: #e0e0e0;
+  --color-accent: #d4ff00;
   --color-muted: #666666;
 
   --font-family-sans: 'YourFont', system-ui, -apple-system, sans-serif;
@@ -37,6 +37,10 @@
 
 /* ─── Global styles ────────────────────────────────────────── */
 
+* {
+  cursor: none !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -62,4 +66,22 @@
 
 @utility animate-blink {
   animation: blink 1s step-end infinite;
+}
+
+/* ─── Film grain — same approach as classe2 ────────────────── */
+
+@keyframes noise {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-10%, 10%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-noise {
+  animation: noise 0.35s steps(2) infinite;
 }
