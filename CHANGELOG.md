@@ -7,7 +7,15 @@ Format: [Keep a Changelog](https://keepachangelog.com) · Versioning: [Semantic 
 
 ## [0.3.2](https://github.com/Mircooo/starter/compare/v0.3.1...v0.3.2) (2026-02-20)
 
+### 🔧 Chores
+
+* **init:** reset changelog on new project + enforce pnpm ([b632fca](https://github.com/Mircooo/starter/commit/b632fca))
+
 ## [0.3.1](https://github.com/Mircooo/starter/compare/v0.3.0...v0.3.1) (2026-02-20)
+
+### 🔧 Chores
+
+* **dx:** final polish — tailwind sorting, responsive pages, mobile-first rules ([6c87015](https://github.com/Mircooo/starter/commit/6c87015))
 
 ## [0.3.0](https://github.com/Mircooo/starter/compare/v0.2.1...v0.3.0) (2026-02-20)
 
