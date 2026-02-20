@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.3](https://github.com/Mircooo/starter/compare/v0.4.2...v0.4.3) (2026-02-20)
+
+### 🔧 Chores
+
+* **dx:** improve testing, formatting, and project config ([716cce8](https://github.com/Mircooo/starter/commit/716cce843da4b7c0491b49b7de2a8f7f553e246f))
+
 ## [0.4.2](https://github.com/Mircooo/starter/compare/v0.4.1...v0.4.2) (2026-02-20)
 
 ### 🐛 Bug Fixes
