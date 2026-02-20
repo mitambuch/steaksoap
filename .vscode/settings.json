@@ -1,0 +1,32 @@
+{
+  // Formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // TypeScript
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // Tailwind CSS IntelliSense — reconnaît cn() comme classe
+  "tailwindCSS.experimental.classRegex": [
+    ["cn\\(([^)]*)\\)", "'([^']*)'"],
+    ["cn\\(([^)]*)\\)", "\"([^\"]*)\""],
+    ["cn\\(([^)]*)\\)", "`([^`]*)`"]
+  ],
+
+  // Files
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Explorer
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.test.ts, ${capture}.spec.ts",
+    "*.tsx": "${capture}.test.tsx, ${capture}.spec.tsx",
+    "package.json": "pnpm-lock.yaml, .env*, .gitattributes, .gitignore, .prettierrc*, prettier.config.*, .eslintrc*, eslint.config.*, commitlint.config.*, .release-it.*, CLAUDE.md, CONTRIBUTING.md"
+  }
+}

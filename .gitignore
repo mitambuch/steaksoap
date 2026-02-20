@@ -15,8 +15,8 @@ build/
 npm-debug.log*
 pnpm-debug.log*
 
-# Editor
-.vscode/
+# Editor (personal workspace files only)
+.vscode/*.code-workspace
 .idea/
 *.swp
 
