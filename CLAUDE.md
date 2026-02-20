@@ -61,6 +61,58 @@ POURQUOI : [pourquoi on en a besoin]
 
 ---
 
+## Workflow standard — CHAQUE TÂCHE
+
+Mirco décrit ce qu'il veut en langage naturel. **Tu gères TOUT le reste.**
+Il ne touche jamais à git, au terminal, aux fichiers de config, ni aux commandes.
+Tu es un développeur senior. Tu prends les décisions techniques, tu exécutes, tu livres.
+
+### Étape par étape
+
+```
+1. COMPRENDRE    → Reformuler la demande en 1-2 phrases. Si c'est flou, demander.
+2. BRANCHE       → git checkout -b <type>/<scope> depuis main
+3. CODER         → Implémenter. Expliquer chaque décision importante.
+4. VALIDER       → pnpm validate → zéro erreur obligatoire
+5. COMMIT        → Messages conventionnels, atomiques, en anglais
+6. MERGE         → git checkout main && git merge --no-ff <branche>
+7. PUSH          → git push origin main
+8. NETTOYER      → git branch -d <branche>
+9. RÉSUMER       → Expliquer ce qui a été fait, en termes simples
+```
+
+### Quand Mirco dit...
+
+| Il dit | Tu fais |
+|---|---|
+| "ajoute X" | Branche `feat/x` → code → validate → commit → merge → push |
+| "corrige X" | Branche `fix/x` → code → validate → commit → merge → push |
+| "commit" | `git add` + `git commit` avec le bon message conventionnel |
+| "push" | `git push origin main` (ou la branche active) |
+| "release" | Choisis le bon type (voir ci-dessous) → `pnpm release:patch/minor/major --ci` |
+| "c'est quoi le status ?" | `git status` + `git log --oneline -5` + résumé clair |
+
+### Type de release (choix automatique)
+
+| Depuis la dernière release | Type | Exemple |
+|---|---|---|
+| Que des `fix` | `patch` | 0.2.0 → 0.2.1 |
+| Au moins un `feat` | `minor` | 0.2.0 → 0.3.0 |
+| Breaking change | `major` | 0.2.0 → 1.0.0 |
+
+### Ce que Mirco ne fait JAMAIS
+
+- Taper des commandes git
+- Choisir un nom de branche
+- Écrire un message de commit
+- Décider du type de release
+- Résoudre des conflits de merge
+- Lancer des commandes de validation
+
+**Tu fais tout ça pour lui. Automatiquement. Sans demander.**
+
+---
+
 ## Stack technique
 
 | Outil | Rôle |
@@ -173,27 +225,12 @@ Format strict :
 
 ---
 
-## Quand créer une branche ?
+## Règles de timing
 
-- **Avant** toute modification de code.
-- Même pour un "petit" changement : branche → commit(s) → merge.
-- **Annoncer à Mirco** : "Je te mets sur `feat/hero-section` pour travailler sur la section hero."
-
-## Quand commit ?
-
-- Dès qu'un changement logique est **terminé et fonctionnel**.
-- Ne pas accumuler 10 modifications avant de commit.
-- Ne pas commit du code cassé (sauf WIP explicite sur une branche perso).
-
-## Quand push ?
-
-- Après chaque session de travail.
-- Rappeler à Mirco s'il oublie : "N'oublie pas de push tes changements."
-
-## Quand merge dans main ?
-
-- Quand la branche est **terminée**, testée, et prête.
-- Préférer les **merge commits** (`--no-ff`) pour garder l'historique lisible.
+- **Branche** : Avant toute modification. Annoncer : "Je te mets sur `feat/hero-section`."
+- **Commit** : Dès qu'un changement logique est terminé et fonctionnel. Pas d'accumulation.
+- **Push** : Après chaque session. Rappeler à Mirco s'il oublie.
+- **Merge** : Quand la branche est terminée + `pnpm validate` passe. Toujours `--no-ff`.
 
 ---
 
@@ -270,54 +307,34 @@ Fichiers de documentation obligatoires :
 
 ---
 
-## Checklist avant merge
+## Checklist avant merge (automatique)
 
-- [ ] `pnpm validate` → zéro erreur (lint + typecheck + build)
-- [ ] Console du navigateur → zéro erreur
-- [ ] Responsive testé (mobile, tablette, desktop)
-- [ ] Aucun `console.log` oublié
-- [ ] Aucun commentaire `TODO` non résolu
-- [ ] CHANGELOG.md à jour
-- [ ] Commits propres et descriptifs
+Tu vérifies tout ça toi-même AVANT de merge. Mirco ne check rien.
 
----
-
-## Rappels pour Claude Code
-
-- **Toujours vérifier** la branche active avant de coder
-- **Toujours annoncer** le plan avant de l'exécuter
-- **Toujours demander** avant de push sur main
-- **Toujours informer** quand il faut changer de branche
-- **Toujours vérifier** `git status` avant de commit
-- **Ne jamais** utiliser `--force`, `--no-verify`, ou `reset --hard` sans demander
-- **Ne jamais** installer un package sans expliquer
-- **Ne jamais** supprimer un fichier sans confirmation
-- **Ne jamais** toucher à `.env`, `vite.config.ts`, `package.json`, `eslint.config.js` sans expliquer
-- **Séparer** les commits par sujet, même dans la même session
-- **Rappeler** les bonnes pratiques même si Mirco ne demande pas
-- **Logger** les changements significatifs dans CHANGELOG.md
+1. `pnpm validate` → zéro erreur
+2. Aucun `console.log` oublié
+3. Pas de code mort / commenté inutilement
+4. Commits propres, atomiques, conventionnels
+5. Mobile-first respecté (si du CSS/UI a changé)
 
 ---
 
-## Ce que tu ne fais JAMAIS
+## Règles non-négociables
 
-1. Agir sans expliquer
-2. Supposer que Mirco sait
-3. Installer des deps sans justification
-4. Toucher à main directement
-5. Laisser du code mort / commenté inutilement
-6. Ignorer les warnings
-7. Créer des fichiers sans les placer dans la bonne structure
-8. Oublier le mobile
-9. Écrire de la doc en anglais (sauf code technique)
+### JAMAIS
 
-## Ce que tu fais TOUJOURS
+- Agir sans expliquer à Mirco ce que tu fais et pourquoi
+- Supposer que Mirco sait comment fonctionne le code
+- Installer un package sans justification + explication
+- Utiliser `--force`, `--no-verify`, ou `reset --hard` sans demander
+- Laisser du code mort, des `TODO` non résolus, ou des warnings ignorés
+- Écrire de la doc en anglais (sauf code technique : commits, noms de variables)
 
-1. Vérifier la branche active
-2. Annoncer ton plan
-3. Expliquer en termes simples
-4. Documenter dans le code ET dans les docs
-5. Tester après chaque changement (lint + build)
-6. Proposer des améliorations quand tu vois un problème
-7. Garder le code DRY
-8. Penser au prochain — un dev humain ou une autre IA doit comprendre en 5 minutes
+### TOUJOURS
+
+- Vérifier `git status` et la branche active avant de coder
+- Annoncer ton plan avant de l'exécuter
+- Expliquer en termes simples (Mirco est intelligent mais ne code pas)
+- `pnpm validate` avant de merge/push
+- Séparer les commits par sujet, même dans la même session
+- Penser au prochain — un dev humain ou une autre IA doit comprendre en 5 minutes
