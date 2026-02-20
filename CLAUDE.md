@@ -78,27 +78,55 @@ Tu es un développeur senior. Tu prends les décisions techniques, tu exécutes,
 6. MERGE         → git checkout main && git merge --no-ff <branche>
 7. PUSH          → git push origin main
 8. NETTOYER      → git branch -d <branche>
-9. RÉSUMER       → Expliquer ce qui a été fait, en termes simples
+9. RELEASE       → pnpm release:patch/minor/major --ci (OBLIGATOIRE)
+10. RÉSUMER      → Expliquer ce qui a été fait + version publiée
 ```
+
+### ⚠️ RÈGLE ABSOLUE : TOUJOURS RELEASE
+
+**C'est le point central de toute la structure. NON NÉGOCIABLE.**
+
+Le CHANGELOG + les GitHub Releases = le journal de bord du projet.
+Si Mirco revient dans 2 mois, il DOIT pouvoir lire l'historique complet
+et comprendre chaque évolution, chaque fix, chaque décision.
+
+**Règles :**
+- **JAMAIS** de commits orphelins sur main sans release
+- Chaque session de travail se termine par une release
+- Chaque release a un CHANGELOG auto-généré qui documente TOUT
+- Le type de release est choisi automatiquement par l'IA :
+
+| Commits depuis dernière release | Type | Exemple |
+|---|---|---|
+| Que des `fix`, `docs`, `chore`, `refactor` | `patch` | 0.2.0 → 0.2.1 |
+| Au moins un `feat` | `minor` | 0.2.0 → 0.3.0 |
+| Breaking change | `major` | 0.2.0 → 1.0.0 |
+
+**Workflow release (l'IA fait tout) :**
+```bash
+# 1. Vérifier qu'il y a des commits non releasés
+git log v$(node -p "require('./package.json').version")..HEAD --oneline
+
+# 2. Analyser les types de commits → choisir patch/minor/major
+
+# 3. Lancer la release
+GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
+
+# 4. Confirmer à Mirco : "Release v0.2.1 publiée — 3 fix, 1 doc"
+```
+
+**Ceci s'applique à TOUS les projets basés sur ce starter. Sans exception.**
 
 ### Quand Mirco dit...
 
 | Il dit | Tu fais |
 |---|---|
-| "ajoute X" | Branche `feat/x` → code → validate → commit → merge → push |
-| "corrige X" | Branche `fix/x` → code → validate → commit → merge → push |
+| "ajoute X" | Branche → code → validate → commit → merge → push → **RELEASE** |
+| "corrige X" | Branche → code → validate → commit → merge → push → **RELEASE** |
 | "commit" | `git add` + `git commit` avec le bon message conventionnel |
 | "push" | `git push origin main` (ou la branche active) |
-| "release" | Choisis le bon type (voir ci-dessous) → `pnpm release:patch/minor/major --ci` |
-| "c'est quoi le status ?" | `git status` + `git log --oneline -5` + résumé clair |
-
-### Type de release (choix automatique)
-
-| Depuis la dernière release | Type | Exemple |
-|---|---|---|
-| Que des `fix` | `patch` | 0.2.0 → 0.2.1 |
-| Au moins un `feat` | `minor` | 0.2.0 → 0.3.0 |
-| Breaking change | `major` | 0.2.0 → 1.0.0 |
+| "release" | Release immédiate avec le bon type |
+| "c'est quoi le status ?" | `git status` + `git log` depuis dernière release + résumé |
 
 ### Ce que Mirco ne fait JAMAIS
 
@@ -108,6 +136,7 @@ Tu es un développeur senior. Tu prends les décisions techniques, tu exécutes,
 - Décider du type de release
 - Résoudre des conflits de merge
 - Lancer des commandes de validation
+- Se souvenir de faire une release (c'est AUTOMATIQUE)
 
 **Tu fais tout ça pour lui. Automatiquement. Sans demander.**
 
