@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/Mircooo/starter/compare/v0.5.0...v0.5.1) (2026-02-20)
+
+### 🐛 Bug Fixes
+
+* **config:** use loadenv for reliable env access in vite config ([803b942](https://github.com/Mircooo/starter/commit/803b942364c29be50b18dca31d1710a6bc5832b2))
+* **lint:** use esm-safe dirname for node 20 compat ([5f79ec0](https://github.com/Mircooo/starter/commit/5f79ec0858f91733a365d9a4bbc60302c888f24f))
+
 ## [0.5.0](https://github.com/Mircooo/starter/compare/v0.4.4...v0.5.0) (2026-02-20)
 
 ### ✨ Features
