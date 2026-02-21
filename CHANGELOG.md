@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.0](https://github.com/Mircooo/steaksoap/compare/v1.2.0...v1.3.0) (2026-02-21)
+
+### ✨ Features
+
+* **commands:** add /discover command for extension discovery ([e8cae88](https://github.com/Mircooo/steaksoap/commit/e8cae88f83dea4e45ab14a2afdba4e1fe23860f1))
+* **commands:** add /install-extension for direct extension installation ([3c9cde3](https://github.com/Mircooo/steaksoap/commit/3c9cde35f5ce8c677741bb0d15b6390a2bac0b9a))
+* **plugin:** make steaksoap installable as claude code plugin ([ab546c0](https://github.com/Mircooo/steaksoap/commit/ab546c0f9c14f2be99918e5095c318e9e6f6b43c))
+* **registry:** add curated extension registry with 12 extensions ([4804a61](https://github.com/Mircooo/steaksoap/commit/4804a617a41c57ae895583326d0074e9ba056e86))
+* **rules:** add auto-invoked rule for extension discovery ([1fbfc85](https://github.com/Mircooo/steaksoap/commit/1fbfc8578551801f37286f5198da1821ba630440))
+
+### 📚 Documentation
+
+* **extensions:** add extension discovery recipe and plugin installation guide ([4896c33](https://github.com/Mircooo/steaksoap/commit/4896c337b8f28c2e332fe390b59316a2f8c0e285))
+
 ## [1.2.0](https://github.com/Mircooo/steaksoap/compare/v1.1.0...v1.2.0) (2026-02-21)
 
 ### ✨ Features
