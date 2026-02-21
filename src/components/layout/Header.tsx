@@ -1,3 +1,4 @@
+import { ThemeToggle } from '@components/ui/ThemeToggle';
 import { siteConfig } from '@config/site';
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
@@ -87,21 +88,7 @@ export const Header = ({
             </a>
           ))}
 
-          {showThemeToggle && (
-            <button
-              type="button"
-              aria-label="Toggle theme"
-              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1.5 transition-colors duration-200 focus-visible:ring-2"
-            >
-              <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 118.25 2.071a.75.75 0 01-.795-.067z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          )}
+          {showThemeToggle && <ThemeToggle />}
         </div>
 
         {/* Mobile hamburger */}
@@ -147,22 +134,7 @@ export const Header = ({
             </a>
           ))}
 
-          {showThemeToggle && (
-            <button
-              type="button"
-              aria-label="Toggle theme"
-              className="text-muted hover:bg-surface hover:text-fg mt-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors duration-200"
-            >
-              <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path
-                  fillRule="evenodd"
-                  d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 1118.25 2.071a.75.75 0 01-.795-.067z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Theme
-            </button>
-          )}
+          {showThemeToggle && <ThemeToggle />}
         </div>
       </div>
     </header>

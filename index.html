@@ -13,6 +13,17 @@
     <!-- <link rel="preload" href="/fonts/YourFont.woff2" as="font" type="font/woff2" crossorigin /> -->
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Prevent flash of wrong theme (FOUC) -->
+    <script>
+      (function() {
+        var theme = localStorage.getItem('steaksoap-theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

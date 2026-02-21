@@ -1,4 +1,5 @@
 import { ErrorBoundary } from '@components/features/ErrorBoundary';
+import { ThemeProvider } from '@context/ThemeContext';
 import { BrowserRouter } from 'react-router-dom';
 
 import AppRoutes from './routes';
@@ -6,10 +7,11 @@ import AppRoutes from './routes';
 export default function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
-        {/* Providers globaux ici (Theme, Auth, etc.) */}
-        <AppRoutes />
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

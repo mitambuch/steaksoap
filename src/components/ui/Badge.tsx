@@ -10,10 +10,10 @@ interface BadgeProps {
 
 const variantStyles: Record<NonNullable<BadgeProps['variant']>, string> = {
   default: 'bg-surface text-fg',
-  success: 'bg-green-900/30 text-green-400',
-  warning: 'bg-yellow-900/30 text-yellow-400',
-  danger: 'bg-red-900/30 text-red-400',
-  info: 'bg-blue-900/30 text-blue-400',
+  success: 'bg-success/15 text-success',
+  warning: 'bg-warning/15 text-warning',
+  danger: 'bg-danger/15 text-danger',
+  info: 'bg-info/15 text-info',
 };
 
 const sizeStyles: Record<NonNullable<BadgeProps['size']>, string> = {

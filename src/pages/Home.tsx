@@ -233,7 +233,7 @@ function AnimatedTerminal() {
           className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
           style={{ backgroundColor: hovering ? 'rgba(34,197,94,0.8)' : 'rgba(34,197,94,0.35)' }}
         />
-        <span className="text-muted/50 ml-2 font-mono text-[9px]">~/starter</span>
+        <span className="text-muted/50 ml-2 font-mono text-[9px]">~/steaksoap</span>
       </div>
       <div className="space-y-1 px-3 py-2.5 font-mono text-[11px]">
         {terminalLines.map((line, i) => {
@@ -312,7 +312,7 @@ export default function Home() {
           {/* Top */}
           <header className="flex items-start justify-between">
             <div className="flex flex-col gap-1">
-              <span className="text-fg/90 font-mono text-sm">starter</span>
+              <span className="text-fg/90 font-mono text-sm">🥩🧼 steaksoap</span>
               <span className="text-fg/40 font-mono text-[11px]">
                 Production-ready React boilerplate
               </span>

@@ -16,12 +16,12 @@ describe('Badge', () => {
 
   it('renders success variant', () => {
     const { container } = render(<Badge variant="success">OK</Badge>);
-    expect(container.firstChild).toHaveClass('text-green-400');
+    expect(container.firstChild).toHaveClass('text-success');
   });
 
   it('renders danger variant', () => {
     const { container } = render(<Badge variant="danger">Error</Badge>);
-    expect(container.firstChild).toHaveClass('text-red-400');
+    expect(container.firstChild).toHaveClass('text-danger');
   });
 
   it('accepts className override', () => {
