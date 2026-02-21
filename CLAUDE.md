@@ -422,6 +422,9 @@ You verify all of this yourself BEFORE merging. The owner checks nothing.
 - Install a package without justification + explanation
 - Use `--force`, `--no-verify`, or `reset --hard` without asking
 - Leave dead code, unresolved `TODO`s, or ignored warnings
+- Assert something is "unused" or "broken" without verifying in the code first
+- Remove a dependency without a functional replacement ready
+- Change the project's direction (e.g., "starter showcase" vs "minimal starter") without explicit owner approval
 
 ### ALWAYS
 
@@ -431,3 +434,5 @@ You verify all of this yourself BEFORE merging. The owner checks nothing.
 - `pnpm validate` before merge/push
 - Separate commits by topic, even within the same session
 - Think about the next person — a human dev or another AI must understand in 5 minutes
+- Verify claims with code search (`grep`, `rg`, or tool search) before stating something is unused, broken, or redundant
+- Preserve the `pnpm setup --update` workflow — the ability to merge upstream template changes is non-negotiable

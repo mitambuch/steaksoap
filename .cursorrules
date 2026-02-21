@@ -1,0 +1,48 @@
+# Cursor Rules — Starter Project
+
+## Project
+React 19 + TypeScript + Vite 7 + Tailwind CSS 4 (CSS-first via @theme) + pnpm.
+SPA boilerplate for client showcase websites. Mobile-first. Strict TypeScript (no `any`).
+
+## Architecture
+Path aliases: @components/, @hooks/, @pages/, @utils/, @config/, @data/, @types/, @constants/, @lib/, @assets/, @app/, @context/, @styles/
+Never use relative imports like `../../..`.
+
+```
+src/
+├── app/          → Routes, layouts
+├── components/
+│   ├── ui/       → Atoms (Button, Card…)
+│   ├── layout/   → Header, Footer, Nav…
+│   └── features/ → Feature components
+├── config/       → Cloudinary, SEO, env
+├── pages/        → One page = one route
+├── hooks/        → Custom hooks
+├── utils/        → Pure functions
+├── types/        → Shared types
+├── data/         → Static data
+└── styles/       → Fonts, animations, @theme tokens
+```
+
+## Code Style
+- Functional components only. Named exports for non-page components, default exports for pages.
+- Tailwind utility classes. Design tokens via `@theme` in index.css (bg-bg, text-fg, text-accent, text-muted).
+- `cn()` from @utils for conditional classes: `cn('base', condition && 'active', className)`.
+- Mobile-first: code for 375px, then `sm:`, `md:`, `lg:`.
+- Every component: comment block at top explaining its purpose.
+
+## Git Conventions
+- Conventional Commits: `type(scope): description` (lowercase, imperative, <72 chars)
+- Types: feat, fix, refactor, style, chore, docs, perf, test
+- Branch naming: `type/scope` (e.g., `feat/gallery-grid`)
+- Never commit to main directly. Always branch → merge --no-ff.
+
+## Validation
+Run `pnpm validate` (lint + typecheck + test + build) before any merge.
+Zero errors required. No console.log in production code.
+
+## Key Files
+- CLAUDE.md — Full AI workflow instructions
+- src/index.css — Design tokens (@theme block)
+- src/config/env.ts — Environment variables (all optional with fallbacks)
+- src/config/site.ts — Site metadata (name, URL, SEO)
