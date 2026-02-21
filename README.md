@@ -26,7 +26,7 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 
 | | steaksoap | Typical React Starter |
 |---|---|---|
-| **AI workflow** | 15+ slash commands, 4 sub-agents | None or afterthought |
+| **AI workflow** | 18 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
 | **UI components** | 10 accessible atoms ready to use | Empty src/ |
 | **Git workflow** | Conventional commits + auto changelog | Manual |
@@ -74,6 +74,13 @@ Open Claude Code and type these commands:
 | `/release` | Evaluate commits → version bump → changelog → tag |
 | `/update-deps` | Safe dependency updates with validation |
 | `/fix "button doesn't work"` | Systematic bug diagnosis and fix |
+
+### Discovery
+| Command | What it does |
+|---|---|
+| `/discover "animations"` | Find extensions by description |
+| `/install-extension zustand` | Install a curated extension by ID |
+| `/refactor src/features/auth` | Analyze code against rules, classify and fix issues |
 
 ### Quality
 | Command | What it does |
@@ -135,8 +142,19 @@ Step-by-step guides for common tasks:
 - [Add a component](docs/recipes/add-component.md)
 - [Add a feature](docs/recipes/add-feature.md)
 - [Configure env variables](docs/recipes/env-vars.md)
+- [Add an extension](docs/recipes/add-extension.md)
 - [Deploy](docs/recipes/deploy.md)
 - [Customize the theme](docs/recipes/customize-theme.md)
+
+## Use as Plugin
+
+Already have a project? Install steaksoap as a Claude Code plugin to get all commands, agents, and rules without cloning:
+
+```bash
+claude plugin marketplace add Mircooo/steaksoap
+```
+
+This gives you access to all 18 slash commands and 4 sub-agents in your existing project.
 
 ## Stay Updated
 

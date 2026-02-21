@@ -52,6 +52,30 @@ Claude Code:
   7. Commits → fix(modal): close on backdrop click
 ```
 
+## Discovery
+
+| Command | Arguments | What it does |
+|---|---|---|
+| `/discover` | `"description"` | Find extensions by natural language (e.g., "animations", "auth") |
+| `/install-extension` | `extension-id` | Install a specific extension by ID (e.g., "zustand") |
+| `/refactor` | `file or feature` | Analyze code against rules, classify and fix issues |
+
+### Example: Discovering an extension
+
+```
+You: /discover "I want users to log in"
+
+Claude Code:
+  1. Reads registry/extensions.json
+  2. Matches → Clerk Authentication (auth-clerk)
+  3. Shows packages: @clerk/clerk-react
+  4. Shows setup steps and docs
+  5. Asks: "Want me to install this?"
+  6. If yes → installs, configures, validates, commits
+```
+
+See [recipes/add-extension.md](recipes/add-extension.md) for the full list of available extensions.
+
 ## Quality
 
 | Command | Arguments | What it does |
