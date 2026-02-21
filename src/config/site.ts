@@ -17,6 +17,13 @@ export const siteConfig = {
   description: '',
   ogImage: '/images/og-image.jpg',
 
+  // ─── Navigation ──────────────────────────────────────────
+  navItems: [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ],
+
   // ─── Contact ───────────────────────────────────────────────
   email: '',
   phone: '',

@@ -12,6 +12,8 @@
   --color-fg: #e0e0e0;
   --color-accent: #d4ff00;
   --color-muted: #666666;
+  --color-surface: #141414;
+  --color-border: #262626;
 
   --font-family-sans: 'YourFont', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
