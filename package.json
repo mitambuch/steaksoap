@@ -1,6 +1,6 @@
 {
   "name": "starter",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Production-ready React 19 + TypeScript + Vite 7 + Tailwind CSS 4 boilerplate with AI-assisted workflow and automated releases.",
   "author": "Mircooo",

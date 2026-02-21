@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.0](https://github.com/Mircooo/starter/compare/v0.7.0...v1.0.0) (2026-02-21)
+
+### ♻️  Refactoring
+
+* **init:** enhance cli with auto-detect, cleanup, and welcome message ([16cd896](https://github.com/Mircooo/starter/commit/16cd896f65bfb1df2685c09d334df4707670c217))
+
+### 🔧 Chores
+
+* **ci:** add node 22 to test matrix ([4ed3cf4](https://github.com/Mircooo/starter/commit/4ed3cf40752f407020fe63636920ddde6cfee290))
+* **cleanup:** replace todo with informational comment ([aaebe99](https://github.com/Mircooo/starter/commit/aaebe994278e8c701a628c34b9d140e917155b5b))
+* **env:** translate .env.example comment to english ([93cc5ae](https://github.com/Mircooo/starter/commit/93cc5aec218f40112bdcacb60fb65a139e25abb8))
+* **pkg:** add open-source metadata to package.json ([df3356f](https://github.com/Mircooo/starter/commit/df3356fe2dc00dd9428f551eb91d18a773bc821a))
+
 ## [0.7.0](https://github.com/Mircooo/starter/compare/v0.6.1...v0.7.0) (2026-02-21)
 
 ### ✨ Features
