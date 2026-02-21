@@ -20,8 +20,7 @@ export const siteConfig = {
   // ─── Navigation ──────────────────────────────────────────
   navItems: [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Showcase', href: '/showcase' },
   ],
 
   // ─── Contact ───────────────────────────────────────────────
