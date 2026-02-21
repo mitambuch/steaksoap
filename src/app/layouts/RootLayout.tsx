@@ -1,3 +1,4 @@
+import Footer from '@components/layout/Footer';
 import { Outlet } from 'react-router-dom';
 
 /* ─── RootLayout ─────────────────────────────────────────────
@@ -13,7 +14,7 @@ export default function RootLayout() {
       <main className="flex-1">
         <Outlet />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
