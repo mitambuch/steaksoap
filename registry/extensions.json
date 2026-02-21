@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "steaksoap curated extension registry",
+  "extensions": [
+    {
+      "id": "three-js",
+      "name": "Three.js + React Three Fiber",
+      "description": "3D rendering engine with React bindings and helper components.",
+      "tags": ["3d", "webgl", "three", "rendering", "graphics", "animation"],
+      "category": "frontend",
+      "npm_packages": ["three", "@react-three/fiber", "@react-three/drei"],
+      "setup_instructions": [
+        "Install packages: pnpm add three @react-three/fiber @react-three/drei",
+        "Add type definitions: pnpm add -D @types/three",
+        "Create src/components/ui/Canvas3D.tsx wrapper component",
+        "Add a basic scene example in src/features/ if needed"
+      ],
+      "references": [
+        "https://docs.pmnd.rs/react-three-fiber",
+        "https://github.com/pmndrs/drei"
+      ]
+    },
+    {
+      "id": "stripe-payments",
+      "name": "Stripe Payments",
+      "description": "Payment processing with Stripe Elements and checkout integration.",
+      "tags": ["payments", "stripe", "checkout", "billing", "e-commerce"],
+      "category": "backend",
+      "npm_packages": ["@stripe/stripe-js", "@stripe/react-stripe-js"],
+      "setup_instructions": [
+        "Install packages: pnpm add @stripe/stripe-js @stripe/react-stripe-js",
+        "Add VITE_STRIPE_PUBLISHABLE_KEY to .env.example and src/config/env.ts",
+        "Create src/lib/stripe.ts with loadStripe() initialization",
+        "Wrap payment pages with <Elements> provider",
+        "User action: create a Stripe account at stripe.com and copy the publishable key"
+      ],
+      "references": [
+        "https://docs.stripe.com/stripe-js/react",
+        "https://docs.stripe.com/payments/quickstart"
+      ]
+    },
+    {
+      "id": "auth-clerk",
+      "name": "Clerk Authentication",
+      "description": "Full authentication system with login, signup, OAuth, and user management.",
+      "tags": ["auth", "authentication", "login", "signup", "oauth", "clerk", "users"],
+      "category": "backend",
+      "npm_packages": ["@clerk/clerk-react"],
+      "setup_instructions": [
+        "Install package: pnpm add @clerk/clerk-react",
+        "Add VITE_CLERK_PUBLISHABLE_KEY to .env.example and src/config/env.ts",
+        "Wrap App with <ClerkProvider> in src/app/providers.tsx",
+        "Create src/features/auth/ with SignIn, SignUp, and UserButton components",
+        "Add protected route wrapper using useAuth() hook",
+        "User action: create a Clerk project at clerk.com and copy the publishable key"
+      ],
+      "references": [
+        "https://clerk.com/docs/quickstarts/react",
+        "https://clerk.com/docs/references/react/use-auth"
+      ]
+    },
+    {
+      "id": "tanstack-query",
+      "name": "TanStack Query",
+      "description": "Powerful data fetching and caching with automatic background refetching.",
+      "tags": ["data", "fetching", "api", "cache", "query", "tanstack", "react-query"],
+      "category": "data",
+      "npm_packages": ["@tanstack/react-query", "@tanstack/react-query-devtools"],
+      "setup_instructions": [
+        "Install packages: pnpm add @tanstack/react-query @tanstack/react-query-devtools",
+        "Create src/lib/query-client.ts with default options",
+        "Add <QueryClientProvider> to src/app/providers.tsx",
+        "Add <ReactQueryDevtools> in development mode",
+        "Follow patterns in .claude/rules/api.md for hook structure"
+      ],
+      "references": [
+        "https://tanstack.com/query/latest/docs/framework/react/overview",
+        "https://tanstack.com/query/latest/docs/framework/react/quick-start"
+      ]
+    },
+    {
+      "id": "zod",
+      "name": "Zod",
+      "description": "TypeScript-first schema validation for API responses, forms, and environment variables.",
+      "tags": ["validation", "schema", "zod", "types", "parsing", "forms"],
+      "category": "data",
+      "npm_packages": ["zod"],
+      "setup_instructions": [
+        "Install package: pnpm add zod",
+        "Create src/lib/schemas/ directory for shared schemas",
+        "Use z.infer<typeof schema> for TypeScript type derivation",
+        "Validate API responses with schema.parse() in fetch hooks"
+      ],
+      "references": [
+        "https://zod.dev",
+        "https://github.com/colinhacks/zod"
+      ]
+    },
+    {
+      "id": "framer-motion",
+      "name": "Motion (Framer Motion)",
+      "description": "Production-ready animation library for React with gesture support.",
+      "tags": ["animation", "motion", "framer", "transitions", "gestures", "scroll"],
+      "category": "frontend",
+      "npm_packages": ["motion"],
+      "setup_instructions": [
+        "Install package: pnpm add motion",
+        "Use <motion.div> for animated elements",
+        "Create src/hooks/useAnimationConfig.ts for shared animation presets",
+        "Use AnimatePresence for exit animations on route changes"
+      ],
+      "references": [
+        "https://motion.dev/docs/react-quick-start",
+        "https://motion.dev/docs/react-animation"
+      ]
+    },
+    {
+      "id": "i18n",
+      "name": "react-i18next",
+      "description": "Internationalization framework with browser language detection and namespace support.",
+      "tags": ["i18n", "internationalization", "translation", "language", "locale", "multilingual"],
+      "category": "frontend",
+      "npm_packages": ["react-i18next", "i18next", "i18next-browser-languagedetector"],
+      "setup_instructions": [
+        "Install packages: pnpm add react-i18next i18next i18next-browser-languagedetector",
+        "Create src/lib/i18n.ts with i18next configuration",
+        "Create src/locales/en.json and src/locales/fr.json translation files",
+        "Import i18n config in src/main.tsx",
+        "Use useTranslation() hook in components: const { t } = useTranslation()"
+      ],
+      "references": [
+        "https://react.i18next.com/getting-started",
+        "https://www.i18next.com/overview/configuration-options"
+      ]
+    },
+    {
+      "id": "mdx-blog",
+      "name": "MDX Blog",
+      "description": "Write blog posts in MDX with frontmatter support and Vite integration.",
+      "tags": ["blog", "mdx", "markdown", "content", "cms", "writing", "posts"],
+      "category": "content",
+      "npm_packages": ["@mdx-js/rollup", "@mdx-js/react", "gray-matter"],
+      "setup_instructions": [
+        "Install packages: pnpm add @mdx-js/rollup @mdx-js/react gray-matter",
+        "Add MDX plugin to vite.config.ts",
+        "Create src/content/posts/ directory for MDX files",
+        "Create src/features/blog/ with PostList and PostDetail components",
+        "Add /blog and /blog/:slug routes"
+      ],
+      "references": [
+        "https://mdxjs.com/docs/getting-started/",
+        "https://mdxjs.com/packages/rollup/"
+      ]
+    },
+    {
+      "id": "playwright-e2e",
+      "name": "Playwright E2E Testing",
+      "description": "End-to-end browser testing with auto-waiting and cross-browser support.",
+      "tags": ["e2e", "testing", "playwright", "browser", "integration", "end-to-end"],
+      "category": "quality",
+      "npm_packages": ["@playwright/test"],
+      "setup_instructions": [
+        "Install package: pnpm add -D @playwright/test",
+        "Run: npx playwright install chromium",
+        "Create playwright.config.ts at project root",
+        "Create e2e/ directory for test files",
+        "Add scripts to package.json: test:e2e and test:e2e:ui",
+        "Add e2e example: e2e/home.spec.ts testing the landing page"
+      ],
+      "references": [
+        "https://playwright.dev/docs/intro",
+        "https://playwright.dev/docs/test-configuration"
+      ]
+    },
+    {
+      "id": "storybook",
+      "name": "Storybook",
+      "description": "Component development environment with isolated rendering and visual testing.",
+      "tags": ["storybook", "components", "visual", "design-system", "documentation", "ui"],
+      "category": "quality",
+      "npm_packages": ["storybook", "@storybook/react-vite"],
+      "setup_instructions": [
+        "Install packages: pnpm add -D storybook @storybook/react-vite",
+        "Run: npx storybook init --builder vite (or configure manually)",
+        "Create .storybook/main.ts and .storybook/preview.ts",
+        "Import src/index.css in preview.ts for Tailwind support",
+        "Add scripts to package.json: storybook and build-storybook",
+        "Create example story: src/components/ui/Button.stories.tsx"
+      ],
+      "references": [
+        "https://storybook.js.org/docs/get-started/install",
+        "https://storybook.js.org/docs/get-started/frameworks/react-vite"
+      ]
+    },
+    {
+      "id": "zustand",
+      "name": "Zustand",
+      "description": "Minimal state management with hooks-based API and no boilerplate.",
+      "tags": ["state", "store", "zustand", "global-state", "state-management"],
+      "category": "data",
+      "npm_packages": ["zustand"],
+      "setup_instructions": [
+        "Install package: pnpm add zustand",
+        "Create stores in src/lib/stores/ (e.g., src/lib/stores/useAppStore.ts)",
+        "Pattern: export const useAppStore = create<AppState>()((set) => ({...}))",
+        "Use selectors for performance: const count = useAppStore((s) => s.count)"
+      ],
+      "references": [
+        "https://zustand.docs.pmnd.rs/getting-started/introduction",
+        "https://github.com/pmndrs/zustand"
+      ]
+    },
+    {
+      "id": "resend-email",
+      "name": "Resend Email",
+      "description": "Modern email API for sending transactional emails. Free tier: 100 emails/day.",
+      "tags": ["email", "resend", "contact", "form", "notifications", "transactional"],
+      "category": "backend",
+      "npm_packages": ["resend"],
+      "setup_instructions": [
+        "Install package: pnpm add resend",
+        "Add RESEND_API_KEY to .env.example (server-side only, NOT VITE_ prefixed)",
+        "Create API route or serverless function for sending emails",
+        "Create src/features/contact/ with ContactForm component",
+        "User action: create a Resend account at resend.com and copy the API key"
+      ],
+      "references": [
+        "https://resend.com/docs/introduction",
+        "https://resend.com/docs/send-with-react"
+      ]
+    }
+  ]
+}
