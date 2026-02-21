@@ -1,62 +1,390 @@
 #!/usr/bin/env node
 
 /* ═══════════════════════════════════════════════════════════════
-   SETUP — first-run setup script for a new project
+   SETUP — unified project setup wizard
    Cross-platform (Windows, macOS, Linux).
 
-   Usage:
-     pnpm setup               → full setup
-     pnpm setup:update        → pull starter updates
+   Modes:
+     pnpm setup           → auto-detect (init wizard or light setup)
+     pnpm setup --update  → pull updates from starter template
+     pnpm setup --yes     → non-interactive init (CI/testing)
+
+   The script auto-detects whether this is a fresh clone
+   (package name is "starter") or an already-initialized project.
    ═══════════════════════════════════════════════════════════════ */
 
 import { execSync } from 'child_process';
-import { existsSync, copyFileSync } from 'fs';
+import {
+  copyFileSync,
+  existsSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'fs';
 import { resolve } from 'path';
 
 const root = resolve(import.meta.dirname, '..');
-const run = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
+const run = (cmd) => execSync(cmd, { cwd: root, encoding: 'utf-8' }).trim();
+const runVisible = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
 
-// ─── Colors (works in all terminals) ─────────────────────────
-const green = (s) => `\x1b[32m${s}\x1b[0m`;
-const yellow = (s) => `\x1b[33m${s}\x1b[0m`;
-const red = (s) => `\x1b[31m${s}\x1b[0m`;
-const bold = (s) => `\x1b[1m${s}\x1b[0m`;
+// ─── Mode detection ─────────────────────────────────────────
+const isUpdate = process.argv.includes('--update');
+const isAutoYes =
+  process.argv.includes('--yes') || process.argv.includes('-y');
 
-console.log(bold('\n  Starter — Setup\n'));
+// ─── Fresh clone detection ──────────────────────────────────
+const pkgPath = resolve(root, 'package.json');
+const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+const isFreshClone = pkg.name === 'starter';
 
-// ─── 1. Check Node version ──────────────────────────────────
+// ─── Node version check ────────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
 if (nodeVersion < 20) {
-  console.error(red(`  Node.js 20+ required (current: ${process.version})`));
+  console.error(`\n  ✗ Node.js 20+ required (current: ${process.version})\n`);
   process.exit(1);
 }
-console.log(green('  ✓ Node.js ' + process.version));
 
-// ─── 2. Install dependencies ────────────────────────────────
-console.log(yellow('\n  → Installing dependencies...'));
-run('pnpm install');
-console.log(green('  ✓ Dependencies installed'));
-
-// ─── 3. Create .env.local if missing ────────────────────────
-const envLocal = resolve(root, '.env.local');
-const envExample = resolve(root, '.env.example');
-
-if (!existsSync(envLocal)) {
-  copyFileSync(envExample, envLocal);
-  console.log(yellow('  → .env.local created from .env.example'));
-  console.log(yellow('    Open .env.local and fill in the values!'));
+// ─── Route to the right mode ────────────────────────────────
+if (isUpdate) {
+  await runUpdate();
+} else if (isFreshClone) {
+  await runInit();
 } else {
-  console.log(green('  ✓ .env.local already exists'));
+  await runSetup();
 }
 
-// ─── 4. Run validate ─────────────────────────────────────────
-console.log(yellow('\n  → Validating (lint + typecheck + tests + build)...'));
-try {
-  run('pnpm validate');
-  console.log(green('  ✓ All checks passed!'));
-} catch {
-  console.error(red('  ✗ Validation failed. Fix the errors above.'));
-  process.exit(1);
+// ═══════════════════════════════════════════════════════════════
+// INIT — interactive wizard for fresh clones
+// ═══════════════════════════════════════════════════════════════
+
+async function runInit() {
+  let clack;
+  try {
+    clack = await import('@clack/prompts');
+  } catch {
+    console.error(
+      '\n  ✗ Dependencies not installed. Run pnpm install first.\n',
+    );
+    process.exit(1);
+  }
+
+  clack.intro('Starter — New Project');
+
+  // ─── Auto-detect defaults ───────────────────────────────
+  const dirName = resolve(root).split(/[\\/]/).pop() || 'project';
+  const defaultSlug = slugify(dirName);
+
+  let ghUser = '';
+  if (hasCommand('gh')) {
+    try {
+      ghUser = run('gh api user -q .login');
+    } catch {
+      /* gh installed but not authenticated */
+    }
+  }
+
+  let projectName, displayName, createRepo;
+
+  if (isAutoYes) {
+    // ─── Non-interactive mode ───────────────────────────
+    projectName = defaultSlug;
+    displayName = defaultSlug;
+    createRepo = false;
+    clack.log.info(`Using defaults: ${projectName}`);
+  } else {
+    // ─── Interactive wizard (3 questions) ───────────────
+    projectName = await clack.text({
+      message: 'Project name (slug)',
+      placeholder: defaultSlug,
+      defaultValue: defaultSlug,
+      validate: (v) => {
+        if (!v) return 'Required';
+        if (!/^[a-z0-9-]+$/.test(v))
+          return 'Lowercase letters, numbers, and hyphens only';
+      },
+    });
+    if (clack.isCancel(projectName)) {
+      clack.cancel('Setup cancelled.');
+      process.exit(0);
+    }
+
+    displayName = await clack.text({
+      message: 'Display name',
+      placeholder: String(projectName),
+      defaultValue: String(projectName),
+    });
+    if (clack.isCancel(displayName)) {
+      clack.cancel('Setup cancelled.');
+      process.exit(0);
+    }
+
+    if (ghUser) {
+      createRepo = await clack.confirm({
+        message: `Create GitHub repo ${ghUser}/${projectName}?`,
+        initialValue: true,
+      });
+      if (clack.isCancel(createRepo)) {
+        clack.cancel('Setup cancelled.');
+        process.exit(0);
+      }
+    } else {
+      createRepo = false;
+      if (hasCommand('gh')) {
+        clack.log.info(
+          'GitHub user not detected — run gh auth login to enable',
+        );
+      } else {
+        clack.log.info(
+          'GitHub CLI not found — install gh to enable repo creation',
+        );
+      }
+    }
+  }
+
+  // ─── Configure git remotes ──────────────────────────────
+  const s = clack.spinner();
+  s.start('Configuring project...');
+
+  const remotes = run('git remote').split('\n').filter(Boolean);
+  if (remotes.includes('origin') && !remotes.includes('template')) {
+    run('git remote rename origin template');
+  }
+
+  // ─── Create GitHub repo ─────────────────────────────────
+  if (createRepo && ghUser) {
+    s.message(`Creating ${ghUser}/${projectName} on GitHub...`);
+    try {
+      run(
+        `gh repo create ${ghUser}/${projectName} --public --source=. --remote=origin`,
+      );
+    } catch (e) {
+      if (e.message?.includes('already exists')) {
+        const currentRemotes = run('git remote').split('\n').filter(Boolean);
+        if (!currentRemotes.includes('origin')) {
+          run(
+            `git remote add origin https://github.com/${ghUser}/${projectName}.git`,
+          );
+        }
+      }
+    }
+  }
+
+  // ─── Update package.json ────────────────────────────────
+  pkg.name = String(projectName);
+  pkg.version = '0.1.0';
+  if (ghUser && createRepo) {
+    pkg.homepage = `https://github.com/${ghUser}/${projectName}`;
+    pkg.repository = {
+      type: 'git',
+      url: `https://github.com/${ghUser}/${projectName}.git`,
+    };
+    pkg.bugs = {
+      url: `https://github.com/${ghUser}/${projectName}/issues`,
+    };
+  }
+  writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+
+  // ─── Create .env.local ─────────────────────────────────
+  const envLocal = resolve(root, '.env.local');
+  const envExample = resolve(root, '.env.example');
+  if (!existsSync(envLocal)) {
+    copyFileSync(envExample, envLocal);
+  }
+  let envContent = readFileSync(envLocal, 'utf-8');
+  envContent = envContent.replace(
+    /VITE_APP_NAME=.*/,
+    `VITE_APP_NAME=${displayName}`,
+  );
+  writeFileSync(envLocal, envContent);
+
+  // ─── Reset CHANGELOG.md ────────────────────────────────
+  const today = new Date().toISOString().split('T')[0];
+  writeFileSync(
+    resolve(root, 'CHANGELOG.md'),
+    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### Features\n\n- project initialized from starter\n`,
+  );
+
+  // ─── Clean up demo/showcase files ──────────────────────
+  s.message('Cleaning up demo files...');
+
+  // Replace showcase Home with minimal template
+  const templateHome = resolve(root, 'scripts/templates/Home.tsx');
+  if (existsSync(templateHome)) {
+    copyFileSync(templateHome, resolve(root, 'src/pages/Home.tsx'));
+  }
+
+  // Remove showcase-only files
+  const filesToRemove = [
+    'src/data/showcase.ts',
+    'src/components/ui/FeatureCard.tsx',
+    'src/components/ui/CodeBlock.tsx',
+    'src/components/ui/TechBadge.tsx',
+    'src/components/ui/Noise.tsx',
+    'src/components/ui/Section.tsx',
+    'src/hooks/useInView.ts',
+  ];
+  for (const file of filesToRemove) {
+    const p = resolve(root, file);
+    if (existsSync(p)) rmSync(p);
+  }
+
+  // Remove demo feature directories
+  const dirsToRemove = ['src/features/counter'];
+  for (const dir of dirsToRemove) {
+    const p = resolve(root, dir);
+    if (existsSync(p)) rmSync(p, { recursive: true });
+  }
+
+  s.stop('Project configured');
+
+  // ─── Validate ──────────────────────────────────────────
+  clack.log.step(
+    'Running validation (lint + typecheck + tests + build)...',
+  );
+  try {
+    runVisible('pnpm validate');
+    clack.log.success('All checks passed');
+  } catch {
+    clack.log.warn(
+      'Validation had issues — check the output above and fix before pushing',
+    );
+  }
+
+  // ─── Initial commit + push ─────────────────────────────
+  try {
+    run('git add -A');
+    run(
+      `git commit -m "chore(init): bootstrap ${projectName} from starter"`,
+    );
+
+    const currentRemotes = run('git remote').split('\n').filter(Boolean);
+    if (currentRemotes.includes('origin')) {
+      const pushSpinner = clack.spinner();
+      pushSpinner.start('Pushing to origin/main...');
+      runVisible('git push -u origin main');
+      pushSpinner.stop('Pushed to origin/main');
+    }
+  } catch {
+    // May fail if nothing to commit or no remote — that's OK
+  }
+
+  // ─── Done ──────────────────────────────────────────────
+  clack.note(
+    [
+      'pnpm dev          → Start dev server',
+      'pnpm validate     → Run all checks',
+      'pnpm release      → Create a release',
+      '',
+      'CLAUDE.md         → AI agent instructions',
+      'src/pages/        → Add your pages here',
+      'src/components/   → Reusable UI components',
+    ].join('\n'),
+    'Next steps',
+  );
+
+  clack.outro(`Project "${displayName}" ready!`);
 }
 
-console.log(bold(green('\n  Setup complete. Run pnpm dev to get started.\n')));
+// ═══════════════════════════════════════════════════════════════
+// SETUP — light setup for already-initialized projects
+// ═══════════════════════════════════════════════════════════════
+
+async function runSetup() {
+  console.log('\n  Starter — Setup\n');
+  console.log('  ✓ Node.js ' + process.version);
+
+  // Create .env.local if missing
+  const envLocal = resolve(root, '.env.local');
+  if (!existsSync(envLocal)) {
+    copyFileSync(resolve(root, '.env.example'), envLocal);
+    console.log('  → .env.local created from .env.example');
+    console.log('    Fill in the values before running pnpm dev');
+  } else {
+    console.log('  ✓ .env.local exists');
+  }
+
+  // Validate
+  console.log('\n  → Validating...\n');
+  try {
+    runVisible('pnpm validate');
+    console.log('\n  ✓ All checks passed!');
+  } catch {
+    console.error('\n  ✗ Validation failed. Fix the errors above.');
+    process.exit(1);
+  }
+
+  console.log('\n  Setup complete. Run pnpm dev to get started.\n');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// UPDATE — pull latest changes from starter template
+// ═══════════════════════════════════════════════════════════════
+
+async function runUpdate() {
+  const TEMPLATE_REMOTE = 'template';
+  const TEMPLATE_URL = 'https://github.com/Mircooo/starter.git';
+
+  console.log('\n  Starter — Update from template\n');
+
+  // Check clean working tree
+  const status = run('git status --porcelain');
+  if (status) {
+    console.error(
+      '  ✗ Working tree not clean. Commit or stash your changes first.',
+    );
+    process.exit(1);
+  }
+  console.log('  ✓ Working tree clean');
+
+  // Add template remote if needed
+  const remotes = run('git remote');
+  if (!remotes.split('\n').includes(TEMPLATE_REMOTE)) {
+    console.log(`  → Adding remote "${TEMPLATE_REMOTE}"...`);
+    run(`git remote add ${TEMPLATE_REMOTE} ${TEMPLATE_URL}`);
+    console.log(`  ✓ Remote "${TEMPLATE_REMOTE}" added`);
+  } else {
+    console.log(`  ✓ Remote "${TEMPLATE_REMOTE}" exists`);
+  }
+
+  // Fetch + merge
+  console.log('  → Fetching updates...');
+  runVisible(`git fetch ${TEMPLATE_REMOTE}`);
+
+  console.log('  → Merging template/main...');
+  try {
+    runVisible(`git merge ${TEMPLATE_REMOTE}/main --no-edit`);
+    console.log('\n  ✓ Merge complete');
+  } catch {
+    console.log(
+      '\n  ⚠ Conflicts detected. Resolve them manually then: git add . && git commit',
+    );
+  }
+
+  // Reinstall deps (versions may have changed)
+  console.log('\n  → Updating dependencies...');
+  runVisible('pnpm install');
+
+  console.log('\n  Done.\n');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Helpers
+// ═══════════════════════════════════════════════════════════════
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function hasCommand(cmd) {
+  try {
+    execSync(`${cmd} --version`, { stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  }
+}
