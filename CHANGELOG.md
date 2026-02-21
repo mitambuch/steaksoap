@@ -1,5 +1,16 @@
 # Changelog
 
+* merge(main): phase 4 — 4 ai sub-agents (4834384)
+* feat(agents): add 4 specialized ai sub-agents (3846c87)
+* merge(main): phase 3 — 15 ai slash commands (3d58a34)
+* feat(commands): add 13 new ai slash commands (15 total) (cd4c5ab)
+* merge(main): phase 2 modular rules system (a113048)
+* refactor(rules): split claude.md into modular rules system (fc920c4)
+* merge(main): phase 1 positioning and readme rebrand (540a2d7)
+* docs(positioning): rebrand as ai-first starter kit (fc0aedb)
+* merge(main): phase 0 bugfixes and rename to steaksoap (00308c5)
+* fix(core): critical bugfixes and rename to steaksoap (5681db3)
+
 ## [1.1.0](https://github.com/Mircooo/starter/compare/v1.0.0...v1.1.0) (2026-02-21)
 
 ### ✨ Features
