@@ -37,7 +37,8 @@
 
 /* ─── Global styles ────────────────────────────────────────── */
 
-* {
+.cursor-hidden,
+.cursor-hidden * {
   cursor: none !important;
 }
 

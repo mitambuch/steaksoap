@@ -1,6 +1,6 @@
 export default function Noise() {
   return (
-    <div className="pointer-events-none fixed inset-0 z-[300] opacity-[0.55] mix-blend-soft-light">
+    <div className="pointer-events-none absolute inset-0 z-300 opacity-[0.55] mix-blend-soft-light">
       <div
         className="animate-noise absolute top-[-50%] left-[-50%] h-[200%] w-[200%] bg-repeat"
         style={{
