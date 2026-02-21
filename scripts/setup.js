@@ -84,13 +84,14 @@ async function runInit() {
     }
   }
 
-  let projectName, displayName, createRepo;
+  let projectName, displayName, createRepo, keepPlayground;
 
   if (isAutoYes) {
     // ─── Non-interactive mode ───────────────────────────
     projectName = defaultSlug;
     displayName = defaultSlug;
     createRepo = false;
+    keepPlayground = false;
     clack.log.info(`Using defaults: ${projectName}`);
   } else {
     // ─── Interactive wizard (3 questions) ───────────────
@@ -139,6 +140,15 @@ async function runInit() {
           'GitHub CLI not found — install gh to enable repo creation',
         );
       }
+    }
+
+    keepPlayground = await clack.confirm({
+      message: 'Keep the Playground page? (UI component showcase at /playground)',
+      initialValue: false,
+    });
+    if (clack.isCancel(keepPlayground)) {
+      clack.cancel('Setup cancelled.');
+      process.exit(0);
     }
   }
 
@@ -231,7 +241,7 @@ async function runInit() {
     copyFileSync(templateHome, resolve(root, 'src/pages/Home.tsx'));
   }
 
-  // Remove showcase-only files
+  // Remove showcase-only files (always removed)
   const filesToRemove = [
     'src/data/showcase.ts',
     'src/components/ui/FeatureCard.tsx',
@@ -240,7 +250,6 @@ async function runInit() {
     'src/components/ui/Noise.tsx',
     'src/components/ui/Section.tsx',
     'src/hooks/useInView.ts',
-    'src/pages/Playground.tsx',
   ];
   for (const file of filesToRemove) {
     const p = resolve(root, file);
@@ -265,38 +274,44 @@ async function runInit() {
     writeFileSync(indexCssPath, css);
   }
 
-  // Remove Playground route and import from routes/index.tsx
-  const routesPath = resolve(root, 'src/app/routes/index.tsx');
-  if (existsSync(routesPath)) {
-    let routes = readFileSync(routesPath, 'utf-8');
-    routes = routes.replace(
-      /const Playground = lazy\(\(\) => import\('@pages\/Playground'\)\);\n/,
-      '',
-    );
-    routes = routes.replace(
-      /\s*<Route path=\{ROUTES\.PLAYGROUND\} element=\{<Playground \/>\} \/>\n/,
-      '\n',
-    );
-    writeFileSync(routesPath, routes);
-  }
+  // Remove Playground page and route (unless user chose to keep it)
+  if (!keepPlayground) {
+    const playgroundPath = resolve(root, 'src/pages/Playground.tsx');
+    if (existsSync(playgroundPath)) rmSync(playgroundPath);
 
-  // Remove PLAYGROUND from route constants
-  const routeConstsPath = resolve(root, 'src/constants/routes.ts');
-  if (existsSync(routeConstsPath)) {
-    let consts = readFileSync(routeConstsPath, 'utf-8');
-    consts = consts.replace(/\s*PLAYGROUND:\s*'\/playground',?\n/, '\n');
-    writeFileSync(routeConstsPath, consts);
-  }
+    // Remove Playground route and import from routes/index.tsx
+    const routesPath = resolve(root, 'src/app/routes/index.tsx');
+    if (existsSync(routesPath)) {
+      let routes = readFileSync(routesPath, 'utf-8');
+      routes = routes.replace(
+        /const Playground = lazy\(\(\) => import\('@pages\/Playground'\)\);\n/,
+        '',
+      );
+      routes = routes.replace(
+        /\s*<Route path=\{ROUTES\.PLAYGROUND\} element=\{<Playground \/>\} \/>\n/,
+        '\n',
+      );
+      writeFileSync(routesPath, routes);
+    }
 
-  // Remove Playground nav item from site config
-  const siteConfigPath = resolve(root, 'src/config/site.ts');
-  if (existsSync(siteConfigPath)) {
-    let siteTs = readFileSync(siteConfigPath, 'utf-8');
-    siteTs = siteTs.replace(
-      /\s*\{\s*label:\s*'Playground',\s*href:\s*'\/playground'\s*\},?\n/,
-      '\n',
-    );
-    writeFileSync(siteConfigPath, siteTs);
+    // Remove PLAYGROUND from route constants
+    const routeConstsPath = resolve(root, 'src/constants/routes.ts');
+    if (existsSync(routeConstsPath)) {
+      let consts = readFileSync(routeConstsPath, 'utf-8');
+      consts = consts.replace(/\s*PLAYGROUND:\s*'\/playground',?\n/, '\n');
+      writeFileSync(routeConstsPath, consts);
+    }
+
+    // Remove Playground nav item from site config
+    const siteConfigPath = resolve(root, 'src/config/site.ts');
+    if (existsSync(siteConfigPath)) {
+      let siteTs = readFileSync(siteConfigPath, 'utf-8');
+      siteTs = siteTs.replace(
+        /\s*\{\s*label:\s*'Playground',\s*href:\s*'\/playground'\s*\},?\n/,
+        '\n',
+      );
+      writeFileSync(siteConfigPath, siteTs);
+    }
   }
 
   s.stop('Project configured');
