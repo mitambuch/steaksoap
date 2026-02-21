@@ -7,12 +7,15 @@ Thanks for wanting to contribute! This project is built through vibe coding with
 ## Quick setup
 
 ```bash
-git clone https://github.com/Mircooo/starter.git
-cd starter
+git clone https://github.com/Mircooo/steaksoap.git
+cd steaksoap
 pnpm install
-cp .env.example .env.local   # fill in values
 pnpm dev
 ```
+
+No environment variables required — the app uses fallbacks for everything.
+To customize (e.g., enable Cloudinary), copy `.env.example` to `.env.local`.
+See `src/config/env.ts` for all available variables and their defaults.
 
 Before pushing anything:
 
@@ -26,14 +29,14 @@ pnpm validate   # lint + typecheck + tests + build — must pass
 
 ### Report a bug
 
-Open an [issue](https://github.com/Mircooo/starter/issues/new?template=bug_report.yml) with:
+Open an [issue](https://github.com/Mircooo/steaksoap/issues/new?template=bug_report.yml) with:
 - Steps to reproduce
 - Expected vs actual behavior
 - Your environment (Node version, OS, browser)
 
 ### Suggest a feature
 
-Open an [issue](https://github.com/Mircooo/starter/issues/new?template=feature_request.yml) with:
+Open an [issue](https://github.com/Mircooo/steaksoap/issues/new?template=feature_request.yml) with:
 - The problem you're trying to solve
 - Your proposed solution
 - Alternatives you've considered
@@ -136,4 +139,4 @@ This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md). By particip
 
 ## Questions?
 
-Open a [discussion](https://github.com/Mircooo/starter/discussions) or an issue. We're happy to help.
+Open a [discussion](https://github.com/Mircooo/steaksoap/discussions) or an issue. We're happy to help.

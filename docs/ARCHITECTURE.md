@@ -94,15 +94,14 @@ Useful for showcase sites where content is hardcoded (no CMS).
 For **complex features** that deserve their own folder:
 
 ```
-src/features/counter/        ← example included in the starter
-├── Counter.tsx              → Main component
-├── useCounter.ts            → Feature-specific hook
+src/features/my-feature/
+├── MyFeature.tsx            → Main component
+├── useMyFeature.ts          → Feature-specific hook
 ├── types.ts                 → Feature-specific types
 └── index.ts                 → Barrel export
 ```
 
 > **Rule**: a feature gets its own folder when it has **3+ related files**.
-> The `counter/` example is a reference model — delete it when you start a real project.
 
 ### `src/hooks/`
 
@@ -129,7 +128,7 @@ Global styles:
 
 ### `src/types/`
 
-Shared TypeScript types: `common.ts` for utility types, global interfaces…
+Shared TypeScript types. Add your project-specific types here.
 
 ### `src/utils/`
 
@@ -145,7 +144,7 @@ Pure utility functions: `cn()` (class merge), formatters, parsers…
 | Hook | camelCase with `use` | `useMediaQuery.ts` |
 | Utility | camelCase | `formatDate.ts` |
 | Constant | UPPER_SNAKE_CASE | `MAX_RETRIES` |
-| Type/Interface | PascalCase | `CloudinaryImage` |
+| Type/Interface | PascalCase | `NavItem` |
 | CSS file | kebab-case | `animations.css` |
 | Folder | kebab-case | `hero-section/` |
 

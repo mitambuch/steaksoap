@@ -7,10 +7,10 @@ It is the **contract** between the human and the AI. Every rule here is non-nego
 
 ## Project context
 
-This repo is a **reusable boilerplate** for client showcase websites.
-Each new project = a clone of this repo + customization.
+**steaksoap** is an AI-first React starter kit for vibe coders.
+The AI rules, commands, and automated workflow ARE the product — the React boilerplate is the vehicle.
 
-- **Stack**: React 19 · TypeScript · Vite 7 · Tailwind CSS · pnpm
+- **Stack**: React 19 · TypeScript · Vite 7 · Tailwind CSS 4 · pnpm
 - **SEO**: SPA-level (client-side meta tags, auto sitemap). For real SEO (crawlers, reliable OG previews), plan for SSR or prerender.
 - **Mobile-first**: design for mobile screens first, then scale up
 
@@ -149,7 +149,7 @@ SESSION SUMMARY:
 - Every `feat`, `fix`, `chore`, `docs`, `refactor`, `style`, `test`, `perf` MUST appear.
 - If the owner reports an empty CHANGELOG → it's a config bug, not a commit issue.
 
-**This applies to ALL projects based on this starter. No exceptions.**
+**This applies to ALL projects based on steaksoap. No exceptions.**
 
 ### When the owner says...
 

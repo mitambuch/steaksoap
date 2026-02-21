@@ -25,7 +25,7 @@ export default function Footer() {
 
         {/* GitHub */}
         <a
-          href="https://github.com/Mircooo/starter"
+          href="https://github.com/Mircooo/steaksoap"
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted hover:text-accent flex items-center gap-2 font-mono text-xs transition-colors duration-300"

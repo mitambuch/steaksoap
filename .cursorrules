@@ -1,8 +1,8 @@
-# Cursor Rules — Starter Project
+# Cursor Rules — steaksoap
 
 ## Project
 React 19 + TypeScript + Vite 7 + Tailwind CSS 4 (CSS-first via @theme) + pnpm.
-SPA boilerplate for client showcase websites. Mobile-first. Strict TypeScript (no `any`).
+AI-first React starter kit for vibe coders. Mobile-first. Strict TypeScript (no `any`).
 
 ## Architecture
 Path aliases: @components/, @hooks/, @pages/, @utils/, @config/, @data/, @types/, @constants/, @lib/, @assets/, @app/, @context/, @styles/

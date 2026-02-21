@@ -13,17 +13,19 @@
    (package name is "starter") or an already-initialized project.
    ═══════════════════════════════════════════════════════════════ */
 
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
 import {
   copyFileSync,
   existsSync,
   readFileSync,
   rmSync,
   writeFileSync,
-} from 'fs';
-import { resolve } from 'path';
+} from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = resolve(import.meta.dirname, '..');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = resolve(__dirname, '..');
 const run = (cmd) => execSync(cmd, { cwd: root, encoding: 'utf-8' }).trim();
 const runVisible = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
 
@@ -35,7 +37,7 @@ const isAutoYes =
 // ─── Fresh clone detection ──────────────────────────────────
 const pkgPath = resolve(root, 'package.json');
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
-const isFreshClone = pkg.name === 'starter';
+const isFreshClone = pkg.name === 'steaksoap';
 
 // ─── Node version check ────────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
@@ -68,7 +70,7 @@ async function runInit() {
     process.exit(1);
   }
 
-  clack.intro('Starter — New Project');
+  clack.intro('steaksoap — New Project');
 
   // ─── Auto-detect defaults ───────────────────────────────
   const dirName = resolve(root).split(/[\\/]/).pop() || 'project';
@@ -147,7 +149,25 @@ async function runInit() {
 
   const remotes = run('git remote').split('\n').filter(Boolean);
   if (remotes.includes('origin') && !remotes.includes('template')) {
-    run('git remote rename origin template');
+    try {
+      const originUrl = run('git remote get-url origin');
+      const isTemplateOrigin =
+        originUrl.includes('Mircooo/starter') ||
+        originUrl.includes('Mircooo/steaksoap') ||
+        originUrl.includes('steaksoap');
+
+      if (isTemplateOrigin) {
+        // Direct clone — rename origin to template so user can add their own origin
+        run('git remote rename origin template');
+      } else {
+        // "Use this template" — origin is already the user's repo, add template separately
+        run(
+          'git remote add template https://github.com/Mircooo/steaksoap.git',
+        );
+      }
+    } catch {
+      // No git or remote issues — ignore silently
+    }
   }
 
   // ─── Create GitHub repo ─────────────────────────────────
@@ -201,7 +221,7 @@ async function runInit() {
   const today = new Date().toISOString().split('T')[0];
   writeFileSync(
     resolve(root, 'CHANGELOG.md'),
-    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### Features\n\n- project initialized from starter\n`,
+    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### Features\n\n- project initialized from steaksoap\n`,
   );
 
   // ─── Clean up demo/showcase files ──────────────────────
@@ -254,7 +274,7 @@ async function runInit() {
   try {
     run('git add -A');
     run(
-      `git commit -m "chore(init): bootstrap ${projectName} from starter"`,
+      `git commit -m "chore(init): bootstrap ${projectName} from steaksoap"`,
     );
 
     const currentRemotes = run('git remote').split('\n').filter(Boolean);
@@ -290,7 +310,7 @@ async function runInit() {
 // ═══════════════════════════════════════════════════════════════
 
 async function runSetup() {
-  console.log('\n  Starter — Setup\n');
+  console.log('\n  steaksoap — Setup\n');
   console.log('  ✓ Node.js ' + process.version);
 
   // Create .env.local if missing
@@ -322,9 +342,9 @@ async function runSetup() {
 
 async function runUpdate() {
   const TEMPLATE_REMOTE = 'template';
-  const TEMPLATE_URL = 'https://github.com/Mircooo/starter.git';
+  const TEMPLATE_URL = 'https://github.com/Mircooo/steaksoap.git';
 
-  console.log('\n  Starter — Update from template\n');
+  console.log('\n  steaksoap — Update from template\n');
 
   // Check clean working tree
   const status = run('git status --porcelain');

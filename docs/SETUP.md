@@ -36,7 +36,7 @@ gh auth login
 
 ```bash
 # 1. Use this template on GitHub, or clone
-git clone https://github.com/Mircooo/starter.git my-project
+git clone https://github.com/Mircooo/steaksoap.git my-project
 cd my-project
 
 # 2. Install dependencies
@@ -48,6 +48,8 @@ pnpm dev
 ```
 
 No environment variables required. Everything has safe fallbacks.
+To customize (e.g., enable Cloudinary), copy `.env.example` to `.env.local`.
+See `src/config/env.ts` for all available variables and their defaults.
 
 ---
 
@@ -92,7 +94,7 @@ Accepts all defaults without prompting. Useful for CI/testing.
 | `pnpm test:watch` | Run tests in watch mode |
 | `pnpm validate` | Lint + typecheck + tests + build — **the final check** |
 | `pnpm setup` | Interactive setup wizard (or light setup if already initialized) |
-| `pnpm setup --update` | Pull updates from the starter template |
+| `pnpm setup --update` | Pull updates from the steaksoap template |
 | `pnpm release` | Interactive release: bump + CHANGELOG + tag + GitHub Release |
 | `pnpm release:patch` | Force a patch bump (0.1.0 → 0.1.1) |
 | `pnpm release:minor` | Force a minor bump (0.1.0 → 0.2.0) |
@@ -130,19 +132,19 @@ After `pnpm setup`, edit:
 
 ---
 
-## Update from the starter
+## Update from steaksoap
 
-If the starter has been improved (new config, fixes, upgrades), pull the changes:
+If steaksoap has been improved (new config, fixes, upgrades), pull the changes:
 
 ```bash
 pnpm setup --update
 ```
 
-This fetches and merges updates from the starter template.
+This fetches and merges updates from the steaksoap template.
 If there are conflicts, resolve them manually then `git add . && git commit`.
 
-This works because the `template` remote points to the starter repo.
-Git smartly merges the starter changes with your project code.
+This works because the `template` remote points to the steaksoap repo.
+Git smartly merges the template changes with your project code.
 
 ---
 
