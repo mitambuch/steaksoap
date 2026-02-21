@@ -1,27 +1,29 @@
 {
-  "name": "starter",
-  "version": "1.1.0",
+  "name": "steaksoap",
+  "version": "1.0.0",
   "type": "module",
-  "description": "Production-ready React 19 + TypeScript + Vite 7 + Tailwind CSS 4 boilerplate with AI-assisted workflow and automated releases.",
+  "description": "AI-first React starter kit for vibe coders. React 19 + TypeScript + Vite 7 + Tailwind CSS 4 with Claude Code commands, agents, and automated workflow.",
   "author": "Mircooo",
   "license": "MIT",
-  "homepage": "https://github.com/Mircooo/starter",
+  "homepage": "https://github.com/Mircooo/steaksoap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mircooo/starter.git"
+    "url": "https://github.com/Mircooo/steaksoap.git"
   },
   "bugs": {
-    "url": "https://github.com/Mircooo/starter/issues"
+    "url": "https://github.com/Mircooo/steaksoap/issues"
   },
   "keywords": [
-    "starter",
-    "boilerplate",
+    "steaksoap",
+    "vibe-coding",
+    "ai-first",
     "react",
     "typescript",
     "vite",
     "tailwindcss",
-    "ai-ready",
-    "claude-code"
+    "claude-code",
+    "starter",
+    "boilerplate"
   ],
   "scripts": {
     "dev": "vite",
@@ -101,7 +103,8 @@
     }
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
   },
   "packageManager": "pnpm@10.28.0"
 }

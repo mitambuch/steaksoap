@@ -1,8 +1,8 @@
-# Copilot Instructions — Starter Project
+# Copilot Instructions — steaksoap
 
 ## Project
 React 19 + TypeScript + Vite 7 + Tailwind CSS 4 + pnpm.
-SPA boilerplate for client showcase websites. Mobile-first.
+AI-first React starter kit for vibe coders. Mobile-first.
 
 ## Conventions
 - Strict TypeScript: no `any`, no implicit any.

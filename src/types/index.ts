@@ -1,1 +1,4 @@
-export * from './common';
+/* ═══════════════════════════════════════════════════════════════
+   TYPES — shared TypeScript types
+   Add your project-specific types here.
+   ═══════════════════════════════════════════════════════════════ */

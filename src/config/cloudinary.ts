@@ -1,14 +1,19 @@
 /* ═══════════════════════════════════════════════════════════════
    CLOUDINARY — optional image CDN helper
    Only used when VITE_CLOUDINARY_CLOUD_NAME is set in .env.local.
+   When not configured, url() returns the raw publicId as fallback
+   and srcSet() returns an empty string.
    Usage:
      import { cloudinary } from '@config/cloudinary';
-     const url = cloudinary.url('folder/image-name', { w: 800, q: 'auto' });
+     if (cloudinary.isEnabled) {
+       const url = cloudinary.url('folder/image-name', { w: 800, q: 'auto' });
+     }
    ═══════════════════════════════════════════════════════════════ */
 
 import { env } from './env';
 
-const BASE = `https://res.cloudinary.com/${env.CLOUDINARY_CLOUD_NAME}`;
+const CLOUD_NAME = env.CLOUDINARY_CLOUD_NAME;
+const BASE = `https://res.cloudinary.com/${CLOUD_NAME}`;
 
 type TransformOptions = {
   w?: number;
@@ -31,12 +36,18 @@ function buildTransform(opts: TransformOptions = {}): string {
 }
 
 export const cloudinary = {
+  /** Whether Cloudinary is configured and usable */
+  isEnabled: !!CLOUD_NAME,
+
   /**
-   * Génère une URL Cloudinary optimisée.
-   * @param publicId  - Chemin de l'image dans Cloudinary (ex: "projects/hero")
-   * @param opts      - Transformations (width, height, quality, format...)
+   * Generate an optimized Cloudinary URL.
+   * Returns the raw publicId as fallback if Cloudinary is not configured.
+   * @param publicId - Image path in Cloudinary (e.g. "projects/hero")
+   * @param opts     - Transformations (width, height, quality, format...)
    */
   url(publicId: string, opts: TransformOptions = {}): string {
+    if (!CLOUD_NAME) return publicId;
+
     const transform = buildTransform(opts);
     return transform
       ? `${BASE}/image/upload/${transform}/${publicId}`
@@ -44,11 +55,14 @@ export const cloudinary = {
   },
 
   /**
-   * Génère un srcSet responsive pour <img> ou <source>.
-   * @param publicId - Chemin de l'image dans Cloudinary
-   * @param widths   - Largeurs à générer (default: [640, 1024, 1440, 1920])
+   * Generate a responsive srcSet string for <img> or <source>.
+   * Returns empty string if Cloudinary is not configured.
+   * @param publicId - Image path in Cloudinary
+   * @param widths   - Widths to generate (default: [640, 1024, 1440, 1920])
    */
   srcSet(publicId: string, widths = [640, 1024, 1440, 1920]): string {
+    if (!CLOUD_NAME) return '';
+
     return widths
       .map(w => `${cloudinary.url(publicId, { w, q: 'auto', f: 'auto' })} ${w}w`)
       .join(', ');

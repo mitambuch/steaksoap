@@ -15,7 +15,7 @@ If you discover a security vulnerability, please report it responsibly.
 
 **Do NOT open a public issue.**
 
-Instead, send an email to the project maintainer or use [GitHub's private vulnerability reporting](https://github.com/Mircooo/starter/security/advisories/new).
+Instead, send an email to the project maintainer or use [GitHub's private vulnerability reporting](https://github.com/Mircooo/steaksoap/security/advisories/new).
 
 ### What to include
 
@@ -32,11 +32,11 @@ Instead, send an email to the project maintainer or use [GitHub's private vulner
 
 ## Scope
 
-This policy applies to the starter template repository and its default configuration. Vulnerabilities in user-customized projects derived from this starter are the responsibility of the project owner.
+This policy applies to the steaksoap template repository and its default configuration. Vulnerabilities in user-customized projects derived from steaksoap are the responsibility of the project owner.
 
 ## Best Practices
 
-This starter follows these security practices:
+steaksoap follows these security practices:
 
 - No secrets in code — environment variables only (`.env`)
 - Dependencies are audited before installation

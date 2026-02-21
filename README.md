@@ -1,17 +1,17 @@
-# Starter
+# steaksoap
 
-**React starter kit. You code, the AI handles the rest.**
+**AI-first React starter kit for vibe coders.**
 
-React 19 + TypeScript + Vite 7 + Tailwind CSS 4 — with an AI-powered workflow that manages branches, commits, validation, and releases for you.
+React 19 + TypeScript + Vite 7 + Tailwind CSS 4 — with Claude Code commands, agents, and an automated workflow that handles branches, commits, validation, and releases for you.
 
-[![CI](https://github.com/Mircooo/starter/actions/workflows/ci.yml/badge.svg)](https://github.com/Mircooo/starter/actions/workflows/ci.yml)
+[![CI](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml/badge.svg)](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![pnpm](https://img.shields.io/badge/pnpm-10-orange)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Mircooo/starter&project-name=my-project)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Mircooo/starter)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Mircooo/starter)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Mircooo/steaksoap&project-name=my-project)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Mircooo/steaksoap)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Mircooo/steaksoap)
 
 ---
 
@@ -19,7 +19,7 @@ React 19 + TypeScript + Vite 7 + Tailwind CSS 4 — with an AI-powered workflow 
 
 ```bash
 # 1. Use this template on GitHub (or clone)
-git clone https://github.com/Mircooo/starter.git my-project
+git clone https://github.com/Mircooo/steaksoap.git my-project
 cd my-project
 
 # 2. Install dependencies
@@ -41,6 +41,7 @@ Want the full setup (project name, GitHub repo, cleanup)? Run `pnpm setup` after
 - **Vite 7** — instant HMR, fast builds
 - **Tailwind CSS 4** — CSS-first config via `@theme` tokens
 - **AI workflow** — `CLAUDE.md` + `.cursorrules` + Copilot instructions. Works with Claude Code, Cursor, and GitHub Copilot
+- **Claude Code commands** — Slash commands: `/new-page`, `/new-component`
 - **Git automation** — Husky hooks, commitlint, lint-staged. Every commit is validated
 - **Automated releases** — release-it + conventional changelog. One command to ship
 - **Testing** — Vitest + Testing Library, pre-configured
@@ -57,14 +58,14 @@ Want the full setup (project name, GitHub repo, cleanup)? Run `pnpm setup` after
 | `pnpm build` | Production build |
 | `pnpm validate` | Lint + typecheck + test + build |
 | `pnpm setup` | Interactive setup wizard |
-| `pnpm setup --update` | Pull updates from starter template |
+| `pnpm setup --update` | Pull updates from steaksoap template |
 | `pnpm release` | Bump + changelog + tag + GitHub Release |
 
 ---
 
 ## AI Workflow
 
-This starter is built for **vibe coding**. Tell the AI what you want, it handles the rest:
+steaksoap is built for **vibe coding**. Tell the AI what you want, it handles the rest:
 
 - **`CLAUDE.md`** — Full project context for [Claude Code](https://claude.ai/claude-code)
 - **`.cursorrules`** — Same conventions for [Cursor](https://cursor.com)

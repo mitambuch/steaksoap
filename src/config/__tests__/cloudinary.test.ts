@@ -5,6 +5,18 @@ vi.stubEnv('VITE_CLOUDINARY_CLOUD_NAME', 'test-cloud');
 
 const { cloudinary } = await import('../cloudinary');
 
+describe('cloudinary (not configured)', () => {
+  it('returns publicId as fallback when CLOUD_NAME is empty', async () => {
+    vi.stubEnv('VITE_CLOUDINARY_CLOUD_NAME', '');
+    vi.resetModules();
+    const { cloudinary: unconfigured } = await import('../cloudinary');
+
+    expect(unconfigured.isEnabled).toBe(false);
+    expect(unconfigured.url('folder/image')).toBe('folder/image');
+    expect(unconfigured.srcSet('folder/image')).toBe('');
+  });
+});
+
 describe('cloudinary', () => {
   describe('url()', () => {
     it('generates a basic url with default transforms (q_auto, f_auto)', () => {

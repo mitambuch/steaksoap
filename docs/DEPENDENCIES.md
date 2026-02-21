@@ -1,4 +1,4 @@
-# Project Dependencies
+# Dependencies
 
 Every installed dependency is documented here with its **justification**.
 Nothing is installed "just in case". Each package has a reason to exist.
@@ -7,13 +7,13 @@ Nothing is installed "just in case". Each package has a reason to exist.
 
 ## Dependencies (production)
 
-| Package | Version | Why | Link |
-|---|---|---|---|
-| `react` | ^19.2.0 | UI framework — the core of the app | [npm](https://www.npmjs.com/package/react) |
-| `react-dom` | ^19.2.0 | React rendering to the browser DOM | [npm](https://www.npmjs.com/package/react-dom) |
-| `react-router-dom` | ^7.12.0 | SPA routing — navigation between pages without reload | [npm](https://www.npmjs.com/package/react-router-dom) |
-| `clsx` | ^2.1.1 | Conditional CSS class concatenation (`cn('a', condition && 'b')`) | [npm](https://www.npmjs.com/package/clsx) |
-| `tailwind-merge` | ^3.5.0 | Tailwind conflict resolution (`'px-4 px-8'` → `'px-8'`). Used with clsx in `cn()` | [npm](https://www.npmjs.com/package/tailwind-merge) |
+| Package | Version | Why |
+|---|---|---|
+| `react` | ^19.2.0 | UI framework — the core of the app |
+| `react-dom` | ^19.2.0 | React rendering to the browser DOM |
+| `react-router-dom` | ^7.12.0 | SPA routing — navigation between pages without reload |
+| `clsx` | ^2.1.1 | Conditional CSS class concatenation (`cn('a', condition && 'b')`) |
+| `tailwind-merge` | ^3.5.0 | Tailwind conflict resolution (`'px-4 px-8'` → `'px-8'`). Used with clsx in `cn()` |
 
 ---
 
@@ -34,14 +34,14 @@ Nothing is installed "just in case". Each package has a reason to exist.
 | `tailwindcss` | ^4.2.0 | Utility-first CSS framework v4 — CSS-first config, faster builds |
 | `@tailwindcss/vite` | ^4.2.0 | Native Vite plugin for Tailwind v4 (replaces PostCSS + autoprefixer) |
 
-### Code quality
+### Code Quality
 
 | Package | Version | Why |
 |---|---|---|
-| `eslint` | ^9.39.1 | Code spellchecker. Detects errors and bad patterns |
+| `eslint` | ^9.39.2 | Linting — detects errors and bad patterns |
 | `@eslint/js` | ^9.39.1 | Base ESLint rules for JavaScript |
-| `@typescript-eslint/eslint-plugin` | ^8.54.0 | TypeScript-specific ESLint rules |
-| `@typescript-eslint/parser` | ^8.54.0 | Allows ESLint to parse TypeScript |
+| `@typescript-eslint/eslint-plugin` | ^8.56.0 | TypeScript-specific ESLint rules |
+| `@typescript-eslint/parser` | ^8.56.0 | Allows ESLint to parse TypeScript |
 | `eslint-plugin-react-hooks` | ^7.0.1 | Validates correct React hooks usage |
 | `eslint-plugin-react-refresh` | ^0.4.24 | Validates Hot Module Replacement compatibility |
 | `eslint-plugin-jsx-a11y` | ^6.10.2 | Accessibility checks (missing alt, ARIA roles, etc.) |
@@ -57,16 +57,7 @@ Nothing is installed "just in case". Each package has a reason to exist.
 | `@types/react` | ^19.2.5 | TypeScript types for React |
 | `@types/react-dom` | ^19.2.3 | TypeScript types for ReactDOM |
 
-### Git hooks & commits
-
-| Package | Version | Why |
-|---|---|---|
-| `husky` | ^9.1.7 | Automatic git hooks: runs code before every commit |
-| `lint-staged` | ^16.2.7 | Lints only staged files (not the entire project) |
-| `@commitlint/cli` | ^20.4.2 | Validates that every commit message follows Conventional Commits |
-| `@commitlint/config-conventional` | ^20.4.2 | Default rules for commitlint |
-
-### Tests
+### Testing
 
 | Package | Version | Why |
 |---|---|---|
@@ -82,12 +73,27 @@ Nothing is installed "just in case". Each package has a reason to exist.
 |---|---|---|
 | `vite-plugin-sitemap` | ^0.8.2 | Auto-generates `sitemap.xml` + `robots.txt` at build time |
 
+### Git Hooks & Commits
+
+| Package | Version | Why |
+|---|---|---|
+| `husky` | ^9.1.7 | Automatic git hooks: runs checks before every commit |
+| `lint-staged` | ^16.2.7 | Lints only staged files (not the entire project) |
+| `@commitlint/cli` | ^20.4.2 | Validates that every commit follows Conventional Commits |
+| `@commitlint/config-conventional` | ^20.4.2 | Default rules for commitlint |
+
 ### Releases
 
 | Package | Version | Why |
 |---|---|---|
 | `release-it` | ^19.2.4 | Automates: version bump + CHANGELOG + tag + GitHub Release |
 | `@release-it/conventional-changelog` | ^10.0.5 | Generates CHANGELOG from conventional commits |
+
+### Setup
+
+| Package | Version | Why |
+|---|---|---|
+| `@clack/prompts` | ^1.0.1 | Beautiful interactive CLI prompts for the setup wizard |
 
 ---
 

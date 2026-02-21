@@ -59,7 +59,7 @@ export const quickStartSteps: QuickStartStep[] = [
   {
     step: 1,
     label: 'Clone the repo',
-    command: 'git clone https://github.com/Mircooo/starter.git my-project',
+    command: 'git clone https://github.com/Mircooo/steaksoap.git my-project',
     output: "Cloning into 'my-project'...",
   },
   {

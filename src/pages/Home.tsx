@@ -296,8 +296,8 @@ export default function Home() {
   return (
     <>
       <SeoHead
-        title="Starter"
-        description="Production-ready React boilerplate. Zero config. AI-ready. Type-safe."
+        title="steaksoap"
+        description="AI-first React starter kit for vibe coders. Zero config. Type-safe."
       />
 
       {/* ── HERO (full viewport) ─────────────────────────────────── */}
