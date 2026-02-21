@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/Mircooo/starter/compare/v0.5.2...v0.6.0) (2026-02-21)
+
+### ✨ Features
+
+* **home:** redesign landing page with typewriter, grain, and custom cursor ([ba09524](https://github.com/Mircooo/starter/commit/ba0952409d2537efdc5d70585e26a6a91d84cac5)), closes [#D4FF00](https://github.com/Mircooo/starter/issues/D4FF00) [#e0e0e0](https://github.com/Mircooo/starter/issues/e0e0e0)
+
 ## [0.5.2](https://github.com/Mircooo/starter/compare/v0.5.1...v0.5.2) (2026-02-20)
 
 ### 📚 Documentation
