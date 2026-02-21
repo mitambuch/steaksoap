@@ -1,133 +1,76 @@
 # Changelog
 
-## [0.6.0](https://github.com/Mircooo/starter/compare/v0.5.2...v0.6.0) (2026-02-21)
+## [0.6.0](https://github.com/Mircooo/starter/compare/v0.5.0...v0.6.0) (2026-02-21)
 
 ### ✨ Features
 
-* **home:** redesign landing page with typewriter, grain, and custom cursor ([ba09524](https://github.com/Mircooo/starter/commit/ba0952409d2537efdc5d70585e26a6a91d84cac5)), closes [#D4FF00](https://github.com/Mircooo/starter/issues/D4FF00) [#e0e0e0](https://github.com/Mircooo/starter/issues/e0e0e0)
+* **home:** redesign landing page with typewriter, grain, and custom cursor ([ba09524](https://github.com/Mircooo/starter/commit/ba09524))
 
-## [0.5.2](https://github.com/Mircooo/starter/compare/v0.5.1...v0.5.2) (2026-02-20)
+### 📖 Docs
+
+* **claude:** switch from mandatory release to batch release strategy ([2e4ed6b](https://github.com/Mircooo/starter/commit/2e4ed6b))
+
+## [0.5.0](https://github.com/Mircooo/starter/compare/v0.4.0...v0.5.0) (2026-02-20)
+
+### ✨ Features
+
+* **lint:** enable type-aware eslint rules ([9ef66ff](https://github.com/Mircooo/starter/commit/9ef66ff))
+
+### 🐛 Bug Fixes
+
+* **a11y:** respect prefers-reduced-motion for smooth scroll ([713b08d](https://github.com/Mircooo/starter/commit/713b08d))
+* **config:** use esm-safe __dirname in vite config ([8e26ff2](https://github.com/Mircooo/starter/commit/8e26ff2))
+* **config:** use loadenv for reliable env access in vite config ([803b942](https://github.com/Mircooo/starter/commit/803b942))
+* **lint:** extend node globals to scripts directory ([375dce2](https://github.com/Mircooo/starter/commit/375dce2))
+* **lint:** use esm-safe dirname for node 20 compat ([5f79ec0](https://github.com/Mircooo/starter/commit/5f79ec0))
 
 ### 📚 Documentation
 
-* **readme:** sync docs with current stack and config ([a460e1c](https://github.com/Mircooo/starter/commit/a460e1ce972ceb289f6c6b63ae726fdb5f4249fb))
+* **claude:** clarify spa seo limitations ([30491b6](https://github.com/Mircooo/starter/commit/30491b6))
+* **readme:** sync docs with current stack and config ([a460e1c](https://github.com/Mircooo/starter/commit/a460e1c))
 
-## [0.5.1](https://github.com/Mircooo/starter/compare/v0.5.0...v0.5.1) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **config:** use loadenv for reliable env access in vite config ([803b942](https://github.com/Mircooo/starter/commit/803b942364c29be50b18dca31d1710a6bc5832b2))
-* **lint:** use esm-safe dirname for node 20 compat ([5f79ec0](https://github.com/Mircooo/starter/commit/5f79ec0858f91733a365d9a4bbc60302c888f24f))
-
-## [0.5.0](https://github.com/Mircooo/starter/compare/v0.4.4...v0.5.0) (2026-02-20)
+## [0.4.0](https://github.com/Mircooo/starter/compare/v0.3.0...v0.4.0) (2026-02-20)
 
 ### ✨ Features
 
-* **lint:** enable type-aware eslint rules ([9ef66ff](https://github.com/Mircooo/starter/commit/9ef66fff7f7df0320febde9aa322de6e172d1d3f))
+* **dx:** upgrade tailwind v4, add vercel config, add feature example ([1b44fc1](https://github.com/Mircooo/starter/commit/1b44fc1))
 
 ### 🐛 Bug Fixes
 
-* **a11y:** respect prefers-reduced-motion for smooth scroll ([713b08d](https://github.com/Mircooo/starter/commit/713b08d706c56fee82e99110dc0aa463f60ff8bd))
-* **config:** use esm-safe __dirname in vite config ([8e26ff2](https://github.com/Mircooo/starter/commit/8e26ff2e41c15ec7ac836e48811a4e89e5c3b998))
-* **lint:** extend node globals to scripts directory ([375dce2](https://github.com/Mircooo/starter/commit/375dce23b2a335f7654661dc6784d0e45ffe5b58))
-
-### 📚 Documentation
-
-* **claude:** clarify spa seo limitations ([30491b6](https://github.com/Mircooo/starter/commit/30491b68e1d80fc05bb9eae0573fc0b439d345ab))
-
-## [0.4.4](https://github.com/Mircooo/starter/compare/v0.4.3...v0.4.4) (2026-02-20)
+* **release:** clean changelog header from v0.4.0 release ([306cc07](https://github.com/Mircooo/starter/commit/306cc07))
+* **release:** re-stage changelog after dedup to include fix in commit ([7852c1c](https://github.com/Mircooo/starter/commit/7852c1c))
 
 ### 🔧 Chores
 
-* **dx:** remove double tsc, fix eslint flags, add engines ([06bcf5b](https://github.com/Mircooo/starter/commit/06bcf5bd11e10e4c559143d297f1026808a00f90))
+* **docs:** sync docs with tailwind v4 and migrate animations to @utility ([d5bc4ee](https://github.com/Mircooo/starter/commit/d5bc4ee))
+* **dx:** improve testing, formatting, and project config ([716cce8](https://github.com/Mircooo/starter/commit/716cce8))
+* **dx:** remove double tsc, fix eslint flags, add engines ([06bcf5b](https://github.com/Mircooo/starter/commit/06bcf5b))
 
-## [0.4.3](https://github.com/Mircooo/starter/compare/v0.4.2...v0.4.3) (2026-02-20)
-
-### 🔧 Chores
-
-* **dx:** improve testing, formatting, and project config ([716cce8](https://github.com/Mircooo/starter/commit/716cce843da4b7c0491b49b7de2a8f7f553e246f))
-
-## [0.4.2](https://github.com/Mircooo/starter/compare/v0.4.1...v0.4.2) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **release:** re-stage changelog after dedup to include fix in commit ([7852c1c](https://github.com/Mircooo/starter/commit/7852c1c77d231efd05f4f9f968acbe3093d40d6b))
-
-## [0.4.1](https://github.com/Mircooo/starter/compare/v0.4.0...v0.4.1) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **release:** clean changelog header from v0.4.0 release ([306cc07](https://github.com/Mircooo/starter/commit/306cc0774dd35f5ad16b66458872c7ff3afa36ba))
-
-### 🔧 Chores
-
-* **docs:** sync docs with tailwind v4 and migrate animations to [@utility](https://github.com/utility) ([d5bc4ee](https://github.com/Mircooo/starter/commit/d5bc4ee180b19404be65b405e4f793d4f5737d22))
-
-## [0.4.0](https://github.com/Mircooo/starter/compare/v0.3.7...v0.4.0) (2026-02-20)
-
-### ✨ Features
-
-* **dx:** upgrade tailwind v4, add vercel config, add feature example ([1b44fc1](https://github.com/Mircooo/starter/commit/1b44fc1619d4664af93ee8bc3d78acdbc733329c))
-
-## [0.3.7](https://github.com/Mircooo/starter/compare/v0.3.6...v0.3.7) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **release:** move changelog fix to before:release hook ([bc3f332](https://github.com/Mircooo/starter/commit/bc3f33235bfbc341eadf8aad2039c0eab346c0ab))
-
-## [0.3.6](https://github.com/Mircooo/starter/compare/v0.3.5...v0.3.6) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **release:** add post-bump script to deduplicate changelog header ([e7cc3e3](https://github.com/Mircooo/starter/commit/e7cc3e37bf894bbaa94b0c64f6711d407d2d3ab3))
-* **release:** fix changelog header deduplication ([2fee06b](https://github.com/Mircooo/starter/commit/2fee06b5ac8eea4695be72017bd265ca62b4348e))
-
-## [0.3.5](https://github.com/Mircooo/starter/compare/v0.3.4...v0.3.5) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **release:** prevent duplicate header in changelog ([dc12260](https://github.com/Mircooo/starter/commit/dc12260564903303f9d36aade5f9517c836aab20))
-
-## [0.3.4](https://github.com/Mircooo/starter/compare/v0.3.3...v0.3.4) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **docs:** complete changelog with all commits since v0.1.0 ([9c38c80](https://github.com/Mircooo/starter/commit/9c38c803d2e13db78542f1e1e9a4c95268b84e1e))
-
-## [0.3.3](https://github.com/Mircooo/starter/compare/v0.3.2...v0.3.3) (2026-02-20)
-
-### 🐛 Bug Fixes
-
-* **release:** show all commit types in changelog and github releases ([907db57](https://github.com/Mircooo/starter/commit/907db57))
-
-## [0.3.2](https://github.com/Mircooo/starter/compare/v0.3.1...v0.3.2) (2026-02-20)
-
-### 🔧 Chores
-
-* **init:** reset changelog on new project + enforce pnpm ([b632fca](https://github.com/Mircooo/starter/commit/b632fca))
-
-## [0.3.1](https://github.com/Mircooo/starter/compare/v0.3.0...v0.3.1) (2026-02-20)
-
-### 🔧 Chores
-
-* **dx:** final polish — tailwind sorting, responsive pages, mobile-first rules ([6c87015](https://github.com/Mircooo/starter/commit/6c87015))
-
-## [0.3.0](https://github.com/Mircooo/starter/compare/v0.2.1...v0.3.0) (2026-02-20)
+## [0.3.0](https://github.com/Mircooo/starter/compare/v0.2.0...v0.3.0) (2026-02-20)
 
 ### ✨ Features
 
 * **seo:** add automatic sitemap + robots.txt generation ([bf5c518](https://github.com/Mircooo/starter/commit/bf5c518))
 
-## [0.2.1](https://github.com/Mircooo/starter/compare/v0.2.0...v0.2.1) (2026-02-20)
-
 ### 🐛 Bug Fixes
 
 * **dx:** graceful env fallback in dev and update readme ([9b6422d](https://github.com/Mircooo/starter/commit/9b6422d))
+* **release:** show all commit types in changelog and github releases ([907db57](https://github.com/Mircooo/starter/commit/907db57))
+* **docs:** complete changelog with all commits since v0.1.0 ([9c38c80](https://github.com/Mircooo/starter/commit/9c38c80))
+* **release:** prevent duplicate header in changelog ([dc12260](https://github.com/Mircooo/starter/commit/dc12260))
+* **release:** add post-bump script to deduplicate changelog header ([e7cc3e3](https://github.com/Mircooo/starter/commit/e7cc3e3))
+* **release:** fix changelog header deduplication ([2fee06b](https://github.com/Mircooo/starter/commit/2fee06b))
+* **release:** move changelog fix to before:release hook ([bc3f332](https://github.com/Mircooo/starter/commit/bc3f332))
+
+### 🔧 Chores
+
+* **dx:** final polish — tailwind sorting, responsive pages, mobile-first rules ([6c87015](https://github.com/Mircooo/starter/commit/6c87015))
+* **init:** reset changelog on new project + enforce pnpm ([b632fca](https://github.com/Mircooo/starter/commit/b632fca))
 
 ### 📚 Documentation
 
-* **claude:** add standard workflow and simplify instructions ([2af8d30](https://github.com/Mircooo/starter/commit/2af8d30))
 * **claude:** enforce mandatory release after every session ([9736f4d](https://github.com/Mircooo/starter/commit/9736f4d))
+* **claude:** add standard workflow and simplify instructions ([2af8d30](https://github.com/Mircooo/starter/commit/2af8d30))
 
 ## [0.2.0](https://github.com/Mircooo/starter/compare/v0.1.0...v0.2.0) (2026-02-20)
 
