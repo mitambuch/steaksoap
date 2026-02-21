@@ -1,8 +1,10 @@
 # Copilot Instructions — steaksoap
 
 ## Project
-React 19 + TypeScript + Vite 7 + Tailwind CSS 4 + pnpm.
-AI-first React starter kit for vibe coders. Mobile-first.
+steaksoap — AI-first React starter kit for vibe coders.
+React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm.
+The AI commands and rules are the core value, not the boilerplate itself.
+Mobile-first.
 
 ## Conventions
 - Strict TypeScript: no `any`, no implicit any.

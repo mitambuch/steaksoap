@@ -15,15 +15,19 @@
   },
   "keywords": [
     "steaksoap",
-    "vibe-coding",
-    "ai-first",
     "react",
-    "typescript",
     "vite",
     "tailwindcss",
-    "claude-code",
+    "typescript",
     "starter",
-    "boilerplate"
+    "template",
+    "ai-first",
+    "vibe-coding",
+    "claude-code",
+    "cursor",
+    "copilot",
+    "react19",
+    "tailwind4"
   ],
   "scripts": {
     "dev": "vite",

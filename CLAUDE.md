@@ -7,15 +7,22 @@ It is the **contract** between the human and the AI. Every rule here is non-nego
 
 ## Project context
 
-**steaksoap** is an AI-first React starter kit for vibe coders.
-The AI rules, commands, and automated workflow ARE the product — the React boilerplate is the vehicle.
+steaksoap is an AI-first React starter kit for vibe coders.
 
-- **Stack**: React 19 · TypeScript · Vite 7 · Tailwind CSS 4 · pnpm
+It's designed so that a non-coder using Claude Code, Cursor, or any AI coding assistant
+can describe what they want in plain language and the AI handles implementation,
+validation, and deployment using the commands and rules built into this project.
+
+The AI rules, commands, and agents ARE the product. The React boilerplate is the vehicle.
+
+Target users:
+- Vibe coders (non-coders using AI to build)
+- Creative professionals who want a site/app without terminal knowledge
+- Developers who want a pre-configured AI workflow that just works
+
+- **Stack**: React 19 · TypeScript 5.9 · Vite 7 · Tailwind CSS 4 · pnpm
 - **SEO**: SPA-level (client-side meta tags, auto sitemap). For real SEO (crawlers, reliable OG previews), plan for SSR or prerender.
 - **Mobile-first**: design for mobile screens first, then scale up
-
-> This project was built with **vibe coding** using AI agents.
-> The structure is intentionally simple and documented so anyone can pick it up.
 
 ---
 

@@ -2,7 +2,12 @@
 
 **AI-first React starter kit for vibe coders.**
 
-React 19 + TypeScript + Vite 7 + Tailwind CSS 4 — with Claude Code commands, agents, and an automated workflow that handles branches, commits, validation, and releases for you.
+You describe it. The AI builds it. Zero git knowledge needed, zero config, zero bullshit.
+
+Not another React boilerplate — a complete vibe coding workflow with Claude Code commands, sub-agents, and strict automation built in.
+
+> **Work in Progress** — Some features listed below are being implemented.
+> Follow the [roadmap](https://github.com/Mircooo/steaksoap/issues) for progress.
 
 [![CI](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml/badge.svg)](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -15,96 +20,154 @@ React 19 + TypeScript + Vite 7 + Tailwind CSS 4 — with Claude Code commands, a
 
 ---
 
+## Why steaksoap?
+
+There are hundreds of React + Vite + Tailwind starters. Here's what makes this one different:
+
+| | steaksoap | Typical React Starter |
+|---|---|---|
+| **AI workflow** | 15+ slash commands, 4 sub-agents | None or afterthought |
+| **Setup** | One interactive wizard | Clone + manual config |
+| **UI components** | 10 accessible atoms ready to use | Empty src/ |
+| **Git workflow** | Conventional commits + auto changelog | Manual |
+| **Validation** | Lint + typecheck + test + build in one command | `npm run build` |
+| **Releases** | Automated version bump + changelog + tag | Manual |
+| **Multi-AI** | Claude Code + Cursor + Copilot rules | Single tool or none |
+
 ## Quick Start
 
 ```bash
-# 1. Use this template on GitHub (or clone)
+# Clone and setup
 git clone https://github.com/Mircooo/steaksoap.git my-project
 cd my-project
-
-# 2. Install dependencies
 pnpm install
+pnpm setup
 
-# 3. Start developing
+# Start building
 pnpm dev
 ```
 
-That's it. No env vars required. No mandatory config. `localhost:5173` is live.
+The setup wizard will:
+- Rename the project to your chosen name
+- Configure git remotes
+- Clean up template files
+- Give you a ready-to-use project
 
-Want the full setup (project name, GitHub repo, cleanup)? Run `pnpm setup` after install.
+## AI Commands
 
----
+Open Claude Code and type these commands:
 
-## What's included
+### Scaffolding
+| Command | What it does |
+|---|---|
+| `/new-page About` | Creates page + route + test |
+| `/new-component Button ui` | Creates component + test in ui/ |
+| `/new-feature UserProfile` | Creates full feature folder (component, hook, types, test) |
+| `/new-hook MediaQuery` | Creates custom hook + test |
+| `/add-api products` | Scaffolds API service with TanStack Query |
 
-- **React 19** + **TypeScript** (strict, zero `any`)
-- **Vite 7** — instant HMR, fast builds
-- **Tailwind CSS 4** — CSS-first config via `@theme` tokens
-- **AI workflow** — `CLAUDE.md` + `.cursorrules` + Copilot instructions. Works with Claude Code, Cursor, and GitHub Copilot
-- **Claude Code commands** — Slash commands: `/new-page`, `/new-component`
-- **Git automation** — Husky hooks, commitlint, lint-staged. Every commit is validated
-- **Automated releases** — release-it + conventional changelog. One command to ship
-- **Testing** — Vitest + Testing Library, pre-configured
-- **CI/CD** — GitHub Actions (Node 20 + 22), deploy configs for Vercel and Netlify
-- **Mobile-first** — designed for 375px, scales up with Tailwind breakpoints
+### Workflow
+| Command | What it does |
+|---|---|
+| `/status` | Git summary + health check + outdated deps |
+| `/deploy` | Build → validate → deploy to Vercel/Netlify |
+| `/release` | Evaluate commits → version bump → changelog → tag |
+| `/update-deps` | Safe dependency updates with validation |
+| `/fix "button doesn't work"` | Systematic bug diagnosis and fix |
 
----
+### Quality
+| Command | What it does |
+|---|---|
+| `/review` | Code review with a11y, perf, and security checklist |
+| `/audit` | Lighthouse + bundle size + accessibility audit |
+| `/test` | Run tests + identify coverage gaps |
+| `/theme "make it blue"` | Modify design tokens interactively |
+| `/responsive-check` | Verify all breakpoints |
 
-## Commands
+[→ Full command reference](docs/commands.md)
+
+## Stack
+
+- **React 19** — latest with concurrent features
+- **TypeScript 5.9** — strict mode, no `any`
+- **Vite 7** — HMR in milliseconds
+- **Tailwind CSS 4** — CSS-first @theme configuration
+- **React Router 7** — lazy-loaded routes
+- **Vitest** — fast unit & component tests
+- **ESLint 9** — type-aware linting with a11y rules
+- **Prettier** — consistent formatting with Tailwind class sorting
+- **Husky + commitlint** — enforced conventional commits
+- **release-it** — automated releases with changelog generation
+
+## After Setup
+
+Your project includes:
+- A responsive landing page with Header, Hero, Features, and Footer
+- 10 accessible UI components (Button, Input, Card, Modal, etc.)
+- Dark/light mode toggle
+- SEO head management
+- Error boundaries
+- Pre-configured CI (lint + typecheck + test + build)
+
+## Project Structure
+
+```
+src/
+├── app/            ← Routes, providers, layout
+├── components/
+│   ├── ui/         ← Reusable atoms (Button, Input, Card...)
+│   ├── layout/     ← Header, Footer, Container, Section
+│   └── features/   ← Domain-specific components
+├── config/         ← env.ts, site.ts, cloudinary.ts
+├── features/       ← Feature modules (component + hook + types)
+├── hooks/          ← Custom React hooks
+├── pages/          ← Page components
+├── styles/         ← Global styles, @theme tokens
+├── types/          ← Shared TypeScript types
+└── utils/          ← cn(), helpers
+```
+
+## Recipes
+
+Step-by-step guides for common tasks:
+
+- [Add a page](docs/recipes/add-page.md)
+- [Add a component](docs/recipes/add-component.md)
+- [Add a feature](docs/recipes/add-feature.md)
+- [Configure env variables](docs/recipes/env-vars.md)
+- [Deploy](docs/recipes/deploy.md)
+- [Customize the theme](docs/recipes/customize-theme.md)
+
+## Stay Updated
+
+Pull improvements from the template:
+
+```bash
+pnpm setup:update
+```
+
+This fetches the latest changes from the steaksoap template and merges them into your project.
+
+## Scripts
 
 | Command | What it does |
 |---|---|
-| `pnpm dev` | Dev server with HMR |
+| `pnpm dev` | Start dev server (port 5173) |
 | `pnpm build` | Production build |
+| `pnpm preview` | Preview production build |
 | `pnpm validate` | Lint + typecheck + test + build |
-| `pnpm setup` | Interactive setup wizard |
-| `pnpm setup --update` | Pull updates from steaksoap template |
-| `pnpm release` | Bump + changelog + tag + GitHub Release |
-
----
-
-## AI Workflow
-
-steaksoap is built for **vibe coding**. Tell the AI what you want, it handles the rest:
-
-- **`CLAUDE.md`** — Full project context for [Claude Code](https://claude.ai/claude-code)
-- **`.cursorrules`** — Same conventions for [Cursor](https://cursor.com)
-- **`.github/copilot-instructions.md`** — Same conventions for [GitHub Copilot](https://github.com/features/copilot)
-- **`.claude/commands/`** — Slash commands: `/new-page`, `/new-component`
-
-The AI manages branches, commits (conventional), validation, merges, and releases automatically. You focus on what to build, not how to ship it.
-
----
-
-## Customize
-
-After `pnpm setup`:
-
-| File | What to change |
-|---|---|
-| `src/index.css` | Colors, fonts (`@theme` block) |
-| `src/config/site.ts` | Site name, SEO, contact info |
-| `.env.local` | Cloudinary (optional), app name, URL |
-| `src/pages/` | Add your pages |
-
----
-
-## Documentation
-
-| Doc | Content |
-|---|---|
-| [CLAUDE.md](CLAUDE.md) | AI agent instructions (the full contract) |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Folder structure and conventions |
-| [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md) | Every dependency justified |
-| [docs/SETUP.md](docs/SETUP.md) | Step-by-step setup guide |
-| [CHANGELOG.md](CHANGELOG.md) | Release history |
-
----
+| `pnpm setup` | Interactive project setup |
+| `pnpm setup:update` | Pull template updates |
+| `pnpm release` | Create a new release |
 
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-[MIT](LICENSE) — Built with [Claude Code](https://claude.ai/claude-code).
+MIT — do whatever you want with it.
+
+---
+
+**Built by [Mircooo](https://github.com/Mircooo)** · [Report a bug](https://github.com/Mircooo/steaksoap/issues) · [Request a feature](https://github.com/Mircooo/steaksoap/issues)
