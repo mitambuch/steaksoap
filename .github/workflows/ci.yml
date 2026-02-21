@@ -35,7 +35,3 @@ jobs:
 
       - name: Validate (lint + typecheck + test + build)
         run: pnpm validate
-        env:
-          VITE_CLOUDINARY_CLOUD_NAME: ci_placeholder
-          VITE_APP_NAME: CI
-          VITE_APP_URL: http://localhost:5173

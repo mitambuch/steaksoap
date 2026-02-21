@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   ANIMATIONS — keyframes globaux
-   Importé automatiquement via index.css.
+   ANIMATIONS — global keyframes
+   Imported automatically via index.css.
    ═══════════════════════════════════════════════════════════════ */
 
 @keyframes fadeIn {
@@ -16,42 +16,6 @@
   }
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
 @utility animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
-}
-
-@utility animate-slide-right {
-  animation: slideInRight 0.3s ease forwards;
-}
-
-@utility animate-pulse-slow {
-  animation: pulse 2s ease infinite;
 }

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   TYPES COMMUNS — réutilisables partout dans le projet
+   COMMON TYPES — reusable across the project
    ═══════════════════════════════════════════════════════════════ */
 
 // ─── Utility types ────────────────────────────────────────────
@@ -17,14 +17,6 @@ export interface WithChildren {
 }
 export interface WithStyle {
   style?: import('react').CSSProperties;
-}
-
-// ─── Image (Cloudinary) ───────────────────────────────────────
-export interface CloudinaryImage {
-  publicId: string;
-  alt: string;
-  width?: number;
-  height?: number;
 }
 
 // ─── Navigation ───────────────────────────────────────────────

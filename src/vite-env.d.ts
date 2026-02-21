@@ -4,7 +4,6 @@ declare const __APP_VERSION__: string;
 
 interface ImportMetaEnv {
   readonly VITE_CLOUDINARY_CLOUD_NAME: string;
-  readonly VITE_CLOUDINARY_BASE_URL: string;
   readonly VITE_APP_NAME: string;
   readonly VITE_APP_URL: string;
 }

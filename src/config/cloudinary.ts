@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
-   CLOUDINARY — helper centralisé pour les URLs d'images
-   Usage :
+   CLOUDINARY — optional image CDN helper
+   Only used when VITE_CLOUDINARY_CLOUD_NAME is set in .env.local.
+   Usage:
      import { cloudinary } from '@config/cloudinary';
      const url = cloudinary.url('folder/image-name', { w: 800, q: 'auto' });
    ═══════════════════════════════════════════════════════════════ */
