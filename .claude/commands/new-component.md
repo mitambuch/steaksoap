@@ -1,32 +1,62 @@
-# Create a new component
+# /new-component
 
-Create a new component at `src/components/ui/$ARGUMENTS.tsx` with:
+Create a new component with props interface, cn() styling, and test.
 
-1. A named export function with props interface
-2. Accept optional `className` prop for style overrides
-3. Use `cn()` from `@utils` for class merging
-4. Comment block at top explaining what the component does
-5. Responsive by default (mobile-first)
+## Arguments
+$ARGUMENTS — "ComponentName" or "ComponentName location"
+- ComponentName: PascalCase (e.g., "AlertBanner", "PriceTag")
+- location (optional): "ui" (default), "features", or "layout"
 
-Template:
+## Steps
+
+1. Parse $ARGUMENTS:
+   - Split by space. First word = ComponentName, second = location (default: "ui")
+   - Target folder: src/components/<location>/
+
+2. Create `src/components/<location>/<ComponentName>.tsx`:
+
 ```tsx
-import { cn } from '@utils';
+import { cn } from '@utils/cn';
 
-/* ─── $ARGUMENTS ─────────────────────────────────────────────
-   [Brief description of what this component does]
-   ─────────────────────────────────────────────────────────── */
-
-interface ${ARGUMENTS}Props {
+interface <ComponentName>Props {
   className?: string;
+  children?: React.ReactNode;
 }
 
-export function $ARGUMENTS({ className }: ${ARGUMENTS}Props) {
+/** Brief description of <ComponentName>. */
+export const <ComponentName> = ({ className, children }: <ComponentName>Props) => {
   return (
     <div className={cn('', className)}>
-      {/* component content */}
+      {children}
     </div>
   );
-}
+};
 ```
 
-Run `pnpm validate` to confirm everything compiles.
+3. Create test `src/components/<location>/__tests__/<ComponentName>.test.tsx`:
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
+import { <ComponentName> } from '../<ComponentName>';
+
+describe('<ComponentName>', () => {
+  it('renders children', () => {
+    render(<<ComponentName>>Hello</<ComponentName>>);
+    expect(screen.getByText('Hello')).toBeInTheDocument();
+  });
+
+  it('applies custom className', () => {
+    const { container } = render(<<ComponentName> className="test-class">Content</<ComponentName>>);
+    expect(container.firstChild).toHaveClass('test-class');
+  });
+});
+```
+
+4. Run `pnpm validate`.
+
+## Validation
+- [ ] Component file created with proper structure
+- [ ] Test file created and passes
+- [ ] pnpm validate passes
