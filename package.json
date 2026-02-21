@@ -47,7 +47,8 @@
     "release": "node scripts/release.js",
     "release:patch": "node scripts/release.js patch",
     "release:minor": "node scripts/release.js minor",
-    "release:major": "node scripts/release.js major"
+    "release:major": "node scripts/release.js major",
+    "doctor": "node scripts/doctor.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
