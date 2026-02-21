@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.2.0](https://github.com/Mircooo/steaksoap/compare/v1.1.0...v1.2.0) (2026-02-21)
+
+### ✨ Features
+
+* **agents:** add 4 specialized ai sub-agents ([3846c87](https://github.com/Mircooo/steaksoap/commit/3846c874686418cb44ecfa4854d620bf205cabf4))
+* **commands:** add /refactor command for rule-aligned code cleanup ([309dfdf](https://github.com/Mircooo/steaksoap/commit/309dfdf8f02234eb78eca0909f41b33e98b1b9a1))
+* **commands:** add 13 new ai slash commands (15 total) ([cd4c5ab](https://github.com/Mircooo/steaksoap/commit/cd4c5ab13f267e2904fba864e196ae51d3ead5dc))
+* **context:** add decisions.md for architectural decision tracking ([f447bcd](https://github.com/Mircooo/steaksoap/commit/f447bcdd733f1cc74872b7713c855f3238a518dd))
+* **pages:** add component showcase page at /showcase ([fc7b47a](https://github.com/Mircooo/steaksoap/commit/fc7b47adcd2591368ccef0eaaafceedbc1f3f3be))
+* **rules:** add api.md rule for data fetching patterns ([6e1746a](https://github.com/Mircooo/steaksoap/commit/6e1746ac8b34cebe28748f5c4060c87b7b65e30c))
+* **setup:** add 'Keep Playground?' option to project initialization wizard ([08cd55c](https://github.com/Mircooo/steaksoap/commit/08cd55cc5315f7b5fab829d89e619b171fbbd5e7))
+* **theme:** add dark/light mode with theme system ([85cb540](https://github.com/Mircooo/steaksoap/commit/85cb540d0a05796864b562fa0971f53659e71438))
+* **ui:** add base ui component library ([de05402](https://github.com/Mircooo/steaksoap/commit/de05402cab5c30c0f37e16d8a1b627d330e337b0))
+
+### 🐛 Bug Fixes
+
+* **a11y:** accessibility improvements and axe-core tests ([9c12be5](https://github.com/Mircooo/steaksoap/commit/9c12be53697306cca95c21bf9362b72d6664afa5))
+* **core:** consolidation pass from dual-ai audit ([012d5ee](https://github.com/Mircooo/steaksoap/commit/012d5eee875759dff58ec5e56766367551cadb7c))
+* **core:** critical bugfixes and rename to steaksoap ([5681db3](https://github.com/Mircooo/steaksoap/commit/5681db3096c1237a8e4dedcdf3e4c9995c24973b))
+* **layout:** enable header with navigation and theme toggle ([f72fd10](https://github.com/Mircooo/steaksoap/commit/f72fd10c05bb27d8bd08cfe15aacad3adb734ee5))
+
+### ♻️  Refactoring
+
+* **rules:** split claude.md into modular rules system ([fc920c4](https://github.com/Mircooo/steaksoap/commit/fc920c49adf9b0edd21b1cb1a3b3b67d80e9cc1b))
+
+### 📚 Documentation
+
+* **positioning:** rebrand as ai-first starter kit ([fc0aedb](https://github.com/Mircooo/steaksoap/commit/fc0aedbde96ff0bb86fa124747f49427fabfde54))
+* **recipes:** add recipes, commands, agents, and template guide ([abc8f5d](https://github.com/Mircooo/steaksoap/commit/abc8f5d89881cef9d38ab123226508ce4c2accba))
+
+### 🔧 Chores
+
+* **ci:** add bundle check, auto-label, stale bot, devcontainer ([3e79ca0](https://github.com/Mircooo/steaksoap/commit/3e79ca03b11cf9779a6706b747999b9b2f9cbc1d))
+* **release:** v1.1.0 ([b945e8d](https://github.com/Mircooo/steaksoap/commit/b945e8dc2f411ecd410b01bc35bcf1318a588a71))
+
 * merge(main): phase 4 — 4 ai sub-agents (4834384)
 * feat(agents): add 4 specialized ai sub-agents (3846c87)
 * merge(main): phase 3 — 15 ai slash commands (3d58a34)
