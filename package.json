@@ -1,8 +1,28 @@
 {
   "name": "starter",
-  "private": true,
   "version": "0.7.0",
   "type": "module",
+  "description": "Production-ready React 19 + TypeScript + Vite 7 + Tailwind CSS 4 boilerplate with AI-assisted workflow and automated releases.",
+  "author": "Mircooo",
+  "license": "MIT",
+  "homepage": "https://github.com/Mircooo/starter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mircooo/starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mircooo/starter/issues"
+  },
+  "keywords": [
+    "starter",
+    "boilerplate",
+    "react",
+    "typescript",
+    "vite",
+    "tailwindcss",
+    "ai-ready",
+    "claude-code"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
