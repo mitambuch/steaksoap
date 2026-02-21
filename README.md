@@ -1,61 +1,77 @@
 # Starter
 
-> Boilerplate React 19 + Vite 7 + TypeScript + Tailwind CSS pour l'agence.
+> Production-ready React 19 + TypeScript + Vite 7 + Tailwind CSS 4 boilerplate — with strict conventions, AI-assisted workflow, and automated releases.
 
 [![CI](https://github.com/Mircooo/starter/actions/workflows/ci.yml/badge.svg)](https://github.com/Mircooo/starter/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+![pnpm](https://img.shields.io/badge/pnpm-10-orange)
+
+---
+
+## Why this starter?
+
+Most starters are either too simple (hello world) or too complex (40 dependencies, 2 hours to understand). This one sits in between:
+
+- **Strict conventions from day one** — commit format, folder structure, linting, releases
+- **AI-ready** — ships with a `CLAUDE.md` that gives any AI agent full context on your project
+- **Zero config to start** — clone, init, dev. Everything works in under 3 minutes
+- **5 production dependencies** — React, ReactDOM, React Router, clsx, tailwind-merge. That's it.
+
+Built through [vibe coding](https://en.wikipedia.org/wiki/Vibe_coding) with AI agents. Simple by design, documented so anyone can pick it up.
 
 ---
 
 ## Quick Start
 
 ```bash
-# Nouveau projet client (tout est automatisé)
-git clone https://github.com/Mircooo/starter.git mon-projet
-cd mon-projet
+# Clone and init (everything is automated)
+git clone https://github.com/Mircooo/starter.git my-project
+cd my-project
 node scripts/init.js
 
-# Lancer le dev server
+# Start dev server
 pnpm dev
 # → http://localhost:5173
 ```
 
-Le script `init.js` gère tout : remotes, GitHub repo, package.json, .env.local, deps, validation, commit initial + push.
+The `init.js` script handles everything: remotes, GitHub repo, package.json, .env.local, deps, validation, initial commit + push.
 
 ---
 
 ## Stack
 
-| Outil | Rôle |
+| Tool | Role |
 |---|---|
-| **React 19** | UI |
-| **TypeScript 5** | Typage strict (`any` interdit) |
-| **Vite 7** | Build + Dev server (HMR) |
-| **Tailwind CSS 4** | Styling utility-first (CSS-first via `@theme`) |
-| **React Router 7** | Routing SPA |
-| **Cloudinary** | CDN images optimisées |
-| **ESLint** | Lint (a11y + import sort + hooks) |
-| **Prettier** | Formatting automatique |
+| **React 19** | UI framework |
+| **TypeScript 5** | Strict typing (`any` forbidden) |
+| **Vite 7** | Bundler + dev server (instant HMR) |
+| **Tailwind CSS 4** | Utility-first CSS (CSS-first via `@theme`) |
+| **React Router 7** | SPA routing |
+| **Cloudinary** | Optimized image CDN |
+| **ESLint** | Code linting (a11y + import sort + hooks + type-aware) |
+| **Prettier** | Automatic code formatting |
 | **Husky** | Git hooks (pre-commit + commit-msg) |
-| **commitlint** | Validation Conventional Commits |
-| **lint-staged** | Lint uniquement les fichiers modifiés |
-| **release-it** | Releases automatisées + CHANGELOG |
-| **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build |
-| **Vitest** | Tests unitaires |
-| **GitHub Actions** | CI (lint + typecheck + tests + build) |
+| **commitlint** | Conventional Commits validation |
+| **lint-staged** | Lint only staged files |
+| **release-it** | Automated releases + CHANGELOG |
+| **vite-plugin-sitemap** | Auto-generated sitemap + robots.txt |
+| **Vitest** | Unit + component testing |
+| **GitHub Actions** | CI pipeline (lint + typecheck + tests + build) |
 
 ---
 
-## Commandes
+## Commands
 
-| Commande | Ce qu'elle fait |
+| Command | What it does |
 |---|---|
-| `pnpm dev` | Serveur de développement (HMR) |
-| `pnpm build` | Build production |
-| `pnpm validate` | **Lint + typecheck + tests + build** |
-| `pnpm init:project` | Nouveau projet : script interactif |
-| `pnpm setup` | Setup : install + .env.local + validate |
-| `pnpm setup:update` | Pull les mises à jour du starter |
-| `pnpm release` | Release : bump + CHANGELOG + tag + GitHub Release |
+| `pnpm dev` | Development server (HMR) |
+| `pnpm build` | Production build |
+| `pnpm validate` | **Lint + typecheck + tests + build** (the final check) |
+| `pnpm init:project` | New project: interactive setup script |
+| `pnpm setup` | Setup: install + .env.local + validate |
+| `pnpm setup:update` | Pull updates from the starter template |
+| `pnpm release` | Release: bump + CHANGELOG + tag + GitHub Release |
 
 ---
 
@@ -65,35 +81,35 @@ Le script `init.js` gère tout : remotes, GitHub repo, package.json, .env.local,
 src/
 ├── app/              → App root, routes, layouts
 ├── components/
-│   ├── ui/           → Atomes (Button, Input, Card…)
+│   ├── ui/           → Atoms (Button, Input, Card…)
 │   ├── layout/       → Header, Footer, Nav…
 │   └── features/     → ErrorBoundary, SeoHead…
 ├── config/           → env.ts, site.ts, cloudinary.ts
-├── constants/        → Routes, valeurs constantes
-├── pages/            → Une page = une route
+├── constants/        → Routes, constant values
+├── pages/            → One page = one route
 ├── styles/           → Design tokens, fonts, animations
 ├── hooks/            → Custom hooks
-├── types/            → Types TypeScript partagés
-└── utils/            → Fonctions pures (cn…)
+├── types/            → Shared TypeScript types
+└── utils/            → Pure functions (cn…)
 ```
 
-**Path aliases** : `@components/`, `@hooks/`, `@config/`… jamais de `../../..`.
+**Path aliases**: `@components/`, `@hooks/`, `@config/`… never `../../..`.
 
 ---
 
-## Git — automatisé
+## Git — Automated
 
-Chaque `git commit` déclenche automatiquement :
-1. **pre-commit** : ESLint --fix + Prettier sur les fichiers stagés
-2. **commit-msg** : validation du format Conventional Commits
+Every `git commit` automatically triggers:
+1. **pre-commit**: ESLint --fix + Prettier on staged files
+2. **commit-msg**: Conventional Commits format validation
 
-Messages de commit : `type(scope): description`
+Commit messages: `type(scope): description`
 
 | Type | Usage |
 |---|---|
-| `feat` | Nouvelle feature |
-| `fix` | Correction de bug |
-| `refactor` | Restructuration |
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `refactor` | Code restructuring |
 | `style` | CSS / design |
 | `chore` | Config, deps, CI |
 | `docs` | Documentation |
@@ -103,7 +119,7 @@ Messages de commit : `type(scope): description`
 ## Releases
 
 ```bash
-pnpm release          # bump auto + CHANGELOG + GitHub Release
+pnpm release          # auto bump + CHANGELOG + GitHub Release
 pnpm release:patch    # 0.2.0 → 0.2.1
 pnpm release:minor    # 0.2.0 → 0.3.0
 pnpm release:major    # 0.2.0 → 1.0.0
@@ -111,27 +127,35 @@ pnpm release:major    # 0.2.0 → 1.0.0
 
 ---
 
-## Adapter pour un client
+## Customize for your project
 
-Après `node scripts/init.js`, modifier :
-- `.env.local` → Cloudinary, nom de l'app, URL (utilisé aussi pour le hostname du sitemap)
-- `src/config/site.ts` → contact, réseaux sociaux, SEO
-- `src/index.css` → couleurs, fonts (bloc `@theme`)
-- `vite.config.ts` → ajouter les nouvelles routes SPA dans `dynamicRoutes` du plugin Sitemap
+After `node scripts/init.js`, edit:
+- `.env.local` → Cloudinary cloud name, app name, URL (also used for sitemap hostname)
+- `src/config/site.ts` → contact info, social links, SEO defaults
+- `src/index.css` → colors, fonts (`@theme` block)
+- `vite.config.ts` → add new SPA routes to the sitemap plugin's `dynamicRoutes`
 
-## Mettre à jour depuis le starter
+## Update from the starter
 
 ```bash
 pnpm setup:update
-# → Fetch + merge les mises à jour du starter
+# → Fetches + merges updates from the starter template
 ```
 
 ---
 
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
 ## Documentation
 
-- [CLAUDE.md](CLAUDE.md) — Instructions pour les agents IA
-- [docs/SETUP.md](docs/SETUP.md) — Guide d'installation complet
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Structure des dossiers
-- [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md) — Dépendances justifiées
-- [CHANGELOG.md](CHANGELOG.md) — Historique des changements
+- [CLAUDE.md](CLAUDE.md) — AI agent instructions
+- [docs/SETUP.md](docs/SETUP.md) — Full installation guide
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Folder structure
+- [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md) — Dependency justifications
+- [CHANGELOG.md](CHANGELOG.md) — Release history
+
+## License
+
+[MIT](LICENSE) — Built with [Claude Code](https://claude.ai/claude-code) by [Mirco](https://github.com/Mircooo).

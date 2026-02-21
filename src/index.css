@@ -68,7 +68,7 @@
   animation: blink 1s step-end infinite;
 }
 
-/* ─── Film grain — same approach as classe2 ────────────────── */
+/* ─── Film grain ──────────────────────────────────────────── */
 
 @keyframes noise {
   0% {

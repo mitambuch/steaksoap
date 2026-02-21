@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
 /* ═══════════════════════════════════════════════════════════════
-   UPDATE — pull les mises à jour du starter template
+   UPDATE — pull updates from the starter template
    Cross-platform (Windows, macOS, Linux).
 
-   Ce script :
-   1. Ajoute le repo starter comme remote "template" (si pas déjà fait)
-   2. Fetch les derniers changements
-   3. Merge la branche main du template dans le projet
+   This script:
+   1. Adds the starter repo as "template" remote (if not already done)
+   2. Fetches the latest changes
+   3. Merges the template's main branch into the project
 
-   En cas de conflit, tu résous manuellement puis git commit.
+   If there are conflicts, resolve them manually then git commit.
 
-   Usage :
+   Usage:
      pnpm setup:update
    ═══════════════════════════════════════════════════════════════ */
 
@@ -36,7 +36,7 @@ console.log(bold('\n  Starter — Update from template\n'));
 // ─── 1. Check working tree is clean ─────────────────────────
 const status = run('git status --porcelain');
 if (status) {
-  console.error(red('  ✗ Working tree pas clean. Commit ou stash tes changements.'));
+  console.error(red('  ✗ Working tree not clean. Commit or stash your changes.'));
   process.exit(1);
 }
 console.log(green('  ✓ Working tree clean'));
@@ -44,31 +44,31 @@ console.log(green('  ✓ Working tree clean'));
 // ─── 2. Add template remote if needed ───────────────────────
 const remotes = run('git remote');
 if (!remotes.split('\n').includes(TEMPLATE_REMOTE)) {
-  console.log(yellow(`  → Ajout du remote "${TEMPLATE_REMOTE}"...`));
+  console.log(yellow(`  → Adding remote "${TEMPLATE_REMOTE}"...`));
   run(`git remote add ${TEMPLATE_REMOTE} ${TEMPLATE_URL}`);
-  console.log(green(`  ✓ Remote "${TEMPLATE_REMOTE}" ajouté`));
+  console.log(green(`  ✓ Remote "${TEMPLATE_REMOTE}" added`));
 } else {
-  console.log(green(`  ✓ Remote "${TEMPLATE_REMOTE}" existe déjà`));
+  console.log(green(`  ✓ Remote "${TEMPLATE_REMOTE}" already exists`));
 }
 
 // ─── 3. Fetch latest from template ──────────────────────────
-console.log(yellow('  → Fetch des mises à jour...'));
+console.log(yellow('  → Fetching updates...'));
 runVisible(`git fetch ${TEMPLATE_REMOTE}`);
 console.log(green('  ✓ Fetch OK'));
 
 // ─── 4. Merge template/main ─────────────────────────────────
-console.log(yellow('  → Merge de template/main...'));
+console.log(yellow('  → Merging template/main...'));
 try {
   runVisible(`git merge ${TEMPLATE_REMOTE}/main --no-edit`);
-  console.log(green('\n  ✓ Mise à jour terminée !'));
+  console.log(green('\n  ✓ Update complete!'));
 } catch {
-  console.log(yellow('\n  ⚠ Conflits détectés. Résous-les manuellement puis :'));
+  console.log(yellow('\n  ⚠ Conflicts detected. Resolve them manually then:'));
   console.log(yellow('    git add . && git commit'));
 }
 
 // ─── 5. Reinstall deps (versions may have changed) ──────────
-console.log(yellow('\n  → Mise à jour des dépendances...'));
+console.log(yellow('\n  → Updating dependencies...'));
 runVisible('pnpm install');
-console.log(green('  ✓ Dépendances à jour'));
+console.log(green('  ✓ Dependencies up to date'));
 
-console.log(bold(green('\n  Update terminé.\n')));
+console.log(bold(green('\n  Update complete.\n')));

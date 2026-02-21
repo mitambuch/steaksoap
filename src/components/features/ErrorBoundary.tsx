@@ -2,7 +2,7 @@ import { Component, type ErrorInfo, type ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  /** Fallback UI personnalisé. Si absent, affiche le fallback par défaut. */
+  /** Custom fallback UI. If absent, displays the default fallback. */
   fallback?: ReactNode;
 }
 
@@ -12,7 +12,7 @@ interface State {
 }
 
 /**
- * ErrorBoundary — capture les erreurs React dans l'arbre enfant.
+ * ErrorBoundary — catches React errors in the child tree.
  *
  * Usage :
  *   <ErrorBoundary>
@@ -49,12 +49,12 @@ export class ErrorBoundary extends Component<Props, State> {
       if (this.props.fallback) return this.props.fallback;
 
       return (
-        <section className="min-h-screen flex flex-col items-center justify-center gap-4">
+        <section className="flex min-h-screen flex-col items-center justify-center gap-4">
           <p className="text-6xl font-bold opacity-10">500</p>
           <p className="opacity-50">Something went wrong.</p>
           <button
             onClick={this.handleReset}
-            className="underline underline-offset-4 opacity-70 hover:opacity-100 transition-opacity"
+            className="underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100"
           >
             Try again
           </button>

@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
 /* ═══════════════════════════════════════════════════════════════
-   INIT — initialise un nouveau projet client depuis le starter
+   INIT — initialize a new project from the starter
    Cross-platform (Windows, macOS, Linux).
 
-   Ce script (interactif) :
-   1. Demande le nom du projet + nom d'affichage
-   2. Renomme le remote origin → template
-   3. Crée le repo GitHub et l'ajoute comme origin (optionnel)
-   4. Met à jour package.json avec le nom du projet
-   5. Crée .env.local avec le nom d'affichage
-   6. Installe les dépendances
-   7. Valide (lint + typecheck + tests + build)
-   8. Commit initial + push
+   This script (interactive):
+   1. Asks for project name + display name
+   2. Renames the origin remote → template
+   3. Creates a GitHub repo and adds it as origin (optional)
+   4. Updates package.json with the project name
+   5. Creates .env.local with the display name
+   6. Installs dependencies
+   7. Validates (lint + typecheck + tests + build)
+   8. Initial commit + push
 
-   Usage :
-     git clone https://github.com/Mircooo/starter.git mon-projet
-     cd mon-projet
+   Usage:
+     git clone https://github.com/Mircooo/starter.git my-project
+     cd my-project
      node scripts/init.js
    ═══════════════════════════════════════════════════════════════ */
 
@@ -64,22 +64,22 @@ async function ask(question, fallback) {
   return answer.trim() || fallback || '';
 }
 
-console.log(bold('\n  Starter — Nouveau Projet\n'));
+console.log(bold('\n  Starter — New Project\n'));
 
 // ─── 1. Check Node version ──────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
 if (nodeVersion < 20) {
-  console.error(red(`  ✗ Node.js 20+ requis (actuel : ${process.version})`));
+  console.error(red(`  ✗ Node.js 20+ required (current: ${process.version})`));
   rl.close();
   process.exit(1);
 }
 
 // ─── 2. Collect info ─────────────────────────────────────────
-const projectName = await ask('Nom du projet (slug)', slugify(resolve(root).split(/[\\/]/).pop() || 'project'));
-const displayName = await ask('Nom d\'affichage', projectName);
+const projectName = await ask('Project name (slug)', slugify(resolve(root).split(/[\\/]/).pop() || 'project'));
+const displayName = await ask('Display name', projectName);
 const ghOrg = 'Mircooo';
-const createRepo = (await ask(`Créer le repo GitHub ${ghOrg}/${projectName} ? (o/n)`, 'o')).toLowerCase();
-const wantsGitHub = createRepo === 'o' || createRepo === 'oui' || createRepo === 'y' || createRepo === 'yes';
+const createRepo = (await ask(`Create GitHub repo ${ghOrg}/${projectName}? (y/n)`, 'y')).toLowerCase();
+const wantsGitHub = createRepo === 'y' || createRepo === 'yes';
 
 console.log('');
 
@@ -87,45 +87,45 @@ console.log('');
 const remotes = run('git remote').split('\n').filter(Boolean);
 
 if (remotes.includes('origin') && !remotes.includes('template')) {
-  console.log(yellow('  → Renommage origin → template...'));
+  console.log(yellow('  → Renaming origin → template...'));
   run('git remote rename origin template');
   console.log(green('  ✓ Remote "template" → starter'));
 } else if (remotes.includes('template')) {
-  console.log(green('  ✓ Remote "template" existe déjà'));
+  console.log(green('  ✓ Remote "template" already exists'));
 } else {
-  console.log(yellow('  → Pas de remote origin à renommer'));
+  console.log(yellow('  → No origin remote to rename'));
 }
 
 // ─── 4. Create GitHub repo + set as origin ───────────────────
 if (wantsGitHub) {
   if (!hasCommand('gh')) {
-    console.log(red('  ✗ GitHub CLI (gh) non trouvé. Installe-le : https://cli.github.com'));
-    console.log(yellow('  → Tu pourras ajouter le remote manuellement plus tard.'));
+    console.log(red('  ✗ GitHub CLI (gh) not found. Install it: https://cli.github.com'));
+    console.log(yellow('  → You can add the remote manually later.'));
   } else {
     const repoFullName = `${ghOrg}/${projectName}`;
-    console.log(yellow(`  → Création du repo ${repoFullName} sur GitHub...`));
+    console.log(yellow(`  → Creating repo ${repoFullName} on GitHub...`));
     try {
       run(`gh repo create ${repoFullName} --private --source=. --remote=origin`);
-      console.log(green(`  ✓ Repo ${repoFullName} créé et ajouté comme origin`));
+      console.log(green(`  ✓ Repo ${repoFullName} created and added as origin`));
     } catch (e) {
       if (e.message?.includes('already exists')) {
-        console.log(yellow(`  → Le repo ${repoFullName} existe déjà`));
+        console.log(yellow(`  → Repo ${repoFullName} already exists`));
         if (!remotes.includes('origin')) {
           run(`git remote add origin https://github.com/${repoFullName}.git`);
-          console.log(green(`  ✓ Remote origin ajouté`));
+          console.log(green(`  ✓ Remote origin added`));
         }
       } else {
-        console.log(red(`  ✗ Erreur création repo : ${e.message}`));
-        console.log(yellow('  → Tu pourras le créer manuellement plus tard.'));
+        console.log(red(`  ✗ Error creating repo: ${e.message}`));
+        console.log(yellow('  → You can create it manually later.'));
       }
     }
   }
 } else {
-  console.log(dim('  ⏭ Création GitHub repo ignorée'));
+  console.log(dim('  ⏭ GitHub repo creation skipped'));
 }
 
 // ─── 5. Update package.json ──────────────────────────────────
-console.log(yellow('\n  → Mise à jour de package.json...'));
+console.log(yellow('\n  → Updating package.json...'));
 const pkgPath = resolve(root, 'package.json');
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 pkg.name = projectName;
@@ -145,49 +145,49 @@ if (!existsSync(envLocal)) {
 let envContent = readFileSync(envLocal, 'utf-8');
 envContent = envContent.replace(/VITE_APP_NAME=.*/, `VITE_APP_NAME=${displayName}`);
 writeFileSync(envLocal, envContent);
-console.log(green(`  ✓ .env.local créé avec APP_NAME="${displayName}"`));
+console.log(green(`  ✓ .env.local created with APP_NAME="${displayName}"`));
 
 // ─── 7. Reset CHANGELOG.md ──────────────────────────────────
-console.log(yellow('\n  → Réinitialisation du CHANGELOG...'));
+console.log(yellow('\n  → Resetting CHANGELOG...'));
 const today = new Date().toISOString().split('T')[0];
 const freshChangelog = `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### ✨ Features\n\n- project initialized from starter\n`;
 writeFileSync(resolve(root, 'CHANGELOG.md'), freshChangelog);
-console.log(green('  ✓ CHANGELOG.md remis à zéro'));
+console.log(green('  ✓ CHANGELOG.md reset'));
 
 // ─── 8. Install dependencies ─────────────────────────────────
-console.log(yellow('\n  → Installation des dépendances...'));
+console.log(yellow('\n  → Installing dependencies...'));
 runVisible('pnpm install');
-console.log(green('  ✓ Dépendances installées'));
+console.log(green('  ✓ Dependencies installed'));
 
 // ─── 9. Validate ─────────────────────────────────────────────
-console.log(yellow('\n  → Validation (lint + typecheck + tests + build)...'));
+console.log(yellow('\n  → Validating (lint + typecheck + tests + build)...'));
 try {
   runVisible('pnpm validate');
-  console.log(green('  ✓ Tout passe !'));
+  console.log(green('  ✓ All checks passed!'));
 } catch {
-  console.log(yellow('  ⚠ Validation échouée — corrige les erreurs avant de push.'));
+  console.log(yellow('  ⚠ Validation failed — fix the errors before pushing.'));
 }
 
 // ─── 10. Initial commit + push ───────────────────────────────
-console.log(yellow('\n  → Commit initial...'));
+console.log(yellow('\n  → Initial commit...'));
 try {
   run('git add -A');
   run(`git commit -m "chore(init): bootstrap ${projectName} from starter"`);
-  console.log(green('  ✓ Commit initial créé'));
+  console.log(green('  ✓ Initial commit created'));
 
   // Push if origin exists
   const currentRemotes = run('git remote').split('\n').filter(Boolean);
   if (currentRemotes.includes('origin')) {
-    console.log(yellow('  → Push vers origin/main...'));
+    console.log(yellow('  → Pushing to origin/main...'));
     runVisible('git push -u origin main');
-    console.log(green('  ✓ Pushé sur origin/main'));
+    console.log(green('  ✓ Pushed to origin/main'));
   }
 } catch (e) {
   console.log(yellow(`  ⚠ ${e.message?.split('\n')[0]}`));
 }
 
 // ─── Done ────────────────────────────────────────────────────
-console.log(bold(green(`\n  Projet "${displayName}" prêt !`)));
-console.log(dim('  Lance pnpm dev pour démarrer.\n'));
+console.log(bold(green(`\n  Project "${displayName}" ready!`)));
+console.log(dim('  Run pnpm dev to get started.\n'));
 
 rl.close();

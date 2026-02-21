@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /* ═══════════════════════════════════════════════════════════════
-   SETUP — script de premier lancement pour un nouveau projet client
+   SETUP — first-run setup script for a new project
    Cross-platform (Windows, macOS, Linux).
 
-   Usage :
-     pnpm setup               → setup complet
-     pnpm setup:update        → pull les mises à jour du starter
+   Usage:
+     pnpm setup               → full setup
+     pnpm setup:update        → pull starter updates
    ═══════════════════════════════════════════════════════════════ */
 
 import { execSync } from 'child_process';
@@ -27,15 +27,15 @@ console.log(bold('\n  Starter — Setup\n'));
 // ─── 1. Check Node version ──────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
 if (nodeVersion < 20) {
-  console.error(red(`  Node.js 20+ requis (actuel : ${process.version})`));
+  console.error(red(`  Node.js 20+ required (current: ${process.version})`));
   process.exit(1);
 }
 console.log(green('  ✓ Node.js ' + process.version));
 
 // ─── 2. Install dependencies ────────────────────────────────
-console.log(yellow('\n  → Installation des dépendances...'));
+console.log(yellow('\n  → Installing dependencies...'));
 run('pnpm install');
-console.log(green('  ✓ Dépendances installées'));
+console.log(green('  ✓ Dependencies installed'));
 
 // ─── 3. Create .env.local if missing ────────────────────────
 const envLocal = resolve(root, '.env.local');
@@ -43,20 +43,20 @@ const envExample = resolve(root, '.env.example');
 
 if (!existsSync(envLocal)) {
   copyFileSync(envExample, envLocal);
-  console.log(yellow('  → .env.local créé depuis .env.example'));
-  console.log(yellow('    Ouvre .env.local et remplis les valeurs !'));
+  console.log(yellow('  → .env.local created from .env.example'));
+  console.log(yellow('    Open .env.local and fill in the values!'));
 } else {
-  console.log(green('  ✓ .env.local existe déjà'));
+  console.log(green('  ✓ .env.local already exists'));
 }
 
 // ─── 4. Run validate ─────────────────────────────────────────
-console.log(yellow('\n  → Validation (lint + typecheck + tests + build)...'));
+console.log(yellow('\n  → Validating (lint + typecheck + tests + build)...'));
 try {
   run('pnpm validate');
-  console.log(green('  ✓ Tout passe !'));
+  console.log(green('  ✓ All checks passed!'));
 } catch {
-  console.error(red('  ✗ La validation a échoué. Corrige les erreurs ci-dessus.'));
+  console.error(red('  ✗ Validation failed. Fix the errors above.'));
   process.exit(1);
 }
 
-console.log(bold(green('\n  Setup terminé. Lance pnpm dev pour démarrer.\n')));
+console.log(bold(green('\n  Setup complete. Run pnpm dev to get started.\n')));

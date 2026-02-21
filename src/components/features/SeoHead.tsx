@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════════════
-   SEO HEAD — gestion des meta tags par page (React 19 natif)
-   React 19 hoist automatiquement <title> et <meta> dans <head>.
+   SEO HEAD — per-page meta tag management (React 19 native)
+   React 19 automatically hoists <title> and <meta> into <head>.
 
-   Usage :
-     <SeoHead title="Accueil" description="Bienvenue sur notre site" />
+   Usage:
+     <SeoHead title="Home" description="Welcome to our site" />
    ═══════════════════════════════════════════════════════════════ */
 
 import { siteConfig } from '@config/site';
@@ -32,7 +32,7 @@ export function SeoHead({
       <meta name="description" content={description} />
       <link rel="canonical" href={pageUrl} />
 
-      {/* Open Graph — partage Facebook / LinkedIn */}
+      {/* Open Graph — Facebook / LinkedIn sharing */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={`${siteConfig.url}${ogImage}`} />
@@ -46,7 +46,7 @@ export function SeoHead({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`${siteConfig.url}${ogImage}`} />
 
-      {/* No index (pour staging, pages privées, etc.) */}
+      {/* No index (for staging, private pages, etc.) */}
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
     </>
   );

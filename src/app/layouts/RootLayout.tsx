@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
 
 /* ─── RootLayout ─────────────────────────────────────────────
-   Wrapper commun à toutes les pages.
-   Placer ici : Header, Footer, navigation globale, etc.
+   Shared wrapper for all pages.
+   Place here: Header, Footer, global navigation, etc.
 
-   Outlet = la page active s'affiche ici.
+   Outlet = the active page renders here.
    ─────────────────────────────────────────────────────────── */
 export default function RootLayout() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       {/* <Header /> */}
       <main className="flex-1">
         <Outlet />

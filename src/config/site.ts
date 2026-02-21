@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
-   SITE CONFIG — données centralisées du client / projet
-   Modifier ce fichier UNE SEULE FOIS par projet.
-   Tout le reste (SEO, footer, OG tags) lit depuis ici.
+   SITE CONFIG — centralized project/client data
+   Edit this file ONCE per project.
+   Everything else (SEO, footer, OG tags) reads from here.
    ═══════════════════════════════════════════════════════════════ */
 
 import { env } from './env';
@@ -9,8 +9,8 @@ import { env } from './env';
 export const siteConfig = {
   name: env.APP_NAME,
   url: env.APP_URL,
-  locale: 'fr_CH',
-  language: 'fr',
+  locale: 'en',
+  language: 'en',
 
   // ─── SEO defaults ──────────────────────────────────────────
   title: env.APP_NAME,
@@ -22,7 +22,7 @@ export const siteConfig = {
   phone: '',
   address: '',
 
-  // ─── Réseaux sociaux ───────────────────────────────────────
+  // ─── Social links ─────────────────────────────────────────
   socials: {
     instagram: '',
     facebook: '',

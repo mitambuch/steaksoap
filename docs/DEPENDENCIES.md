@@ -1,115 +1,115 @@
-# Dépendances du projet
+# Project Dependencies
 
-Chaque dépendance installée est documentée ici avec sa **justification**.
-On n'installe rien "parce que ça pourrait servir". Chaque package a une raison d'être.
+Every installed dependency is documented here with its **justification**.
+Nothing is installed "just in case". Each package has a reason to exist.
 
 ---
 
 ## Dependencies (production)
 
-| Package | Version | Pourquoi | Lien |
+| Package | Version | Why | Link |
 |---|---|---|---|
-| `react` | ^19.2.0 | Framework UI — le coeur de l'app | [npm](https://www.npmjs.com/package/react) |
-| `react-dom` | ^19.2.0 | Rendu React dans le DOM du navigateur | [npm](https://www.npmjs.com/package/react-dom) |
-| `react-router-dom` | ^7.12.0 | Routing SPA — navigation entre les pages sans rechargement | [npm](https://www.npmjs.com/package/react-router-dom) |
-| `clsx` | ^2.1.1 | Concaténation conditionnelle de classes CSS (`cn('a', condition && 'b')`) | [npm](https://www.npmjs.com/package/clsx) |
-| `tailwind-merge` | ^3.5.0 | Résolution de conflits Tailwind (`'px-4 px-8'` → `'px-8'`). Utilisé avec clsx dans `cn()` | [npm](https://www.npmjs.com/package/tailwind-merge) |
+| `react` | ^19.2.0 | UI framework — the core of the app | [npm](https://www.npmjs.com/package/react) |
+| `react-dom` | ^19.2.0 | React rendering to the browser DOM | [npm](https://www.npmjs.com/package/react-dom) |
+| `react-router-dom` | ^7.12.0 | SPA routing — navigation between pages without reload | [npm](https://www.npmjs.com/package/react-router-dom) |
+| `clsx` | ^2.1.1 | Conditional CSS class concatenation (`cn('a', condition && 'b')`) | [npm](https://www.npmjs.com/package/clsx) |
+| `tailwind-merge` | ^3.5.0 | Tailwind conflict resolution (`'px-4 px-8'` → `'px-8'`). Used with clsx in `cn()` | [npm](https://www.npmjs.com/package/tailwind-merge) |
 
 ---
 
-## DevDependencies (développement uniquement)
+## DevDependencies (development only)
 
 ### Build & Dev
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `vite` | ^7.2.4 | Bundler + dev server. Rapide, moderne, HMR instantané |
-| `@vitejs/plugin-react` | ^5.1.1 | Support React dans Vite (JSX transform, Fast Refresh) |
-| `typescript` | ^5.9.3 | Typage statique — attrape les bugs avant le runtime |
+| `vite` | ^7.2.4 | Bundler + dev server. Fast, modern, instant HMR |
+| `@vitejs/plugin-react` | ^5.1.1 | React support in Vite (JSX transform, Fast Refresh) |
+| `typescript` | ^5.9.3 | Static typing — catches bugs before runtime |
 
 ### Styles
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `tailwindcss` | ^4.2.0 | Framework CSS utility-first v4 — config CSS-first, plus rapide |
-| `@tailwindcss/vite` | ^4.2.0 | Plugin Vite natif pour Tailwind v4 (remplace PostCSS + autoprefixer) |
+| `tailwindcss` | ^4.2.0 | Utility-first CSS framework v4 — CSS-first config, faster builds |
+| `@tailwindcss/vite` | ^4.2.0 | Native Vite plugin for Tailwind v4 (replaces PostCSS + autoprefixer) |
 
-### Qualité de code
+### Code quality
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `eslint` | ^9.39.1 | Le correcteur d'orthographe du code. Détecte les erreurs |
-| `@eslint/js` | ^9.39.1 | Règles ESLint de base pour JavaScript |
-| `@typescript-eslint/eslint-plugin` | ^8.54.0 | Règles ESLint spécifiques TypeScript |
-| `@typescript-eslint/parser` | ^8.54.0 | Permet à ESLint de lire le TypeScript |
-| `eslint-plugin-react-hooks` | ^7.0.1 | Vérifie l'utilisation correcte des hooks React |
-| `eslint-plugin-react-refresh` | ^0.4.24 | Vérifie la compatibilité avec le Hot Module Replacement |
-| `eslint-plugin-jsx-a11y` | ^6.10.2 | Vérifie l'accessibilité du JSX (alt manquant, rôles ARIA, etc.) |
-| `eslint-plugin-simple-import-sort` | ^12.1.1 | Tri automatique des imports — ordre cohérent partout |
-| `prettier` | ^3.5.0 | Formatage automatique du code. Zéro débat sur le style |
-| `prettier-plugin-tailwindcss` | ^0.7.2 | Tri automatique des classes Tailwind dans l'ordre recommandé |
-| `globals` | ^16.5.0 | Variables globales du navigateur pour ESLint |
+| `eslint` | ^9.39.1 | Code spellchecker. Detects errors and bad patterns |
+| `@eslint/js` | ^9.39.1 | Base ESLint rules for JavaScript |
+| `@typescript-eslint/eslint-plugin` | ^8.54.0 | TypeScript-specific ESLint rules |
+| `@typescript-eslint/parser` | ^8.54.0 | Allows ESLint to parse TypeScript |
+| `eslint-plugin-react-hooks` | ^7.0.1 | Validates correct React hooks usage |
+| `eslint-plugin-react-refresh` | ^0.4.24 | Validates Hot Module Replacement compatibility |
+| `eslint-plugin-jsx-a11y` | ^6.10.2 | Accessibility checks (missing alt, ARIA roles, etc.) |
+| `eslint-plugin-simple-import-sort` | ^12.1.1 | Automatic import sorting — consistent order everywhere |
+| `prettier` | ^3.5.0 | Automatic code formatting. Zero style debates |
+| `prettier-plugin-tailwindcss` | ^0.7.2 | Automatic Tailwind class sorting in recommended order |
+| `globals` | ^16.5.0 | Browser global variables for ESLint |
 
 ### Types
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `@types/react` | ^19.2.5 | Types TypeScript pour React |
-| `@types/react-dom` | ^19.2.3 | Types TypeScript pour ReactDOM |
+| `@types/react` | ^19.2.5 | TypeScript types for React |
+| `@types/react-dom` | ^19.2.3 | TypeScript types for ReactDOM |
 
-### Git Hooks & Commits
+### Git hooks & commits
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `husky` | ^9.1.7 | Git hooks automatiques : exécute du code avant chaque commit |
-| `lint-staged` | ^16.2.7 | Lint uniquement les fichiers stagés (pas tout le projet) |
-| `@commitlint/cli` | ^20.4.2 | Valide que chaque message de commit suit Conventional Commits |
-| `@commitlint/config-conventional` | ^20.4.2 | Règles par défaut pour commitlint |
+| `husky` | ^9.1.7 | Automatic git hooks: runs code before every commit |
+| `lint-staged` | ^16.2.7 | Lints only staged files (not the entire project) |
+| `@commitlint/cli` | ^20.4.2 | Validates that every commit message follows Conventional Commits |
+| `@commitlint/config-conventional` | ^20.4.2 | Default rules for commitlint |
 
 ### Tests
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `vitest` | ^4.0.18 | Framework de tests rapide, compatible Vite, remplace Jest |
-| `jsdom` | ^28.1.0 | Simule un navigateur en mémoire pour tester des composants React |
-| `@testing-library/react` | ^16.3.2 | Utilitaires pour tester les composants React (render, screen, queries) |
-| `@testing-library/jest-dom` | ^6.9.1 | Matchers DOM supplémentaires (toBeVisible, toHaveTextContent…) |
-| `@testing-library/user-event` | ^14.6.1 | Simule les interactions utilisateur (click, type, hover…) |
+| `vitest` | ^4.0.18 | Fast test framework, Vite-compatible, replaces Jest |
+| `jsdom` | ^28.1.0 | Simulates a browser in memory for React component testing |
+| `@testing-library/react` | ^16.3.2 | Utilities for testing React components (render, screen, queries) |
+| `@testing-library/jest-dom` | ^6.9.1 | Extra DOM matchers (toBeVisible, toHaveTextContent…) |
+| `@testing-library/user-event` | ^14.6.1 | Simulates user interactions (click, type, hover…) |
 
 ### SEO
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `vite-plugin-sitemap` | ^0.8.2 | Génère automatiquement `sitemap.xml` + `robots.txt` au build |
+| `vite-plugin-sitemap` | ^0.8.2 | Auto-generates `sitemap.xml` + `robots.txt` at build time |
 
 ### Releases
 
-| Package | Version | Pourquoi |
+| Package | Version | Why |
 |---|---|---|
-| `release-it` | ^19.2.4 | Automatise : bump version + CHANGELOG + tag + GitHub Release |
-| `@release-it/conventional-changelog` | ^10.0.5 | Génère le CHANGELOG depuis les commits conventionnels |
+| `release-it` | ^19.2.4 | Automates: version bump + CHANGELOG + tag + GitHub Release |
+| `@release-it/conventional-changelog` | ^10.0.5 | Generates CHANGELOG from conventional commits |
 
 ---
 
-## Règles pour ajouter une dépendance
+## Rules for adding a dependency
 
-1. **Vérifier avant** : est-ce qu'on peut faire sans ? Une solution native existe ?
-2. **Checker le package** : downloads/semaine, dernière mise à jour, issues ouvertes
-3. **Expliquer à Mirco** : en 1 phrase, pourquoi on en a besoin
-4. **Documenter ici** : ajouter la ligne dans le tableau
-5. **Mentionner dans le commit** : le body du commit explique l'ajout
+1. **Check first**: can we do without? Does a native solution exist?
+2. **Verify the package**: weekly downloads, last update, open issues
+3. **Explain**: in 1 sentence, why it's needed
+4. **Document here**: add a row to the table
+5. **Mention in the commit**: the commit body explains the addition
 
-## Commandes de maintenance
+## Maintenance commands
 
 ```bash
-# Voir les packages outdated
+# Check outdated packages
 pnpm outdated
 
-# Vérifier les vulnérabilités
+# Check vulnerabilities
 pnpm audit
 
-# Mettre à jour (mineures + patches)
+# Update (minor + patches)
 pnpm update
 
-# Pour les majeures → au cas par cas avec explication
+# For major upgrades → case by case with explanation
 ```

@@ -1,144 +1,144 @@
-# Guide d'installation
+# Installation Guide
 
-Ce guide permet à un dev humain ou un agent IA de démarrer le projet en 5 minutes.
+This guide helps any developer or AI agent get the project running in 5 minutes.
 
 ---
 
-## Prérequis
+## Prerequisites
 
-| Outil | Version min. | Pourquoi |
+| Tool | Min. version | Why |
 |---|---|---|
-| **Node.js** | 20+ | Runtime JavaScript |
-| **pnpm** | 10+ | Package manager (déclaré dans `package.json` → `packageManager`) |
-| **Git** | 2.40+ | Versioning |
-| **GitHub CLI** (`gh`) | 2+ | Authentification pour les releases (`pnpm release`) |
+| **Node.js** | 20+ | JavaScript runtime |
+| **pnpm** | 10+ | Package manager (declared in `package.json` → `packageManager`) |
+| **Git** | 2.40+ | Version control |
+| **GitHub CLI** (`gh`) | 2+ | Authentication for releases (`pnpm release`) |
 
-### Installation rapide des prérequis
+### Quick prerequisite install
 
 ```bash
-# Node.js — via nvm (recommandé)
+# Node.js — via nvm (recommended)
 nvm install 20
 nvm use 20
 
-# pnpm — via corepack (intégré à Node.js)
+# pnpm — via corepack (built into Node.js)
 corepack enable
 corepack prepare pnpm@10 --activate
 
-# GitHub CLI — vérifier l'auth
+# GitHub CLI — check auth
 gh auth status
-# Si pas authentifié :
+# If not authenticated:
 gh auth login
 ```
 
 ---
 
-## Installation du projet
+## Project installation
 
 ```bash
-# 1. Cloner le repo
+# 1. Clone the repo
 git clone https://github.com/Mircooo/starter.git
 cd starter
 
-# 2. Setup automatique (installe, crée .env.local, valide)
+# 2. Automatic setup (installs, creates .env.local, validates)
 pnpm install && pnpm setup
 
-# 3. Remplir .env.local avec les vraies valeurs
+# 3. Fill in .env.local with your values
 
-# 4. Lancer le dev server
+# 4. Start the dev server
 pnpm dev
 # → http://localhost:5173
 ```
 
 ---
 
-## Commandes disponibles
+## Available commands
 
-| Commande | Ce qu'elle fait |
+| Command | What it does |
 |---|---|
-| `pnpm dev` | Lance le serveur de développement (HMR) |
-| `pnpm build` | Compile le site pour la production |
-| `pnpm preview` | Prévisualise le build de production |
-| `pnpm lint` | Vérifie les erreurs de code (ESLint) |
-| `pnpm lint:fix` | Corrige automatiquement ce qui peut l'être |
-| `pnpm format` | Formate tout le code avec Prettier |
-| `pnpm typecheck` | Vérifie les types TypeScript |
-| `pnpm test` | Lance les tests unitaires (Vitest) |
-| `pnpm test:watch` | Lance les tests en mode watch |
-| `pnpm validate` | Lint + typecheck + tests + build — **la commande de vérification finale** |
-| `pnpm init:project` | **Nouveau projet** : script interactif qui configure tout |
-| `pnpm setup` | Setup automatique : install + .env.local + validate |
-| `pnpm setup:update` | Pull les mises à jour du starter template |
-| `pnpm release` | Release interactive : bump + CHANGELOG + tag + GitHub Release |
-| `pnpm release:patch` | Force un bump patch (0.1.0 → 0.1.1) |
-| `pnpm release:minor` | Force un bump minor (0.1.0 → 0.2.0) |
-| `pnpm release:major` | Force un bump major (0.1.0 → 1.0.0) |
+| `pnpm dev` | Start the development server (HMR) |
+| `pnpm build` | Build the site for production |
+| `pnpm preview` | Preview the production build |
+| `pnpm lint` | Check code errors (ESLint) |
+| `pnpm lint:fix` | Auto-fix what can be fixed |
+| `pnpm format` | Format all code with Prettier |
+| `pnpm typecheck` | Check TypeScript types |
+| `pnpm test` | Run unit tests (Vitest) |
+| `pnpm test:watch` | Run tests in watch mode |
+| `pnpm validate` | Lint + typecheck + tests + build — **the final check** |
+| `pnpm init:project` | **New project**: interactive script that configures everything |
+| `pnpm setup` | Automatic setup: install + .env.local + validate |
+| `pnpm setup:update` | Pull updates from the starter template |
+| `pnpm release` | Interactive release: bump + CHANGELOG + tag + GitHub Release |
+| `pnpm release:patch` | Force a patch bump (0.1.0 → 0.1.1) |
+| `pnpm release:minor` | Force a minor bump (0.1.0 → 0.2.0) |
+| `pnpm release:major` | Force a major bump (0.1.0 → 1.0.0) |
 
 ---
 
-## Extensions VS Code recommandées
+## Recommended VS Code extensions
 
-A l'ouverture du projet, VS Code proposera d'installer les extensions recommandées
-(voir `.vscode/extensions.json`). Accepter pour avoir :
+When you open the project, VS Code will offer to install the recommended extensions
+(see `.vscode/extensions.json`). Accept to get:
 
-- **ESLint** — Erreurs en temps réel
+- **ESLint** — Real-time error detection
 - **Prettier** — Format on save
-- **Tailwind CSS IntelliSense** — Autocomplétion des classes
-- **GitLens** — Historique git enrichi
-- **Git Graph** — Visualisation de l'arbre de commits
-- **Conventional Commits** — Assistant pour écrire les messages de commit
-- **Error Lens** — Affiche les erreurs inline dans le code
-- **Path Intellisense** — Autocomplétion des chemins de fichiers
-- **DotENV** — Coloration des fichiers `.env`
+- **Tailwind CSS IntelliSense** — Class autocompletion
+- **GitLens** — Enhanced git history
+- **Git Graph** — Commit tree visualization
+- **Conventional Commits** — Commit message helper
+- **Error Lens** — Inline error display
+- **Path Intellisense** — File path autocompletion
+- **DotENV** — `.env` file syntax highlighting
 
 ---
 
-## Vérification que tout marche
+## Verify everything works
 
 ```bash
-# Après installation, ces commandes doivent toutes passer :
+# After installation, these should all pass:
 pnpm validate          # → lint OK, types OK, tests OK, build OK
-pnpm dev               # → serveur démarre sans erreur
+pnpm dev               # → server starts without errors
 ```
 
 ---
 
-## Nouveau projet client
+## New project from the starter
 
 ```bash
-# 1. Cloner le starter
-git clone https://github.com/Mircooo/starter.git nom-du-client
-cd nom-du-client
+# 1. Clone the starter
+git clone https://github.com/Mircooo/starter.git my-project
+cd my-project
 
-# 2. Lancer le script interactif (tout est automatisé)
+# 2. Run the interactive script (everything is automated)
 node scripts/init.js
 ```
 
-Le script `init.js` fait tout automatiquement :
-- Demande le nom du projet + nom d'affichage
-- Renomme le remote `origin` → `template` (garde le lien pour les updates)
-- Crée le repo GitHub privé + l'ajoute comme `origin` (via `gh`)
-- Met à jour `package.json` avec le nom du projet
-- Crée `.env.local` avec le nom d'affichage
-- Installe les dépendances
-- Valide (lint + typecheck + tests + build)
-- Commit initial + push
+The `init.js` script does everything automatically:
+- Asks for project name + display name
+- Renames the `origin` remote → `template` (keeps the link for updates)
+- Creates a GitHub repo + adds it as `origin` (via `gh`)
+- Updates `package.json` with the project name
+- Creates `.env.local` with the display name
+- Installs dependencies
+- Validates (lint + typecheck + tests + build)
+- Initial commit + push
 
-Ensuite, adapter les fichiers du client :
-- `.env.local` → Cloudinary cloud name, URL de prod
-- `src/config/site.ts` → contact, réseaux sociaux, SEO defaults
-- `src/index.css` → couleurs, fonts du client (bloc `@theme`)
-- `public/robots.txt` → URL du sitemap
-- `public/images/og-image.jpg` → image de partage réseaux sociaux
+Then customize for your project:
+- `.env.local` → Cloudinary cloud name, production URL
+- `src/config/site.ts` → contact info, social links, SEO defaults
+- `src/index.css` → client colors, fonts (`@theme` block)
+- `public/robots.txt` → sitemap URL
+- `public/images/og-image.jpg` → social media share image
 
-## Mettre à jour depuis le starter
+## Update from the starter
 
-Si le starter a été amélioré (nouvelle config, fix, upgrade), tu peux pull les changements :
+If the starter has been improved (new config, fixes, upgrades), you can pull the changes:
 
 ```bash
 pnpm setup:update
-# → Fetch + merge les mises à jour du starter template
-# → En cas de conflit, résous manuellement puis git commit
+# → Fetches + merges updates from the starter template
+# → If there are conflicts, resolve them manually then git commit
 ```
 
-Cela fonctionne parce que le remote `template` pointe vers le repo starter.
-Git merge intelligemment les changements du starter avec ton code client.
+This works because the `template` remote points to the starter repo.
+Git smartly merges the starter changes with your project code.

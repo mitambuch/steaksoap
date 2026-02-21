@@ -1,174 +1,174 @@
-# Architecture du projet
+# Project Architecture
 
-Ce document explique **pourquoi** chaque dossier existe et **quoi** y mettre.
+This document explains **why** each folder exists and **what** goes in it.
 
 ---
 
-## Vue d'ensemble
+## Overview
 
 ```
-cdn/
-├── .github/              → CI, templates PR/issues
+project/
+├── .github/              → CI, PR/issue templates
 ├── .husky/               → Git hooks (pre-commit, commit-msg)
-├── .vscode/              → Config éditeur (extensions, settings)
-├── docs/                 → Documentation projet
-├── public/               → Fichiers statiques servis tels quels
-│   ├── fonts/            → Polices servies directement (non importées)
-│   └── images/           → Images statiques (favicon, og-image…)
-├── src/                  → Code source
-│   ├── app/              → Racine de l'application
-│   ├── assets/           → Fichiers importés dans le code
-│   ├── components/       → Composants React réutilisables
-│   ├── config/           → Configuration applicative
-│   ├── constants/        → Valeurs constantes
+├── .vscode/              → Editor config (extensions, settings)
+├── docs/                 → Project documentation
+├── public/               → Static files served as-is
+│   ├── fonts/            → Fonts served directly (not imported)
+│   └── images/           → Static images (favicon, og-image…)
+├── src/                  → Source code
+│   ├── app/              → Application root
+│   ├── assets/           → Files imported in code
+│   ├── components/       → Reusable React components
+│   ├── config/           → Application config
+│   ├── constants/        → Constant values
 │   ├── context/          → React Contexts
-│   ├── data/             → Données statiques / fixtures
-│   ├── features/         → Features complexes autonomes
-│   ├── hooks/            → Custom hooks React
-│   ├── lib/              → Wrappers de librairies tierces
+│   ├── data/             → Static data / fixtures
+│   ├── features/         → Self-contained complex features
+│   ├── hooks/            → Custom React hooks
+│   ├── lib/              → Third-party library wrappers
 │   ├── pages/            → Pages (1 page = 1 route)
-│   ├── styles/           → Styles globaux
-│   ├── types/            → Types TypeScript partagés
-│   └── utils/            → Fonctions utilitaires pures
+│   ├── styles/           → Global styles
+│   ├── types/            → Shared TypeScript types
+│   └── utils/            → Pure utility functions
 └── [configs]             → vite, tsconfig, eslint, prettier, vercel…
 ```
 
 ---
 
-## Détail de chaque dossier
+## Folder details
 
 ### `public/`
 
-Fichiers servis **tels quels** par Vite. Pas d'import, pas de transformation.
-- `fonts/` → Polices `.woff2` référencées dans `@font-face` via URL absolue `/fonts/...`
+Files served **as-is** by Vite. No imports, no transforms.
+- `fonts/` → `.woff2` files referenced in `@font-face` via absolute URL `/fonts/...`
 - `images/` → `favicon.svg`, `og-image.png`, robots.txt...
 
-> **Règle** : si un fichier est **importé** dans le code → il va dans `src/assets/`.
-> Si il est **référencé par URL** → il va dans `public/`.
+> **Rule**: if a file is **imported** in code → it goes in `src/assets/`.
+> If it's **referenced by URL** → it goes in `public/`.
 
 ### `src/app/`
 
-Le coeur de l'application. Contient :
-- `App.tsx` → Point d'entrée : ErrorBoundary + BrowserRouter + Providers
-- `routes/index.tsx` → Configuration de toutes les routes (lazy loading)
-- `layouts/RootLayout.tsx` → Wrapper commun (Header + Outlet + Footer)
+The application core. Contains:
+- `App.tsx` → Entry point: ErrorBoundary + BrowserRouter + Providers
+- `routes/index.tsx` → All route configuration (lazy loading)
+- `layouts/RootLayout.tsx` → Shared wrapper (Header + Outlet + Footer)
 
 ### `src/assets/`
 
-Fichiers **importés** dans le code (Vite les transforme, les hash, les optimise) :
-- `fonts/` → Polices importées via `@font-face` dans `fonts.css`
-- `images/` → Images importées dans les composants via `import`
-- `icons/` → SVG importés comme composants React
+Files **imported** in code (Vite transforms, hashes, and optimizes them):
+- `fonts/` → Fonts imported via `@font-face` in `fonts.css`
+- `images/` → Images imported in components via `import`
+- `icons/` → SVGs imported as React components
 
 ### `src/components/`
 
-Composants **réutilisables** dans plusieurs pages :
-- `ui/` → Atomes : Button, Input, Badge, Card, Modal…
-- `layout/` → Structure de page : Header, Footer, Sidebar, Nav…
-- `features/` → Composants liés à une logique (ErrorBoundary, Toast…)
+**Reusable** components used across multiple pages:
+- `ui/` → Atoms: Button, Input, Badge, Card, Modal…
+- `layout/` → Page structure: Header, Footer, Sidebar, Nav…
+- `features/` → Logic-bound components (ErrorBoundary, Toast…)
 
-> **Règle** : un composant n'est ici que s'il est utilisé dans **2+ pages**.
-> S'il est spécifique à une feature, il va dans `src/features/<nom>/`.
+> **Rule**: a component belongs here only if it's used in **2+ pages**.
+> If it's specific to a feature, it goes in `src/features/<name>/`.
 
 ### `src/config/`
 
-Configuration applicative :
-- `cloudinary.ts` → Helper centralisé pour les URLs Cloudinary
+Application configuration:
+- `cloudinary.ts` → Centralized helper for Cloudinary URLs
 
 ### `src/constants/`
 
-Valeurs constantes utilisées partout :
-- `routes.ts` → Toutes les URLs de l'app. **Jamais** de strings en dur dans les composants.
+Constant values used throughout the app:
+- `routes.ts` → All app URLs. **Never** hardcode strings in components.
 
 ### `src/context/`
 
-React Contexts pour le state global : ThemeContext, AuthContext…
+React Contexts for global state: ThemeContext, AuthContext…
 
 ### `src/data/`
 
-Données statiques : JSON de contenu, fixtures, mock data.
-Utile pour les sites vitrines où le contenu est hardcodé (pas de CMS).
+Static data: content JSON, fixtures, mock data.
+Useful for showcase sites where content is hardcoded (no CMS).
 
 ### `src/features/`
 
-Pour les **features complexes** qui méritent leur propre dossier :
+For **complex features** that deserve their own folder:
 
 ```
-src/features/counter/        ← exemple inclus dans le starter
-├── Counter.tsx              → Composant principal
-├── useCounter.ts            → Hook spécifique
-├── types.ts                 → Types spécifiques
+src/features/counter/        ← example included in the starter
+├── Counter.tsx              → Main component
+├── useCounter.ts            → Feature-specific hook
+├── types.ts                 → Feature-specific types
 └── index.ts                 → Barrel export
 ```
 
-> **Règle** : une feature a son propre dossier quand elle a **3+ fichiers liés**.
-> L'exemple `counter/` est un modèle de référence — à supprimer quand tu démarres un vrai projet.
+> **Rule**: a feature gets its own folder when it has **3+ related files**.
+> The `counter/` example is a reference model — delete it when you start a real project.
 
 ### `src/hooks/`
 
-Custom hooks **partagés** entre plusieurs composants/pages :
+Custom hooks **shared** across multiple components/pages:
 `useMediaQuery`, `useScroll`, `useSEO`…
 
 ### `src/lib/`
 
-Wrappers et abstractions de librairies tierces : analytics, i18n, etc.
-Objectif : **isoler** les dépendances pour qu'un changement de lib ne touche qu'un fichier.
+Wrappers and abstractions for third-party libraries: analytics, i18n, etc.
+Goal: **isolate** dependencies so a library swap only touches one file.
 
 ### `src/pages/`
 
-**1 fichier = 1 page = 1 route.** Toujours lazy-loaded dans `routes/index.tsx`.
+**1 file = 1 page = 1 route.** Always lazy-loaded in `routes/index.tsx`.
 - `Home.tsx`, `About.tsx`, `Contact.tsx`, `NotFound.tsx`…
 
 ### `src/styles/`
 
-Styles globaux :
-- `fonts.css` → Déclarations `@font-face`
-- `animations.css` → Keyframes globaux
+Global styles:
+- `fonts.css` → `@font-face` declarations
+- `animations.css` → Global keyframes
 
-> **Règle** : les design tokens (couleurs, fonts) sont définis dans `@theme` de `src/index.css`. C'est la **source de vérité** du design system (Tailwind v4 CSS-first).
+> **Rule**: design tokens (colors, fonts) are defined in `@theme` inside `src/index.css`. That's the **source of truth** for the design system (Tailwind v4 CSS-first).
 
 ### `src/types/`
 
-Types TypeScript partagés : `common.ts` pour les types utilitaires, interfaces globales…
+Shared TypeScript types: `common.ts` for utility types, global interfaces…
 
 ### `src/utils/`
 
-Fonctions pures et utilitaires : `cn()` (class merge), formatters, parsers…
+Pure utility functions: `cn()` (class merge), formatters, parsers…
 
 ---
 
-## Conventions de nommage
+## Naming conventions
 
-| Type | Convention | Exemple |
+| Type | Convention | Example |
 |---|---|---|
-| Composant React | PascalCase | `HeroSection.tsx` |
-| Hook | camelCase avec `use` | `useMediaQuery.ts` |
-| Utilitaire | camelCase | `formatDate.ts` |
-| Constante | UPPER_SNAKE_CASE | `MAX_RETRIES` |
+| React component | PascalCase | `HeroSection.tsx` |
+| Hook | camelCase with `use` | `useMediaQuery.ts` |
+| Utility | camelCase | `formatDate.ts` |
+| Constant | UPPER_SNAKE_CASE | `MAX_RETRIES` |
 | Type/Interface | PascalCase | `CloudinaryImage` |
-| Fichier CSS | kebab-case | `animations.css` |
-| Dossier | kebab-case | `hero-section/` |
+| CSS file | kebab-case | `animations.css` |
+| Folder | kebab-case | `hero-section/` |
 
 ---
 
-## Ajouter une page
+## Adding a page
 
 ```bash
-# 1. Créer la page
+# 1. Create the page
 # src/pages/About.tsx
 
-# 2. Ajouter la route dans constants/routes.ts
+# 2. Add the route in constants/routes.ts
 # ABOUT: '/about',
 
-# 3. Ajouter dans src/app/routes/index.tsx
+# 3. Add in src/app/routes/index.tsx
 # const About = lazy(() => import('@pages/About'));
 # <Route path={ROUTES.ABOUT} element={<About />} />
 ```
 
-## Ajouter une feature complexe
+## Adding a complex feature
 
 ```bash
-mkdir -p src/features/ma-feature
-# Créer : index.ts, types.ts, MaFeature.tsx
-# + hooks/ si custom hooks nécessaires
+mkdir -p src/features/my-feature
+# Create: index.ts, types.ts, MyFeature.tsx
+# + hooks/ if custom hooks are needed
 ```

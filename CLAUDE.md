@@ -1,246 +1,245 @@
-# CLAUDE.md — Source de vérité pour les agents IA
+# CLAUDE.md — Source of truth for AI agents
 
-Ce fichier est lu automatiquement par Claude Code (et tout autre agent IA) à chaque session.
-C'est le **contrat** entre l'humain et l'IA. Chaque règle ici est non-négociable.
-
----
-
-## Contexte du projet
-
-Ce repo est un **boilerplate réutilisable** pour les sites vitrines clients de l'agence.
-Chaque nouveau client = un clone de ce repo + adaptation.
-
-- **Cible** : PME suisses (garages, hôtels, artisans…)
-- **Stack** : React 19 · TypeScript · Vite 7 · Tailwind CSS · pnpm
-- **SEO** : SPA-level (meta tags client-side, sitemap auto). Pour du SEO réel (crawlers, previews OG fiables), prévoir SSR ou prerender.
-- **Mobile-first** : 70%+ du trafic est mobile en Suisse
-
-> Ce projet a été construit en **vibe coding** avec des agents IA.
-> La structure est volontairement simple et documentée pour que n'importe qui puisse reprendre.
+This file is automatically read by Claude Code (and any other AI agent) at the start of every session.
+It is the **contract** between the human and the AI. Every rule here is non-negotiable.
 
 ---
 
-## Qui est Mirco (le boss)
+## Project context
 
-- Ne lit pas le code. Il lit les **explications, résumés, commentaires**.
-- Comprend la logique, pas la syntaxe. Il sait ce qu'il veut, pas comment l'écrire.
-- **Vibe code** : il donne la direction, l'IA exécute avec rigueur.
-- Est **exigeant**. Si c'est pas clean, c'est pas livré.
+This repo is a **reusable boilerplate** for client showcase websites.
+Each new project = a clone of this repo + customization.
 
-### Comment s'adresser à lui
+- **Stack**: React 19 · TypeScript · Vite 7 · Tailwind CSS · pnpm
+- **SEO**: SPA-level (client-side meta tags, auto sitemap). For real SEO (crawlers, reliable OG previews), plan for SSR or prerender.
+- **Mobile-first**: design for mobile screens first, then scale up
 
-- Comme à un **débutant intelligent**. Pas condescendant. Pas simpliste. Clair.
-- Expliquer le **POURQUOI** avant le COMMENT.
-- Utiliser des analogies concrètes quand c'est possible.
+> This project was built with **vibe coding** using AI agents.
+> The structure is intentionally simple and documented so anyone can pick it up.
 
-### Format de communication
+---
 
-**Quand tu fais une grosse action :**
+## Who is the project owner
+
+- Does not read code. Reads **explanations, summaries, comments**.
+- Understands logic, not syntax. Knows what they want, not how to write it.
+- **Vibe codes**: gives direction, the AI executes with rigor.
+- Is **demanding**. If it's not clean, it doesn't ship.
+
+### How to communicate
+
+- Like talking to a **smart beginner**. Not condescending. Not oversimplified. Clear.
+- Explain the **WHY** before the HOW.
+- Use concrete analogies when possible.
+
+### Communication format
+
+**When performing a major action:**
 ```
-ACTION : Je vais [décrire l'action]
-OÙ : [fichier(s) concerné(s)]
-POURQUOI : [raison en 1-2 phrases simples]
-RISQUE : [aucun / faible / moyen — et pourquoi]
+ACTION: I will [describe the action]
+WHERE: [affected file(s)]
+WHY: [reason in 1-2 simple sentences]
+RISK: [none / low / medium — and why]
 ```
 
-**Quand il y a un bug :**
+**When there's a bug:**
 ```
-ERREUR : [nom de l'erreur]
-EN SIMPLE : [explication accessible]
-SOLUTION : [ce que tu proposes]
-OÙ : [fichier et ligne]
+ERROR: [error name]
+IN SIMPLE TERMS: [accessible explanation]
+SOLUTION: [what you propose]
+WHERE: [file and line]
 ```
 
-**Quand tu installes un package :**
+**When installing a package:**
 ```
-NOUVEAU PACKAGE : [nom]
-C'EST QUOI : [explication en 1 phrase]
-STATS : [downloads/semaine, dernière mise à jour]
-POURQUOI : [pourquoi on en a besoin]
+NEW PACKAGE: [name]
+WHAT IT IS: [1-sentence explanation]
+STATS: [downloads/week, last updated]
+WHY: [why we need it]
 ```
 
 ---
 
-## Workflow standard — CHAQUE TÂCHE
+## Standard workflow — EVERY TASK
 
-Mirco décrit ce qu'il veut en langage naturel. **Tu gères TOUT le reste.**
-Il ne touche jamais à git, au terminal, aux fichiers de config, ni aux commandes.
-Tu es un développeur senior. Tu prends les décisions techniques, tu exécutes, tu livres.
+The owner describes what they want in plain language. **You handle EVERYTHING else.**
+They never touch git, the terminal, config files, or commands.
+You are a senior developer. You make technical decisions, execute, and deliver.
 
-### Étape par étape
+### Step by step
 
 ```
-1. COMPRENDRE    → Reformuler la demande en 1-2 phrases. Si c'est flou, demander.
-2. BRANCHE       → git checkout -b <type>/<scope> depuis main
-3. CODER         → Implémenter. Expliquer chaque décision importante.
-4. VALIDER       → pnpm validate → zéro erreur obligatoire
-5. COMMIT        → Messages conventionnels, atomiques, en anglais
-6. MERGE         → git checkout main && git merge --no-ff <branche>
+1. UNDERSTAND    → Rephrase the request in 1-2 sentences. If unclear, ask.
+2. BRANCH        → git checkout -b <type>/<scope> from main
+3. CODE          → Implement. Explain every important decision.
+4. VALIDATE      → pnpm validate → zero errors required
+5. COMMIT        → Conventional, atomic messages in English
+6. MERGE         → git checkout main && git merge --no-ff <branch>
 7. PUSH          → git push origin main
-8. NETTOYER      → git branch -d <branche>
-9. ÉVALUER       → Vérifier si une release est pertinente (voir règles ci-dessous)
-10. RÉSUMER      → Expliquer ce qui a été fait + état des commits non releasés
+8. CLEAN UP      → git branch -d <branch>
+9. EVALUATE      → Check if a release is warranted (see rules below)
+10. SUMMARIZE    → Explain what was done + state of unreleased commits
 ```
 
-### ⚠️ RÈGLE DE RELEASE : RELEASES PAR BATCH
+### RELEASE RULE: BATCH RELEASES
 
-**Les releases sont le journal de bord du projet. Chacune doit avoir du CONTENU.**
+**Releases are the project's logbook. Each one must have meaningful CONTENT.**
 
-Le CHANGELOG + les GitHub Releases = l'historique lisible du projet.
-Si Mirco revient dans 2 mois, il DOIT pouvoir lire l'historique complet
-et comprendre chaque évolution, chaque fix, chaque décision.
+The CHANGELOG + GitHub Releases = the readable history of the project.
+If the owner comes back in 2 months, they MUST be able to read the full history
+and understand every evolution, every fix, every decision.
 
-**Principe : PAS de release pour chaque petit changement.**
-Une release regroupe un **batch logique** de travail. Pas 1 commit = 1 release.
+**Principle: NO release for every small change.**
+A release groups a **logical batch** of work. Not 1 commit = 1 release.
 
-### Quand l'IA déclenche une release
+### When the AI triggers a release
 
-L'IA **évalue** à la fin de chaque tâche si une release est pertinente.
+The AI **evaluates** at the end of each task whether a release is warranted.
 
-**OUI, release maintenant :**
-- Au moins 1 `feat` + quelques `fix`/`chore` accumulés
-- Un batch de 5+ commits cohérents (même sans feat)
-- Un fix critique qui doit être livré immédiatement
-- Mirco dit explicitement "release"
-- Fin d'une grosse session de travail avec beaucoup de changements
+**YES, release now:**
+- At least 1 `feat` + a few accumulated `fix`/`chore`
+- A batch of 5+ coherent commits (even without feat)
+- A critical fix that must ship immediately
+- The owner explicitly says "release"
+- End of a major work session with many changes
 
-**NON, on accumule :**
-- 1 seul petit fix ou chore isolé
-- Un changement de docs mineur
-- Un refactor interne sans impact visible
-- Moins de 3 commits depuis la dernière release (sauf fix critique)
+**NO, accumulate:**
+- A single small fix or chore in isolation
+- A minor docs change
+- An internal refactor with no visible impact
+- Fewer than 3 commits since last release (unless critical fix)
 
-### Type de release (choix automatique par l'IA)
+### Release type (automatic choice by the AI)
 
-| Commits accumulés depuis dernière release | Type | Exemple |
+| Accumulated commits since last release | Type | Example |
 |---|---|---|
-| Que des `fix`, `docs`, `chore`, `refactor` | `patch` | 0.6.0 → 0.6.1 |
-| Au moins un `feat` | `minor` | 0.6.0 → 0.7.0 |
+| Only `fix`, `docs`, `chore`, `refactor` | `patch` | 0.6.0 → 0.6.1 |
+| At least one `feat` | `minor` | 0.6.0 → 0.7.0 |
 | Breaking change | `major` | 0.6.0 → 1.0.0 |
 
-### Workflow release (l'IA fait tout)
+### Release workflow (the AI handles everything)
 
 ```bash
-# 1. Vérifier les commits non releasés
+# 1. Check unreleased commits
 git log v$(node -p "require('./package.json').version")..HEAD --oneline
 
-# 2. Évaluer : assez de contenu pour une release ? (voir règles ci-dessus)
+# 2. Evaluate: enough content for a release? (see rules above)
 
-# 3. Si oui → analyser les types de commits → choisir patch/minor/major
+# 3. If yes → analyze commit types → choose patch/minor/major
 
-# 4. Lancer la release
+# 4. Run the release
 GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
 
-# 5. Confirmer à Mirco : "Release v0.7.0 publiée — 2 feat, 3 fix, 1 chore"
+# 5. Confirm to owner: "Release v0.7.0 published — 2 feat, 3 fix, 1 chore"
 ```
 
-### Fin de session — résumé obligatoire
+### End of session — mandatory summary
 
-À la fin de chaque session, l'IA doit **toujours** résumer l'état :
+At the end of every session, the AI must **always** summarize the state:
 ```
-RÉSUMÉ SESSION :
-- Commits depuis dernière release : X (lister les types)
-- Release faite : oui v0.7.0 / non — pas assez de contenu
-- Prochaine release estimée : quand Y sera terminé
+SESSION SUMMARY:
+- Commits since last release: X (list types)
+- Release done: yes v0.7.0 / no — not enough content
+- Next release estimated: when Y is finished
 ```
 
-**CHANGELOG — TOUS les types visibles :**
-- Le fichier `.release-it.json` définit quels types de commits apparaissent dans le CHANGELOG.
-- **JAMAIS** mettre `"hidden": true` sur un type de commit (sauf `merge`).
-- Chaque `feat`, `fix`, `chore`, `docs`, `refactor`, `style`, `test`, `perf` DOIT apparaître.
-- Si Mirco signale un CHANGELOG vide → c'est un bug de config, pas un problème de commit.
+**CHANGELOG — ALL types visible:**
+- The `.release-it.json` file defines which commit types appear in the CHANGELOG.
+- **NEVER** set `"hidden": true` on any commit type (except `merge`).
+- Every `feat`, `fix`, `chore`, `docs`, `refactor`, `style`, `test`, `perf` MUST appear.
+- If the owner reports an empty CHANGELOG → it's a config bug, not a commit issue.
 
-**Ceci s'applique à TOUS les projets basés sur ce starter. Sans exception.**
+**This applies to ALL projects based on this starter. No exceptions.**
 
-### Quand Mirco dit...
+### When the owner says...
 
-| Il dit | Tu fais |
+| They say | You do |
 |---|---|
-| "ajoute X" | Branche → code → validate → commit → merge → push → **évaluer release** |
-| "corrige X" | Branche → code → validate → commit → merge → push → **évaluer release** |
-| "commit" | `git add` + `git commit` avec le bon message conventionnel |
-| "push" | `git push origin main` (ou la branche active) |
-| "release" | Release immédiate avec le bon type |
-| "c'est quoi le status ?" | `git status` + `git log` depuis dernière release + résumé |
+| "add X" | Branch → code → validate → commit → merge → push → **evaluate release** |
+| "fix X" | Branch → code → validate → commit → merge → push → **evaluate release** |
+| "commit" | `git add` + `git commit` with the correct conventional message |
+| "push" | `git push origin main` (or the active branch) |
+| "release" | Immediate release with the correct type |
+| "what's the status?" | `git status` + `git log` since last release + summary |
 
-### Ce que Mirco ne fait JAMAIS
+### What the owner NEVER does
 
-- Taper des commandes git
-- Choisir un nom de branche
-- Écrire un message de commit
-- Décider du type de release
-- Résoudre des conflits de merge
-- Lancer des commandes de validation
+- Type git commands
+- Choose a branch name
+- Write a commit message
+- Decide the release type
+- Resolve merge conflicts
+- Run validation commands
 
-**Tu fais tout ça pour lui. Automatiquement. Sans demander.**
+**You do all of this for them. Automatically. Without asking.**
 
 ---
 
-## Stack technique
+## Tech stack
 
-| Outil | Rôle |
+| Tool | Role |
 |---|---|
 | **Vite 7** | Bundler + dev server |
 | **React 19** | UI |
-| **TypeScript** | Typage strict — `any` interdit |
-| **Tailwind CSS 4** | Styles (utility-first, config CSS-first via `@theme`) |
-| **React Router 7** | Routing SPA |
-| **Cloudinary** | CDN images (via `@config/cloudinary.ts`) |
+| **TypeScript** | Strict typing — `any` is forbidden |
+| **Tailwind CSS 4** | Styles (utility-first, CSS-first config via `@theme`) |
+| **React Router 7** | SPA routing |
+| **Cloudinary** | Image CDN (via `@config/cloudinary.ts`) |
 | **pnpm** | Package manager |
-| **ESLint** | Le correcteur d'orthographe du code (type-aware) |
-| **Prettier** | Le mec qui met le code au propre automatiquement |
-| **Husky** | Les hooks git (validation automatique) |
-| **commitlint** | Force le format des commits |
-| **lint-staged** | Lint uniquement les fichiers modifiés |
-| **release-it** | Releases automatisées + CHANGELOG |
-| **Vitest** | Tests unitaires + composants (jsdom + testing-library) |
-| **vite-plugin-sitemap** | Sitemap + robots.txt auto-générés au build (prod only) |
+| **ESLint** | Code spell-checker (type-aware) |
+| **Prettier** | Auto-formatter |
+| **Husky** | Git hooks (automatic validation) |
+| **commitlint** | Enforces commit message format |
+| **lint-staged** | Lints only modified files |
+| **release-it** | Automated releases + CHANGELOG |
+| **Vitest** | Unit + component tests (jsdom + testing-library) |
+| **vite-plugin-sitemap** | Auto-generated sitemap + robots.txt at build (prod only) |
 
 ---
 
 ## Architecture
 
-Voir [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) pour le détail complet.
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for full details.
 
 ```
 src/
 ├── app/              → App root, routes, layouts
-├── assets/           → Fonts, images, icons (importés dans le code)
+├── assets/           → Fonts, images, icons (imported in code)
 ├── components/
-│   ├── ui/           → Atomes réutilisables (Button, Input, Card…)
+│   ├── ui/           → Reusable atoms (Button, Input, Card…)
 │   ├── layout/       → Header, Footer, Sidebar, Nav…
-│   └── features/     → Composants feature (ErrorBoundary…)
-├── config/           → Config app (Cloudinary, SEO…)
-├── constants/        → Routes, valeurs constantes
+│   └── features/     → Feature components (ErrorBoundary…)
+├── config/           → App config (Cloudinary, SEO…)
+├── constants/        → Routes, constant values
 ├── context/          → React contexts (Theme, Auth…)
-├── data/             → Données statiques / fixtures
-├── features/         → Features complexes (dossier par feature)
+├── data/             → Static data / fixtures
+├── features/         → Complex features (one folder per feature)
 ├── hooks/            → Custom hooks (useX.ts)
-├── lib/              → Wrappers tiers (analytics, i18n…)
-├── pages/            → Une page = une route = un fichier
-├── styles/           → Fonts, animations (tokens dans @theme de index.css)
-├── types/            → Types TypeScript partagés
-└── utils/            → Fonctions pures (cn, format, parse…)
+├── lib/              → Third-party wrappers (analytics, i18n…)
+├── pages/            → One page = one route = one file
+├── styles/           → Fonts, animations (tokens in @theme of index.css)
+├── types/            → Shared TypeScript types
+└── utils/            → Pure functions (cn, format, parse…)
 ```
 
-**Path aliases** — jamais de `../../..`. Toujours `@components/`, `@hooks/`, etc.
+**Path aliases** — never `../../..`. Always `@components/`, `@hooks/`, etc.
 
 ---
 
-## Sécurité — non-négociable
+## Security — non-negotiable
 
-- **Jamais** exposer de clés API, tokens, ou secrets dans le code → `.env` uniquement
-- **Jamais** installer un package sans vérifier : downloads, dernière mise à jour, dépendances, issues
-- Privilégier les **solutions natives** avant d'ajouter une dépendance
-- Chaque nouvelle dépendance doit être **justifiée** dans le commit ET expliquée à Mirco
-- **Fichiers sensibles** : `.env`, `vite.config.ts`, `package.json`, `eslint.config.js` → pas touche sans explication
+- **Never** expose API keys, tokens, or secrets in code → `.env` only
+- **Never** install a package without checking: downloads, last update, dependencies, issues
+- Prefer **native solutions** before adding a dependency
+- Every new dependency must be **justified** in the commit AND explained to the owner
+- **Sensitive files**: `.env`, `vite.config.ts`, `package.json`, `eslint.config.js` → don't touch without explanation
 
 ---
 
 ## Branches
 
-| Type | Format | Exemple | Depuis |
-|------|--------|---------|--------|
+| Type | Format | Example | From |
+|------|--------|---------|------|
 | Feature | `feat/<scope>` | `feat/gallery-grid` | `main` |
 | Fix | `fix/<scope>` | `fix/cloudinary-url` | `main` |
 | Refactor | `refactor/<scope>` | `refactor/routing` | `main` |
@@ -248,69 +247,69 @@ src/
 | Docs | `docs/<scope>` | `docs/readme` | `main` |
 | Style | `style/<scope>` | `style/dark-mode` | `main` |
 
-**Règles :**
-- `main` est protégée — on ne commit **jamais** directement dessus.
-- Toujours créer une branche avant de travailler.
-- Une branche = un sujet. Ne pas mélanger plusieurs features.
-- Supprimer la branche après merge.
+**Rules:**
+- `main` is protected — **never** commit directly to it.
+- Always create a branch before working.
+- One branch = one topic. Don't mix multiple features.
+- Delete the branch after merge.
 
 ---
 
 ## Commits — Conventional Commits
 
-Format strict :
+Strict format:
 
 ```
-<type>(<scope>): <description courte>
+<type>(<scope>): <short description>
 
-<body optionnel — le "pourquoi", pas le "quoi">
+<optional body — the "why", not the "what">
 ```
 
-### Types autorisés
+### Allowed types
 
-| Type | Quand |
-|------|-------|
-| `feat` | Nouvelle fonctionnalité visible |
-| `fix` | Correction de bug |
-| `refactor` | Restructuration sans changement de comportement |
-| `style` | CSS, UI, formatting (pas de logique) |
+| Type | When |
+|------|------|
+| `feat` | New visible feature |
+| `fix` | Bug fix |
+| `refactor` | Restructuring with no behavior change |
+| `style` | CSS, UI, formatting (no logic) |
 | `chore` | Config, deps, CI, tooling |
-| `docs` | Documentation uniquement |
-| `perf` | Amélioration de performance |
-| `test` | Ajout ou modification de tests |
+| `docs` | Documentation only |
+| `perf` | Performance improvement |
+| `test` | Adding or modifying tests |
 | `merge` | Merge commits (`merge(main): ...`) |
 
-### Règles
+### Rules
 
-- **Atomiques** : 1 commit = 1 changement logique
-- **En anglais** — commitlint valide automatiquement
-- **Présent impératif** : "add", "fix", "remove" — pas "added", "fixes"
-- **Max 72 caractères** pour la première ligne
-- **Minuscules uniquement**, pas de point final
-
----
-
-## Règles de timing
-
-- **Branche** : Avant toute modification. Annoncer : "Je te mets sur `feat/hero-section`."
-- **Commit** : Dès qu'un changement logique est terminé et fonctionnel. Pas d'accumulation.
-- **Push** : Après chaque session ou tâche terminée.
-- **Merge** : Quand la branche est terminée + `pnpm validate` passe. Toujours `--no-ff`.
+- **Atomic**: 1 commit = 1 logical change
+- **In English** — commitlint validates automatically
+- **Present imperative**: "add", "fix", "remove" — not "added", "fixes"
+- **Max 72 characters** for the first line
+- **Lowercase only**, no trailing period
 
 ---
 
-## Hooks automatiques (Husky)
+## Timing rules
 
-Chaque `git commit` déclenche automatiquement :
+- **Branch**: Before any modification. Announce: "Switching to `feat/hero-section`."
+- **Commit**: As soon as a logical change is done and working. No accumulation.
+- **Push**: After every session or completed task.
+- **Merge**: When the branch is done + `pnpm validate` passes. Always `--no-ff`.
+
+---
+
+## Automatic hooks (Husky)
+
+Every `git commit` automatically triggers:
 
 ### 1. `pre-commit` → lint-staged
-- `*.{ts,tsx}` : eslint --fix + prettier --write
-- `*.css` : prettier --write
-- Erreur ESLint non auto-fixable → commit **BLOQUÉ**
+- `*.{ts,tsx}`: eslint --fix + prettier --write
+- `*.css`: prettier --write
+- Non-auto-fixable ESLint error → commit **BLOCKED**
 
 ### 2. `commit-msg` → commitlint
-- Valide le format Conventional Commits
-- `wip` → BLOQUÉ · `fix stuff` → BLOQUÉ · `fix(router): handle 404` → OK
+- Validates Conventional Commits format
+- `wip` → BLOCKED · `fix stuff` → BLOCKED · `fix(router): handle 404` → OK
 
 ---
 
@@ -319,117 +318,116 @@ Chaque `git commit` déclenche automatiquement :
 ```
 v MAJOR . MINOR . PATCH
   │       │       └── fix: bug fixes
-  │       └────────── feat: nouvelles fonctionnalités
+  │       └────────── feat: new features
   └────────────────── BREAKING CHANGE
 ```
 
-**Pre-1.0** : `0.y.z` = développement, rien n'est stable.
+**Pre-1.0**: `0.y.z` = development, nothing is stable.
 
 ```bash
-pnpm release          # release interactive (bump auto)
+pnpm release          # interactive release (auto bump)
 pnpm release:patch    # 0.1.0 → 0.1.1
 pnpm release:minor    # 0.1.0 → 0.2.0
 pnpm release:major    # 0.1.0 → 1.0.0
 ```
 
-`pnpm release` fait tout automatiquement : validate → bump → CHANGELOG → tag → push → GitHub Release.
+`pnpm release` handles everything automatically: validate → bump → CHANGELOG → tag → push → GitHub Release.
 
 ---
 
 ## PR (Pull Requests)
 
-- Titre court (<70 chars) : `type(scope): description`
-- Body : `## Summary` + `## Test plan`
-- Toujours link les issues reliées
+- Short title (<70 chars): `type(scope): description`
+- Body: `## Summary` + `## Test plan`
+- Always link related issues
 
 ---
 
 ## Documentation
 
-Fichiers de documentation obligatoires :
-- [README.md](README.md) — Vue d'ensemble, quick start
-- [CLAUDE.md](CLAUDE.md) — Ce fichier. Instructions IA.
-- [CHANGELOG.md](CHANGELOG.md) — Log de tous les changements
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Structure des dossiers
-- [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md) — Chaque dépendance justifiée
-- [docs/SETUP.md](docs/SETUP.md) — Guide d'installation pas à pas
+Required documentation files:
+- [README.md](README.md) — Overview, quick start
+- [CLAUDE.md](CLAUDE.md) — This file. AI instructions.
+- [CHANGELOG.md](CHANGELOG.md) — Log of all changes
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — Folder structure
+- [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md) — Every dependency justified
+- [docs/SETUP.md](docs/SETUP.md) — Step-by-step setup guide
 
-### Commentaires dans le code
+### Code comments
 
-- Chaque composant : un bloc en haut qui explique ce qu'il fait
-- Chaque fonction utilitaire : ce qu'elle prend et ce qu'elle retourne
-- Chaque "truc bizarre" : si c'est contre-intuitif, expliquer pourquoi
-
----
-
-## Responsive — OBLIGATOIRE
-
-**Chaque composant, chaque page, chaque effet doit fonctionner sur TOUS les écrans.**
-
-- **Mobile-first** : coder d'abord pour mobile, puis `sm:`, `md:`, `lg:`
-- **Breakpoints Tailwind** : `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
-- Si un effet/layout ne fonctionne pas sur mobile → **ne pas le livrer**
-- Tester mentalement : mobile (375px) → tablette (768px) → desktop (1440px)
-- Touch targets : minimum 44×44px sur mobile
-- Texte : jamais plus petit que `text-sm` (14px) sur mobile
-- Pas de scroll horizontal non voulu
-
-**Sauf si Mirco dit explicitement "que desktop"**, tout est responsive. Sans exception.
+- Every component: a block at the top explaining what it does
+- Every utility function: what it takes and what it returns
+- Every "weird thing": if it's counter-intuitive, explain why
 
 ---
 
-## Performance — standards minimum
+## Responsive — MANDATORY
 
-- **Lighthouse** : 90+ sur les 4 catégories
-- Pas de package > 50kb sans justification
-- Images : WebP/AVIF par défaut via Cloudinary
-- Lazy loading sur tout ce qui est sous le fold
-- Pas de CSS/JS inutilisé dans le bundle final
+**Every component, every page, every effect must work on ALL screens.**
 
----
+- **Mobile-first**: code for mobile first, then `sm:`, `md:`, `lg:`
+- **Tailwind breakpoints**: `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
+- If an effect/layout doesn't work on mobile → **don't ship it**
+- Mentally test: mobile (375px) → tablet (768px) → desktop (1440px)
+- Touch targets: minimum 44×44px on mobile
+- Text: never smaller than `text-sm` (14px) on mobile
+- No unintended horizontal scroll
 
-## Checklist avant merge (automatique)
-
-Tu vérifies tout ça toi-même AVANT de merge. Mirco ne check rien.
-
-1. `pnpm validate` → zéro erreur
-2. Aucun `console.log` oublié
-3. Pas de code mort / commenté inutilement
-4. Commits propres, atomiques, conventionnels
-5. Mobile-first respecté (si du CSS/UI a changé)
+**Unless the owner explicitly says "desktop only"**, everything is responsive. No exceptions.
 
 ---
 
-## Quand Mirco signale un bug
+## Performance — minimum standards
 
-**Corriger le bug ne suffit PAS.** Tu dois aussi :
-
-1. **Corriger** le problème immédiatement
-2. **Comprendre** pourquoi c'est arrivé (quelle règle manquait ?)
-3. **Ajouter une règle** dans CLAUDE.md pour que ça n'arrive plus JAMAIS
-4. **Documenter** : commit avec explication claire du fix + de la nouvelle règle
-
-> Si Mirco a dû te signaler un problème, c'est que la prévention a échoué.
-> L'objectif : que chaque erreur n'arrive qu'UNE SEULE FOIS.
+- **Lighthouse**: 90+ on all 4 categories
+- No package > 50kb without justification
+- Images: WebP/AVIF by default via Cloudinary
+- Lazy loading on everything below the fold
+- No unused CSS/JS in the final bundle
 
 ---
 
-## Règles non-négociables
+## Pre-merge checklist (automatic)
 
-### JAMAIS
+You verify all of this yourself BEFORE merging. The owner checks nothing.
 
-- Agir sans expliquer à Mirco ce que tu fais et pourquoi
-- Supposer que Mirco sait comment fonctionne le code
-- Installer un package sans justification + explication
-- Utiliser `--force`, `--no-verify`, ou `reset --hard` sans demander
-- Laisser du code mort, des `TODO` non résolus, ou des warnings ignorés
-- Écrire de la doc en anglais (sauf code technique : commits, noms de variables)
+1. `pnpm validate` → zero errors
+2. No leftover `console.log`
+3. No dead code / unnecessarily commented code
+4. Clean, atomic, conventional commits
+5. Mobile-first respected (if CSS/UI changed)
 
-### TOUJOURS
+---
 
-- Vérifier `git status` et la branche active avant de coder
-- Annoncer ton plan avant de l'exécuter
-- Expliquer en termes simples (Mirco est intelligent mais ne code pas)
-- `pnpm validate` avant de merge/push
-- Séparer les commits par sujet, même dans la même session
-- Penser au prochain — un dev humain ou une autre IA doit comprendre en 5 minutes
+## When the owner reports a bug
+
+**Fixing the bug is NOT enough.** You must also:
+
+1. **Fix** the problem immediately
+2. **Understand** why it happened (what rule was missing?)
+3. **Add a rule** in CLAUDE.md so it NEVER happens again
+4. **Document**: commit with clear explanation of the fix + the new rule
+
+> If the owner had to report a problem, prevention has failed.
+> The goal: every mistake only happens ONCE.
+
+---
+
+## Non-negotiable rules
+
+### NEVER
+
+- Act without explaining what you're doing and why
+- Assume the owner knows how the code works
+- Install a package without justification + explanation
+- Use `--force`, `--no-verify`, or `reset --hard` without asking
+- Leave dead code, unresolved `TODO`s, or ignored warnings
+
+### ALWAYS
+
+- Check `git status` and the active branch before coding
+- Announce your plan before executing it
+- Explain in simple terms (the owner is smart but doesn't code)
+- `pnpm validate` before merge/push
+- Separate commits by topic, even within the same session
+- Think about the next person — a human dev or another AI must understand in 5 minutes

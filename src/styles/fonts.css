@@ -1,15 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════
-   FONTS — déclaration des polices locales
-   Placer les fichiers .woff2 dans /public/fonts/
+   FONTS — local font declarations
+   Place .woff2 files in /public/fonts/
    ═══════════════════════════════════════════════════════════════
 
-   Convention de nommage :
+   Naming convention:
    - Regular   → YourFont-Regular.woff2
    - Medium    → YourFont-Medium.woff2
    - Bold      → YourFont-Bold.woff2
    - Italic    → YourFont-Italic.woff2
 
-   Template à dupliquer pour chaque graisse :
+   Duplicate this template for each weight:
 */
 
 /*

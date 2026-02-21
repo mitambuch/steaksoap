@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════
-   ROUTES — source de vérité pour toutes les URLs
-   Toujours utiliser ces constantes, jamais des strings en dur.
+   ROUTES — single source of truth for all URLs
+   Always use these constants, never hardcode strings.
    ═══════════════════════════════════════════════════════════════ */
 
 export const ROUTES = {
   HOME: '/',
-  // Ajouter les routes au fil du projet :
+  // Add routes as the project grows:
   // ABOUT:   '/about',
   // PROJECT: '/projects/:slug',
   NOT_FOUND: '*',
