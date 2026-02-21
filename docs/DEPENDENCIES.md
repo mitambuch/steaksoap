@@ -66,6 +66,7 @@ Nothing is installed "just in case". Each package has a reason to exist.
 | `@testing-library/react` | ^16.3.2 | Utilities for testing React components (render, screen, queries) |
 | `@testing-library/jest-dom` | ^6.9.1 | Extra DOM matchers (toBeVisible, toHaveTextContent…) |
 | `@testing-library/user-event` | ^14.6.1 | Simulates user interactions (click, type, hover…) |
+| `vitest-axe` | ^0.1.0 | Accessibility testing with axe-core integration for Vitest |
 
 ### SEO
 

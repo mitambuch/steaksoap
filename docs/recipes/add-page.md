@@ -17,7 +17,7 @@ This creates the page, route, and test automatically.
 ```ts
 export const ROUTES = {
   HOME: '/',
-  SHOWCASE: '/showcase',
+  PLAYGROUND: '/playground',
   ABOUT: '/about', // ← add this
   NOT_FOUND: '*',
 } as const;
@@ -27,7 +27,7 @@ export const ROUTES = {
 
 ```tsx
 import { Container } from '@components/layout/Container';
-import { SeoHead } from '@components/layout/SeoHead';
+import { SeoHead } from '@components/features/SeoHead';
 
 export default function About() {
   return (
@@ -80,7 +80,7 @@ describe('About', () => {
 ```ts
 navItems: [
   { label: 'Home', href: '/' },
-  { label: 'Showcase', href: '/showcase' },
+  { label: 'Playground', href: '/playground' },
   { label: 'About', href: '/about' }, // ← add this
 ],
 ```

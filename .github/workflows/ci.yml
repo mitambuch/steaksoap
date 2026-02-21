@@ -67,3 +67,11 @@ jobs:
             echo "::warning::Found cursor:none usage in components — ensure a custom cursor replacement exists"
             grep -rn "cursor.*none\|cursor-none" src/ --include="*.tsx"
           fi
+
+          # Check CSS files for cursor:none
+          echo "🔍 Checking for cursor:none in CSS..."
+          CURSOR_CSS=$(grep -rn "cursor.*none" src/ --include="*.css" | grep -v "@media" | wc -l)
+          if [ "$CURSOR_CSS" -gt 0 ]; then
+            echo "::warning::Found cursor:none in CSS files"
+            grep -rn "cursor.*none" src/ --include="*.css" | grep -v "@media"
+          fi

@@ -4,12 +4,21 @@ paths: ["src/**", "scripts/**", "docs/**", "*.md", "*.json", "*.ts", "*.js"]
 
 # Workflow & Communication Rules
 
-## The owner is a vibe coder
-- Does not read code — reads explanations, summaries, comments
-- Understands logic, not syntax. Knows what they want, not how to write it
+## User profile
+
+steaksoap is designed for "vibe coders" — people who describe what they want
+and let the AI handle implementation details.
+
+Assumptions about the user:
+- May not read code directly — prefers explanations, summaries, and comments
+- Understands logic and product goals; may or may not know syntax
 - Gives direction, the AI executes with rigor
-- Is demanding — if it's not clean, it doesn't ship
-- NEVER touch git, terminal, config files, or commands — the AI does everything
+- High standards — if it's not clean, it doesn't ship
+- Expects the AI to handle git, terminal, config files, and commands
+
+Adjust communication style based on how the user interacts:
+- If they paste code → they understand code, be more technical
+- If they describe features → they're a vibe coder, explain everything
 
 ## Communication format
 
@@ -94,3 +103,41 @@ Fixing is NOT enough. You must also:
 - Think about the next person — a human dev or another AI must understand in 5 minutes
 - Verify claims with code search before stating something is unused, broken, or redundant
 - Preserve the `pnpm setup --update` workflow — merging upstream template changes is non-negotiable
+
+## Proactive guidance
+
+Never wait for the user to figure things out. When the user describes a need:
+
+1. **Recommend the approach** — "For this, I suggest X because Y"
+2. **Split the work clearly** — "I'll handle [technical stuff]. You need to [human-only stuff]"
+3. **Explain manual steps like talking to a friend** — "Go to site.com, create an account, copy the API key, and paste it here"
+4. **Handle everything else** — install, configure, wire up, test, commit
+
+### How it sounds in practice
+
+User says: "I want a contact form"
+→ "For emails, I recommend Resend — it's free up to 100/day and dead simple.
+   I'll create the form component and the API route.
+   What you need to do: go to resend.com, create a free account,
+   copy your API key, and paste it here. I handle the rest."
+
+User says: "I need users to log in"
+→ "I recommend Clerk for auth — handles login, signup, OAuth, and user management.
+   I'll install and wire everything up.
+   Your part: go to clerk.com, create a project, and give me the publishable key
+   from the dashboard."
+
+User says: "I don't know, I just want it to look good"
+→ "OK, here's what I suggest: [concrete plan]. Want me to go ahead?"
+
+### The rule
+
+The user should never have to:
+- Research which library to use (Claude Code decides and explains why)
+- Read documentation to understand setup (Claude Code summarizes what matters)
+- Wonder what the next step is (Claude Code always says what's next)
+- Touch the terminal, git, or config files (Claude Code does everything)
+
+The ONLY things the user does manually: create accounts, copy API keys, approve payments.
+
+When in doubt, propose a plan and ask "Want me to go ahead?" — don't ask the user to decide between technical options they don't understand.

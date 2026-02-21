@@ -64,10 +64,9 @@ async function runInit() {
   try {
     clack = await import('@clack/prompts');
   } catch {
-    console.error(
-      '\n  ✗ Dependencies not installed. Run pnpm install first.\n',
-    );
-    process.exit(1);
+    console.log('\n  Installing dependencies first...\n');
+    runVisible('pnpm install');
+    clack = await import('@clack/prompts');
   }
 
   clack.intro('steaksoap — New Project');
@@ -153,8 +152,7 @@ async function runInit() {
       const originUrl = run('git remote get-url origin');
       const isTemplateOrigin =
         originUrl.includes('Mircooo/starter') ||
-        originUrl.includes('Mircooo/steaksoap') ||
-        originUrl.includes('steaksoap');
+        originUrl.includes('Mircooo/steaksoap');
 
       if (isTemplateOrigin) {
         // Direct clone — rename origin to template so user can add their own origin
@@ -242,6 +240,7 @@ async function runInit() {
     'src/components/ui/Noise.tsx',
     'src/components/ui/Section.tsx',
     'src/hooks/useInView.ts',
+    'src/pages/Playground.tsx',
   ];
   for (const file of filesToRemove) {
     const p = resolve(root, file);
@@ -253,6 +252,51 @@ async function runInit() {
   for (const dir of dirsToRemove) {
     const p = resolve(root, dir);
     if (existsSync(p)) rmSync(p, { recursive: true });
+  }
+
+  // Remove cursor-hidden CSS utility (showcase-only, a11y concern)
+  const indexCssPath = resolve(root, 'src/index.css');
+  if (existsSync(indexCssPath)) {
+    let css = readFileSync(indexCssPath, 'utf-8');
+    css = css.replace(
+      /\n?\/\* a11y: cursor-hidden.*\*\/\n\.cursor-hidden,\n\.cursor-hidden \* \{\n\s*cursor: none !important;\n\}\n/,
+      '\n',
+    );
+    writeFileSync(indexCssPath, css);
+  }
+
+  // Remove Playground route and import from routes/index.tsx
+  const routesPath = resolve(root, 'src/app/routes/index.tsx');
+  if (existsSync(routesPath)) {
+    let routes = readFileSync(routesPath, 'utf-8');
+    routes = routes.replace(
+      /const Playground = lazy\(\(\) => import\('@pages\/Playground'\)\);\n/,
+      '',
+    );
+    routes = routes.replace(
+      /\s*<Route path=\{ROUTES\.PLAYGROUND\} element=\{<Playground \/>\} \/>\n/,
+      '\n',
+    );
+    writeFileSync(routesPath, routes);
+  }
+
+  // Remove PLAYGROUND from route constants
+  const routeConstsPath = resolve(root, 'src/constants/routes.ts');
+  if (existsSync(routeConstsPath)) {
+    let consts = readFileSync(routeConstsPath, 'utf-8');
+    consts = consts.replace(/\s*PLAYGROUND:\s*'\/playground',?\n/, '\n');
+    writeFileSync(routeConstsPath, consts);
+  }
+
+  // Remove Playground nav item from site config
+  const siteConfigPath = resolve(root, 'src/config/site.ts');
+  if (existsSync(siteConfigPath)) {
+    let siteTs = readFileSync(siteConfigPath, 'utf-8');
+    siteTs = siteTs.replace(
+      /\s*\{\s*label:\s*'Playground',\s*href:\s*'\/playground'\s*\},?\n/,
+      '\n',
+    );
+    writeFileSync(siteConfigPath, siteTs);
   }
 
   s.stop('Project configured');

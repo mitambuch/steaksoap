@@ -5,7 +5,7 @@
 
 export const ROUTES = {
   HOME: '/',
-  SHOWCASE: '/showcase',
+  PLAYGROUND: '/playground',
   // Add routes as the project grows:
   // ABOUT:   '/about',
   // PROJECT: '/projects/:slug',

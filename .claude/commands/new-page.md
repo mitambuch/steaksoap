@@ -11,7 +11,7 @@ $ARGUMENTS — PascalCase page name. Examples: "About", "Pricing", "Contact"
 
 ```tsx
 import { Container } from '@components/layout/Container';
-import { SeoHead } from '@components/layout/SeoHead';
+import { SeoHead } from '@components/features/SeoHead';
 
 /** $ARGUMENTS page. */
 export const $ARGUMENTS = () => {
