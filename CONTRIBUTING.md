@@ -110,7 +110,7 @@ constants/     → routes and global constants
 | Hooks | camelCase + use | `useScroll.ts`, `useMediaQuery.ts` |
 | Utils | camelCase | `cn.ts`, `formatDate.ts` |
 | Constants | UPPER_SNAKE | `ROUTES`, `BREAKPOINTS` |
-| Types | PascalCase | `NavItem`, `CloudinaryImage` |
+| Types | PascalCase | `NavItem`, `WithClassName` |
 | CSS vars | kebab-case | `--color-accent`, `--font-sans` |
 
 ---
@@ -122,7 +122,7 @@ This is the **source of truth** for the design system (Tailwind v4 CSS-first).
 
 ## Images
 
-Use Cloudinary for all images. Use `cloudinary.url()` from `@config/cloudinary`.
+Cloudinary is optional. When configured (via `VITE_CLOUDINARY_CLOUD_NAME` in `.env.local`), use `cloudinary.url()` from `@config/cloudinary`. Otherwise, use standard `<img>` tags.
 
 ## Fonts
 
