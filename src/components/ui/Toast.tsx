@@ -9,6 +9,8 @@
 // ═══════════════════════════════════════════════════
 
 import { cn } from '@utils/cn';
+import { AlertTriangle, Check, Info, X } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 import type { ToastData } from '../../hooks/useToast';
 import { useToast } from '../../hooks/useToast';
@@ -20,11 +22,12 @@ const variantStyles: Record<ToastData['variant'], string> = {
   info: 'border-info/30 bg-info/10 text-info',
 };
 
-const variantIcons: Record<ToastData['variant'], string> = {
-  success: '✓',
-  error: '✕',
-  warning: '!',
-  info: 'i',
+// WHY: strokeWidth 1.5 matches classe2 elegance — lighter than default 2
+const variantIcons: Record<ToastData['variant'], ReactNode> = {
+  success: <Check size={16} strokeWidth={1.5} />,
+  error: <X size={16} strokeWidth={1.5} />,
+  warning: <AlertTriangle size={16} strokeWidth={1.5} />,
+  info: <Info size={16} strokeWidth={1.5} />,
 };
 
 interface ToastItemProps {
@@ -42,8 +45,8 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
         variantStyles[toast.variant],
       )}
     >
-      <span className="mt-0.5 font-mono text-sm font-bold" aria-hidden="true">
-        {variantIcons[toast.variant]}
+      <span className="mt-0.5 shrink-0" aria-hidden="true">
+        {toast.icon ?? variantIcons[toast.variant]}
       </span>
       <div className="min-w-0 flex-1">
         {toast.title && <p className="text-sm font-semibold">{toast.title}</p>}
@@ -51,10 +54,10 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
       </div>
       <button
         onClick={() => onDismiss(toast.id)}
-        className="mt-0.5 shrink-0 font-mono text-xs opacity-50 transition-opacity hover:opacity-100"
+        className="mt-0.5 shrink-0 opacity-50 transition-opacity hover:opacity-100"
         aria-label="Dismiss notification"
       >
-        ✕
+        <X size={14} strokeWidth={1.5} />
       </button>
     </div>
   );

@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/Tabs';
 import { Textarea } from '@components/ui/Textarea';
 import { Tooltip } from '@components/ui/Tooltip';
 import { useToast } from '@hooks/useToast';
+import { ArrowRight, Check, Copy, Heart, Moon, Plus, Search, Sun, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
 
@@ -66,6 +67,17 @@ function Swatch({
           {dark} / {light}
         </p>
       </div>
+    </div>
+  );
+}
+
+/* ─── Icon Showcase Item ──────────────────────────────────────── */
+
+function IconItem({ name, children }: { name: string; children: ReactNode }) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="text-fg">{children}</div>
+      <span className="text-muted font-mono text-[10px] tracking-widest uppercase">{name}</span>
     </div>
   );
 }
@@ -180,16 +192,7 @@ export default function Playground() {
                   <Button size="md">medium</Button>
                   <Button size="lg">large</Button>
                   <Button size="icon" aria-label="icon button">
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
+                    <Plus size={20} strokeWidth={1.5} aria-hidden="true" />
                   </Button>
                 </div>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
@@ -395,8 +398,100 @@ export default function Playground() {
             </div>
           </Section>
 
-          {/* 05 — Tabs */}
-          <Section number="05" title="tabs">
+          {/* 05 — Icons */}
+          <Section number="05" title="icons">
+            <div className="space-y-8">
+              {/* Common icons */}
+              <div>
+                <span className="text-muted mb-4 block font-mono text-[10px] tracking-widest uppercase">
+                  common icons — lucide react
+                </span>
+                <div className="flex flex-wrap items-end gap-8">
+                  <IconItem name="search">
+                    <Search size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="arrow-right">
+                    <ArrowRight size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="check">
+                    <Check size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="copy">
+                    <Copy size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="zap">
+                    <Zap size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="heart">
+                    <Heart size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="sun">
+                    <Sun size={18} strokeWidth={1.5} />
+                  </IconItem>
+                  <IconItem name="moon">
+                    <Moon size={18} strokeWidth={1.5} />
+                  </IconItem>
+                </div>
+              </div>
+
+              {/* Sizes */}
+              <div>
+                <span className="text-muted mb-4 block font-mono text-[10px] tracking-widest uppercase">
+                  sizes
+                </span>
+                <div className="flex items-end gap-8">
+                  <div className="flex flex-col items-center gap-2">
+                    <Zap size={14} strokeWidth={1.5} />
+                    <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                      14 inline
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Zap size={18} strokeWidth={1.5} />
+                    <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                      18 standard
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Zap size={24} strokeWidth={1.5} />
+                    <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                      24 large
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stroke width comparison */}
+              <div>
+                <span className="text-muted mb-4 block font-mono text-[10px] tracking-widest uppercase">
+                  stroke weight
+                </span>
+                <div className="flex items-end gap-8">
+                  <div className="flex flex-col items-center gap-2">
+                    <Heart size={20} strokeWidth={2} />
+                    <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                      2 default
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Heart size={20} strokeWidth={1.5} />
+                    <span className="text-accent font-mono text-[10px] tracking-widest uppercase">
+                      1.5 classe2
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Heart size={20} strokeWidth={1} />
+                    <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                      1 thin
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* 06 — Tabs */}
+          <Section number="06" title="tabs">
             <Tabs defaultValue="design">
               <TabsList>
                 <TabsTrigger value="design">design</TabsTrigger>
@@ -424,8 +519,8 @@ export default function Playground() {
             </Tabs>
           </Section>
 
-          {/* 06 — Spinner */}
-          <Section number="06" title="spinner">
+          {/* 07 — Spinner */}
+          <Section number="07" title="spinner">
             <div className="flex items-center gap-6">
               <div className="flex flex-col items-center gap-2">
                 <Spinner size="sm" />
@@ -448,8 +543,8 @@ export default function Playground() {
             </div>
           </Section>
 
-          {/* 07 — Widgets */}
-          <Section number="07" title="widgets">
+          {/* 08 — Widgets */}
+          <Section number="08" title="widgets">
             <div className="grid gap-6 md:grid-cols-2">
               {/* Stat card */}
               <Card padding="lg">

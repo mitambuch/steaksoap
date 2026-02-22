@@ -31,6 +31,25 @@ Font family: **Space Grotesk** (sans), **JetBrains Mono** (mono).
 - **Cards**: Subtle border, `duration-500` transitions, optional `hover:scale-[1.02]`
 - **Borders**: `border-white/10` feel in dark, `border-black/20` feel in light (via tokens)
 
+## Icons
+
+Library: **Lucide React** (lucide.dev)
+
+Usage:
+```tsx
+import { ArrowRight, Zap, Copy, Sun, Moon } from 'lucide-react';
+
+<ArrowRight size={14} />
+<Zap size={16} className="text-accent" />
+```
+
+Rules:
+- Size 14 for inline (buttons, labels)
+- Size 16-20 for standalone
+- Size 24 for large/hero
+- Always use `text-current` or token colors, never hardcode icon color
+- Use `strokeWidth={1.5}` for a lighter, more elegant feel (classe2 style)
+
 ## Rules
 
 - Accent `#D4FF00` is the SAME in dark and light mode

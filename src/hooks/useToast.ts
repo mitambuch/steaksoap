@@ -6,6 +6,7 @@
 // CHANGE DURATION: Edit DEFAULT_DURATION below
 // ═══════════════════════════════════════════════════
 
+import type { ReactNode } from 'react';
 import { useCallback, useSyncExternalStore } from 'react';
 
 export interface ToastData {
@@ -14,6 +15,8 @@ export interface ToastData {
   title?: string;
   message: string;
   duration?: number;
+  /** Override the default variant icon with a custom element. */
+  icon?: ReactNode;
 }
 
 type ToastInput = Omit<ToastData, 'id'>;

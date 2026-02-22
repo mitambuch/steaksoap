@@ -228,6 +228,103 @@
         "https://resend.com/docs/introduction",
         "https://resend.com/docs/send-with-react"
       ]
+    },
+    {
+      "id": "react-hook-form",
+      "name": "React Hook Form + Zod",
+      "description": "Performant form handling with schema validation. Minimal re-renders, built-in error handling, works with Zod for type-safe validation.",
+      "tags": ["forms", "validation", "input", "contact", "signup", "form", "contact-form", "register"],
+      "category": "forms",
+      "npm_packages": ["react-hook-form", "zod", "@hookform/resolvers"],
+      "setup_instructions": [
+        "Install packages: pnpm add react-hook-form zod @hookform/resolvers",
+        "Create a form hook pattern with Zod schema validation",
+        "Add to api.md rule"
+      ],
+      "references": [
+        "https://react-hook-form.com",
+        "https://zod.dev"
+      ]
+    },
+    {
+      "id": "date-fns",
+      "name": "date-fns",
+      "description": "Lightweight, modular date utility library. Format dates, calculate time differences, parse strings. Tree-shakable.",
+      "tags": ["dates", "time", "formatting", "relative-time", "calendar", "date", "format-date"],
+      "category": "utilities",
+      "npm_packages": ["date-fns"],
+      "setup_instructions": [
+        "Install package: pnpm add date-fns",
+        "Use named imports for tree-shaking: import { format, formatDistanceToNow } from 'date-fns'"
+      ],
+      "references": [
+        "https://date-fns.org"
+      ]
+    },
+    {
+      "id": "analytics-plausible",
+      "name": "Plausible Analytics",
+      "description": "Privacy-friendly web analytics. No cookies, GDPR compliant by default. Lightweight script (<1kb). Free for self-hosted, paid for cloud.",
+      "tags": ["analytics", "tracking", "stats", "privacy", "gdpr", "visitors", "traffic"],
+      "category": "analytics",
+      "npm_packages": ["plausible-tracker"],
+      "setup_instructions": [
+        "Install package: pnpm add plausible-tracker",
+        "Create analytics hook",
+        "Add script to index.html",
+        "User action: create a Plausible account at plausible.io and configure your domain"
+      ],
+      "references": [
+        "https://plausible.io/docs"
+      ]
+    },
+    {
+      "id": "analytics-umami",
+      "name": "Umami Analytics",
+      "description": "Open-source, self-hosted web analytics alternative. Privacy-focused, no cookies. Can be self-hosted for free or use Umami Cloud.",
+      "tags": ["analytics", "tracking", "stats", "privacy", "self-hosted", "visitors", "traffic"],
+      "category": "analytics",
+      "npm_packages": [],
+      "setup_instructions": [
+        "Add Umami tracking script to index.html — no npm package needed",
+        "User action: set up an Umami instance at cloud.umami.is or self-host"
+      ],
+      "references": [
+        "https://umami.is/docs"
+      ]
+    },
+    {
+      "id": "og-images",
+      "name": "Open Graph Images",
+      "description": "Generate dynamic Open Graph images for social media sharing. Creates preview images with project title, description, and branding.",
+      "tags": ["seo", "social", "opengraph", "twitter", "meta", "sharing", "og-image", "preview"],
+      "category": "seo",
+      "npm_packages": ["@vercel/og"],
+      "setup_instructions": [
+        "Install package: pnpm add @vercel/og",
+        "Create an API route that generates images with project branding",
+        "Update SeoHead to include og:image meta tag pointing to the route"
+      ],
+      "references": [
+        "https://vercel.com/docs/functions/og-image-generation"
+      ]
+    },
+    {
+      "id": "seo-structured-data",
+      "name": "Structured Data / JSON-LD",
+      "description": "Add structured data (schema.org) to pages for rich search results. Organization, website, breadcrumb, FAQ, and article schemas.",
+      "tags": ["seo", "schema", "json-ld", "google", "rich-results", "structured-data", "search"],
+      "category": "seo",
+      "npm_packages": ["schema-dts"],
+      "setup_instructions": [
+        "Install package: pnpm add schema-dts",
+        "Create a JsonLd component that injects structured data into page head",
+        "Add Organization and WebSite schema to the root layout"
+      ],
+      "references": [
+        "https://developers.google.com/search/docs/appearance/structured-data",
+        "https://schema.org"
+      ]
     }
   ]
 }

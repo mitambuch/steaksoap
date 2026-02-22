@@ -39,6 +39,7 @@ Full visual reference: see `DESIGN_SYSTEM.md`
 | react-router-dom | Page routing | Navigate between pages without reload |
 | clsx | CSS class conditionals | Build className strings like `cn('a', isActive && 'b')` |
 | tailwind-merge | Resolve Tailwind conflicts | When two classes conflict, last one wins correctly |
+| lucide-react | Icon library | 1000+ icons, tree-shakable — only imported icons are bundled |
 
 ## Dev Dependencies
 
@@ -78,7 +79,7 @@ Full visual reference: see `DESIGN_SYSTEM.md`
 
 ## Extensions (installed via registry)
 
-_None yet. Use `/discover` or `/install-extension` to add integrations._
+_None installed yet. 18 curated extensions available — use `/discover` or `/install-extension` to add integrations._
 
 When an extension is installed, Claude Code MUST add it to this section with:
 - Name and version

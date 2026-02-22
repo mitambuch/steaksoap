@@ -22,6 +22,7 @@ Also read DESIGN_SYSTEM.md at the project root for the full visual reference.
 - Transitions are cinematic: 0.5s for interactions, 1.5s for theme changes
 - Borders are subtle: dark = white/10 feel, light = black/20 feel (via border token)
 - Cards hover with scale-[1.02] and duration-500
+- Icons: Lucide React, size 14 inline / 16-20 standalone, strokeWidth 1.5 for elegance
 
 ### Mobile-First Mandate
 Every visual decision has TWO versions: desktop and mobile.
