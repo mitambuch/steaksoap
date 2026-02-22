@@ -2,14 +2,15 @@ import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 
 interface BadgeProps {
-  variant?: 'default' | 'success' | 'warning' | 'danger' | 'info';
+  variant?: 'default' | 'outline' | 'success' | 'warning' | 'danger' | 'info';
   size?: 'sm' | 'md';
   children: ReactNode;
   className?: string;
 }
 
 const variantStyles: Record<NonNullable<BadgeProps['variant']>, string> = {
-  default: 'bg-surface text-fg',
+  default: 'bg-accent text-bg font-bold',
+  outline: 'border border-border bg-transparent',
   success: 'bg-success/15 text-success',
   warning: 'bg-warning/15 text-warning',
   danger: 'bg-danger/15 text-danger',
@@ -26,7 +27,7 @@ export const Badge = ({ variant = 'default', size = 'sm', children, className }:
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full font-medium',
+        'inline-flex items-center rounded-sm font-medium tracking-wide uppercase',
         variantStyles[variant],
         sizeStyles[size],
         className,

@@ -12,7 +12,7 @@ describe('Badge', () => {
 
   it('renders with default variant', () => {
     const { container } = render(<Badge>Default</Badge>);
-    expect(container.firstChild).toHaveClass('bg-surface');
+    expect(container.firstChild).toHaveClass('bg-accent');
   });
 
   it('renders success variant', () => {
