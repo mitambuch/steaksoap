@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "steaksoap curated MCP server registry — tools for Claude Code itself",
+  "mcp-servers": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Manage repos, PRs, issues, and CI/CD from Claude Code.",
+      "category": "devops",
+      "when": "User wants to create PRs, manage issues, review code on GitHub, or automate Git workflows beyond local operations.",
+      "install": "claude mcp add --transport stdio github -- npx -y @modelcontextprotocol/server-github",
+      "env": ["GITHUB_PERSONAL_ACCESS_TOKEN"],
+      "docs": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+      "priority": "recommended"
+    },
+    {
+      "id": "context7",
+      "name": "Context7",
+      "description": "Inject up-to-date library documentation into Claude's context. Eliminates hallucinated APIs.",
+      "category": "documentation",
+      "when": "User is working with a library and Claude is unsure about the current API, or user says 'use context7' or asks for up-to-date docs.",
+      "install": "claude mcp add --transport stdio context7 -- npx -y @upstash/context7-mcp",
+      "env": [],
+      "docs": "https://context7.com",
+      "priority": "recommended"
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright Browser",
+      "description": "Automate browser testing — navigate, click, fill forms, screenshot.",
+      "category": "testing",
+      "when": "User wants E2E tests, browser automation, web scraping, or visual regression testing.",
+      "install": "claude mcp add --transport stdio playwright -- npx -y @playwright/mcp --headless",
+      "env": [],
+      "docs": "https://github.com/microsoft/playwright-mcp",
+      "priority": "optional"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "description": "Query and manage PostgreSQL databases with natural language.",
+      "category": "database",
+      "when": "User has a PostgreSQL database and wants to query, migrate, or inspect it from Claude Code.",
+      "install": "claude mcp add --transport stdio postgres -- npx -y @modelcontextprotocol/server-postgres",
+      "env": ["POSTGRES_CONNECTION_STRING"],
+      "docs": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+      "priority": "optional"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "description": "Read Figma designs and translate them into code.",
+      "category": "design",
+      "when": "User wants to implement a Figma design, or mentions 'Figma', 'design file', or 'mockup'.",
+      "install": "claude mcp add --transport stdio figma -- npx -y figma-developer-mcp",
+      "env": ["FIGMA_ACCESS_TOKEN"],
+      "docs": "https://www.npmjs.com/package/figma-developer-mcp",
+      "priority": "optional"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "description": "Monitor errors, analyze stack traces, and debug production issues.",
+      "category": "monitoring",
+      "when": "User has Sentry and wants to check errors, investigate crashes, or monitor production.",
+      "install": "claude mcp add --transport stdio sentry -- npx -y @sentry/mcp-server",
+      "env": ["SENTRY_AUTH_TOKEN", "SENTRY_ORG"],
+      "docs": "https://docs.sentry.io/product/integrations/mcp/",
+      "priority": "optional"
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave Search",
+      "description": "Web search from Claude Code. Privacy-first, no tracking.",
+      "category": "search",
+      "when": "User needs to search the web for current info, documentation, or troubleshooting from Claude Code CLI.",
+      "install": "claude mcp add --transport stdio brave-search -- npx -y @brave/brave-search-mcp-server",
+      "env": ["BRAVE_API_KEY"],
+      "docs": "https://www.npmjs.com/package/@brave/brave-search-mcp-server",
+      "priority": "optional"
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "description": "Deploy Workers, manage KV/R2/D1, configure DNS from Claude Code.",
+      "category": "infrastructure",
+      "when": "User deploys on Cloudflare, uses Workers, KV, R2, D1, or Pages.",
+      "install": "claude mcp add --transport stdio cloudflare -- npx -y @cloudflare/mcp-server-cloudflare",
+      "env": ["CLOUDFLARE_API_TOKEN"],
+      "docs": "https://developers.cloudflare.com/mcp/",
+      "priority": "optional"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "description": "Manage deployments, domains, environment variables on Vercel.",
+      "category": "infrastructure",
+      "when": "User deploys on Vercel and wants to manage deployments, check logs, or configure domains.",
+      "install": "claude mcp add --transport http vercel https://mcp.vercel.com/mcp",
+      "env": [],
+      "docs": "https://vercel.com/docs/mcp",
+      "priority": "optional"
+    }
+  ]
+}
