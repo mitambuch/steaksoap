@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.2](https://github.com/Mircooo/steaksoap/compare/v1.6.1...v1.6.2) (2026-02-22)
+
+### ✨ Features
+
+* **deps:** add lucide-react as default icon library ([21c3205](https://github.com/Mircooo/steaksoap/commit/21c32053d8830bc08747a74ff78db49efa5b0b31))
+* **registry:** add 6 extensions (forms, dates, analytics, seo) ([73a0770](https://github.com/Mircooo/steaksoap/commit/73a0770528a0ce46e7588a7caafee758021de3b1))
+* **ui:** integrate lucide icons into toast, template, and playground ([0b14dd0](https://github.com/Mircooo/steaksoap/commit/0b14dd0945f4e7240678e7b1d37bde0d095d21d0))
+
+### 📚 Documentation
+
+* **deps:** sync dependencies.md with new deps and registry count ([29c003d](https://github.com/Mircooo/steaksoap/commit/29c003d26a94957c88e19849707c91e10f195fc4))
+
 ## [1.6.1](https://github.com/Mircooo/steaksoap/compare/v1.6.0...v1.6.1) (2026-02-22)
 
 ### ✨ Features
