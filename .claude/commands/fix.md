@@ -5,45 +5,16 @@ Systematically diagnose and fix a bug.
 ## Arguments
 $ARGUMENTS — Description of the bug, error message, or unexpected behavior.
 
-## Steps (follow this exact sequence)
+## Steps
 
-1. **REPRODUCE** — Understand the bug:
-   - What is the expected behavior?
-   - What is the actual behavior?
-   - Search codebase for related files
-   - Check recent changes: `git log --oneline -10`
+1. Invoke the debugger agent workflow (see .claude/agents/debugger.md)
+   Pass the user's $ARGUMENTS as the bug description.
 
-2. **ISOLATE** — Find the source:
-   - Narrow down to specific file(s) and function(s)
-   - Check if the bug is in our code or a dependency
-   - If dependency: check their issues/changelog for known bugs
+2. The debugger agent handles: REPRODUCE → SEARCH → ISOLATE → ROOT CAUSE → FIX → PROVE → VALIDATE → COMMIT
 
-3. **ROOT CAUSE** — Explain WHY:
-   - Report to the user:
-     - ACTION: "I'm investigating the bug in [file]"
-     - WHERE: "The issue is in [function] at line [N]"
-     - WHY: "It breaks because [root cause]"
-     - RISK: "Fixing this could affect [related functionality]"
+3. If the debugger agent asks a question, relay it to the user.
 
-4. **FIX** — Minimal change:
-   - Fix ONLY the reported bug
-   - Don't refactor other code while fixing
-   - Don't fix "other things I noticed"
-   - Preserve existing behavior for unrelated code paths
-
-5. **TEST** — Prove the fix:
-   - Write a test that FAILS without the fix
-   - Confirm the test PASSES with the fix
-   - If a test already exists that should have caught this, fix the test too
-
-6. **VALIDATE** — Confirm no regressions:
-   ```bash
-   pnpm validate
-   ```
-
-7. **COMMIT**:
-   ```
-   fix(<scope>): <what was fixed>
-
-   Root cause: <brief explanation>
-   ```
+## Rules
+- This command is a shortcut to the debugger agent
+- All debug logic lives in .claude/agents/debugger.md — don't duplicate it here
+- If you need to change the debug process, change the agent, not this command
