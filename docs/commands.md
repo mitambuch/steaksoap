@@ -116,22 +116,35 @@ Claude Code:
 
 | Command | Arguments | What it does |
 |---|---|---|
-| `/discover` | `"description"` | Find extensions by natural language (e.g., "animations", "auth") |
+| `/discover` | `"description"` | Find extensions and MCP servers by natural language |
 | `/install-extension` | `extension-id` | Install a specific extension by ID (e.g., "zustand") |
+| `/connect` | `server name` | Install a MCP server from the registry (e.g., "github", "playwright") |
 | `/refactor` | `file or feature` | Analyze code against rules, classify and fix issues |
 
-### Example: Discovering an extension
+### Example: Discovering tools
 
 ```
-You: /discover "I want users to log in"
+You: /discover "browser testing"
 
 Claude Code:
-  1. Reads registry/extensions.json
-  2. Matches → Clerk Authentication (auth-clerk)
-  3. Shows packages: @clerk/clerk-react
-  4. Shows setup steps and docs
-  5. Asks: "Want me to install this?"
-  6. If yes → installs, configures, validates, commits
+  1. Reads registry/extensions.json + registry/mcp-servers.json
+  2. Shows two categories:
+     📦 Extensions: Playwright E2E (install in your project)
+     🔌 MCP Servers: Playwright Browser (connect to Claude Code)
+  3. Asks: "Want me to install or connect one of these?"
+```
+
+### Example: Connecting a MCP server
+
+```
+You: /connect github
+
+Claude Code:
+  1. Looks up "github" in registry/mcp-servers.json
+  2. Shows: GitHub MCP — manage repos, PRs, issues
+  3. Asks: "This requires GITHUB_PERSONAL_ACCESS_TOKEN. Ready?"
+  4. Runs: claude mcp add --transport stdio github -- npx -y @modelcontextprotocol/server-github
+  5. Verifies: claude mcp list → github ✓
 ```
 
 ### Example: Refactoring code

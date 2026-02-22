@@ -2,7 +2,7 @@
 
 **The AI-native React system for solo builders.**
 
-You describe it. The AI builds it. 21 commands, 4 agents, zero config.
+You describe it. The AI builds it. 22 commands, 4 agents, zero config.
 
 Not another React boilerplate — a complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
 
@@ -23,7 +23,7 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 
 | | steaksoap | Typical React Starter |
 |---|---|---|
-| **AI workflow** | 21 slash commands, 4 sub-agents | None or afterthought |
+| **AI workflow** | 22 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
 | **UI components** | 14 accessible atoms ready to use | Empty src/ |
 | **Git workflow** | Conventional commits + auto changelog | Manual |
@@ -77,8 +77,9 @@ Open Claude Code and type these commands:
 ### Discovery
 | Command | What it does |
 |---|---|
-| `/discover "animations"` | Find extensions by description |
+| `/discover "animations"` | Find extensions and MCP servers by description |
 | `/install-extension zustand` | Install a curated extension by ID |
+| `/connect github` | Install a MCP server from the registry |
 | `/refactor src/features/auth` | Analyze code against rules, classify and fix issues |
 
 ### Quality
@@ -152,7 +153,7 @@ Already have a project? Install steaksoap as a Claude Code plugin to get all com
 claude plugin marketplace add Mircooo/steaksoap
 ```
 
-This gives you access to all 21 slash commands and 4 sub-agents in your existing project.
+This gives you access to all 22 slash commands and 4 sub-agents in your existing project.
 
 ## Stay Updated
 
