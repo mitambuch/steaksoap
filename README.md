@@ -1,13 +1,10 @@
 # steaksoap
 
-**AI-first React starter kit for vibe coders.**
+**The AI-native React system for solo builders.**
 
-You describe it. The AI builds it. Zero git knowledge needed, zero config, zero bullshit.
+You describe it. The AI builds it. 20 commands, 4 agents, zero config.
 
-Not another React boilerplate — a complete vibe coding workflow with Claude Code commands, sub-agents, and strict automation built in.
-
-> **Work in Progress** — Some features listed below are being implemented.
-> Follow the [roadmap](https://github.com/Mircooo/steaksoap/issues) for progress.
+Not another React boilerplate — a complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
 
 [![CI](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml/badge.svg)](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -28,7 +25,7 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 |---|---|---|
 | **AI workflow** | 20 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
-| **UI components** | 10 accessible atoms ready to use | Empty src/ |
+| **UI components** | 16 accessible atoms ready to use | Empty src/ |
 | **Git workflow** | Conventional commits + auto changelog | Manual |
 | **Validation** | Lint + typecheck + test + build in one command | `npm run build` |
 | **Releases** | Automated version bump + changelog + tag | Manual |
@@ -112,7 +109,7 @@ Open Claude Code and type these commands:
 
 Your project includes:
 - A responsive landing page with Header, Hero, Features, and Footer
-- 10 accessible UI components (Button, Input, Card, Modal, etc.)
+- 16 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Spinner...)
 - Dark/light mode toggle
 - SEO head management
 - Error boundaries
