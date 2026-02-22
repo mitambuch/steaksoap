@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.1](https://github.com/Mircooo/steaksoap/compare/v1.6.0...v1.6.1) (2026-02-22)
+
+### ✨ Features
+
+* **rules:** add trust mode for autonomous execution ([0859329](https://github.com/Mircooo/steaksoap/commit/0859329b916d4d37f091e160946db57681e4045c))
+
 ## [1.6.0](https://github.com/Mircooo/steaksoap/compare/v1.5.1...v1.6.0) (2026-02-22)
 
 ### ✨ Features
