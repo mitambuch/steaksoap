@@ -79,7 +79,7 @@ Full visual reference: see `DESIGN_SYSTEM.md`
 
 ## Extensions (installed via registry)
 
-_None yet. Use `/discover` or `/install-extension` to add integrations._
+_None installed yet. 18 curated extensions available — use `/discover` or `/install-extension` to add integrations._
 
 When an extension is installed, Claude Code MUST add it to this section with:
 - Name and version
