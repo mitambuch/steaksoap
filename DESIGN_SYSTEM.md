@@ -5,11 +5,11 @@
 | Name       | Token       | Dark Mode | Light Mode | Usage                          |
 |------------|-------------|-----------|------------|--------------------------------|
 | **Accent** | `accent`    | #D4FF00   | #D4FF00    | CTAs, hovers, tags, highlights |
-| **BG**     | `bg`        | #0A0A0A   | #E8E8E4    | Page background                |
+| **BG**     | `bg`        | #0A0A0A   | #D8D8D0    | Page background                |
 | **FG**     | `fg`        | #F0F0F0   | #1A1A1A    | Primary text                   |
-| **Muted**  | `muted`     | #666666   | #71717A    | Secondary text, labels         |
-| **Surface**| `surface`   | #141414   | #DEDED8    | Cards, elevated elements       |
-| **Border** | `border`    | #262626   | #C8C8C2    | Dividers, card borders         |
+| **Muted**  | `muted`     | #666666   | #5C5C56    | Secondary text, labels         |
+| **Surface**| `surface`   | #141414   | #C8C8C0    | Cards, elevated elements       |
+| **Border** | `border`    | #262626   | #B8B8B0    | Dividers, card borders         |
 
 ## Typography
 

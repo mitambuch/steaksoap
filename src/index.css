@@ -28,12 +28,12 @@
 
 /* Light mode override (classe2 "Paper" — warm gray, not cold white) */
 [data-theme='light'] {
-  --color-bg: #e8e8e4;
+  --color-bg: #d8d8d0;
   --color-fg: #1a1a1a;
   --color-accent: #d4ff00;
-  --color-muted: #71717a;
-  --color-surface: #deded8;
-  --color-border: #c8c8c2;
+  --color-muted: #5c5c56;
+  --color-surface: #c8c8c0;
+  --color-border: #b8b8b0;
 
   --color-success: #16a34a;
   --color-warning: #ca8a04;
