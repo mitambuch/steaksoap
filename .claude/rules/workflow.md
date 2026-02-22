@@ -103,6 +103,13 @@ Fixing is NOT enough. You must also:
 - Think about the next person — a human dev or another AI must understand in 5 minutes
 - Verify claims with code search before stating something is unused, broken, or redundant
 - Preserve the `pnpm setup --update` workflow — merging upstream template changes is non-negotiable
+- Add a `// WHY: ...` comment on every non-obvious technical decision in the code.
+  Obvious: setting state, mapping an array, returning JSX.
+  Non-obvious: AbortController in useEffect, specific Zod schema choices, conditional lazy loading,
+  error boundary placement, specific Tailwind token usage when multiple could work.
+  The WHY comment must explain the REASON, not repeat what the code does.
+  Good: `// WHY: AbortController prevents memory leak if user navigates away before fetch completes`
+  Bad: `// WHY: we abort the controller here`
 
 ## Proactive guidance
 
