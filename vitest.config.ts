@@ -6,6 +6,9 @@ import { defineConfig } from 'vitest/config';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify('0.0.0-test'),
+  },
   test: {
     globals: true,
     environment: 'jsdom',
