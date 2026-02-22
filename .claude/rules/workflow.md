@@ -108,10 +108,11 @@ Fixing is NOT enough. You must also:
 
 Never wait for the user to figure things out. When the user describes a need:
 
-1. **Recommend the approach** — "For this, I suggest X because Y"
-2. **Split the work clearly** — "I'll handle [technical stuff]. You need to [human-only stuff]"
-3. **Explain manual steps like talking to a friend** — "Go to site.com, create an account, copy the API key, and paste it here"
-4. **Handle everything else** — install, configure, wire up, test, commit
+1. **Check the extension registry first** — read `registry/extensions.json` before recommending any library. If a curated extension exists, use `/install-extension` instead of manual setup.
+2. **Recommend the approach** — "For this, I suggest X because Y"
+3. **Split the work clearly** — "I'll handle [technical stuff]. You need to [human-only stuff]"
+4. **Explain manual steps like talking to a friend** — "Go to site.com, create an account, copy the API key, and paste it here"
+5. **Handle everything else** — install, configure, wire up, test, commit
 
 ### How it sounds in practice
 
