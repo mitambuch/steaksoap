@@ -27,6 +27,18 @@ Claude Code creates:
       └── UserProfile.test.tsx — component test
 ```
 
+### Example: Creating a page
+
+```
+You: /new-page About
+
+Claude Code creates:
+  src/pages/About.tsx           — page component with SeoHead
+  src/pages/__tests__/About.test.tsx  — render + a11y test
+  src/constants/routes.ts       — ABOUT: '/about' added
+  src/app/routes/index.tsx      — lazy import + Route added
+```
+
 ## Workflow
 
 | Command | Arguments | What it does |
@@ -36,6 +48,19 @@ Claude Code creates:
 | `/release` | — | Analyze commits, version bump, changelog, git tag |
 | `/update-deps` | — | Safe dependency updates with validation after each |
 | `/fix` | `"description of bug"` | Systematic bug diagnosis and fix |
+
+### Example: Checking status
+
+```
+You: /status
+
+Claude Code:
+  Branch: main (clean)
+  Last release: v1.4.0 (3 commits since)
+  Validation: ✓ all checks pass
+  Outdated: 2 packages (minor updates available)
+  Suggestion: "Ready for a patch release when you want."
+```
 
 ### Example: Fixing a bug
 
@@ -74,6 +99,23 @@ Claude Code:
   6. If yes → installs, configures, validates, commits
 ```
 
+### Example: Refactoring code
+
+```
+You: /refactor src/features/auth
+
+Claude Code:
+  1. Reads rules: components.md, api.md, testing.md
+  2. Reads decisions.md for architectural context
+  3. Analyzes all files in src/features/auth/
+  4. Classifies:
+     MUST FIX: missing AbortController in fetch hook
+     SHOULD FIX: inline styles instead of tokens
+     NICE TO HAVE: extract shared types to .types.ts
+  5. Asks: "Apply all? Or pick which ones?"
+  6. Applies → validates → commits
+```
+
 See [recipes/add-extension.md](recipes/add-extension.md) for the full list of available extensions.
 
 ## Quality
@@ -99,6 +141,19 @@ Claude Code:
   5. Validates → pnpm validate passes
 ```
 
+### Example: Running an audit
+
+```
+You: /audit
+
+Claude Code:
+  Bundle: 265kb (gzip: 85kb) — ✓ under budget
+  Lighthouse: Performance 97, A11y 100, SEO 100, BP 100
+  Images: 0 unoptimized
+  Unused CSS: none detected
+  Recommendation: "Bundle is healthy. No action needed."
+```
+
 ## Sub-agents
 
 Agents are specialized personas that Claude Code can adopt.
@@ -110,3 +165,16 @@ See [agents.md](agents.md) for full documentation.
 | `debugger` | "Act as the debugger agent to fix this issue" |
 | `designer` | "Act as the designer agent for this UI change" |
 | `tester` | "Act as the tester agent to write tests for this" |
+
+### Example: Using an agent
+
+```
+You: "Act as the designer agent and improve the About page"
+
+Claude Code (as designer):
+  1. Reads src/index.css tokens + DESIGN_SYSTEM.md
+  2. Reads src/pages/About.tsx
+  3. Proposes: larger hero, mono micro labels, capsule CTAs
+  4. Applies changes following the classe2 style DNA
+  5. Validates → commits
+```
