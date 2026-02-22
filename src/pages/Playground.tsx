@@ -28,12 +28,12 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="border-border border-t pt-12">
+    <section className="border-border/50 border-t pt-12">
       <div className="mb-8 flex items-baseline gap-3">
-        <span className="text-accent font-mono text-[10px] tracking-widest uppercase">
+        <span className="text-accent font-mono text-[10px] tracking-[0.2em] uppercase">
           {number}
         </span>
-        <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+        <span className="text-muted/60 font-mono text-[10px] tracking-[0.2em] uppercase">
           // {title}
         </span>
       </div>
@@ -56,7 +56,7 @@ function Swatch({
   light: string;
 }) {
   return (
-    <div className="flex items-center gap-4">
+    <div className="border-border/50 hover:border-accent/20 flex items-center gap-4 rounded-lg border p-3 transition-all duration-300">
       <div
         className="border-border h-10 w-10 shrink-0 rounded-sm border"
         style={{ backgroundColor: `var(--color-${token})` }}
@@ -98,14 +98,15 @@ export default function Playground() {
         <div className="mx-auto max-w-5xl space-y-16">
           {/* Header */}
           <div>
-            <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+            <span className="text-accent font-mono text-[10px] tracking-[0.2em] uppercase">
               steaksoap
             </span>
-            <h1 className="text-fg mt-2 text-4xl font-medium tracking-tight md:text-6xl">devkit</h1>
-            <p className="text-muted mt-4 max-w-md text-base leading-relaxed">
+            <h1 className="text-fg mt-3 text-4xl font-medium tracking-tight md:text-6xl">devkit</h1>
+            <p className="text-muted mt-4 max-w-lg text-base leading-relaxed">
               every token, every component, every state. the visual reference for this design
               system.
             </p>
+            <div className="bg-accent mt-6 h-px w-12" />
           </div>
 
           {/* 01 — Typography */}

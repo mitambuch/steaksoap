@@ -10,11 +10,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: 'bg-accent text-bg border border-transparent hover:bg-accent/90',
+  primary:
+    'bg-accent text-bg border border-accent/50 hover:border-accent hover:shadow-[0_0_20px_rgba(212,255,0,0.15)]',
   secondary:
-    'bg-transparent border backdrop-blur-md border-border hover:bg-accent hover:text-bg hover:border-transparent',
-  ghost: 'bg-transparent text-fg hover:text-accent',
-  danger: 'bg-danger text-white border border-transparent hover:bg-danger/90',
+    'bg-transparent text-fg border border-border backdrop-blur-md hover:border-accent/30 hover:bg-accent/5',
+  ghost: 'bg-transparent text-muted hover:text-fg',
+  danger:
+    'bg-danger/10 text-danger border border-danger/30 hover:bg-danger/20 hover:border-danger/50',
 };
 
 const sizeStyles: Record<NonNullable<ButtonProps['size']>, string> = {
@@ -39,7 +41,7 @@ export const Button = ({
       disabled={disabled || isLoading}
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-full font-medium',
-        'transition-colors duration-200',
+        'transition-all duration-300',
         'focus-visible:ring-accent focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-offset-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
         variantStyles[variant],

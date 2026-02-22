@@ -20,12 +20,12 @@ export const Input = ({ label, error, helperText, className, ...rest }: InputPro
       <input
         id={id}
         className={cn(
-          'bg-surface text-fg rounded-md border px-3 py-2',
-          'transition-colors duration-200',
-          'placeholder:text-muted',
+          'bg-surface/80 text-fg rounded-lg border px-3 py-2 backdrop-blur-sm',
+          'transition-all duration-300',
+          'placeholder:text-muted/60',
           'focus:ring-1 focus:outline-none',
           error
-            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+            ? 'border-danger focus:border-danger focus:ring-danger'
             : 'border-border focus:border-accent focus:ring-accent',
           className,
         )}
@@ -34,7 +34,7 @@ export const Input = ({ label, error, helperText, className, ...rest }: InputPro
         {...rest}
       />
       {error && (
-        <p id={`${id}-error`} className="text-sm text-red-500" role="alert">
+        <p id={`${id}-error`} className="text-danger text-sm" role="alert">
           {error}
         </p>
       )}

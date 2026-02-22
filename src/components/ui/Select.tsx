@@ -27,11 +27,11 @@ export const Select = ({ label, options, placeholder, error, className, ...rest 
         <select
           id={id}
           className={cn(
-            'bg-surface text-fg w-full appearance-none rounded-md border px-3 py-2 pr-8',
-            'transition-colors duration-200',
+            'bg-surface/80 text-fg w-full appearance-none rounded-lg border px-3 py-2 pr-8 backdrop-blur-sm',
+            'transition-all duration-300',
             'focus:ring-1 focus:outline-none',
             error
-              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+              ? 'border-danger focus:border-danger focus:ring-danger'
               : 'border-border focus:border-accent focus:ring-accent',
             className,
           )}
@@ -64,7 +64,7 @@ export const Select = ({ label, options, placeholder, error, className, ...rest 
         </svg>
       </div>
       {error && (
-        <p id={`${id}-error`} className="text-sm text-red-500" role="alert">
+        <p id={`${id}-error`} className="text-danger text-sm" role="alert">
           {error}
         </p>
       )}

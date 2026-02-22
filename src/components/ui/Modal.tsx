@@ -1,4 +1,5 @@
 import { cn } from '@utils/cn';
+import { X } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useCallback, useEffect, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
@@ -70,10 +71,10 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[200] flex items-center justify-center">
+    <div className="fixed inset-0 z-200 flex items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 transition-opacity duration-200"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -85,8 +86,8 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
         className={cn(
-          'border-border bg-bg relative z-10 w-full max-w-lg rounded-lg border p-6',
-          'shadow-lg transition-all duration-200',
+          'border-border bg-bg/95 relative z-10 w-full max-w-lg rounded-lg border p-6 backdrop-blur-md',
+          'shadow-lg transition-all duration-300',
           className,
         )}
       >
@@ -99,11 +100,9 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
             <button
               onClick={onClose}
               aria-label="Close"
-              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1 transition-colors duration-200 focus-visible:ring-2"
+              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1 transition-colors duration-300 focus-visible:ring-2"
             >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-              </svg>
+              <X size={18} strokeWidth={1.5} aria-hidden="true" />
             </button>
           </div>
         )}
@@ -114,11 +113,9 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
             <button
               onClick={onClose}
               aria-label="Close"
-              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1 transition-colors duration-200 focus-visible:ring-2"
+              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1 transition-colors duration-300 focus-visible:ring-2"
             >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-              </svg>
+              <X size={18} strokeWidth={1.5} aria-hidden="true" />
             </button>
           </div>
         )}
