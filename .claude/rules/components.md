@@ -4,8 +4,32 @@ paths: ["src/components/**", "src/features/**"]
 
 # Component Rules
 
+## Human-readable header (required)
+Every component file MUST start with a comment block that explains:
+- **WHAT**: What does this component do (1 sentence)
+- **WHEN**: When should someone use it (1 sentence)
+- **CHANGE [X]**: How to modify the most common things (colors, shape, sizes)
+
+Write these for a human who has never seen React.
+Use plain English, no jargon. If you say "variant", explain what that means.
+
+Example:
+```tsx
+// ═══════════════════════════════════════════════════
+// Button — Clickable action element
+//
+// WHAT: Renders a styled button with variants (primary, secondary, ghost, danger)
+// WHEN: Use for any clickable action — forms, navigation, toggles
+// CHANGE COLORS: Edit the accent token in src/index.css, not here
+// CHANGE SHAPE: Modify rounded-full in the className below
+// CHANGE SIZES: Edit the sizeStyles object below
+// ═══════════════════════════════════════════════════
+```
+
 ## File structure
 ```tsx
+// 0. Human-readable header (see above)
+
 // 1. Imports (sorted by eslint-plugin-simple-import-sort)
 import { cn } from '@utils/cn';
 
