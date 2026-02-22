@@ -21,11 +21,11 @@ import {
   rmSync,
   writeFileSync,
 } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = resolve(__dirname, '..');
+import { PATHS } from './utils/paths.js';
+
+const root = PATHS.root;
 const run = (cmd) => execSync(cmd, { cwd: root, encoding: 'utf-8' }).trim();
 const runVisible = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
 
@@ -264,7 +264,7 @@ async function runInit() {
   }
 
   // Remove cursor-hidden CSS utility (showcase-only, a11y concern)
-  const indexCssPath = resolve(root, 'src/index.css');
+  const indexCssPath = PATHS.indexCSS;
   if (existsSync(indexCssPath)) {
     let css = readFileSync(indexCssPath, 'utf-8');
     css = css.replace(
@@ -280,7 +280,7 @@ async function runInit() {
     if (existsSync(playgroundPath)) rmSync(playgroundPath);
 
     // Remove Playground route and import from routes/index.tsx
-    const routesPath = resolve(root, 'src/app/routes/index.tsx');
+    const routesPath = PATHS.routesConfig;
     if (existsSync(routesPath)) {
       let routes = readFileSync(routesPath, 'utf-8');
       routes = routes.replace(
@@ -295,7 +295,7 @@ async function runInit() {
     }
 
     // Remove PLAYGROUND from route constants
-    const routeConstsPath = resolve(root, 'src/constants/routes.ts');
+    const routeConstsPath = PATHS.routes;
     if (existsSync(routeConstsPath)) {
       let consts = readFileSync(routeConstsPath, 'utf-8');
       consts = consts.replace(/\s*PLAYGROUND:\s*'\/playground',?\n/, '\n');
@@ -303,7 +303,7 @@ async function runInit() {
     }
 
     // Remove Playground nav item from site config
-    const siteConfigPath = resolve(root, 'src/config/site.ts');
+    const siteConfigPath = PATHS.siteConfig;
     if (existsSync(siteConfigPath)) {
       let siteTs = readFileSync(siteConfigPath, 'utf-8');
       siteTs = siteTs.replace(

@@ -9,11 +9,11 @@
 
 import { execSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = resolve(__dirname, '..');
+import { ALIASES, PATHS } from './utils/paths.js';
+
+const root = PATHS.root;
 
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
 const yellow = (s) => `\x1b[33m${s}\x1b[0m`;
@@ -41,8 +41,8 @@ function fail(msg) {
 console.log(`\n  ${bold('steaksoap done')} — structural coherence check\n`);
 
 // ─── 1. Routes ↔ Pages ──────────────────────────────────────
-const routesPath = resolve(root, 'src/constants/routes.ts');
-const pagesDir = resolve(root, 'src/pages');
+const routesPath = PATHS.routes;
+const pagesDir = PATHS.pages;
 
 if (existsSync(routesPath) && existsSync(pagesDir)) {
   const routesContent = readFileSync(routesPath, 'utf-8');
@@ -114,7 +114,7 @@ if (existsSync(pagesDir)) {
 }
 
 // ─── 3. UI Components → Tests ───────────────────────────────
-const uiDir = resolve(root, 'src/components/ui');
+const uiDir = PATHS.componentsUI;
 const uiTestDir = resolve(uiDir, '__tests__');
 
 if (existsSync(uiDir)) {
@@ -146,7 +146,7 @@ if (existsSync(uiDir)) {
 }
 
 // ─── 4. Env vars declared in env.ts ─────────────────────────
-const envTsPath = resolve(root, 'src/config/env.ts');
+const envTsPath = PATHS.envConfig;
 
 if (existsSync(envTsPath)) {
   const envTsContent = readFileSync(envTsPath, 'utf-8');
@@ -188,7 +188,7 @@ if (existsSync(envTsPath)) {
 }
 
 // ─── 5. No .tsx files directly in src/ ──────────────────────
-const srcDir = resolve(root, 'src');
+const srcDir = PATHS.src;
 const topLevelTsx = readdirSync(srcDir).filter((f) => f.endsWith('.tsx'));
 
 if (topLevelTsx.length === 0) {
@@ -216,17 +216,7 @@ try {
     // grep returns exit code 1 if no matches
   }
 
-  const aliasMap = {
-    '@components': 'src/components',
-    '@hooks': 'src/hooks',
-    '@pages': 'src/pages',
-    '@utils': 'src/utils',
-    '@config': 'src/config',
-    '@features': 'src/features',
-    '@constants': 'src/constants',
-    '@context': 'src/context',
-    '@lib': 'src/lib',
-  };
+  const aliasMap = ALIASES;
 
   const imports = [
     ...new Set(
