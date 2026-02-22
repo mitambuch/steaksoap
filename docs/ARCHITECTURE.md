@@ -28,7 +28,6 @@ project/
 │   ├── lib/              → Third-party library wrappers
 │   ├── pages/            → Pages (1 page = 1 route)
 │   ├── styles/           → Global styles
-│   ├── types/            → Shared TypeScript types
 │   └── utils/            → Pure utility functions
 └── [configs]             → vite, tsconfig, eslint, prettier, vercel…
 ```
@@ -125,10 +124,6 @@ Global styles:
 - `animations.css` → Global keyframes
 
 > **Rule**: design tokens (colors, fonts) are defined in `@theme` inside `src/index.css`. That's the **source of truth** for the design system (Tailwind v4 CSS-first).
-
-### `src/types/`
-
-Shared TypeScript types. Add your project-specific types here.
 
 ### `src/utils/`
 
