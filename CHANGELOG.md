@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/Mircooo/steaksoap/compare/v1.5.1...v1.6.0) (2026-02-22)
+
+### ✨ Features
+
+* **agents:** add mobile-first mandate and component awareness to designer ([a2e9659](https://github.com/Mircooo/steaksoap/commit/a2e96599c169dab5fab974aa8d3e4d436be041dc))
+* **commands:** add /changelog-client for human-readable client updates ([dec3513](https://github.com/Mircooo/steaksoap/commit/dec35134447be7bbfe2d5bd90ecb995bb37a36ae))
+* **commands:** add /lighthouse for quality audit with responsive check ([c30bd50](https://github.com/Mircooo/steaksoap/commit/c30bd5057b952cb599b1cefe0735cb8499900565))
+* **commands:** rewrite /migrate as guided multi-phase migration experience ([d83980b](https://github.com/Mircooo/steaksoap/commit/d83980be301fb782d9d0ac6f0e1ebec878b81f5e))
+* **dx:** add robots.txt and postinstall setup reminder ([5dc9096](https://github.com/Mircooo/steaksoap/commit/5dc90968768495c3db67c4a7739c4fc16b7b7622))
+* **rules:** add performance.md for optimization guidance ([bf2fe34](https://github.com/Mircooo/steaksoap/commit/bf2fe34a308b8c08e0aa5b60142962c1338ff60b))
+* **rules:** add responsive requirements to components rule ([930b375](https://github.com/Mircooo/steaksoap/commit/930b375f5ed70bc7933bffe2e159dbaeb77e33c4))
+* **rules:** add responsive.md with dual-variant thinking and mobile fallbacks ([3df2f1f](https://github.com/Mircooo/steaksoap/commit/3df2f1f9038e4fc6a321f814cf8b4121bc69bd92))
+* **rules:** add smart model switching for credit optimization ([5116bae](https://github.com/Mircooo/steaksoap/commit/5116bae9dfef39240751f185c3db44d087966eb6))
+
 ## [1.5.1](https://github.com/Mircooo/steaksoap/compare/v1.5.0...v1.5.1) (2026-02-22)
 
 ### ✨ Features
