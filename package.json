@@ -1,6 +1,6 @@
 {
   "name": "steaksoap",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "type": "module",
   "description": "AI-first React starter kit for vibe coders. React 19 + TypeScript + Vite 7 + Tailwind CSS 4 with Claude Code commands, agents, and automated workflow.",
   "author": "Mircooo",

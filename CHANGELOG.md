@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.9.0](https://github.com/Mircooo/steaksoap/compare/v1.8.0...v1.9.0) (2026-02-22)
+
+### ✨ Features
+
+* **commands:** /discover now searches mcp servers alongside extensions ([f952b84](https://github.com/Mircooo/steaksoap/commit/f952b840f538874b80d49bc26a5146065f696d4e))
+* **commands:** add /connect to install mcp servers from registry ([dc65708](https://github.com/Mircooo/steaksoap/commit/dc65708df8e8a4fbf7db558a06dee94152a33a7b))
+* **home:** add mcp mention and sync counts (22 commands, 12 rules) ([5dd9ef1](https://github.com/Mircooo/steaksoap/commit/5dd9ef10d9fae93a55d72e3414314ab4a1ab3bc7))
+* **registry:** add mcp servers catalog with 9 verified servers ([0808844](https://github.com/Mircooo/steaksoap/commit/08088447942150e57b64a14aceb0ec9f3104d949))
+* **rules:** add mcp awareness for smart tool suggestions ([a2d1829](https://github.com/Mircooo/steaksoap/commit/a2d1829397ae69a65e9724beaaecd5eac76ab7a1))
+
+### 📚 Documentation
+
+* **commands:** add /connect and update /discover with mcp support ([7643a9a](https://github.com/Mircooo/steaksoap/commit/7643a9a17e0a152509e7186e85e71644d51250b5))
+* **decisions:** document mcp awareness feature ([18d6d94](https://github.com/Mircooo/steaksoap/commit/18d6d945dd435b19665c6936171f4c19789b32c1))
+
 ## [1.8.0](https://github.com/Mircooo/steaksoap/compare/v1.7.0...v1.8.0) (2026-02-22)
 
 ### ✨ Features
