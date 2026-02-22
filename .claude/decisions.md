@@ -9,7 +9,7 @@ This file tracks key technical decisions. Read this before any architecture choi
 - **Styling**: Tailwind CSS 4 with @theme tokens. No CSS modules, no CSS-in-JS. classe2 aesthetic by default.
 - **Font**: Space Grotesk (sans), JetBrains Mono (mono). Loaded via Google Fonts.
 - **Accent**: #D4FF00 (neon lime) — identical in dark AND light mode. Never changes per-theme.
-- **Light mode bg**: #F4F4F0 (warm gray "Paper") — not cold white.
+- **Light mode bg**: #E8E8E4 (warm gray "Paper") — visible gray, not near-white.
 - **Routing**: React Router 7 with lazy loading. Routes in `src/app/routes/index.tsx`.
 - **Testing**: Vitest + Testing Library + vitest-axe. Tests beside source files.
 - **Image optimization**: Cloudinary optional. Falls back to raw URLs if not configured.
