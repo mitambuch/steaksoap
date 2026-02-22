@@ -36,6 +36,13 @@ Follow this order in className strings:
 - Both themes MUST be tested for every component
 - Use semantic token names (bg-bg, text-fg) not raw colors
 
+## Accent color rule
+The accent color (#D4FF00 "Neon Lime") is IDENTICAL in dark and light mode.
+NEVER change the accent between modes. NEVER suggest a "more readable" alternative
+for light mode. The brand identity depends on this consistency.
+If contrast is a concern on light backgrounds, adjust the BACKGROUND or add
+a dark text container — never touch the accent value.
+
 ## Design token reference
 Check `src/index.css` @theme section for current values. Key tokens:
 - --color-bg: page background
