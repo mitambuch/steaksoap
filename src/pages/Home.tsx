@@ -210,7 +210,7 @@ function AnimatedTerminal() {
 
   return (
     <div
-      className="h-[220px] w-full max-w-sm overflow-hidden rounded-lg border border-white/8 bg-white/[0.02] backdrop-blur-sm transition-all duration-500"
+      className="border-border bg-surface/50 h-[220px] w-full max-w-sm overflow-hidden rounded-lg border backdrop-blur-sm transition-all duration-500"
       style={{
         borderColor: hovering ? 'rgba(212,255,0,0.15)' : undefined,
         boxShadow: hovering
@@ -220,7 +220,7 @@ function AnimatedTerminal() {
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
-      <div className="flex items-center gap-1.5 border-b border-white/5 px-3 py-1.5">
+      <div className="border-border flex items-center gap-1.5 border-b px-3 py-1.5">
         <div
           className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
           style={{ backgroundColor: hovering ? 'rgba(239,68,68,0.8)' : 'rgba(239,68,68,0.35)' }}

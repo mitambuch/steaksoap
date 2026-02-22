@@ -22,7 +22,7 @@ export function CodeBlock({ step, label, command, output, className }: CodeBlock
         </span>
         <span className="text-fg/70 font-mono text-sm">{label}</span>
       </div>
-      <div className="rounded-lg border border-white/5 bg-white/[0.02] px-4 py-3">
+      <div className="border-border bg-surface/50 rounded-lg border px-4 py-3">
         <div className="flex items-center gap-2 font-mono text-sm">
           <span className="text-accent/80">$</span>
           <code className="text-fg/80">{command}</code>

@@ -22,7 +22,7 @@ export function Counter() {
         </button>
         <button
           onClick={reset}
-          className="text-muted hover:text-fg rounded-md border border-white/10 px-3 py-1 font-mono text-sm transition-colors hover:border-white/20"
+          className="text-muted hover:text-fg border-border hover:border-accent/30 rounded-md border px-3 py-1 font-mono text-sm transition-colors"
         >
           reset
         </button>
