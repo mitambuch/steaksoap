@@ -1,4 +1,5 @@
 import { ErrorBoundary } from '@components/features/ErrorBoundary';
+import { ToastContainer } from '@components/ui/Toast';
 import { ThemeProvider } from '@context/ThemeContext';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ export default function App() {
       <ThemeProvider>
         <BrowserRouter>
           <AppRoutes />
+          <ToastContainer />
         </BrowserRouter>
       </ThemeProvider>
     </ErrorBoundary>
