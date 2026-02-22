@@ -7,8 +7,11 @@ import { Input } from '@components/ui/Input';
 import { Modal } from '@components/ui/Modal';
 import { Select } from '@components/ui/Select';
 import { Skeleton } from '@components/ui/Skeleton';
+import { Spinner } from '@components/ui/Spinner';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/Tabs';
 import { Textarea } from '@components/ui/Textarea';
 import { Tooltip } from '@components/ui/Tooltip';
+import { useToast } from '@hooks/useToast';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
 
@@ -71,6 +74,7 @@ function Swatch({
 
 export default function Playground() {
   const [modalOpen, setModalOpen] = useState(false);
+  const { toast } = useToast();
 
   return (
     <>
@@ -351,8 +355,101 @@ export default function Playground() {
             </div>
           </Section>
 
-          {/* 04 — Widgets */}
-          <Section number="04" title="widgets">
+          {/* 04 — Toast */}
+          <Section number="04" title="toast">
+            <div className="flex flex-wrap gap-3">
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={() =>
+                  toast({ variant: 'success', message: 'action completed successfully.' })
+                }
+              >
+                success
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() =>
+                  toast({ variant: 'error', title: 'error', message: 'something went wrong.' })
+                }
+              >
+                error
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => toast({ variant: 'warning', message: 'careful with that action.' })}
+              >
+                warning
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() =>
+                  toast({ variant: 'info', message: 'new version available for download.' })
+                }
+              >
+                info
+              </Button>
+            </div>
+          </Section>
+
+          {/* 05 — Tabs */}
+          <Section number="05" title="tabs">
+            <Tabs defaultValue="design">
+              <TabsList>
+                <TabsTrigger value="design">design</TabsTrigger>
+                <TabsTrigger value="develop">develop</TabsTrigger>
+                <TabsTrigger value="deploy">deploy</TabsTrigger>
+              </TabsList>
+              <TabsContent value="design">
+                <p className="text-muted text-sm leading-relaxed">
+                  start with tokens and a design system. define colors, typography, spacing, and
+                  component anatomy before writing code.
+                </p>
+              </TabsContent>
+              <TabsContent value="develop">
+                <p className="text-muted text-sm leading-relaxed">
+                  build components with typescript strict, functional patterns, and tailwind tokens.
+                  test everything with vitest.
+                </p>
+              </TabsContent>
+              <TabsContent value="deploy">
+                <p className="text-muted text-sm leading-relaxed">
+                  validate with lint, typecheck, and tests. then ship with confidence using
+                  conventional commits and automated releases.
+                </p>
+              </TabsContent>
+            </Tabs>
+          </Section>
+
+          {/* 06 — Spinner */}
+          <Section number="06" title="spinner">
+            <div className="flex items-center gap-6">
+              <div className="flex flex-col items-center gap-2">
+                <Spinner size="sm" />
+                <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                  sm
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Spinner size="md" />
+                <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                  md
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Spinner size="lg" />
+                <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+                  lg
+                </span>
+              </div>
+            </div>
+          </Section>
+
+          {/* 07 — Widgets */}
+          <Section number="07" title="widgets">
             <div className="grid gap-6 md:grid-cols-2">
               {/* Stat card */}
               <Card padding="lg">
