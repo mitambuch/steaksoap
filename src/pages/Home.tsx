@@ -148,10 +148,15 @@ export default function Home() {
 
           {/* Footer micro */}
           <div className="flex items-end justify-between pb-6">
-            <span className="text-fg/60 flex items-center gap-1.5 font-mono text-[10px]">
+            <a
+              href="https://github.com/Mircooo/steaksoap/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-fg/60 hover:text-accent flex items-center gap-1.5 font-mono text-[10px] underline-offset-2 transition-colors"
+            >
               <span className="bg-success inline-block h-1.5 w-1.5 rounded-full shadow-[0_0_6px_rgba(106,255,138,0.6)]" />
               v{__APP_VERSION__}
-            </span>
+            </a>
             <span className="text-fg/60 font-mono text-[10px]">
               MIT · by{' '}
               <a

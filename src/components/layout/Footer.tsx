@@ -21,7 +21,14 @@ export default function Footer() {
         </p>
 
         {/* Version */}
-        <span className="text-muted/50 font-mono text-[10px]">v{__APP_VERSION__}</span>
+        <a
+          href="https://github.com/Mircooo/steaksoap/releases"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted/50 hover:text-accent font-mono text-[10px] underline-offset-2 transition-colors"
+        >
+          v{__APP_VERSION__}
+        </a>
 
         {/* GitHub */}
         <a

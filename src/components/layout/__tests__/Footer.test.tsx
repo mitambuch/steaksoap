@@ -29,12 +29,15 @@ describe('Footer', () => {
     }
   });
 
-  it('renders the version', () => {
+  it('renders the version linking to releases', () => {
     render(<Footer />);
     // WHY: JSX splits `v` and `{__APP_VERSION__}` into separate text nodes
-    expect(
-      screen.getByText((_content, el) => el?.textContent === 'v0.0.0-test'),
-    ).toBeInTheDocument();
+    const version = screen.getByText((_content, el) => el?.textContent === 'v0.0.0-test');
+    expect(version).toBeInTheDocument();
+    expect(version.closest('a')).toHaveAttribute(
+      'href',
+      'https://github.com/Mircooo/steaksoap/releases',
+    );
   });
 
   it('has no accessibility violations', async () => {
