@@ -110,6 +110,7 @@ Fixing is NOT enough. You must also:
   The WHY comment must explain the REASON, not repeat what the code does.
   Good: `// WHY: AbortController prevents memory leak if user navigates away before fetch completes`
   Bad: `// WHY: we abort the controller here`
+- Update `docs/DEPENDENCIES.md` when installing or removing any package or extension
 
 ## Proactive guidance
 

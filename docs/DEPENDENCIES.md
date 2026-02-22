@@ -1,122 +1,87 @@
-# Dependencies
+# Project Registry
 
-Every installed dependency is documented here with its **justification**.
-Nothing is installed "just in case". Each package has a reason to exist.
+Everything this project uses, and why.
 
----
+## Stack
 
-## Dependencies (production)
-
-| Package | Version | Why |
+| Technology | Version | Role |
 |---|---|---|
-| `react` | ^19.2.0 | UI framework — the core of the app |
-| `react-dom` | ^19.2.0 | React rendering to the browser DOM |
-| `react-router-dom` | ^7.12.0 | SPA routing — navigation between pages without reload |
-| `clsx` | ^2.1.1 | Conditional CSS class concatenation (`cn('a', condition && 'b')`) |
-| `tailwind-merge` | ^3.5.0 | Tailwind conflict resolution (`'px-4 px-8'` → `'px-8'`). Used with clsx in `cn()` |
+| React | 19 | UI framework |
+| TypeScript | 5.9 | Type safety (strict mode) |
+| Vite | 7 | Build tool & dev server |
+| Tailwind CSS | 4 | Styling (CSS-native, @theme tokens) |
+| React Router | 7 | Client-side routing with lazy loading |
+| Vitest | latest | Unit & component testing |
+| ESLint | 9 | Code quality (flat config) |
+| Prettier | latest | Code formatting |
+| pnpm | >=9 | Package manager |
 
----
+## Design
 
-## DevDependencies (development only)
-
-### Build & Dev
-
-| Package | Version | Why |
+| Element | Value | Source |
 |---|---|---|
-| `vite` | ^7.2.4 | Bundler + dev server. Fast, modern, instant HMR |
-| `@vitejs/plugin-react` | ^5.1.1 | React support in Vite (JSX transform, Fast Refresh) |
-| `typescript` | ^5.9.3 | Static typing — catches bugs before runtime |
+| Font (sans) | Space Grotesk | Google Fonts / local |
+| Font (mono) | JetBrains Mono | Google Fonts / local |
+| Accent color | #D4FF00 (Neon Lime) | Same in dark & light |
+| Dark background | #0A0A0A (Void) | @theme in index.css |
+| Light background | #E8E8E4 (Paper) | @theme in index.css |
+| Button shape | Capsule (rounded-full) | Button.tsx |
+| Transitions | 0.5s interactions, 1.5s theme switch | index.css |
 
-### Styles
+Full visual reference: see `DESIGN_SYSTEM.md`
 
-| Package | Version | Why |
+## Runtime Dependencies
+
+| Package | What it does | Why we need it |
 |---|---|---|
-| `tailwindcss` | ^4.2.0 | Utility-first CSS framework v4 — CSS-first config, faster builds |
-| `@tailwindcss/vite` | ^4.2.0 | Native Vite plugin for Tailwind v4 (replaces PostCSS + autoprefixer) |
+| react | UI rendering | Core framework |
+| react-dom | DOM rendering | React needs this to render in browsers |
+| react-router-dom | Page routing | Navigate between pages without reload |
+| clsx | CSS class conditionals | Build className strings like `cn('a', isActive && 'b')` |
+| tailwind-merge | Resolve Tailwind conflicts | When two classes conflict, last one wins correctly |
 
-### Code Quality
+## Dev Dependencies
 
-| Package | Version | Why |
+| Package | What it does | Why we need it |
 |---|---|---|
-| `eslint` | ^9.39.2 | Linting — detects errors and bad patterns |
-| `@eslint/js` | ^9.39.1 | Base ESLint rules for JavaScript |
-| `@typescript-eslint/eslint-plugin` | ^8.56.0 | TypeScript-specific ESLint rules |
-| `@typescript-eslint/parser` | ^8.56.0 | Allows ESLint to parse TypeScript |
-| `eslint-plugin-react-hooks` | ^7.0.1 | Validates correct React hooks usage |
-| `eslint-plugin-react-refresh` | ^0.4.24 | Validates Hot Module Replacement compatibility |
-| `eslint-plugin-jsx-a11y` | ^6.10.2 | Accessibility checks (missing alt, ARIA roles, etc.) |
-| `eslint-plugin-simple-import-sort` | ^12.1.1 | Automatic import sorting — consistent order everywhere |
-| `prettier` | ^3.5.0 | Automatic code formatting. Zero style debates |
-| `prettier-plugin-tailwindcss` | ^0.7.2 | Automatic Tailwind class sorting in recommended order |
-| `globals` | ^16.5.0 | Browser global variables for ESLint |
+| vite | Dev server + bundler | Fast HMR, fast builds |
+| @vitejs/plugin-react | React support for Vite | JSX, fast refresh |
+| tailwindcss | CSS framework | Utility-first styling |
+| @tailwindcss/vite | Tailwind 4 Vite plugin | CSS-native Tailwind, no PostCSS |
+| typescript | Type checking | Catch errors before runtime |
+| vitest | Test runner | Fast, Vite-native testing |
+| @testing-library/react | Component testing | Test what users see, not implementation |
+| @testing-library/jest-dom | DOM assertions | `toBeInTheDocument()`, `toHaveClass()` etc. |
+| @testing-library/user-event | User interaction simulation | Click, type, tab — realistic events |
+| vitest-axe | Accessibility testing | Catch a11y issues in tests |
+| eslint | Linting | Code quality rules |
+| @eslint/js | Base ESLint rules | JavaScript lint rules |
+| @typescript-eslint/* | TS-aware linting | Type-safe lint rules |
+| eslint-plugin-jsx-a11y | Accessibility linting | Catch a11y issues in JSX |
+| eslint-plugin-react-hooks | Hook rules | Enforce rules of hooks |
+| eslint-plugin-react-refresh | HMR safety | Prevent HMR-breaking patterns |
+| eslint-plugin-simple-import-sort | Import ordering | Consistent import groups |
+| prettier | Code formatting | Consistent style |
+| prettier-plugin-tailwindcss | Tailwind class sorting | Consistent class order |
+| husky | Git hooks | Run checks before commit |
+| @commitlint/cli | Commit message linting | Enforce conventional commits |
+| @commitlint/config-conventional | Commitlint config | feat:, fix:, docs:, etc. |
+| lint-staged | Staged file linting | Only lint changed files |
+| release-it | Release automation | Version bump, changelog, git tag |
+| @release-it/conventional-changelog | Changelog generation | Auto-generate from commits |
+| @clack/prompts | CLI prompts | Interactive setup wizard |
+| jsdom | Browser simulation | Tests run without a real browser |
+| globals | Global variables | ESLint browser/node globals |
+| vite-plugin-sitemap | Sitemap generation | SEO: auto-generate sitemap.xml |
+| @types/react | TypeScript types | Type definitions for React |
+| @types/react-dom | TypeScript types | Type definitions for ReactDOM |
 
-### Types
+## Extensions (installed via registry)
 
-| Package | Version | Why |
-|---|---|---|
-| `@types/react` | ^19.2.5 | TypeScript types for React |
-| `@types/react-dom` | ^19.2.3 | TypeScript types for ReactDOM |
+_None yet. Use `/discover` or `/install-extension` to add integrations._
 
-### Testing
-
-| Package | Version | Why |
-|---|---|---|
-| `vitest` | ^4.0.18 | Fast test framework, Vite-compatible, replaces Jest |
-| `jsdom` | ^28.1.0 | Simulates a browser in memory for React component testing |
-| `@testing-library/react` | ^16.3.2 | Utilities for testing React components (render, screen, queries) |
-| `@testing-library/jest-dom` | ^6.9.1 | Extra DOM matchers (toBeVisible, toHaveTextContent…) |
-| `@testing-library/user-event` | ^14.6.1 | Simulates user interactions (click, type, hover…) |
-| `vitest-axe` | ^0.1.0 | Accessibility testing with axe-core integration for Vitest |
-
-### SEO
-
-| Package | Version | Why |
-|---|---|---|
-| `vite-plugin-sitemap` | ^0.8.2 | Auto-generates `sitemap.xml` + `robots.txt` at build time |
-
-### Git Hooks & Commits
-
-| Package | Version | Why |
-|---|---|---|
-| `husky` | ^9.1.7 | Automatic git hooks: runs checks before every commit |
-| `lint-staged` | ^16.2.7 | Lints only staged files (not the entire project) |
-| `@commitlint/cli` | ^20.4.2 | Validates that every commit follows Conventional Commits |
-| `@commitlint/config-conventional` | ^20.4.2 | Default rules for commitlint |
-
-### Releases
-
-| Package | Version | Why |
-|---|---|---|
-| `release-it` | ^19.2.4 | Automates: version bump + CHANGELOG + tag + GitHub Release |
-| `@release-it/conventional-changelog` | ^10.0.5 | Generates CHANGELOG from conventional commits |
-
-### Setup
-
-| Package | Version | Why |
-|---|---|---|
-| `@clack/prompts` | ^1.0.1 | Beautiful interactive CLI prompts for the setup wizard |
-
----
-
-## Rules for adding a dependency
-
-1. **Check first**: can we do without? Does a native solution exist?
-2. **Verify the package**: weekly downloads, last update, open issues
-3. **Explain**: in 1 sentence, why it's needed
-4. **Document here**: add a row to the table
-5. **Mention in the commit**: the commit body explains the addition
-
-## Maintenance commands
-
-```bash
-# Check outdated packages
-pnpm outdated
-
-# Check vulnerabilities
-pnpm audit
-
-# Update (minor + patches)
-pnpm update
-
-# For major upgrades → case by case with explanation
-```
+When an extension is installed, Claude Code MUST add it to this section with:
+- Name and version
+- What it does (1 sentence)
+- Why it was added
+- Date installed
