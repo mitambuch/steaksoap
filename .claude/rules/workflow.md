@@ -111,6 +111,16 @@ Fixing is NOT enough. You must also:
   Good: `// WHY: AbortController prevents memory leak if user navigates away before fetch completes`
   Bad: `// WHY: we abort the controller here`
 - Update `docs/DEPENDENCIES.md` when installing or removing any package or extension
+- When creating a new page, ALWAYS follow the steps defined in `/new-page` command
+  (lazy route, constants, SeoHead, Container, test) — even if the user didn't type /new-page
+- When creating a new component, ALWAYS follow `/new-component` steps
+  (types, JSDoc, className, cn(), test, a11y, human-readable header)
+- When creating a new hook, ALWAYS follow `/new-hook` steps
+- When creating a new feature, ALWAYS follow `/new-feature` steps
+- When installing a package, ALWAYS check the extension registry first (as defined in `/discover`)
+- When finishing a task, ALWAYS mentally run through the `/done` checklist
+- The user should NEVER need to type a slash command for these patterns to be followed.
+  The commands define the quality standard. The rules enforce it automatically.
 
 ## Proactive guidance
 
@@ -150,3 +160,55 @@ The user should never have to:
 The ONLY things the user does manually: create accounts, copy API keys, approve payments.
 
 When in doubt, propose a plan and ask "Want me to go ahead?" — don't ask the user to decide between technical options they don't understand.
+
+## Smart model usage
+
+steaksoap users have limited AI credits. Every token counts.
+Before each task, evaluate complexity and recommend the right tool.
+
+### Model recommendations
+
+**Stay on Sonnet (default) for:**
+- Scaffolding: /new-page, /new-component, /new-feature, /new-hook
+- Simple fixes: typos, imports, token adjustments
+- Tests: writing and updating tests
+- Git: commits, branches, merges, releases
+- Doc updates
+- /review, /refactor, /responsive-check
+
+**Recommend Opus when:**
+- Architecture decisions across multiple files
+- Complex debugging after 2 failed Sonnet attempts
+- /spec for features with 3+ pages or external APIs
+- /migrate (Phase 1 diagnostic needs deep analysis)
+- Chains of 5+ related TypeScript errors
+- Complex business logic (auth flows, payment)
+
+Format: "This is complex — I'd recommend switching to Opus for better results.
+Switch back to Sonnet for the follow-up tasks."
+
+**Recommend Haiku when:**
+- Bulk renames or import updates
+- Formatting/linting fixes
+- Simple file moves
+- Version number updates
+- Repetitive scaffolding (5+ similar files)
+
+Format: "These tasks are mechanical — Haiku can handle them and save credits.
+Switch back to Sonnet when we reach the logic."
+
+**Recommend another AI when:**
+- Major architecture decisions → "Get a second opinion from Gemini or ChatGPT"
+- Project positioning/market questions → "Ask ChatGPT for product perspective"
+- When stuck on an approach → "Try asking Gemini: '[question to copy]'"
+- External code review → "Paste this in [other AI] for a fresh eye"
+
+Format: "For this decision, a second opinion would help.
+Try asking Gemini: '[specific question]'"
+
+### Credit-saving habits
+- Batch related changes in one session
+- Be concise in explanations
+- If a task is repetitive: do first one carefully, suggest Haiku for the rest
+- Don't generate docs the user didn't ask for
+- Don't re-read files already read this session
