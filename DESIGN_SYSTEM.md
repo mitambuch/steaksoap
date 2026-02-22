@@ -5,11 +5,11 @@
 | Name       | Token       | Dark Mode | Light Mode | Usage                          |
 |------------|-------------|-----------|------------|--------------------------------|
 | **Accent** | `accent`    | #FF6B6B   | #FF6B6B    | CTAs, hovers, tags, highlights |
-| **BG**     | `bg`        | #0A0A0A   | #B8B8B8    | Page background                |
+| **BG**     | `bg`        | #0A0A0A   | #B0B0A8    | Page background                |
 | **FG**     | `fg`        | #F0F0F0   | #1A1A1A    | Primary text                   |
-| **Muted**  | `muted`     | #8A8A8A   | #525252    | Secondary text, labels         |
-| **Surface**| `surface`   | #141414   | #ADADAD    | Cards, elevated elements       |
-| **Border** | `border`    | #262626   | #9E9E9E    | Dividers, card borders         |
+| **Muted**  | `muted`     | #8A8A8A   | #4A4A44    | Secondary text, labels         |
+| **Surface**| `surface`   | #141414   | #A4A49C    | Cards, elevated elements       |
+| **Border** | `border`    | #262626   | #96968E    | Dividers, card borders         |
 | **Success**| `success`   | #6AFF8A   | #00C853    | Success states, confirmations  |
 | **Warning**| `warning`   | #FFD60A   | #E6A800    | Warnings, caution              |
 | **Danger** | `danger`    | #DC2626   | #B91C1C    | Errors, destructive actions    |

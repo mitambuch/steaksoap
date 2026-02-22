@@ -54,7 +54,7 @@ export const Header = ({ className }: HeaderProps) => {
         {/* Logo — bare text, no box, no background */}
         <a
           href="/"
-          className="text-fg hover:text-fg/70 focus-visible:ring-accent font-mono text-sm font-medium transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-none"
+          className="text-fg hover:text-accent focus-visible:ring-accent font-mono text-sm font-medium transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-none"
         >
           {siteConfig.name}
         </a>
@@ -62,13 +62,13 @@ export const Header = ({ className }: HeaderProps) => {
         {/* Pill nav — separate from logo */}
         <div
           className={cn(
-            'flex items-center rounded-full border border-white/8 transition-all duration-500',
-            scrolled ? 'bg-white/8 backdrop-blur-xl' : 'bg-white/5 backdrop-blur-xl',
+            'border-accent/10 flex items-center rounded-full border transition-all duration-500',
+            scrolled ? 'bg-accent/8 backdrop-blur-xl' : 'bg-accent/5 backdrop-blur-xl',
           )}
         >
           <a
             href="/playground"
-            className="text-muted hover:text-fg flex items-center gap-1.5 border-r border-white/8 px-4 py-2 text-sm transition-colors duration-300"
+            className="text-muted hover:text-accent border-accent/10 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
           >
             <Blocks size={14} strokeWidth={1.5} />
             <span className="hidden sm:inline">Playground</span>
@@ -77,13 +77,13 @@ export const Header = ({ className }: HeaderProps) => {
             href="https://github.com/Mircooo/steaksoap"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-fg flex items-center gap-1.5 border-r border-white/8 px-4 py-2 text-sm transition-colors duration-300"
+            className="text-muted hover:text-accent border-accent/10 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
           >
             <GitHubIcon size={14} />
             <span className="hidden sm:inline">GitHub</span>
           </a>
           <div className="px-2 py-1">
-            <ThemeToggle className="rounded-full p-1.5 hover:bg-white/5" />
+            <ThemeToggle className="hover:bg-accent/5 rounded-full p-1.5" />
           </div>
         </div>
       </div>

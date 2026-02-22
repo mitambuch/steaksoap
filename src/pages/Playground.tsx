@@ -187,11 +187,11 @@ export default function Playground() {
           <Section number="02" title="colors">
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <Swatch name="accent" token="accent" dark="#FF6B6B" light="#FF6B6B" />
-              <Swatch name="background" token="bg" dark="#0A0A0A" light="#B8B8B8" />
+              <Swatch name="background" token="bg" dark="#0A0A0A" light="#B0B0A8" />
               <Swatch name="foreground" token="fg" dark="#F0F0F0" light="#1A1A1A" />
-              <Swatch name="muted" token="muted" dark="#8A8A8A" light="#525252" />
-              <Swatch name="surface" token="surface" dark="#141414" light="#ADADAD" />
-              <Swatch name="border" token="border" dark="#262626" light="#9E9E9E" />
+              <Swatch name="muted" token="muted" dark="#8A8A8A" light="#4A4A44" />
+              <Swatch name="surface" token="surface" dark="#141414" light="#A4A49C" />
+              <Swatch name="border" token="border" dark="#262626" light="#96968E" />
               <Swatch name="success" token="success" dark="#6AFF8A" light="#00C853" />
               <Swatch name="warning" token="warning" dark="#FFD60A" light="#E6A800" />
               <Swatch name="danger" token="danger" dark="#DC2626" light="#B91C1C" />

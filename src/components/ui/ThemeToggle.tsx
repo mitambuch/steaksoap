@@ -16,7 +16,7 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       onClick={toggleTheme}
       className={cn(
         'relative inline-flex items-center justify-center rounded-md p-2',
-        'text-muted hover:text-fg hover:bg-surface',
+        'text-muted hover:text-accent hover:bg-surface',
         'transition-colors duration-200',
         'focus-visible:ring-accent focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-offset-2',
         className,

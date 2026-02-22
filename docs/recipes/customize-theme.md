@@ -34,12 +34,12 @@ And the light mode override right below:
 
 ```css
 [data-theme='light'] {
-  --color-bg: #b8b8b8;
+  --color-bg: #b0b0a8;
   --color-fg: #1a1a1a;
   --color-accent: #ff6b6b;
-  --color-muted: #525252;
-  --color-surface: #adadad;
-  --color-border: #9e9e9e;
+  --color-muted: #4a4a44;
+  --color-surface: #a4a49c;
+  --color-border: #96968e;
 
   --color-success: #00c853;
   --color-warning: #e6a800;

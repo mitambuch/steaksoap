@@ -2,11 +2,9 @@ import { SeoHead } from '@components/features/SeoHead';
 import Noise from '@components/ui/Noise';
 import { featuredCommands, features, quickStartLines } from '@data/showcase';
 import { useInView } from '@hooks/useInView';
-import { useMediaQuery } from '@hooks/useMediaQuery';
 import { cn } from '@utils/cn';
 import { FlaskConical, GitBranch, Shield, Smartphone, Terminal, Zap } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { Feature } from '../data/showcase';
 
@@ -20,64 +18,6 @@ const iconMap: Record<Feature['iconName'], typeof Zap> = {
   Smartphone,
   GitBranch,
 };
-
-/* ─── Cursor Glow (desktop only) ──────────────────────────────── */
-
-function useCursorGlow(enabled: boolean) {
-  const [pos, setPos] = useState({ x: -200, y: -200 });
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (!enabled) return;
-    const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      if (!visible) setVisible(true);
-    };
-    window.addEventListener('mousemove', move);
-    return () => window.removeEventListener('mousemove', move);
-  }, [enabled, visible]);
-
-  return { pos, visible: enabled && visible };
-}
-
-function CursorGlow({ pos, visible }: { pos: { x: number; y: number }; visible: boolean }) {
-  if (!visible) return null;
-
-  return (
-    <>
-      <div
-        className="pointer-events-none fixed top-0 left-0 z-9990 mix-blend-difference"
-        style={{
-          transform: `translate3d(${pos.x - 200}px, ${pos.y - 200}px, 0)`,
-          transition: 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)',
-        }}
-      >
-        <div
-          className="h-100 w-100 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(255, 107, 107, 0.5) 0%, transparent 55%)',
-            filter: 'blur(50px)',
-            opacity: 0.25,
-          }}
-        />
-      </div>
-      <div
-        className="pointer-events-none fixed top-0 left-0 z-10000 flex items-center justify-center"
-        style={{
-          transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`,
-          transition: 'transform 75ms ease-out',
-        }}
-      >
-        <div
-          className="bg-accent h-3 w-3 rounded-full"
-          style={{
-            boxShadow: '0 0 12px rgba(255, 107, 107, 0.8), 0 0 24px rgba(255, 107, 107, 0.4)',
-          }}
-        />
-      </div>
-    </>
-  );
-}
 
 /* ─── Staggered fade-in wrapper ────────────────────────────────── */
 
@@ -131,25 +71,6 @@ function scrollTo(id: string) {
 /* ═══════════════════════════════════════════════════════════════ */
 
 export default function Home() {
-  const isDesktop = useMediaQuery('(min-width: 768px)');
-  const { pos, visible } = useCursorGlow(isDesktop);
-
-  const heroRef = useRef<HTMLElement>(null);
-  const [heroInView, setHeroInView] = useState(true);
-
-  const handleHeroObserver = useCallback(
-    ([entry]: IntersectionObserverEntry[]) => setHeroInView(entry?.isIntersecting ?? false),
-    [],
-  );
-
-  useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(handleHeroObserver, { threshold: 0.1 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [handleHeroObserver]);
-
   return (
     <>
       <SeoHead
@@ -158,15 +79,8 @@ export default function Home() {
       />
 
       {/* ── HERO (100vh) ───────────────────────────────────── */}
-      <section
-        ref={heroRef}
-        className={cn(
-          'bg-bg text-fg relative -mt-20 flex h-screen flex-col overflow-hidden',
-          isDesktop && 'cursor-hidden',
-        )}
-      >
+      <section className="bg-bg text-fg relative -mt-20 flex h-screen flex-col overflow-hidden">
         <Noise />
-        {heroInView && <CursorGlow pos={pos} visible={visible} />}
 
         <div className="relative z-10 flex flex-1 flex-col px-6 pt-20 md:px-8">
           {/* Center content */}
@@ -204,7 +118,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => scrollTo('features')}
-                className="text-fg inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-all duration-500 hover:border-white/20 hover:bg-white/5 active:scale-[0.98]"
+                className="text-fg border-accent/10 hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
               >
                 Get started
                 <span aria-hidden="true">&darr;</span>
@@ -242,7 +156,7 @@ export default function Home() {
               const Icon = iconMap[feature.iconName];
               return (
                 <FadeIn key={feature.title} delay={i * 100}>
-                  <div className="group hover:border-accent/20 rounded-lg border border-white/6 bg-white/2 p-6 backdrop-blur-sm transition-all duration-500 hover:bg-white/4 hover:shadow-[0_0_40px_rgba(255,107,107,0.03)]">
+                  <div className="group hover:border-accent/20 border-accent/6 bg-accent/2 hover:bg-accent/4 rounded-lg border p-6 backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,107,107,0.03)]">
                     <Icon
                       size={20}
                       strokeWidth={1.5}
@@ -277,7 +191,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {featuredCommands.map((cmd, i) => (
               <FadeIn key={cmd.name} delay={i * 80}>
-                <div className="group hover:border-accent/15 rounded-lg border border-white/6 bg-transparent p-5 transition-all duration-300">
+                <div className="group hover:border-accent/15 border-accent/6 rounded-lg border bg-transparent p-5 transition-all duration-300">
                   <span className="text-accent font-mono text-sm">{cmd.name}</span>
                   <p className="text-muted mt-1 text-sm">{cmd.description}</p>
                 </div>
@@ -309,7 +223,7 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn delay={100}>
-            <div className="bg-surface/30 overflow-x-auto rounded-lg border border-white/6 p-6 font-mono text-xs backdrop-blur-sm md:text-sm">
+            <div className="bg-surface/30 border-accent/6 overflow-x-auto rounded-lg border p-6 font-mono text-xs backdrop-blur-sm md:text-sm">
               {quickStartLines.map((line, i) => (
                 <div key={i} className="flex gap-2">
                   <span className="text-accent shrink-0">{line.prompt}</span>
@@ -333,7 +247,7 @@ export default function Home() {
               href="https://vercel.com/new/clone?repository-url=https://github.com/Mircooo/steaksoap"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-fg inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-all duration-500 hover:border-white/20 hover:bg-white/5 active:scale-[0.98]"
+              className="text-fg border-accent/10 hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
             >
               Deploy on Vercel
             </a>

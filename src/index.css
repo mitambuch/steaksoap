@@ -26,14 +26,14 @@
   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Light mode override (neutral gray — no warm tones) */
+/* Light mode override (warm concrete gray — classe2 style) */
 [data-theme='light'] {
-  --color-bg: #b8b8b8;
+  --color-bg: #b0b0a8;
   --color-fg: #1a1a1a;
   --color-accent: #ff6b6b;
-  --color-muted: #525252;
-  --color-surface: #adadad;
-  --color-border: #9e9e9e;
+  --color-muted: #4a4a44;
+  --color-surface: #a4a49c;
+  --color-border: #96968e;
 
   --color-success: #00c853;
   --color-warning: #e6a800;
@@ -71,6 +71,11 @@
 }
 
 /* ─── Global styles ────────────────────────────────────────── */
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
 
 /* a11y: cursor-hidden is showcase-only, removed by pnpm setup */
 .cursor-hidden,
@@ -121,21 +126,4 @@
 
 .animate-noise {
   animation: noise 0.35s steps(2) infinite;
-}
-
-/* ─── Native select dropdown ─────────────────────────────────── */
-
-select option {
-  background-color: var(--color-surface);
-  color: var(--color-fg);
-  padding: 8px 12px;
-}
-
-select option:checked {
-  background-color: var(--color-accent);
-  color: var(--color-bg);
-}
-
-select option:hover {
-  background-color: var(--color-accent);
 }
