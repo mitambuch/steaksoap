@@ -94,3 +94,13 @@ export const Button = ({ variant = 'primary', size = 'md', isLoading, className,
 - State props: `isLoading?`, `isDisabled?`, `isOpen?`
 - Always provide sensible defaults
 - Spread remaining HTML attrs: `...rest` → applied to root element
+
+## Responsive requirements (every component)
+- Mobile layout (320px) MUST be the default — add breakpoints for larger screens
+- If the component has hover states, it MUST also have active/tap states for mobile
+- If the component uses effects that don't work on touch (cursor, hover-reveal):
+  provide a mobile alternative or disable with fallback
+- Images in components MUST have max-w-full or w-full
+- Text in components MUST be readable at 320px (minimum 14px)
+- Fixed/absolute positioned elements MUST NOT cause overflow on mobile
+- Always test: "does this make sense on a phone screen?"
