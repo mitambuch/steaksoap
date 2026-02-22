@@ -8,9 +8,9 @@
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* Dark mode — DEFAULT */
+  /* Dark mode — DEFAULT (classe2 "brutaliste suisse") */
   --color-bg: #0a0a0a;
-  --color-fg: #e0e0e0;
+  --color-fg: #f0f0f0;
   --color-accent: #d4ff00;
   --color-muted: #666666;
   --color-surface: #141414;
@@ -22,18 +22,18 @@
   --color-danger: #f87171;
   --color-info: #60a5fa;
 
-  --font-family-sans: 'YourFont', system-ui, -apple-system, sans-serif;
+  --font-family-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Light mode override */
+/* Light mode override (classe2 "Paper" — warm gray, not cold white) */
 [data-theme='light'] {
-  --color-bg: #fafafa;
-  --color-fg: #18181b;
-  --color-accent: #4d7c0f;
+  --color-bg: #f4f4f0;
+  --color-fg: #1a1a1a;
+  --color-accent: #d4ff00;
   --color-muted: #71717a;
-  --color-surface: #f4f4f5;
-  --color-border: #e4e4e7;
+  --color-surface: #eaeae6;
+  --color-border: #d4d4cf;
 
   --color-success: #16a34a;
   --color-warning: #ca8a04;
