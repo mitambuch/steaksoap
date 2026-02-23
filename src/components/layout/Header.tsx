@@ -77,7 +77,7 @@ export const Header = ({ className }: HeaderProps) => {
       aria-label="Main navigation"
       className={cn('fixed top-0 right-0 left-0 z-50', 'px-6 py-4 md:px-8 md:py-5', className)}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <div className="mx-auto flex w-full max-w-[2440px] items-center justify-between">
         {/* Logo — morphing blob + text, no box, no background */}
         <MorphingLogo isActive={githubHovered} />
 
