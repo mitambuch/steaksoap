@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.1](https://github.com/mitambuch/steaksoap/compare/v2.4.0...v2.4.1) (2026-02-23)
+
+### ♻️  Refactoring
+
+* **onboarding:** convert wizard from fullscreen to popup modal ([c14d7cc](https://github.com/mitambuch/steaksoap/commit/c14d7cc9e7430c228b11db808a20e2d0e5e1a483))
+* **site:** remove prerequisites section, move wizard trigger ([b5ff546](https://github.com/mitambuch/steaksoap/commit/b5ff546ffa84fe17add3cb39ec166795e5d0269d))
+
 ## [2.4.0](https://github.com/mitambuch/steaksoap/compare/v2.3.0...v2.4.0) (2026-02-23)
 
 ### ✨ Features
