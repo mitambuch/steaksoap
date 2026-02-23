@@ -108,7 +108,7 @@ export default function Home() {
 
         <div className="relative z-10 flex flex-1 flex-col px-6 pt-20 md:px-8">
           {/* Center content */}
-          <div className="flex min-h-0 flex-1 flex-col items-center justify-center text-center">
+          <div className="flex min-h-0 flex-1 flex-col items-center justify-center pt-8 text-center md:pt-12">
             <FadeIn delay={0}>
               {/* Open Source badge */}
               <a
@@ -133,14 +133,14 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={150}>
-              <p className="text-muted mt-4 max-w-lg text-base leading-relaxed md:mt-6 md:text-lg">
+              <p className="text-muted mt-6 max-w-lg text-base leading-relaxed md:mt-8 md:text-lg">
                 You describe it. The AI builds it. Made for solo builders.
               </p>
             </FadeIn>
 
             {/* Stats boxes */}
             <FadeIn delay={250}>
-              <div className="mt-6 flex items-center gap-3 md:gap-4">
+              <div className="mt-8 flex items-center gap-3 md:mt-10 md:gap-4">
                 {[
                   { number: '22', label: 'commands' },
                   { number: '12', label: 'rules' },
@@ -163,7 +163,7 @@ export default function Home() {
 
             {/* Tech stack pills */}
             <FadeIn delay={350}>
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
                 {['React 19', 'TypeScript', 'Vite', 'Tailwind CSS'].map(tech => (
                   <span
                     key={tech}
@@ -175,7 +175,7 @@ export default function Home() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={450} className="mt-6 flex flex-col gap-3 sm:gap-4">
+            <FadeIn delay={450} className="mt-10 flex flex-col gap-3 sm:gap-4">
               {/* WHY: order-first on mobile so novices see the wizard CTA first */}
               <button
                 type="button"
@@ -364,29 +364,51 @@ export default function Home() {
             <SectionLabel number="04" title="why free" />
           </FadeIn>
 
-          <div className="mx-auto max-w-2xl">
-            <FadeIn delay={100}>
-              <p className="text-fg text-base leading-relaxed md:text-lg">
-                I built steaksoap because every new project meant hours reconfiguring the same
-                tools. ESLint, Prettier, Git hooks, AI rules &mdash; the same boring setup, over and
-                over.
-              </p>
-            </FadeIn>
+          <FadeIn delay={100}>
+            <div className="mx-auto max-w-4xl">
+              <div className="border-border bg-surface/30 rounded-2xl border p-8 md:p-12">
+                <div className="flex flex-col items-center gap-10 md:flex-row md:items-start">
+                  {/* Logo steaksoap — morphing dot from Header for visual consistency */}
+                  <div className="flex shrink-0 flex-col items-center gap-3">
+                    <div className="relative">
+                      {/* WHY: Same morph animation as Header MorphingLogo for brand consistency */}
+                      <span
+                        className="bg-accent absolute -top-1 -right-1 inline-block h-4 w-4 shadow-[0_0_12px_rgba(255,107,107,0.4)]"
+                        style={{
+                          animation: 'morph 4s ease-in-out infinite',
+                          borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                        }}
+                        aria-hidden="true"
+                      />
+                      <span className="text-fg font-mono text-3xl font-bold md:text-4xl">
+                        steaksoap
+                      </span>
+                    </div>
+                    <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">
+                      open source
+                    </span>
+                  </div>
 
-            <FadeIn delay={200}>
-              <p className="text-muted mt-4 text-base leading-relaxed md:text-lg">
-                So I made a clean workspace I could clone and start building immediately. Then I
-                thought: if I needed this, other solo builders probably do too.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={300}>
-              <p className="text-muted mt-4 text-base leading-relaxed md:text-lg">
-                No startup. No funding round. No premium tier coming later. MIT License &mdash; use
-                it, fork it, ship with it. It&apos;s yours.
-              </p>
-            </FadeIn>
-          </div>
+                  {/* Texte démarche */}
+                  <div>
+                    <p className="text-fg text-sm leading-relaxed md:text-base">
+                      I built steaksoap because every new project meant hours reconfiguring the same
+                      tools. ESLint, Prettier, Git hooks, AI rules &mdash; the same boring setup,
+                      over and over.
+                    </p>
+                    <p className="text-muted mt-4 text-sm leading-relaxed md:text-base">
+                      So I made a clean workspace I could clone and start building immediately. Then
+                      I thought: if I needed this, other solo builders probably do too.
+                    </p>
+                    <p className="text-muted mt-4 text-sm leading-relaxed md:text-base">
+                      No startup. No funding round. No premium tier coming later. MIT License
+                      &mdash; use it, fork it, ship with it. It&apos;s yours.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
