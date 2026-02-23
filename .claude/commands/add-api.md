@@ -25,7 +25,7 @@ $ARGUMENTS — Resource name in lowercase plural. Examples: "products", "users",
         ```
      c. Wrap the app in QueryProvider (in main.tsx or the root layout)
 
-2. Create `src/services/$ARGUMENTS.ts`:
+2. Create `src/lib/$ARGUMENTS.ts`:
 ```tsx
 // Types
 export interface $SINGULAR {
@@ -57,7 +57,7 @@ export const $ARGUMENTSService = {
 ```tsx
 import { useQuery } from '@tanstack/react-query';
 
-import { $ARGUMENTSService } from '@services/$ARGUMENTS';
+import { $ARGUMENTSService } from '@lib/$ARGUMENTS';
 
 export const use$ARGUMENTS = () => {
   return useQuery({
@@ -86,6 +86,6 @@ export const use$SINGULAR = (id: string) => {
 ## Validation
 - [ ] @tanstack/react-query installed (if wasn't already)
 - [ ] QueryProvider wraps the app (if wasn't already)
-- [ ] Service file with typed functions
+- [ ] Service file in src/lib/ with typed functions
 - [ ] Hook file with useQuery
 - [ ] pnpm validate passes
