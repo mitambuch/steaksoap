@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.6.2](https://github.com/mitambuch/steaksoap/compare/v2.6.1...v2.6.2) (2026-02-23)
+
+### ✨ Features
+
+* **particles:** enable on mobile with reduced count (50 vs 140) ([6087d2f](https://github.com/mitambuch/steaksoap/commit/6087d2f58ff92a7fa6097825d3f5ccded986fd5b))
+
+### 🐛 Bug Fixes
+
+* **onboarding:** increase wizard box height to 620px ([40c0f7d](https://github.com/mitambuch/steaksoap/commit/40c0f7d1fe5721ba2a0546b1ee1ba98002751823))
+* **site:** show wizard button first on mobile, last on desktop ([c235154](https://github.com/mitambuch/steaksoap/commit/c23515417515e731d8d50b668c1331633ecf7c6e))
+
 ## [2.6.1](https://github.com/mitambuch/steaksoap/compare/v2.6.0...v2.6.1) (2026-02-23)
 
 ### ✨ Features
