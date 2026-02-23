@@ -31,23 +31,15 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 | **Releases** | Automated version bump + changelog + tag | Manual |
 | **Multi-AI** | Claude Code + Cursor + Copilot rules | Single tool or none |
 
-## Prerequisites
+## Getting Started
 
-Install these once (if you don't have them already):
+### Never coded before?
 
-| Tool | How to install |
-|---|---|
-| **Node.js 20+** | Download from [nodejs.org](https://nodejs.org) — pick LTS |
-| **pnpm** | Open a terminal, run: `npm install -g pnpm` |
-| **Git** | Download from [git-scm.com](https://git-scm.com) |
-| **VS Code** | Download from [code.visualstudio.com](https://code.visualstudio.com) |
-| **Claude Code** | Install from [claude.ai/code](https://claude.ai/code) |
+Visit [steaksoap.app](https://steaksoap.app) and click **"Start the guided setup"** at the bottom of the page. It walks you through everything step by step — from installing VS Code to seeing your site running.
 
-> **First time?** Open VS Code after cloning, it will suggest recommended extensions — click "Install All".
+### Already have a dev setup?
 
-## Quick Start
-
-Open a terminal (PowerShell, Terminal, or VS Code terminal) and run these one by one:
+You need Node.js 20+, pnpm, and Git.
 
 ```
 git clone https://github.com/mitambuch/steaksoap.git my-project
@@ -68,6 +60,8 @@ pnpm setup
 ```
 pnpm dev
 ```
+
+Open [localhost:5173](http://localhost:5173) — your site is running.
 
 The setup wizard will:
 - Rename the project to your chosen name

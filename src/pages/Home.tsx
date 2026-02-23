@@ -9,9 +9,10 @@ import {
 import { useInView } from '@hooks/useInView';
 import { cn } from '@utils/cn';
 import { FlaskConical, GitBranch, Shield, Smartphone, Terminal, Zap } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import type { Feature } from '../data/showcase';
+import { SetupWizard } from '../features/onboarding';
 import { DynamicParticles } from '../features/particles/DynamicParticles';
 
 /* ─── Icon resolver ────────────────────────────────────────────── */
@@ -77,6 +78,18 @@ function scrollTo(id: string) {
 /* ═══════════════════════════════════════════════════════════════ */
 
 export default function Home() {
+  const [showWizard, setShowWizard] = useState(false);
+
+  // WHY: Hide the bar once the user has completed all wizard steps
+  const [wizardDone] = useState(() => localStorage.getItem('steaksoap_wizard_done') === 'true');
+
+  // WHY: Footer dispatches a custom event to reopen the wizard from any page
+  useEffect(() => {
+    const handler = () => setShowWizard(true);
+    window.addEventListener('open-setup-wizard', handler);
+    return () => window.removeEventListener('open-setup-wizard', handler);
+  }, []);
+
   return (
     <>
       <SeoHead
@@ -417,6 +430,25 @@ export default function Home() {
           </p>
         </FadeIn>
       </section>
+
+      {/* ── "New to coding?" fixed bar ────────────────────── */}
+      {!wizardDone && !showWizard && (
+        <div className="border-accent/10 bg-bg/95 fixed right-0 bottom-0 left-0 z-40 border-t backdrop-blur-md">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+            <span className="text-muted text-sm">New to coding?</span>
+            <button
+              type="button"
+              onClick={() => setShowWizard(true)}
+              className="text-accent font-mono text-sm hover:underline"
+            >
+              Start the guided setup &rarr;
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── Setup wizard overlay ──────────────────────────── */}
+      {showWizard && <SetupWizard onClose={() => setShowWizard(false)} />}
     </>
   );
 }
