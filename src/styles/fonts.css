@@ -1,6 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
-   FONTS — local font declarations
-   Place .woff2 files in /public/fonts/
+   FONTS — local font declarations (currently placeholder)
+
+   This file is a template for self-hosted fonts.
+   By default, steaksoap loads fonts from Google Fonts in index.html.
+   If you want to self-host fonts for better privacy/performance:
+   1. Download .woff2 files into /public/fonts/
+   2. Uncomment and adapt the @font-face declarations below
+   3. Remove the Google Fonts <link> from index.html
    ═══════════════════════════════════════════════════════════════
 
    Naming convention:

@@ -8,12 +8,32 @@
    ═══════════════════════════════════════════════════════════════ */
 
 import { execSync } from 'node:child_process';
-import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { extname, join, resolve } from 'node:path';
 
 import { ALIASES, PATHS } from './utils/paths.js';
 
 const root = PATHS.root;
+
+// WHY: Node-native file scanner replaces grep for Windows compatibility (grep not available on vanilla Windows)
+function scanFiles(dir, pattern, extensions = ['.ts', '.tsx']) {
+  const results = [];
+  function walk(d) {
+    for (const entry of readdirSync(d)) {
+      const full = join(d, entry);
+      if (entry === 'node_modules' || entry === 'dist') continue;
+      const stat = statSync(full);
+      if (stat.isDirectory()) walk(full);
+      else if (extensions.includes(extname(entry))) {
+        const content = readFileSync(full, 'utf-8');
+        let match;
+        while ((match = pattern.exec(content)) !== null) results.push(match[0]);
+      }
+    }
+  }
+  walk(dir);
+  return results;
+}
 
 const green = (s) => `\x1b[32m${s}\x1b[0m`;
 const yellow = (s) => `\x1b[33m${s}\x1b[0m`;
@@ -153,23 +173,9 @@ if (existsSync(envTsPath)) {
 
   // Find all VITE_* usages in src/
   try {
-    let grepResult = '';
-    try {
-      grepResult = execSync(
-        'grep -roh "import\\.meta\\.env\\.VITE_[A-Z_]*" src/ --include="*.ts" --include="*.tsx"',
-        { cwd: root, encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] },
-      );
-    } catch {
-      // grep returns exit code 1 if no matches — that's OK
-    }
-
+    const matches = scanFiles(PATHS.src, /import\.meta\.env\.(VITE_[A-Z_]+)/g);
     const envVars = [
-      ...new Set(
-        grepResult
-          .split('\n')
-          .filter(Boolean)
-          .map((line) => line.replace('import.meta.env.', '')),
-      ),
+      ...new Set(matches.map((m) => m.replace('import.meta.env.', ''))),
     ];
 
     let undeclared = false;
@@ -206,24 +212,12 @@ if (topLevelTsx.length === 0) {
 
 // ─── 6. Orphan imports ──────────────────────────────────────
 try {
-  let grepResult = '';
-  try {
-    grepResult = execSync(
-      "grep -roh \"from '@[^']*'\" src/ --include=\"*.ts\" --include=\"*.tsx\"",
-      { cwd: root, encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] },
-    );
-  } catch {
-    // grep returns exit code 1 if no matches
-  }
-
+  const aliasMatches = scanFiles(PATHS.src, /from '(@[^']+)'/g);
   const aliasMap = ALIASES;
 
   const imports = [
     ...new Set(
-      grepResult
-        .split('\n')
-        .filter(Boolean)
-        .map((line) => line.replace("from '", '').replace("'", '')),
+      aliasMatches.map((m) => m.replace("from '", '').replace("'", '')),
     ),
   ];
 

@@ -40,7 +40,7 @@ project/
 
 Files served **as-is** by Vite. No imports, no transforms.
 - `fonts/` → `.woff2` files referenced in `@font-face` via absolute URL `/fonts/...`
-- `images/` → `favicon.svg`, `og-image.png`, robots.txt...
+- `images/` → `favicon.svg`, `og-image.jpg`...
 
 > **Rule**: if a file is **imported** in code → it goes in `src/assets/`.
 > If it's **referenced by URL** → it goes in `public/`.

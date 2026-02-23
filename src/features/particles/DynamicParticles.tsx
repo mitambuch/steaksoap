@@ -112,10 +112,19 @@ export function DynamicParticles() {
 
     let animationFrameId: number;
     let time = 0;
+    // WHY: devicePixelRatio scales the canvas buffer for sharp rendering on Retina/HiDPI screens
+    let logicalWidth = window.innerWidth;
+    let logicalHeight = window.innerHeight;
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      logicalWidth = window.innerWidth;
+      logicalHeight = window.innerHeight;
+      canvas.width = logicalWidth * dpr;
+      canvas.height = logicalHeight * dpr;
+      canvas.style.width = `${logicalWidth}px`;
+      canvas.style.height = `${logicalHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -124,18 +133,18 @@ export function DynamicParticles() {
 
     resize();
     const particles = Array.from({ length: PARTICLE_COUNT }, () =>
-      createParticle(canvas.width, canvas.height),
+      createParticle(logicalWidth, logicalHeight),
     );
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, logicalWidth, logicalHeight);
       time += 0.0005;
 
       const mouse = mouseRef.current;
 
       // Update & draw particles
       for (const p of particles) {
-        updateParticle(p, time, mouse, canvas.width, canvas.height);
+        updateParticle(p, time, mouse, logicalWidth, logicalHeight);
         ctx.fillStyle = `rgba(255, 107, 107, ${p.alpha * 0.6})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);

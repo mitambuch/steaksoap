@@ -22,6 +22,8 @@ const sizeStyles: Record<NonNullable<BadgeProps['size']>, string> = {
   md: 'px-2.5 py-1 text-sm',
 };
 
+// WHY: No ARIA role — Badge is a presentational label, not an interactive or live-region element.
+// Per WAI-ARIA, adding role="status" would be incorrect unless content updates dynamically.
 /** Inline badge for status labels and tags. */
 export const Badge = ({ variant = 'default', size = 'sm', children, className }: BadgeProps) => {
   return (

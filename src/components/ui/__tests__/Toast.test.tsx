@@ -1,9 +1,9 @@
+import { _resetToasts, useToast } from '@hooks/useToast';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { axe } from 'vitest-axe';
 
-import { _resetToasts, useToast } from '../../../hooks/useToast';
 import { ToastContainer } from '../Toast';
 
 // WHY: Helper component to trigger toasts in tests via the hook
