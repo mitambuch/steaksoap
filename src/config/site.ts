@@ -4,6 +4,8 @@
    Everything else (SEO, footer, OG tags) reads from here.
    ═══════════════════════════════════════════════════════════════ */
 
+import { ROUTES } from '@constants/routes';
+
 import { env } from './env';
 
 export const siteConfig = {
@@ -19,8 +21,8 @@ export const siteConfig = {
 
   // ─── Navigation ──────────────────────────────────────────
   navItems: [
-    { label: 'Home', href: '/' },
-    { label: 'Playground', href: '/playground' },
+    { label: 'Home', href: ROUTES.HOME },
+    { label: 'Playground', href: ROUTES.PLAYGROUND },
   ],
 
   // ─── Contact ───────────────────────────────────────────────

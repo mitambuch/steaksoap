@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@context/ThemeContext';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { axe } from 'vitest-axe';
 
@@ -7,9 +8,11 @@ import { Header } from '../Header';
 
 function renderHeader(props: Partial<Parameters<typeof Header>[0]> = {}) {
   return render(
-    <ThemeProvider>
-      <Header {...props} />
-    </ThemeProvider>,
+    <MemoryRouter>
+      <ThemeProvider>
+        <Header {...props} />
+      </ThemeProvider>
+    </MemoryRouter>,
   );
 }
 

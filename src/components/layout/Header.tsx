@@ -1,8 +1,10 @@
 import { ThemeToggle } from '@components/ui/ThemeToggle';
 import { siteConfig } from '@config/site';
+import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
 import { Blocks } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 /* ─── GitHub SVG (brand icons removed from Lucide) ───────────── */
 
@@ -39,7 +41,7 @@ function useScrolled(threshold = 20) {
 
 function MorphingLogo({ isActive }: { isActive: boolean }) {
   return (
-    <a href="/" className="group flex items-center gap-3 focus-visible:outline-none">
+    <Link to={ROUTES.HOME} className="group flex items-center gap-3 focus-visible:outline-none">
       <div
         className={cn(
           'bg-accent h-5 w-5 transition-all duration-700 ease-in-out md:h-6 md:w-6',
@@ -55,7 +57,7 @@ function MorphingLogo({ isActive }: { isActive: boolean }) {
       <span className="text-accent text-base leading-relaxed font-bold tracking-tighter opacity-95 md:text-xl">
         {siteConfig.name}
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -88,13 +90,13 @@ export const Header = ({ className }: HeaderProps) => {
               : 'border-border/50 bg-surface/30 backdrop-blur-xl',
           )}
         >
-          <a
-            href="/playground"
+          <Link
+            to={ROUTES.PLAYGROUND}
             className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
           >
             <Blocks size={14} strokeWidth={1.5} />
             <span className="hidden sm:inline">Playground</span>
-          </a>
+          </Link>
           <a
             href="https://github.com/Mircooo/steaksoap"
             target="_blank"
