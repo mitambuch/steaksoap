@@ -156,6 +156,16 @@ export default function Home() {
                 <span aria-hidden="true">&darr;</span>
               </button>
             </FadeIn>
+
+            <FadeIn delay={500}>
+              <button
+                type="button"
+                onClick={() => setShowWizard(true)}
+                className="text-muted hover:text-accent decoration-accent/30 mt-6 block font-mono text-xs underline underline-offset-4 transition-colors"
+              >
+                New to coding? Follow our guided setup &rarr;
+              </button>
+            </FadeIn>
           </div>
 
           {/* Footer micro */}
@@ -370,7 +380,7 @@ export default function Home() {
                 onClick={() => setShowWizard(true)}
                 className="text-muted hover:text-accent mt-6 font-mono text-sm transition-colors"
               >
-                New to coding? Follow the step-by-step guide &rarr;
+                First time? We&apos;ll walk you through it &rarr;
               </button>
             </FadeIn>
 

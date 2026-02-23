@@ -1,62 +1,139 @@
 /* ═══════════════════════════════════════════════════════════════
-   SetupWizard — modal popup for guided setup for complete beginners.
-   Walks through installing VS Code, Node.js, Git, pnpm, and
-   cloning + launching steaksoap. Progress is saved in localStorage
-   so users can close and come back. Each step has a copy button,
-   a verify check, troubleshooting, and a Claude AI safety net.
+   SetupWizard — fixed-size carousel modal for guided dev setup.
+   The box NEVER moves or resizes. Content slides in/out.
+   Each slide fits in one glance — no scroll, no overwhelm.
+   Progress is saved in versioned localStorage.
    ═══════════════════════════════════════════════════════════════ */
 
 import { useCopyToClipboard } from '@hooks/useCopyToClipboard';
 import { cn } from '@utils/cn';
-import { ArrowRight, BookOpen, ExternalLink, MessageCircle, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowRight, ExternalLink, X } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { CommandCopy } from './CommandCopy';
-import { type WizardStep, wizardSteps } from './steps';
-import { Troubleshoot } from './Troubleshoot';
-import { VerifyCheck } from './VerifyCheck';
+import { type WizardSlide, wizardSlides } from './steps';
 
 interface SetupWizardProps {
   onClose: () => void;
 }
 
-/** Detect user platform for contextual Claude helper messages */
+// WHY: Version the persistence so slide changes in updates don't crash
+const WIZARD_VERSION = 2;
+
+/** Detect platform for Claude helper messages */
 function getPlatform(): string {
   return navigator.platform.toLowerCase().includes('mac') ? 'Mac' : 'Windows';
 }
 
-export function SetupWizard({ onClose }: SetupWizardProps) {
-  const [currentStep, setCurrentStep] = useState(() => {
-    const saved = localStorage.getItem('steaksoap_wizard_step');
-    return saved ? parseInt(saved, 10) : 0;
-  });
+/** Unique group names in slide order — used for dot indicators */
+const groups = [...new Set(wizardSlides.map(s => s.group))];
 
+/** Count of required (non-optional) groups minus welcome/done */
+const REQUIRED_STEPS = groups.filter(
+  g => g !== 'welcome' && g !== 'done' && !wizardSlides.find(s => s.group === g && s.optional),
+).length;
+
+export function SetupWizard({ onClose }: SetupWizardProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
   const { copy: copyHelper, copied: helperCopied } = useCopyToClipboard();
 
-  // WHY: Persist progress so users can close the browser and come back
+  // WHY: Versioned persistence — reset if slides change between updates
+  const [currentStep, setCurrentStep] = useState(() => {
+    try {
+      const raw = localStorage.getItem('steaksoap_wizard');
+      if (!raw) return 0;
+      const data = JSON.parse(raw) as { version?: number; step?: number };
+      if (data.version !== WIZARD_VERSION) return 0;
+      if (typeof data.step !== 'number' || data.step < 0 || data.step >= wizardSlides.length)
+        return 0;
+      return data.step;
+    } catch {
+      return 0;
+    }
+  });
+
   useEffect(() => {
-    localStorage.setItem('steaksoap_wizard_step', String(currentStep));
+    localStorage.setItem(
+      'steaksoap_wizard',
+      JSON.stringify({ version: WIZARD_VERSION, step: currentStep }),
+    );
   }, [currentStep]);
 
-  // WHY: Escape key closes the modal — standard UX expectation for popups
+  // WHY: Restore focus to the element that opened the wizard on close
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
+    const prev = document.activeElement as HTMLElement | null;
+    return () => {
+      prev?.focus();
+    };
+  }, []);
+
+  // WHY: Escape should close, but mid-setup ask confirmation to avoid accidental loss
+  const handleClose = useCallback(() => {
+    const slide = wizardSlides[currentStep];
+    if (!slide) {
+      onClose();
+      return;
     }
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+    if (slide.type === 'welcome' || slide.type === 'done') {
+      onClose();
+      return;
+    }
+    if (
+      window.confirm('Quit the setup? Your progress is saved \u2014 you can come back anytime.')
+    ) {
+      onClose();
+    }
+  }, [currentStep, onClose]);
 
-  const totalSteps = wizardSteps.length;
-  const step = wizardSteps[currentStep];
-  const isLastStep = currentStep === totalSteps - 1;
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [handleClose]);
 
-  // WHY: Array access can return undefined in strict mode — guard early
-  if (!step) return null;
+  // WHY: Focus trap — Tab must not escape the modal (a11y)
+  useEffect(() => {
+    const modal = modalRef.current;
+    if (!modal) return;
+
+    const focusables = modal.querySelectorAll<HTMLElement>(
+      'button, [href], input, [tabindex]:not([tabindex="-1"])',
+    );
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    first?.focus();
+
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    };
+
+    modal.addEventListener('keydown', trap);
+    return () => modal.removeEventListener('keydown', trap);
+  }, [currentStep]);
+
+  const slide = wizardSlides[currentStep];
+  const isLastStep = currentStep === wizardSlides.length - 1;
+  const currentGroup = slide?.group ?? '';
+  const currentGroupIndex = groups.indexOf(currentGroup);
+
+  // WHY: Array access can return undefined in strict TS
+  if (!slide) return null;
 
   function handleNext() {
     if (isLastStep) {
-      localStorage.setItem('steaksoap_wizard_done', 'true');
+      localStorage.setItem(
+        'steaksoap_wizard',
+        JSON.stringify({ version: WIZARD_VERSION, step: currentStep, done: true }),
+      );
       onClose();
     } else {
       setCurrentStep(prev => prev + 1);
@@ -67,13 +144,19 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
     if (currentStep > 0) setCurrentStep(prev => prev - 1);
   }
 
+  /** Jump straight to the done slide */
+  function skipToEnd() {
+    setCurrentStep(wizardSlides.length - 1);
+  }
+
   /** Build a contextual help message for Claude AI */
-  function buildClaudeMessage(s: WizardStep): string {
+  function buildClaudeMessage(s: WizardSlide): string {
     return [
       "I'm setting up a development environment for the first time.",
-      `I'm on step ${s.number}: ${s.title}.`,
+      `I'm on: ${s.title}.`,
       `What I need to do: ${s.body}`,
-      s.action.type === 'copy' ? `The command is: ${s.action.value}` : '',
+      s.actionType === 'copy' && s.actionValue ? `The command is: ${s.actionValue}` : '',
+      s.command ? `The verify command is: ${s.command}` : '',
       `I'm on ${getPlatform()} using VS Code.`,
       'Can you help me step by step?',
     ]
@@ -81,192 +164,286 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
       .join('\n');
   }
 
+  /** Dynamic button label based on slide type */
+  function getNextLabel(): string {
+    if (currentStep === 0) return "Let's do this";
+    if (isLastStep) return 'Done!';
+    // WHY: slide is narrowed by the early return above, but TS can't see into closures
+    if (slide?.type === 'explain') return 'Got it';
+    return 'Done, next';
+  }
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
+        className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"
+        onClick={handleClose}
         role="presentation"
       />
 
-      {/* Modal */}
-      <div className="bg-bg border-border relative z-10 flex max-h-[85vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl border shadow-2xl">
-        {/* ── Step bubbles (sticky top) ────────────────────── */}
-        <div className="border-border bg-bg/95 shrink-0 border-b px-6 py-4 backdrop-blur-sm">
-          <div className="mb-3 flex items-center justify-between">
-            <span className="text-muted font-mono text-xs">
-              Step {step.number} of {totalSteps}
-            </span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="text-muted hover:text-fg rounded-md p-1 transition-colors"
-              aria-label="Close"
-            >
-              <X size={16} aria-hidden="true" />
-            </button>
-          </div>
-
-          {/* Bubbles row */}
-          <div className="flex gap-1.5 overflow-x-auto pb-1">
-            {wizardSteps.map((s, i) => (
+      {/* Modal — FIXED SIZE */}
+      <div
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="wizard-title"
+        className="bg-bg border-border relative z-10 flex h-[520px] max-h-[85vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border shadow-2xl"
+      >
+        {/* ── Header — step counter + dots + close ──────────── */}
+        {slide.type !== 'welcome' && slide.type !== 'done' ? (
+          <div className="shrink-0 px-6 pt-4 pb-3">
+            <div className="mb-3 flex items-center justify-between">
+              <span className="text-muted font-mono text-[11px]">
+                {slide.optional ? 'Optional' : `Step ${currentGroupIndex + 1} of ${groups.length}`}
+              </span>
               <button
-                key={s.id}
                 type="button"
-                onClick={() => setCurrentStep(i)}
-                className={cn(
-                  'flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-bold transition-all duration-200',
-                  i < currentStep
-                    ? 'bg-accent text-bg'
-                    : i === currentStep
-                      ? 'bg-accent text-bg ring-accent/30 ring-offset-bg ring-2 ring-offset-2'
-                      : s.optional
-                        ? 'bg-surface/50 text-muted/50'
-                        : 'bg-surface text-muted',
-                )}
-                aria-label={`Step ${s.number}: ${s.title}`}
-                aria-current={i === currentStep ? 'step' : undefined}
+                onClick={handleClose}
+                className="text-muted hover:text-fg p-1 transition-colors"
+                aria-label="Close"
               >
-                {i < currentStep ? '✓' : s.number}
+                <X size={14} aria-hidden="true" />
               </button>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Step content (scrollable) ───────────────────── */}
-        <div className="overflow-y-auto px-6 py-6">
-          {/* Step number (decorative) */}
-          <span className="text-accent/15 font-mono text-4xl font-bold select-none">
-            {String(step.number).padStart(2, '0')}
-          </span>
-
-          {/* Optional badge */}
-          {step.optional && (
-            <span className="bg-accent/10 text-accent ml-3 inline-block rounded-full px-3 py-0.5 align-top font-mono text-xs font-medium">
-              Optional
-            </span>
-          )}
-
-          {/* Title */}
-          <h2 className="text-fg mt-1 text-xl font-bold">{step.title}</h2>
-          <p className="text-accent font-mono text-xs">{step.subtitle}</p>
-
-          {/* Body */}
-          <p className="text-muted mt-4 text-sm leading-relaxed">{step.body}</p>
-
-          {/* ── Action ──────────────────────────────────────── */}
-          <div className="mt-6">
-            {step.action.type === 'copy' ? (
-              <CommandCopy command={step.action.value} label={step.action.label} />
-            ) : (
-              <a
-                href={step.action.value}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-accent hover:bg-accent/90 inline-flex items-center gap-2 rounded-full px-6 py-3 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-300 active:scale-[0.97]"
-              >
-                {step.action.label}
-                <ExternalLink size={14} aria-hidden="true" />
-              </a>
-            )}
-          </div>
-
-          {/* After action note */}
-          {step.afterAction && (
-            <p className="text-muted mt-3 text-xs leading-relaxed">{step.afterAction}</p>
-          )}
-
-          {/* ── Verify ──────────────────────────────────────── */}
-          {step.verify && (
-            <div className="mt-4">
-              <VerifyCheck command={step.verify.command} expected={step.verify.expected} />
             </div>
-          )}
 
-          {/* ── Troubleshoot ────────────────────────────────── */}
-          {step.troubleshoot && (
-            <div className="mt-4">
-              <Troubleshoot
-                question={step.troubleshoot.question}
-                solutions={step.troubleshoot.solutions}
-              />
-            </div>
-          )}
-
-          {/* ── Final step: next steps block ────────────────── */}
-          {isLastStep && (
-            <div className="bg-surface/30 border-border mt-6 rounded-lg border p-6">
-              <h3 className="text-fg mb-4 flex items-center gap-2 font-mono text-sm font-medium">
-                <BookOpen size={16} className="text-accent" aria-hidden="true" />
-                What to do next
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  'To start working: open VS Code → Terminal → pnpm dev',
-                  'To build features: open Claude Code → describe what you want',
-                  'Stuck? Copy any error and paste it to Claude at claude.ai',
-                  'Bookmark the README in your project for all commands',
-                ].map(tip => (
-                  <li key={tip} className="text-muted flex gap-2 text-sm leading-relaxed">
-                    <ArrowRight
-                      size={14}
-                      className="text-accent mt-0.5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span>{tip}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {/* ── Celebration ─────────────────────────────────── */}
-          {step.celebration && (
-            <p className="text-accent mt-4 font-mono text-sm font-medium">{step.celebration}</p>
-          )}
-
-          {/* ── Claude helper (safety net) ──────────────────── */}
-          {!isLastStep && (
-            <div className="border-border mt-6 border-t pt-4">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <span className="text-muted text-sm">Completely stuck?</span>
-                <button
-                  type="button"
-                  onClick={() => void copyHelper(buildClaudeMessage(step))}
+            {/* Dots — one per group */}
+            <div className="flex items-center justify-center gap-1.5">
+              {groups.map((group, i) => (
+                <div
+                  key={group}
                   className={cn(
-                    'inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs transition-all duration-200',
-                    helperCopied
-                      ? 'bg-success/15 text-success'
-                      : 'bg-surface/50 text-muted hover:text-accent hover:bg-surface/80',
+                    'h-1.5 rounded-full transition-all duration-300',
+                    i < currentGroupIndex
+                      ? 'bg-accent w-1.5'
+                      : i === currentGroupIndex
+                        ? 'bg-accent w-5'
+                        : 'bg-border w-1.5',
                   )}
-                >
-                  <MessageCircle size={14} aria-hidden="true" />
-                  {helperCopied ? 'Copied! Paste it at claude.ai' : 'Copy this message to Claude'}
-                </button>
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          /* Close button on welcome/done (no header) */
+          <button
+            type="button"
+            onClick={slide.type === 'welcome' ? onClose : handleClose}
+            className="text-muted hover:text-fg absolute top-4 right-4 z-10 p-1 transition-colors"
+            aria-label="Close"
+          >
+            <X size={14} aria-hidden="true" />
+          </button>
+        )}
+
+        {/* ── Content area — flex-1, safety scroll ──────────── */}
+        <div key={currentStep} className="wizard-slide-in flex-1 overflow-y-auto px-6 py-6">
+          {/* ── WELCOME layout ────────────────────────────────── */}
+          {slide.type === 'welcome' && (
+            <div className="flex flex-1 flex-col items-center justify-center text-center">
+              <span className="text-5xl" aria-hidden="true">
+                {'\u{1F44B}'}
+              </span>
+              <h2 id="wizard-title" className="text-fg mt-4 text-2xl font-bold">
+                Welcome to steaksoap
+              </h2>
+              <p className="text-muted mt-3 max-w-xs text-sm leading-relaxed">
+                Let&apos;s set up your dev environment together. It takes about 15 minutes and zero
+                coding knowledge.
+              </p>
+
+              <div className="mt-8 flex items-center gap-5">
+                <div className="text-center">
+                  <span className="text-accent font-mono text-xl font-bold">~15</span>
+                  <span className="text-muted mt-0.5 block text-[11px]">min</span>
+                </div>
+                <div className="bg-border h-6 w-px" />
+                <div className="text-center">
+                  <span className="text-accent font-mono text-xl font-bold">{REQUIRED_STEPS}</span>
+                  <span className="text-muted mt-0.5 block text-[11px]">steps</span>
+                </div>
+                <div className="bg-border h-6 w-px" />
+                <div className="text-center">
+                  <span className="text-accent font-mono text-xl font-bold">0</span>
+                  <span className="text-muted mt-0.5 block text-[11px]">experience needed</span>
+                </div>
               </div>
+
+              <p className="text-muted/70 mt-6 max-w-[280px] text-xs">
+                If you get stuck, you can copy a help message and paste it to Claude AI.
+              </p>
+            </div>
+          )}
+
+          {/* ── DONE layout ───────────────────────────────────── */}
+          {slide.type === 'done' && (
+            <div className="flex flex-1 flex-col items-center justify-center text-center">
+              <span className="text-5xl" aria-hidden="true">
+                {'\u{1F389}'}
+              </span>
+              <h2 id="wizard-title" className="text-fg mt-4 text-2xl font-bold">
+                You did it!
+              </h2>
+              <p className="text-muted mt-3 max-w-xs text-sm leading-relaxed">
+                Your dev environment is ready. Here&apos;s what to remember:
+              </p>
+              <div className="mt-6 w-full max-w-xs space-y-2 text-left">
+                <p className="text-sm">
+                  <span className="text-accent font-mono">pnpm dev</span>{' '}
+                  <span className="text-muted">{'\u2192'} start your project</span>
+                </p>
+                <p className="text-sm">
+                  <span className="text-accent font-mono">claude</span>{' '}
+                  <span className="text-muted">{'\u2192'} talk to your AI assistant</span>
+                </p>
+                <p className="text-sm">
+                  <span className="text-accent font-mono">/spec</span>{' '}
+                  <span className="text-muted">{'\u2192'} plan your first feature</span>
+                </p>
+              </div>
+              <p className="text-muted/60 mt-6 text-xs">
+                Stuck? Paste any error to Claude at claude.ai
+              </p>
+            </div>
+          )}
+
+          {/* ── EXPLAIN layout ────────────────────────────────── */}
+          {slide.type === 'explain' && (
+            <div className="flex flex-1 flex-col items-center justify-center text-center">
+              {slide.emoji && (
+                <span className="text-5xl" aria-hidden="true">
+                  {slide.emoji}
+                </span>
+              )}
+              <h2 id="wizard-title" className="text-fg mt-4 text-xl font-bold">
+                {slide.title}
+              </h2>
+              <p className="text-muted mt-3 max-w-sm text-sm leading-relaxed">{slide.body}</p>
+            </div>
+          )}
+
+          {/* ── ACTION layout ─────────────────────────────────── */}
+          {slide.type === 'action' && (
+            <div className="flex flex-1 flex-col">
+              <h2 id="wizard-title" className="text-fg text-xl font-bold">
+                {slide.title}
+              </h2>
+              <p className="text-muted mt-2 text-sm leading-relaxed">{slide.body}</p>
+
+              <div className="mt-6">
+                {slide.actionType === 'copy' && slide.actionValue ? (
+                  <CommandCopy command={slide.actionValue} label={slide.actionLabel} />
+                ) : slide.actionType === 'link' && slide.actionValue ? (
+                  <a
+                    href={slide.actionValue}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-accent text-bg inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-mono text-sm font-medium transition-all duration-300 hover:brightness-90 active:scale-[0.97]"
+                  >
+                    {slide.actionLabel}
+                    <ExternalLink size={14} aria-hidden="true" />
+                  </a>
+                ) : null}
+              </div>
+
+              {slide.hint && (
+                <p className="text-muted mt-3 text-xs leading-relaxed">{slide.hint}</p>
+              )}
+
+              {slide.celebration && (
+                <p className="text-accent mt-auto pt-4 font-mono text-xs font-medium">
+                  {slide.celebration}
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* ── VERIFY layout ─────────────────────────────────── */}
+          {slide.type === 'verify' && (
+            <div className="flex flex-1 flex-col">
+              <h2 id="wizard-title" className="text-fg text-xl font-bold">
+                {slide.title}
+              </h2>
+              <p className="text-muted mt-2 text-sm leading-relaxed">{slide.body}</p>
+
+              {slide.command && (
+                <div className="mt-4">
+                  <CommandCopy command={slide.command} label="Paste in terminal" />
+                </div>
+              )}
+
+              {slide.expected && (
+                <div className="bg-success/10 border-success/20 mt-4 rounded-lg border p-3">
+                  <p className="text-success text-xs font-medium">
+                    {'\u2713'} {slide.expected}
+                  </p>
+                </div>
+              )}
+
+              {slide.failHint && (
+                <p className="text-muted mt-3 text-xs leading-relaxed">
+                  <span className="text-fg font-medium">Didn&apos;t work?</span> {slide.failHint}
+                </p>
+              )}
+
+              {slide.celebration && (
+                <p className="text-accent mt-auto pt-4 font-mono text-xs font-medium">
+                  {slide.celebration}
+                </p>
+              )}
             </div>
           )}
         </div>
 
-        {/* ── Navigation (sticky bottom inside modal) ────── */}
-        <div className="border-border bg-bg/95 shrink-0 border-t px-6 py-4 backdrop-blur-sm">
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={currentStep === 0}
-              className="text-muted hover:text-fg font-mono text-xs transition-colors disabled:invisible"
-            >
-              &larr; Back
-            </button>
+        {/* ── Footer — navigation + Claude helper ───────────── */}
+        <div className="border-border shrink-0 border-t px-6 py-3">
+          {/* Claude helper — compact, in the footer */}
+          {slide.type !== 'welcome' && slide.type !== 'done' && (
+            <div className="mb-3 flex items-center justify-center">
+              <button
+                type="button"
+                onClick={() => void copyHelper(buildClaudeMessage(slide))}
+                className={cn(
+                  'font-mono text-[11px] transition-colors',
+                  helperCopied ? 'text-success' : 'text-muted/60 hover:text-muted',
+                )}
+              >
+                {helperCopied
+                  ? '\u2713 Copied \u2014 paste it at claude.ai'
+                  : 'Stuck? Copy help message for Claude'}
+              </button>
+            </div>
+          )}
 
+          {/* Nav buttons */}
+          <div className="flex items-center justify-between">
+            {/* Left button — Back or Skip */}
+            {slide.optional ? (
+              <button
+                type="button"
+                onClick={skipToEnd}
+                className="text-muted hover:text-fg font-mono text-xs transition-colors"
+              >
+                Skip all extras {'\u2192'}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handlePrev}
+                disabled={currentStep === 0}
+                className="text-muted hover:text-fg font-mono text-xs transition-colors disabled:invisible"
+              >
+                {'\u2190'} Back
+              </button>
+            )}
+
+            {/* Right button — contextual label */}
             <button
               type="button"
               onClick={handleNext}
-              className="bg-accent hover:bg-accent/90 text-bg inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-medium transition-all duration-300 active:scale-[0.97]"
+              className="bg-accent text-bg inline-flex items-center gap-2 rounded-full px-5 py-2 font-mono text-xs font-medium transition-all duration-300 hover:brightness-90 active:scale-[0.97]"
             >
-              {isLastStep ? "Done — let's go!" : 'Next step'}
+              {getNextLabel()}
               <ArrowRight size={12} aria-hidden="true" />
             </button>
           </div>

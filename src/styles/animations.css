@@ -67,3 +67,32 @@
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   }
 }
+
+/* ─── Wizard carousel — slide-in on step change ──────────── */
+
+@keyframes wizard-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.wizard-slide-in {
+  animation: wizard-slide-in 0.25s ease-out;
+}
+
+/* ─── Reduced motion — disable ALL animations globally ────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
