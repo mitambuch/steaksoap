@@ -24,7 +24,7 @@ interface SetupWizardProps {
 
 // WHY: Version the persistence so slide changes in updates don't crash.
 // Bump this when the slide count or order changes.
-const WIZARD_VERSION = 3;
+const WIZARD_VERSION = 4;
 
 /** Detect platform for Claude helper messages */
 function getPlatform(): string {
@@ -235,18 +235,18 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
             <p className="text-muted mt-3 max-w-xs text-sm leading-relaxed">
               No worries! Your progress is saved. You&apos;ll pick up right where you left off.
             </p>
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex w-full max-w-70 flex-col gap-3 sm:w-auto sm:flex-row">
               <button
                 type="button"
                 onClick={() => setShowQuitConfirm(false)}
-                className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium"
+                className="bg-accent text-bg w-full rounded-full px-6 py-2.5 font-mono text-xs font-medium sm:w-auto"
               >
                 Continue setup
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-muted hover:text-fg border-border rounded-full border px-6 py-2.5 font-mono text-xs"
+                className="text-muted hover:text-fg border-border w-full rounded-full border px-6 py-2.5 font-mono text-xs sm:w-auto"
               >
                 Resume later
               </button>
@@ -384,18 +384,18 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-8 flex gap-3">
+                  <div className="mt-8 flex w-full max-w-70 flex-col gap-3 sm:w-auto sm:flex-row">
                     <button
                       type="button"
                       onClick={handleFinish}
-                      className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium"
+                      className="bg-accent text-bg w-full rounded-full px-6 py-2.5 font-mono text-xs font-medium sm:w-auto"
                     >
                       Start building {'\u2192'}
                     </button>
                     <button
                       type="button"
                       onClick={handleRestart}
-                      className="text-muted hover:text-fg border-border rounded-full border px-4 py-2.5 font-mono text-xs"
+                      className="text-muted hover:text-fg border-border w-full rounded-full border px-4 py-2.5 font-mono text-xs sm:w-auto"
                     >
                       Restart tutorial
                     </button>
@@ -526,18 +526,18 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                 </div>
 
                 {/* Navigation */}
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between">
                   {/* Back — ALWAYS present (disabled on step 1) */}
                   <button
                     type="button"
                     onClick={handlePrev}
                     disabled={currentStep <= 1}
-                    className="text-muted hover:text-fg font-mono text-xs transition-colors disabled:invisible"
+                    className="text-muted hover:text-fg order-2 font-mono text-xs transition-colors disabled:invisible sm:order-1"
                   >
                     {'\u2190'} Back
                   </button>
 
-                  <div className="flex items-center gap-2">
+                  <div className="order-1 flex flex-col items-stretch gap-2 sm:order-2 sm:flex-row sm:items-center">
                     {/* Skip extras — secondary button on optional slides */}
                     {resolved.optional && (
                       <button

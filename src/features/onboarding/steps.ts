@@ -358,14 +358,39 @@ export const wizardSlides: WizardSlide[] = [
     hint: 'You can always do this later. Your site works locally for now.',
   },
 
-  /* ── 27-28. Claude Code (optional) ───────────────────────── */
+  /* ── 27-28. Git Bash (optional, Windows) ────────────────── */
+  {
+    id: 'gitbash-intro',
+    type: 'intro',
+    group: 'extras',
+    emoji: '\u{1F5A5}\uFE0F',
+    title: 'Windows needs Git Bash',
+    body: "Claude Code doesn't run natively on Windows. It needs a Unix-like terminal called Git Bash.\n\nGood news: if you installed Git earlier in this tutorial, you already have it! Git for Windows includes Git Bash automatically.\n\nIf you skipped the Git step or you're on Mac/Linux, you can skip this.",
+    optional: true,
+  },
+  {
+    id: 'gitbash-verify',
+    type: 'action',
+    group: 'extras',
+    emoji: '\u2705',
+    title: 'Check Git Bash',
+    body: 'Search "Git Bash" in your Start menu. If it opens a dark terminal window, you\'re good!\n\nIf not, download Git again and make sure to keep the default options during install:',
+    actionType: 'link',
+    actionLabel: 'Download Git (includes Git Bash)',
+    actionValue: 'https://git-scm.com/downloads/win',
+    optional: true,
+    hint: "On Mac or Linux? You don't need this \u2014 skip to the next step. Git Bash is a Windows-only requirement.",
+    celebration: 'Git Bash ready \u2014 Claude Code will work! \u{1F389}',
+  },
+
+  /* ── 29-30. Claude Code (optional) ───────────────────────── */
   {
     id: 'claude-intro',
     type: 'intro',
     group: 'extras',
     emoji: '\u{1F916}',
     title: 'What is Claude Code?',
-    body: "Claude Code is an AI that lives in your terminal. It knows steaksoap inside out \u2014 all 22 commands, all the rules.\n\nInstead of writing code yourself, you describe what you want and Claude builds it. It's like having a senior developer sitting next to you.",
+    body: "Claude Code is an AI that lives in your terminal. It knows steaksoap inside out \u2014 all 22 commands, all the rules.\n\nInstead of writing code yourself, you describe what you want and Claude builds it. It's like having a senior developer sitting next to you.\n\nOn Windows, it requires Git Bash (which you just set up!).",
     optional: true,
   },
   {
@@ -379,11 +404,11 @@ export const wizardSlides: WizardSlide[] = [
     actionLabel: 'Install Claude Code',
     actionValue: 'https://claude.ai/code',
     optional: true,
-    hint: 'Then try typing: /spec "a contact form" \u2014 and watch it plan your first feature.',
+    hint: 'Windows users: if you get a "requires git-bash" error, make sure Git is installed and restart VS Code. Then try typing: /spec "a contact form" \u2014 and watch it plan your first feature.',
     celebration: 'You have an AI co-builder now \u{1F91D}',
   },
 
-  /* ── 29. Done! ───────────────────────────────────────────── */
+  /* ── 31. Done! ───────────────────────────────────────────── */
   {
     id: 'done',
     type: 'done',
