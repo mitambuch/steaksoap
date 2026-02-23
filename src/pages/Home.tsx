@@ -90,7 +90,7 @@ export default function Home() {
 
         <div className="relative z-10 flex flex-1 flex-col px-6 pt-20 md:px-8">
           {/* Center content */}
-          <div className="flex flex-1 flex-col items-center justify-center text-center">
+          <div className="flex min-h-0 flex-1 flex-col items-center justify-center text-center">
             <FadeIn delay={0}>
               <h1 className="leading-[1.1]" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)' }}>
                 <span className="text-fg font-medium">
@@ -102,7 +102,7 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={150}>
-              <p className="text-muted mt-6 max-w-lg text-base leading-relaxed md:text-lg">
+              <p className="text-muted mt-4 max-w-lg text-base leading-relaxed md:mt-6 md:text-lg">
                 You describe it. The AI builds it.
               </p>
             </FadeIn>
@@ -127,7 +127,7 @@ export default function Home() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={400} className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <FadeIn delay={400} className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-4 md:mt-10">
               <a
                 href="https://github.com/Mircooo/steaksoap"
                 target="_blank"
@@ -149,7 +149,7 @@ export default function Home() {
           </div>
 
           {/* Footer micro */}
-          <div className="flex items-end justify-between pb-6">
+          <div className="flex shrink-0 items-end justify-between pb-4 md:pb-6">
             <a
               href="https://github.com/Mircooo/steaksoap/releases"
               target="_blank"

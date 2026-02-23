@@ -26,7 +26,7 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       {/* Sun icon — visible in dark mode (click to switch to light) */}
       <svg
         className={cn(
-          'h-5 w-5 transition-transform duration-200',
+          'h-3.5 w-3.5 transition-transform duration-200',
           isDark ? 'scale-100' : 'absolute scale-0',
         )}
         fill="none"
@@ -45,7 +45,7 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       {/* Moon icon — visible in light mode (click to switch to dark) */}
       <svg
         className={cn(
-          'h-5 w-5 transition-transform duration-200',
+          'h-3.5 w-3.5 transition-transform duration-200',
           !isDark ? 'scale-100' : 'absolute scale-0',
         )}
         fill="none"
