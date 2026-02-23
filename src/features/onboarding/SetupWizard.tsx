@@ -223,11 +223,15 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="wizard-title"
-        className="bg-bg border-border relative z-10 flex h-[620px] max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border shadow-2xl"
+        className={cn(
+          'bg-bg border-border relative z-10 flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border shadow-2xl transition-all duration-300',
+          // WHY: Quit confirm is compact — let content dictate height instead of fixed 620px
+          showQuitConfirm ? 'h-auto' : 'h-155',
+        )}
       >
         {/* ── QUIT CONFIRMATION — replaces content when active ── */}
         {showQuitConfirm ? (
-          <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
+          <div className="flex flex-col items-center justify-center px-8 py-12 text-center">
             <span className="text-4xl" aria-hidden="true">
               {'\u23F8\uFE0F'}
             </span>
