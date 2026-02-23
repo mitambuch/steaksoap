@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.3](https://github.com/Mircooo/steaksoap/compare/v2.1.2...v2.1.3) (2026-02-23)
+
+### 🐛 Bug Fixes
+
+* **ui:** shrink theme icons and fix hero footer on mobile ([8d3e965](https://github.com/Mircooo/steaksoap/commit/8d3e9656b262157d8096ea61e0acb36e63a3a19e))
+
 ## [2.1.2](https://github.com/Mircooo/steaksoap/compare/v2.1.1...v2.1.2) (2026-02-23)
 
 ### 🐛 Bug Fixes
