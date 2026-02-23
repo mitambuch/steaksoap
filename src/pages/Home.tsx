@@ -80,9 +80,6 @@ function scrollTo(id: string) {
 export default function Home() {
   const [showWizard, setShowWizard] = useState(false);
 
-  // WHY: Hide the bar once the user has completed all wizard steps
-  const [wizardDone] = useState(() => localStorage.getItem('steaksoap_wizard_done') === 'true');
-
   // WHY: Footer dispatches a custom event to reopen the wizard from any page
   useEffect(() => {
     const handler = () => setShowWizard(true);
@@ -311,116 +308,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PREREQUISITES ────────────────────────────────── */}
-      <section className="bg-bg text-fg px-6 py-16 md:px-8 md:py-20">
-        <div className="mx-auto max-w-6xl">
-          <FadeIn>
-            <SectionLabel number="04" title="before you start" />
-          </FadeIn>
-
-          <FadeIn delay={100}>
-            <p className="text-muted mb-8 max-w-lg text-base leading-relaxed">
-              You need these installed once. Already have them? Skip to get started.
-            </p>
-            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-              {[
-                { name: 'Node.js 20+', url: 'https://nodejs.org', note: 'Pick LTS' },
-                { name: 'pnpm', url: 'https://pnpm.io', note: 'npm i -g pnpm' },
-                { name: 'Git', url: 'https://git-scm.com', note: 'Download installer' },
-                { name: 'VS Code', url: 'https://code.visualstudio.com', note: 'Any editor works' },
-              ].map(tool => (
-                <a
-                  key={tool.name}
-                  href={tool.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-border hover:border-accent/20 rounded-lg border p-4 transition-all duration-300"
-                >
-                  <span className="text-fg font-mono text-sm font-medium">{tool.name}</span>
-                  <span className="text-muted mt-1 block text-xs">{tool.note}</span>
-                </a>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* ── GET STARTED — full-screen closing CTA ────────── */}
       <section className="bg-bg text-fg relative flex min-h-screen flex-col items-center justify-center px-6 py-20 md:px-8 md:py-28">
-        <div className="mx-auto w-full max-w-3xl text-center">
+        <div className="mx-auto w-full max-w-6xl">
           <FadeIn>
-            <SectionLabel number="05" title="get started" />
+            <SectionLabel number="04" title="get started" />
           </FadeIn>
 
-          <FadeIn delay={100}>
-            <h2
-              className="text-fg leading-[1.1] font-medium"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
-            >
-              Start building
-              <br />
-              <span className="text-accent">in 30 seconds.</span>
-            </h2>
-          </FadeIn>
+          {/* Centered content */}
+          <div className="mx-auto max-w-3xl text-center">
+            <FadeIn delay={100}>
+              <h2
+                className="text-fg leading-[1.1] font-medium"
+                style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
+              >
+                Start building
+                <br />
+                <span className="text-accent">in 30 seconds.</span>
+              </h2>
+            </FadeIn>
 
-          <FadeIn delay={200}>
-            <p className="text-muted mx-auto mt-6 max-w-md text-base leading-relaxed md:text-lg">
-              Clone. Install. Ship. Five commands and your next project is live.
-            </p>
-          </FadeIn>
+            <FadeIn delay={200}>
+              <p className="text-muted mx-auto mt-6 max-w-md text-base leading-relaxed md:text-lg">
+                Clone. Install. Ship. Five commands and your next project is live.
+              </p>
+            </FadeIn>
 
-          <FadeIn delay={300}>
-            <div className="bg-surface/30 border-border mx-auto mt-10 max-w-xl overflow-x-auto rounded-lg border p-6 text-left font-mono text-xs backdrop-blur-sm md:text-sm">
-              {quickStartLines.map((line, i) => (
-                <div key={i} className="group/line flex items-center gap-2">
-                  <span className="text-accent shrink-0">{line.prompt}</span>
-                  <code className="text-fg/80 flex-1">{line.command}</code>
-                  <button
-                    type="button"
-                    onClick={() => void navigator.clipboard.writeText(line.command)}
-                    className="text-muted hover:text-accent shrink-0 opacity-100 transition-opacity sm:opacity-0 sm:group-hover/line:opacity-100"
-                    aria-label={`Copy: ${line.command}`}
-                  >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      aria-hidden="true"
+            <FadeIn delay={300}>
+              <div className="bg-surface/30 border-border mx-auto mt-10 max-w-xl overflow-x-auto rounded-lg border p-6 text-left font-mono text-xs backdrop-blur-sm md:text-sm">
+                {quickStartLines.map((line, i) => (
+                  <div key={i} className="group/line flex items-center gap-2">
+                    <span className="text-accent shrink-0">{line.prompt}</span>
+                    <code className="text-fg/80 flex-1">{line.command}</code>
+                    <button
+                      type="button"
+                      onClick={() => void navigator.clipboard.writeText(line.command)}
+                      className="text-muted hover:text-accent shrink-0 opacity-100 transition-opacity sm:opacity-0 sm:group-hover/line:opacity-100"
+                      aria-label={`Copy: ${line.command}`}
                     >
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                    </svg>
-                  </button>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                      >
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+                      </svg>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
 
-          <FadeIn
-            delay={450}
-            className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
-          >
-            <a
-              href="https://github.com/mitambuch/steaksoap"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+            <FadeIn delay={350}>
+              <button
+                type="button"
+                onClick={() => setShowWizard(true)}
+                className="text-muted hover:text-accent mt-6 font-mono text-sm transition-colors"
+              >
+                New to coding? Follow the step-by-step guide &rarr;
+              </button>
+            </FadeIn>
+
+            <FadeIn
+              delay={450}
+              className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
             >
-              View on GitHub
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-            <a
-              href="https://vercel.com/new/clone?repository-url=https://github.com/mitambuch/steaksoap"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-8 py-3.5 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
-            >
-              Deploy on Vercel
-            </a>
-          </FadeIn>
+              <a
+                href="https://github.com/mitambuch/steaksoap"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+              >
+                View on GitHub
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a
+                href="https://vercel.com/new/clone?repository-url=https://github.com/mitambuch/steaksoap"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-8 py-3.5 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
+              >
+                Deploy on Vercel
+              </a>
+            </FadeIn>
+          </div>
         </div>
 
         {/* Tagline pinned to bottom */}
@@ -431,23 +407,7 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      {/* ── "New to coding?" fixed bar ────────────────────── */}
-      {!wizardDone && !showWizard && (
-        <div className="border-accent/10 bg-bg/95 fixed right-0 bottom-0 left-0 z-40 border-t backdrop-blur-md">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-            <span className="text-muted text-sm">New to coding?</span>
-            <button
-              type="button"
-              onClick={() => setShowWizard(true)}
-              className="text-accent font-mono text-sm hover:underline"
-            >
-              Start the guided setup &rarr;
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ── Setup wizard overlay ──────────────────────────── */}
+      {/* ── Setup wizard modal ──────────────────────────── */}
       {showWizard && <SetupWizard onClose={() => setShowWizard(false)} />}
     </>
   );
