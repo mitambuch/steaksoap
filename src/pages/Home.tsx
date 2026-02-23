@@ -355,13 +355,14 @@ export default function Home() {
               Deploy on Vercel
             </a>
           </FadeIn>
-
-          <FadeIn delay={600}>
-            <p className="text-muted/40 mt-16 font-mono text-xs">
-              MIT · Free forever · Made for solo builders
-            </p>
-          </FadeIn>
         </div>
+
+        {/* Tagline pinned to bottom */}
+        <FadeIn delay={600} className="absolute right-0 bottom-6 left-0 text-center">
+          <p className="text-muted/40 font-mono text-xs">
+            MIT · Free forever · Made for solo builders
+          </p>
+        </FadeIn>
       </section>
     </>
   );
