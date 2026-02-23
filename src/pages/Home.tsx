@@ -8,7 +8,15 @@ import {
 } from '@data/showcase';
 import { useInView } from '@hooks/useInView';
 import { cn } from '@utils/cn';
-import { FlaskConical, GitBranch, Shield, Smartphone, Terminal, Zap } from 'lucide-react';
+import {
+  FlaskConical,
+  GitBranch,
+  Shield,
+  ShieldCheck,
+  Smartphone,
+  Terminal,
+  Zap,
+} from 'lucide-react';
 import { type ReactNode, useEffect, useState } from 'react';
 
 import type { Feature } from '../data/showcase';
@@ -102,18 +110,31 @@ export default function Home() {
           {/* Center content */}
           <div className="flex min-h-0 flex-1 flex-col items-center justify-center text-center">
             <FadeIn delay={0}>
+              {/* Open Source badge */}
+              <a
+                href="https://github.com/mitambuch/steaksoap"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 backdrop-blur-sm transition-colors hover:bg-cyan-400/15"
+              >
+                <ShieldCheck size={14} className="animate-pulse text-cyan-400" aria-hidden="true" />
+                <span className="font-mono text-[11px] font-medium tracking-wide text-cyan-400">
+                  Open Source
+                </span>
+              </a>
+
               <h1 className="leading-[1.1]" style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)' }}>
                 <span className="text-fg font-medium">
-                  The AI-native <span className="whitespace-nowrap">React system</span>
+                  The 100% free <span className="whitespace-nowrap">AI&#x2011;native</span>
                 </span>
                 <br />
-                <span className="text-accent font-medium">for solo builders.</span>
+                <span className="text-accent font-medium">React system.</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={150}>
               <p className="text-muted mt-4 max-w-lg text-base leading-relaxed md:mt-6 md:text-lg">
-                You describe it. The AI builds it.
+                You describe it. The AI builds it. Made for solo builders.
               </p>
             </FadeIn>
 
@@ -336,11 +357,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── WHY FREE ──────────────────────────────────── */}
+      <section className="bg-bg text-fg px-6 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <FadeIn>
+            <SectionLabel number="04" title="why free" />
+          </FadeIn>
+
+          <div className="mx-auto max-w-2xl">
+            <FadeIn delay={100}>
+              <p className="text-fg text-base leading-relaxed md:text-lg">
+                I built steaksoap because every new project meant hours reconfiguring the same
+                tools. ESLint, Prettier, Git hooks, AI rules &mdash; the same boring setup, over and
+                over.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={200}>
+              <p className="text-muted mt-4 text-base leading-relaxed md:text-lg">
+                So I made a clean workspace I could clone and start building immediately. Then I
+                thought: if I needed this, other solo builders probably do too.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={300}>
+              <p className="text-muted mt-4 text-base leading-relaxed md:text-lg">
+                No startup. No funding round. No premium tier coming later. MIT License &mdash; use
+                it, fork it, ship with it. It&apos;s yours.
+              </p>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* ── GET STARTED — full-screen closing CTA ────────── */}
       <section className="bg-bg text-fg relative flex min-h-screen flex-col items-center justify-center px-6 py-20 md:px-8 md:py-28">
         <div className="mx-auto w-full max-w-6xl">
           <FadeIn>
-            <SectionLabel number="04" title="get started" />
+            <SectionLabel number="05" title="get started" />
           </FadeIn>
 
           {/* Centered content */}

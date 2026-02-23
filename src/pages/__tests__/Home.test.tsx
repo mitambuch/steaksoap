@@ -22,7 +22,7 @@ describe('Home', () => {
 
   it('renders the hero heading', () => {
     renderHome();
-    expect(screen.getByText(/the ai-native/i)).toBeInTheDocument();
+    expect(screen.getByText(/100% free/i)).toBeInTheDocument();
   });
 
   it('renders CTA links', () => {
