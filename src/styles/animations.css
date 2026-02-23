@@ -37,6 +37,23 @@
   animation: pageEnter 0.35s ease-out;
 }
 
+/* ─── Toast slide-in — replaces tailwindcss-animate dependency ── */
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@utility animate-toast-in {
+  animation: slideInFromRight 0.3s ease-out forwards;
+}
+
 /* ─── MorphingLogo blob — organic shape shift ──────────────── */
 
 @keyframes morph {

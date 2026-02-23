@@ -41,7 +41,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
       role="alert"
       className={cn(
         'pointer-events-auto flex w-80 items-start gap-3 rounded-lg border p-4 shadow-lg backdrop-blur-md',
-        'animate-in slide-in-from-right duration-300',
+        'animate-toast-in',
         variantStyles[toast.variant],
       )}
     >
