@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.0.2](https://github.com/Mircooo/steaksoap/compare/v2.0.1...v2.0.2) (2026-02-23)
+
+### 🐛 Bug Fixes
+
+* **a11y:** document aria decisions for badge and card components ([1d813aa](https://github.com/Mircooo/steaksoap/commit/1d813aa3a2a470576316a2cf4c5a599e7377a70a))
+* **docs:** correct og-image extension in architecture.md ([ee0a2b1](https://github.com/Mircooo/steaksoap/commit/ee0a2b1a62863217416952f432e2c3d89b4b33a1))
+* **docs:** update changelog links from starter to steaksoap ([ef76f03](https://github.com/Mircooo/steaksoap/commit/ef76f036414786756d81d7e39e63285b688e59d8))
+* **fonts:** load jetbrains mono from google fonts ([ed11c08](https://github.com/Mircooo/steaksoap/commit/ed11c08546354506b5c849af14ef2beb5791bc93))
+* **particles:** support devicepixelratio for sharp retina rendering ([af11a0b](https://github.com/Mircooo/steaksoap/commit/af11a0b56dd4340922bd2716ce9ebe62b3472e05))
+* **plugin:** sync version in plugin.json with package.json ([fba85de](https://github.com/Mircooo/steaksoap/commit/fba85de3c9e4d4ec099f336c7781698a354574eb))
+* **scripts:** replace grep with node-native scan for windows compatibility ([07257f6](https://github.com/Mircooo/steaksoap/commit/07257f6ba166e49f7ff468636842f9f90d6d791e))
+* **seo:** remove placeholder robots.txt, let vite-plugin-sitemap generate it ([58fcc01](https://github.com/Mircooo/steaksoap/commit/58fcc018a4964a6cc13eddc10f60c747febd094e))
+* **toast:** replace tailwindcss-animate classes with custom css animation ([f697ad9](https://github.com/Mircooo/steaksoap/commit/f697ad9bcfcfaec84ac9d9afb21cbf456b693611))
+
+### ♻️  Refactoring
+
+* **imports:** replace deep relative imports with path aliases ([b13ec99](https://github.com/Mircooo/steaksoap/commit/b13ec9954ecf639c89ae64adfe2aa44e4d7c51dc))
+
+### 📚 Documentation
+
+* **fonts:** clarify fonts.css is a placeholder template ([3a389cf](https://github.com/Mircooo/steaksoap/commit/3a389cf47adceec23730c54091a36b0accf26156))
+
 ## [2.0.1](https://github.com/Mircooo/steaksoap/compare/v2.0.0...v2.0.1) (2026-02-23)
 
 ### 🐛 Bug Fixes
