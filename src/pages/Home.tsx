@@ -117,27 +117,44 @@ export default function Home() {
               </p>
             </FadeIn>
 
-            {/* Stats bar */}
+            {/* Stats boxes */}
             <FadeIn delay={250}>
-              <div className="mt-4 flex items-center gap-6 font-mono text-sm tracking-wide md:gap-8">
-                <span>
-                  <span className="text-accent font-bold">22</span>{' '}
-                  <span className="text-muted">commands</span>
-                </span>
-                <span className="text-muted/30">·</span>
-                <span>
-                  <span className="text-accent font-bold">12</span>{' '}
-                  <span className="text-muted">rules</span>
-                </span>
-                <span className="text-muted/30">·</span>
-                <span>
-                  <span className="text-accent font-bold">18</span>{' '}
-                  <span className="text-muted">extensions</span>
-                </span>
+              <div className="mt-6 flex items-center gap-3 md:gap-4">
+                {[
+                  { number: '22', label: 'commands' },
+                  { number: '12', label: 'rules' },
+                  { number: '18', label: 'extensions' },
+                ].map(stat => (
+                  <div
+                    key={stat.label}
+                    className="border-accent/10 bg-accent/[0.03] flex flex-col items-center rounded-xl border px-4 py-3 backdrop-blur-sm md:px-6 md:py-3.5"
+                  >
+                    <span className="text-accent font-mono text-xl leading-none font-bold md:text-2xl">
+                      {stat.number}
+                    </span>
+                    <span className="text-muted mt-1 font-mono text-[11px] tracking-wide md:text-xs">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </FadeIn>
 
-            <FadeIn delay={400} className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-4 md:mt-10">
+            {/* Tech stack pills */}
+            <FadeIn delay={350}>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                {['React 19', 'TypeScript', 'Vite', 'Tailwind CSS'].map(tech => (
+                  <span
+                    key={tech}
+                    className="text-muted/70 border-border/50 rounded-full border px-3 py-1 font-mono text-[11px]"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={450} className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-4 md:mt-10">
               <a
                 href="https://github.com/mitambuch/steaksoap"
                 target="_blank"
@@ -157,7 +174,7 @@ export default function Home() {
               </button>
             </FadeIn>
 
-            <FadeIn delay={500}>
+            <FadeIn delay={550}>
               <button
                 type="button"
                 onClick={() => setShowWizard(true)}
