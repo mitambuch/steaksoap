@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.2](https://github.com/mitambuch/steaksoap/compare/v2.2.1...v2.2.2) (2026-02-23)
+
+### 🐛 Bug Fixes
+
+* **layout:** make footer compact on mobile ([4ba8cc0](https://github.com/mitambuch/steaksoap/commit/4ba8cc070bc1da1127198c523e5e005b19dc51aa))
+
 ## [2.2.1](https://github.com/mitambuch/steaksoap/compare/v2.2.0...v2.2.1) (2026-02-23)
 
 ### 🔧 Chores
