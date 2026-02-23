@@ -6,14 +6,14 @@ You describe it. The AI builds it. 22 commands, 4 agents, zero config.
 
 Not another React boilerplate — a complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
 
-[![CI](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml/badge.svg)](https://github.com/Mircooo/steaksoap/actions/workflows/ci.yml)
+[![CI](https://github.com/mitambuch/steaksoap/actions/workflows/ci.yml/badge.svg)](https://github.com/mitambuch/steaksoap/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![pnpm](https://img.shields.io/badge/pnpm-10-orange)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Mircooo/steaksoap&project-name=my-project)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Mircooo/steaksoap)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Mircooo/steaksoap)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mitambuch/steaksoap&project-name=my-project)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mitambuch/steaksoap)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mitambuch/steaksoap)
 
 ---
 
@@ -35,7 +35,7 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 
 ```bash
 # Clone and setup
-git clone https://github.com/Mircooo/steaksoap.git my-project
+git clone https://github.com/mitambuch/steaksoap.git my-project
 cd my-project
 pnpm install
 pnpm setup
@@ -150,7 +150,7 @@ Step-by-step guides for common tasks:
 Already have a project? Install steaksoap as a Claude Code plugin to get all commands, agents, and rules without cloning:
 
 ```bash
-claude plugin marketplace add Mircooo/steaksoap
+claude plugin marketplace add mitambuch/steaksoap
 ```
 
 This gives you access to all 22 slash commands and 4 sub-agents in your existing project.
@@ -187,4 +187,4 @@ MIT — do whatever you want with it.
 
 ---
 
-**Built by [Mircooo](https://github.com/Mircooo)** · [Report a bug](https://github.com/Mircooo/steaksoap/issues) · [Request a feature](https://github.com/Mircooo/steaksoap/issues)
+**Built by [mitambuch](https://github.com/mitambuch)** · [Report a bug](https://github.com/mitambuch/steaksoap/issues) · [Request a feature](https://github.com/mitambuch/steaksoap/issues)

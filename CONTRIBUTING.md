@@ -7,7 +7,7 @@ Thanks for wanting to contribute! This project is built through vibe coding with
 ## Quick setup
 
 ```bash
-git clone https://github.com/Mircooo/steaksoap.git
+git clone https://github.com/mitambuch/steaksoap.git
 cd steaksoap
 pnpm install
 pnpm dev
@@ -29,14 +29,14 @@ pnpm validate   # lint + typecheck + tests + build — must pass
 
 ### Report a bug
 
-Open an [issue](https://github.com/Mircooo/steaksoap/issues/new?template=bug_report.yml) with:
+Open an [issue](https://github.com/mitambuch/steaksoap/issues/new?template=bug_report.yml) with:
 - Steps to reproduce
 - Expected vs actual behavior
 - Your environment (Node version, OS, browser)
 
 ### Suggest a feature
 
-Open an [issue](https://github.com/Mircooo/steaksoap/issues/new?template=feature_request.yml) with:
+Open an [issue](https://github.com/mitambuch/steaksoap/issues/new?template=feature_request.yml) with:
 - The problem you're trying to solve
 - Your proposed solution
 - Alternatives you've considered
@@ -139,4 +139,4 @@ This project follows the [Contributor Covenant](CODE_OF_CONDUCT.md). By particip
 
 ## Questions?
 
-Open a [discussion](https://github.com/Mircooo/steaksoap/discussions) or an issue. We're happy to help.
+Open a [discussion](https://github.com/mitambuch/steaksoap/discussions) or an issue. We're happy to help.

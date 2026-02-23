@@ -36,7 +36,7 @@ describe('Footer', () => {
     expect(version).toBeInTheDocument();
     expect(version.closest('a')).toHaveAttribute(
       'href',
-      'https://github.com/Mircooo/steaksoap/releases',
+      'https://github.com/mitambuch/steaksoap/releases',
     );
   });
 

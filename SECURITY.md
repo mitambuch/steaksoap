@@ -15,7 +15,7 @@ If you discover a security vulnerability, please report it responsibly.
 
 **Do NOT open a public issue.**
 
-Instead, send an email to the project maintainer or use [GitHub's private vulnerability reporting](https://github.com/Mircooo/steaksoap/security/advisories/new).
+Instead, send an email to the project maintainer or use [GitHub's private vulnerability reporting](https://github.com/mitambuch/steaksoap/security/advisories/new).
 
 ### What to include
 

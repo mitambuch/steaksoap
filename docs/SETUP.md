@@ -36,7 +36,7 @@ gh auth login
 
 ```bash
 # 1. Use this template on GitHub, or clone
-git clone https://github.com/Mircooo/steaksoap.git my-project
+git clone https://github.com/mitambuch/steaksoap.git my-project
 cd my-project
 
 # 2. Install dependencies

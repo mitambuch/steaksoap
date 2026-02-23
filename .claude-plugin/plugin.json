@@ -2,8 +2,8 @@
   "name": "steaksoap-core",
   "description": "AI-first React development toolkit: 22 slash commands, 4 specialized agents, and 12 contextual rules for vibe coding with Claude Code.",
   "version": "2.0.1",
-  "homepage": "https://github.com/Mircooo/steaksoap",
-  "author": "Mircooo",
+  "homepage": "https://github.com/mitambuch/steaksoap",
+  "author": "mitambuch",
   "license": "MIT",
   "keywords": [
     "react",

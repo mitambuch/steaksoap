@@ -105,7 +105,7 @@ export const Header = ({ className }: HeaderProps) => {
             <span className="hidden sm:inline">Playground</span>
           </Link>
           <a
-            href="https://github.com/Mircooo/steaksoap"
+            href="https://github.com/mitambuch/steaksoap"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"

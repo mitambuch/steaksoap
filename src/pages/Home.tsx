@@ -129,7 +129,7 @@ export default function Home() {
 
             <FadeIn delay={400} className="mt-6 flex flex-col gap-2 sm:flex-row sm:gap-4 md:mt-10">
               <a
-                href="https://github.com/Mircooo/steaksoap"
+                href="https://github.com/mitambuch/steaksoap"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
@@ -151,7 +151,7 @@ export default function Home() {
           {/* Footer micro */}
           <div className="flex shrink-0 items-end justify-between pb-4 md:pb-6">
             <a
-              href="https://github.com/Mircooo/steaksoap/releases"
+              href="https://github.com/mitambuch/steaksoap/releases"
               target="_blank"
               rel="noopener noreferrer"
               className="text-fg/60 hover:text-accent flex items-center gap-1.5 font-mono text-[10px] underline-offset-2 transition-colors"
@@ -162,12 +162,12 @@ export default function Home() {
             <span className="text-fg/60 font-mono text-[10px]">
               MIT · by{' '}
               <a
-                href="https://github.com/Mircooo"
+                href="https://github.com/mitambuch"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-accent transition-colors duration-300"
               >
-                Mircooo
+                mitambuch
               </a>
             </span>
           </div>
@@ -237,7 +237,7 @@ export default function Home() {
             <p className="text-muted/50 mt-8 font-mono text-xs">
               and 16 more commands{' '}
               <a
-                href="https://github.com/Mircooo/steaksoap"
+                href="https://github.com/mitambuch/steaksoap"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent/60 hover:text-accent transition-colors duration-300"
@@ -286,7 +286,7 @@ export default function Home() {
             <p className="text-muted mt-6 text-sm">
               + {moreExtensions.join(', ')}{' '}
               <a
-                href="https://github.com/Mircooo/steaksoap"
+                href="https://github.com/mitambuch/steaksoap"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent/70 hover:text-accent font-mono transition-colors duration-300"
@@ -338,7 +338,7 @@ export default function Home() {
             className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
           >
             <a
-              href="https://github.com/Mircooo/steaksoap"
+              href="https://github.com/mitambuch/steaksoap"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
@@ -347,7 +347,7 @@ export default function Home() {
               <span aria-hidden="true">&rarr;</span>
             </a>
             <a
-              href="https://vercel.com/new/clone?repository-url=https://github.com/Mircooo/steaksoap"
+              href="https://vercel.com/new/clone?repository-url=https://github.com/mitambuch/steaksoap"
               target="_blank"
               rel="noopener noreferrer"
               className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-8 py-3.5 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"

@@ -3,15 +3,15 @@
   "version": "2.2.0",
   "type": "module",
   "description": "AI-first React starter kit for vibe coders. React 19 + TypeScript + Vite 7 + Tailwind CSS 4 with Claude Code commands, agents, and automated workflow.",
-  "author": "Mircooo",
+  "author": "mitambuch",
   "license": "MIT",
-  "homepage": "https://github.com/Mircooo/steaksoap",
+  "homepage": "https://github.com/mitambuch/steaksoap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mircooo/steaksoap.git"
+    "url": "https://github.com/mitambuch/steaksoap.git"
   },
   "bugs": {
-    "url": "https://github.com/Mircooo/steaksoap/issues"
+    "url": "https://github.com/mitambuch/steaksoap/issues"
   },
   "keywords": [
     "steaksoap",

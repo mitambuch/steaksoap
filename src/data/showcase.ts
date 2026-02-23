@@ -82,7 +82,7 @@ export const featuredCommands: FeaturedCommand[] = [
 ];
 
 export const quickStartLines: QuickStartLine[] = [
-  { prompt: '$', command: 'git clone https://github.com/Mircooo/steaksoap.git my-project' },
+  { prompt: '$', command: 'git clone https://github.com/mitambuch/steaksoap.git my-project' },
   { prompt: '$', command: 'cd my-project && pnpm install && pnpm setup' },
   { prompt: '$', command: 'pnpm dev' },
 ];

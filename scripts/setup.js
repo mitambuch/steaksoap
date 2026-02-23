@@ -161,8 +161,8 @@ async function runInit() {
     try {
       const originUrl = run('git remote get-url origin');
       const isTemplateOrigin =
-        originUrl.includes('Mircooo/starter') ||
-        originUrl.includes('Mircooo/steaksoap');
+        originUrl.includes('mitambuch/starter') ||
+        originUrl.includes('mitambuch/steaksoap');
 
       if (isTemplateOrigin) {
         // Direct clone — rename origin to template so user can add their own origin
@@ -170,7 +170,7 @@ async function runInit() {
       } else {
         // "Use this template" — origin is already the user's repo, add template separately
         run(
-          'git remote add template https://github.com/Mircooo/steaksoap.git',
+          'git remote add template https://github.com/mitambuch/steaksoap.git',
         );
       }
     } catch {
@@ -401,7 +401,7 @@ async function runSetup() {
 
 async function runUpdate() {
   const TEMPLATE_REMOTE = 'template';
-  const TEMPLATE_URL = 'https://github.com/Mircooo/steaksoap.git';
+  const TEMPLATE_URL = 'https://github.com/mitambuch/steaksoap.git';
 
   console.log('\n  steaksoap — Update from template\n');
 
