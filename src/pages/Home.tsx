@@ -1,5 +1,11 @@
 import { SeoHead } from '@components/features/SeoHead';
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@components/ui/Accordion';
+import {
   featuredCommands,
   featuredExtensions,
   features,
@@ -360,57 +366,63 @@ export default function Home() {
       </section>
 
       {/* ── WHY FREE ──────────────────────────────────── */}
-      <section className="bg-bg text-fg px-6 py-20 md:px-8 md:py-28">
+      <section className="bg-bg text-fg px-6 py-24 md:px-8 md:py-36">
         <div className="mx-auto max-w-6xl">
           <FadeIn>
             <SectionLabel number="04" title="why free" />
           </FadeIn>
 
-          <FadeIn delay={100}>
-            <div className="mx-auto max-w-4xl">
-              <div className="border-border bg-surface/30 rounded-2xl border p-8 md:p-12">
-                <div className="flex flex-col items-center gap-10 md:flex-row md:items-start">
-                  {/* Logo steaksoap — morphing dot from Header for visual consistency */}
-                  <div className="flex shrink-0 flex-col items-center gap-3">
-                    <div className="relative">
-                      {/* WHY: Same morph animation as Header MorphingLogo for brand consistency */}
-                      <span
-                        className="bg-accent absolute -top-1 -right-1 inline-block h-4 w-4 shadow-[0_0_12px_rgba(255,107,107,0.4)]"
-                        style={{
-                          animation: 'morph 4s ease-in-out infinite',
-                          borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-                        }}
-                        aria-hidden="true"
-                      />
-                      <span className="text-fg font-mono text-3xl font-bold md:text-4xl">
-                        steaksoap
-                      </span>
-                    </div>
-                    <span className="text-muted font-mono text-[10px] tracking-[0.3em] uppercase">
-                      open source
-                    </span>
-                  </div>
-
-                  {/* Texte démarche */}
-                  <div>
-                    <p className="text-fg text-sm leading-relaxed md:text-base">
-                      I built steaksoap because every new project meant hours reconfiguring the same
-                      tools. ESLint, Prettier, Git hooks, AI rules &mdash; the same boring setup,
-                      over and over.
-                    </p>
-                    <p className="text-muted mt-4 text-sm leading-relaxed md:text-base">
-                      So I made a clean workspace I could clone and start building immediately. Then
-                      I thought: if I needed this, other solo builders probably do too.
-                    </p>
-                    <p className="text-muted mt-4 text-sm leading-relaxed md:text-base">
-                      No startup. No funding round. No premium tier coming later. MIT License
-                      &mdash; use it, fork it, ship with it. It&apos;s yours.
-                    </p>
-                  </div>
-                </div>
+          <div className="flex flex-col items-center gap-16 md:flex-row md:items-start md:gap-20">
+            {/* Morphing dot — brand mark, left column */}
+            <FadeIn delay={100}>
+              <div className="flex shrink-0 items-center justify-center md:sticky md:top-40 md:pt-4">
+                <span
+                  className="bg-accent inline-block h-20 w-20 shadow-[0_0_50px_rgba(255,107,107,0.5)] md:h-28 md:w-28"
+                  style={{
+                    animation: 'morph 4s ease-in-out infinite',
+                    borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+                  }}
+                  aria-hidden="true"
+                />
               </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+
+            {/* FAQ accordion — right column */}
+            <FadeIn delay={200} className="min-w-0 flex-1">
+              <Accordion type="single" defaultOpen="why-1">
+                <AccordionItem value="why-1">
+                  <AccordionTrigger>Why is it free?</AccordionTrigger>
+                  <AccordionContent>
+                    I built steaksoap because every new project meant hours reconfiguring the same
+                    tools. ESLint, Prettier, Git hooks, AI rules &mdash; the same boring setup, over
+                    and over. So I open-sourced it. No startup behind this, no funding round, no
+                    business model.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="why-2">
+                  <AccordionTrigger>Will there ever be a paid version?</AccordionTrigger>
+                  <AccordionContent>
+                    No. MIT License &mdash; use it, fork it, ship with it. No premium tier coming
+                    later, no &ldquo;free trial&rdquo; bait. It&apos;s yours, forever.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="why-3">
+                  <AccordionTrigger>What&apos;s the catch?</AccordionTrigger>
+                  <AccordionContent>
+                    There isn&apos;t one. No tracking, no account required, no analytics. If you
+                    want to say thanks, star the repo on GitHub. That&apos;s it.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="why-4">
+                  <AccordionTrigger>Who maintains this?</AccordionTrigger>
+                  <AccordionContent>
+                    One solo builder who got tired of setting up the same React project for the 50th
+                    time. If I needed this, other solo builders probably do too.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

@@ -743,40 +743,43 @@ export default function Playground() {
                   price: '$0',
                   period: 'forever',
                   description: 'For side projects and experiments.',
-                  features: ['5 pages', 'Community support', 'Basic analytics', 'MIT license'],
-                  cta: 'Get started',
+                  features: ['Everything', 'No limits', 'MIT license', 'No account needed'],
+                  cta: 'Already yours',
                   highlighted: false,
+                  badge: null,
                 },
                 {
-                  name: 'Pro',
-                  price: '$29',
-                  period: '/month',
+                  name: 'Still Free',
+                  price: '$0',
+                  period: 'still forever',
                   description: 'For serious solo builders.',
                   features: [
-                    'Unlimited pages',
-                    'Priority support',
-                    'Advanced analytics',
-                    'Custom domain',
-                    'Remove branding',
+                    'Still everything',
+                    'Still no limits',
+                    'Priority support (jk, open an issue)',
+                    'Custom domain (it\u2019s your project)',
+                    'Remove branding (go ahead)',
                   ],
-                  cta: 'Start free trial',
+                  cta: 'Nice try',
                   highlighted: true,
+                  badge: 'Popular',
                 },
                 {
                   name: 'Enterprise',
-                  price: '$99',
-                  period: '/month',
-                  description: 'For agencies and teams.',
+                  price: '$0',
+                  period: 'per eternity',
+                  description: 'For people who really want to pay.',
                   features: [
-                    'Everything in Pro',
-                    'Team seats',
-                    'SLA guarantee',
-                    'Dedicated support',
-                    'Custom integrations',
-                    'Invoice billing',
+                    'Everything above',
+                    'Team seats (git clone)',
+                    'SLA guarantee (best effort lol)',
+                    'Dedicated support (GitHub Issues)',
+                    'Invoice billing ($0.00 due)',
+                    'A thank you star on GitHub',
                   ],
-                  cta: 'Contact sales',
+                  cta: 'Contact nobody',
                   highlighted: false,
+                  badge: null,
                 },
               ].map(plan => (
                 <div
@@ -788,9 +791,9 @@ export default function Playground() {
                       : 'hover:border-accent/15 bg-transparent',
                   )}
                 >
-                  {plan.highlighted && (
+                  {plan.badge && (
                     <span className="bg-accent text-bg absolute -top-3 right-4 rounded-full px-3 py-0.5 text-[10px] font-bold tracking-wide uppercase">
-                      Popular
+                      {plan.badge}
                     </span>
                   )}
                   <h3 className="text-fg font-mono text-sm font-medium uppercase">{plan.name}</h3>

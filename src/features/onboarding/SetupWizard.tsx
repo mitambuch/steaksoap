@@ -24,7 +24,7 @@ interface SetupWizardProps {
 
 // WHY: Version the persistence so slide changes in updates don't crash.
 // Bump this when the slide count or order changes.
-const WIZARD_VERSION = 4;
+const WIZARD_VERSION = 5;
 
 /** Detect platform for Claude helper messages */
 function getPlatform(): string {
@@ -332,7 +332,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                     </div>
                     <div className="bg-border h-6 w-px" />
                     <div className="text-center">
-                      <span className="text-accent font-mono text-xl font-bold">8</span>
+                      <span className="text-accent font-mono text-xl font-bold">9</span>
                       <span className="text-muted mt-0.5 block text-[11px]">steps</span>
                     </div>
                     <div className="bg-border h-6 w-px" />
@@ -391,7 +391,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-8 flex items-center justify-center gap-3">
+                  <div className="mt-8 mb-2 flex items-center justify-center gap-3">
                     <button
                       type="button"
                       onClick={handleFinish}
@@ -511,7 +511,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
 
             {/* ── Footer — navigation + Claude helper ──────────── */}
             {resolved.type !== 'welcome' && resolved.type !== 'done' && (
-              <div className="border-border shrink-0 border-t px-6 py-3">
+              <div className="border-border shrink-0 border-t px-6 pt-4 pb-5">
                 {/* Claude helper — one discreet line */}
                 <div className="mb-3 flex items-center justify-center">
                   <button
@@ -567,7 +567,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
 
             {/* Welcome footer — just the CTA */}
             {resolved.type === 'welcome' && (
-              <div className="flex shrink-0 justify-center px-6 pb-6">
+              <div className="flex shrink-0 justify-center px-6 pb-8">
                 <button
                   type="button"
                   onClick={handleNext}

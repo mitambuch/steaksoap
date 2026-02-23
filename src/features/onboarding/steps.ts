@@ -207,26 +207,59 @@ export const wizardSlides: WizardSlide[] = [
     celebration: 'All tools installed! Now the fun part \u{1F680}',
   },
 
-  /* ── 14-16. Clone + open project ─────────────────────────── */
+  /* ── 14-17. GitHub account + clone ──────────────────────── */
   {
-    id: 'project-intro',
+    id: 'github-account-intro',
     type: 'intro',
-    group: 'project',
-    emoji: '\u{1F4E5}',
-    title: 'Time to get steaksoap',
-    body: "Now we're going to download steaksoap to your computer. It creates a folder with all the files you need.\n\nAfter this step, you'll have a real project on your machine that you can customize and make your own.",
+    group: 'github-setup',
+    emoji: '\u{1F419}',
+    title: 'Create a GitHub account',
+    body: 'GitHub is where your project lives online. Think of it like Google Drive, but for code.\n\nYou need a free account to download steaksoap and save your work later. If you already have one, just click Next.',
+  },
+  {
+    id: 'github-account-action',
+    type: 'action',
+    group: 'github-setup',
+    emoji: '\u{1F511}',
+    title: 'Sign up & connect Git',
+    body: 'Create your free account, then connect it to Git with two quick commands in the terminal:',
+    actionType: 'link',
+    actionLabel: 'Create a GitHub account',
+    actionValue: 'https://github.com/signup',
+    hint: 'After signing up, open VS Code\'s terminal and run:\n\ngit config --global user.name "Your Name"\ngit config --global user.email "your@email.com"\n\nUse the same email you used for GitHub.',
+    celebration: 'Git knows who you are now! \u{1F389}',
+  },
+  {
+    id: 'clone-intro',
+    type: 'intro',
+    group: 'github-setup',
+    emoji: '\u{1F4E6}',
+    title: 'Get the project on your computer',
+    body: '"Cloning" means downloading a project from GitHub to your computer. It\'s like downloading a zip file, but smarter \u2014 it keeps the connection so you can save changes back later.\n\nYou\'re about to clone steaksoap \u2014 your new workspace.',
   },
   {
     id: 'clone-action',
     type: 'action',
-    group: 'project',
-    emoji: '\u{1F4CB}',
-    title: 'Clone the project',
-    body: 'Paste this in the terminal and press Enter:',
+    group: 'github-setup',
+    emoji: '\u2B07\uFE0F',
+    title: 'Clone steaksoap',
+    body: 'Paste this in the terminal. It downloads the project and installs everything:',
     actionType: 'copy',
     actionLabel: 'Copy command',
-    actionValue: 'git clone https://github.com/Mircooo/steaksoap.git my-project',
-    hint: 'Wait until you see "done" in the terminal. It downloads fast!',
+    actionValue:
+      'git clone https://github.com/mitambuch/steaksoap.git my-project && cd my-project && pnpm install',
+    hint: 'This does 3 things:\n1. Downloads steaksoap into a folder called "my-project"\n2. Moves into that folder\n3. Installs all the libraries\n\nYou can rename "my-project" to whatever you want.',
+    celebration: 'You have your own project! \u{1F680}',
+  },
+
+  /* ── 18-19. Open project ───────────────────────────────── */
+  {
+    id: 'project-intro',
+    type: 'intro',
+    group: 'project',
+    emoji: '\u{1F4C2}',
+    title: 'Open your project',
+    body: "Your project is downloaded! Now let's open it in VS Code and make it yours.\n\nWe'll set up your project name and get everything ready to run.",
   },
   {
     id: 'open-action',
@@ -241,26 +274,14 @@ export const wizardSlides: WizardSlide[] = [
     hint: 'If VS Code asks "Do you trust the authors?" click Yes.\nIf it suggests extensions, click "Install All" \u2014 that\'s a good thing!',
   },
 
-  /* ── 17-19. Install + setup ──────────────────────────────── */
+  /* ── 20-21. Setup ──────────────────────────────────────── */
   {
     id: 'setup-intro',
     type: 'intro',
     group: 'setup',
     emoji: '\u{1F527}',
     title: 'Almost there!',
-    body: 'Two more commands and your project is alive.\n\nFirst, we download all the libraries your project needs (takes ~1 minute). Then we run a quick wizard to give your project a name.',
-  },
-  {
-    id: 'deps-action',
-    type: 'action',
-    group: 'setup',
-    emoji: '\u{1F4CB}',
-    title: 'Install dependencies',
-    body: 'Make sure the terminal says "my-project" somewhere. Then paste:',
-    actionType: 'copy',
-    actionLabel: 'Copy command',
-    actionValue: 'pnpm install',
-    hint: "A lot of text will fly by \u2014 that's normal! Wait until the cursor comes back.",
+    body: "Dependencies are installed. Now let's give your project a name and start it up!\n\nTwo more commands and your site is live.",
   },
   {
     id: 'setup-action',
@@ -310,31 +331,7 @@ export const wizardSlides: WizardSlide[] = [
     optional: true,
   },
 
-  /* ── 23-24. GitHub (optional) ────────────────────────────── */
-  {
-    id: 'github-intro',
-    type: 'intro',
-    group: 'extras',
-    emoji: '\u2601\uFE0F',
-    title: 'What is GitHub?',
-    body: "GitHub is like Google Drive, but for code. It stores your project in the cloud so you never lose it.\n\nIt's free, and you'll need it if you want to put your site on the internet later. Almost every developer has a GitHub account.",
-    optional: true,
-  },
-  {
-    id: 'github-action',
-    type: 'action',
-    group: 'extras',
-    emoji: '\u270D\uFE0F',
-    title: 'Create a GitHub account',
-    body: 'Sign up with your email. It takes 2 minutes.',
-    actionType: 'link',
-    actionLabel: 'Create free account',
-    actionValue: 'https://github.com/signup',
-    optional: true,
-    hint: 'Already have one? Just skip to the next step.',
-  },
-
-  /* ── 25-26. Vercel (optional) ────────────────────────────── */
+  /* ── Vercel (optional) ──────────────────────────────────── */
   {
     id: 'vercel-intro',
     type: 'intro',
