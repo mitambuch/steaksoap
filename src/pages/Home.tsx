@@ -298,15 +298,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── GET STARTED ────────────────────────────────────── */}
-      <section className="bg-bg text-fg px-6 py-20 md:px-8 md:py-28">
-        <div className="mx-auto max-w-6xl">
+      {/* ── GET STARTED — full-screen closing CTA ────────── */}
+      <section className="bg-bg text-fg relative flex min-h-screen flex-col items-center justify-center px-6 py-20 md:px-8 md:py-28">
+        <div className="mx-auto w-full max-w-3xl text-center">
           <FadeIn>
             <SectionLabel number="04" title="get started" />
           </FadeIn>
 
           <FadeIn delay={100}>
-            <div className="bg-surface/30 border-border overflow-x-auto rounded-lg border p-6 font-mono text-xs backdrop-blur-sm md:text-sm">
+            <h2
+              className="text-fg leading-[1.1] font-medium"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 3.5rem)' }}
+            >
+              Start building
+              <br />
+              <span className="text-accent">in 30 seconds.</span>
+            </h2>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <p className="text-muted mx-auto mt-6 max-w-md text-base leading-relaxed md:text-lg">
+              Clone. Install. Ship. Three commands and your next project is live.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={300}>
+            <div className="bg-surface/30 border-border mx-auto mt-10 max-w-xl overflow-x-auto rounded-lg border p-6 text-left font-mono text-xs backdrop-blur-sm md:text-sm">
               {quickStartLines.map((line, i) => (
                 <div key={i} className="flex gap-2">
                   <span className="text-accent shrink-0">{line.prompt}</span>
@@ -316,12 +333,15 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={250} className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <FadeIn
+            delay={450}
+            className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
+          >
             <a
               href="https://github.com/Mircooo/steaksoap"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+              className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
             >
               View on GitHub
               <span aria-hidden="true">&rarr;</span>
@@ -330,10 +350,16 @@ export default function Home() {
               href="https://vercel.com/new/clone?repository-url=https://github.com/Mircooo/steaksoap"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
+              className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-8 py-3.5 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
             >
               Deploy on Vercel
             </a>
+          </FadeIn>
+
+          <FadeIn delay={600}>
+            <p className="text-muted/40 mt-16 font-mono text-xs">
+              MIT · Free forever · Made for solo builders
+            </p>
           </FadeIn>
         </div>
       </section>
