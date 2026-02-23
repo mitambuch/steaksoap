@@ -235,18 +235,18 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
             <p className="text-muted mt-3 max-w-xs text-sm leading-relaxed">
               No worries! Your progress is saved. You&apos;ll pick up right where you left off.
             </p>
-            <div className="mt-8 flex w-full max-w-70 flex-col gap-3 sm:w-auto sm:flex-row">
+            <div className="mt-8 flex items-center justify-center gap-3">
               <button
                 type="button"
                 onClick={() => setShowQuitConfirm(false)}
-                className="bg-accent text-bg w-full rounded-full px-6 py-2.5 font-mono text-xs font-medium sm:w-auto"
+                className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium transition-all hover:brightness-90"
               >
                 Continue setup
               </button>
               <button
                 type="button"
                 onClick={onClose}
-                className="text-muted hover:text-fg border-border w-full rounded-full border px-6 py-2.5 font-mono text-xs sm:w-auto"
+                className="text-muted border-border hover:border-accent/30 hover:text-fg rounded-full border px-6 py-2.5 font-mono text-xs transition-colors"
               >
                 Resume later
               </button>
@@ -303,7 +303,10 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
             )}
 
             {/* ── Content area — flex-1, safety scroll, centered ── */}
-            <div key={currentStep} className="wizard-slide-in flex-1 overflow-y-auto px-6 py-6">
+            <div
+              key={currentStep}
+              className="wizard-slide-in flex flex-1 flex-col items-center justify-center overflow-y-auto px-6"
+            >
               {/* ── WELCOME layout ──────────────────────────────── */}
               {resolved.type === 'welcome' && (
                 <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
@@ -384,18 +387,18 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-8 flex w-full max-w-70 flex-col gap-3 sm:w-auto sm:flex-row">
+                  <div className="mt-8 flex items-center justify-center gap-3">
                     <button
                       type="button"
                       onClick={handleFinish}
-                      className="bg-accent text-bg w-full rounded-full px-6 py-2.5 font-mono text-xs font-medium sm:w-auto"
+                      className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium transition-all hover:brightness-90"
                     >
                       Start building {'\u2192'}
                     </button>
                     <button
                       type="button"
                       onClick={handleRestart}
-                      className="text-muted hover:text-fg border-border w-full rounded-full border px-4 py-2.5 font-mono text-xs sm:w-auto"
+                      className="text-muted border-border hover:border-accent/30 hover:text-fg rounded-full border px-4 py-2.5 font-mono text-xs transition-colors"
                     >
                       Restart tutorial
                     </button>
@@ -443,7 +446,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                         href={resolved.actionValue}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-accent text-bg inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-mono text-sm hover:brightness-90"
+                        className="bg-accent text-bg inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-mono text-sm transition-all hover:shadow-[0_0_20px_rgba(255,107,107,0.3)] hover:brightness-90"
                       >
                         {resolved.actionLabel} <ExternalLink size={14} aria-hidden="true" />
                       </a>
@@ -526,24 +529,24 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                 </div>
 
                 {/* Navigation */}
-                <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center justify-between">
                   {/* Back — ALWAYS present (disabled on step 1) */}
                   <button
                     type="button"
                     onClick={handlePrev}
                     disabled={currentStep <= 1}
-                    className="text-muted hover:text-fg order-2 font-mono text-xs transition-colors disabled:invisible sm:order-1"
+                    className="text-muted hover:text-fg font-mono text-xs transition-colors disabled:invisible"
                   >
                     {'\u2190'} Back
                   </button>
 
-                  <div className="order-1 flex flex-col items-stretch gap-2 sm:order-2 sm:flex-row sm:items-center">
+                  <div className="flex items-center gap-2">
                     {/* Skip extras — secondary button on optional slides */}
                     {resolved.optional && (
                       <button
                         type="button"
                         onClick={() => goToSlide('done')}
-                        className="text-muted/60 hover:text-muted font-mono text-[11px]"
+                        className="text-muted/60 hover:text-muted font-mono text-[11px] transition-colors"
                       >
                         Skip extras
                       </button>
@@ -553,7 +556,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="bg-accent text-bg rounded-full px-5 py-2 font-mono text-xs font-medium"
+                      className="bg-accent text-bg rounded-full px-5 py-2 font-mono text-xs font-medium transition-all hover:brightness-90"
                     >
                       {resolved.type === 'intro' ? 'Got it \u2192' : 'Done, next \u2192'}
                     </button>
@@ -568,7 +571,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="bg-accent text-bg rounded-full px-8 py-3 font-mono text-sm font-medium"
+                  className="bg-accent text-bg rounded-full px-8 py-3 font-mono text-sm font-medium transition-all hover:brightness-90"
                 >
                   Let&apos;s do this {'\u2192'}
                 </button>
