@@ -15,6 +15,8 @@ const paddingStyles: Record<NonNullable<CardProps['padding']>, string> = {
   none: 'p-0',
 };
 
+// WHY: No ARIA role — Card is a non-interactive container. Adding role="article" would be
+// semantically incorrect per WAI-ARIA. If Card becomes clickable, add role="button" + tabIndex.
 /** Container card with border, smooth transitions, and optional hover scale. */
 export const Card = ({ className, padding = 'md', hover = false, children }: CardProps) => {
   return (
