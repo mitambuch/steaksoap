@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.1](https://github.com/mitambuch/steaksoap/compare/v2.2.0...v2.2.1) (2026-02-23)
+
+### 🔧 Chores
+
+* **config:** update github username across all files ([5f6b18a](https://github.com/mitambuch/steaksoap/commit/5f6b18ac2bb180cc2d03bb763903abda646a55c2))
+
 ## [2.2.0](https://github.com/mitambuch/steaksoap/compare/v2.1.3...v2.2.0) (2026-02-23)
 
 ### ✨ Features
