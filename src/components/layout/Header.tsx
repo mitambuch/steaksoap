@@ -2,7 +2,7 @@ import { ThemeToggle } from '@components/ui/ThemeToggle';
 import { siteConfig } from '@config/site';
 import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
-import { Blocks } from 'lucide-react';
+import { Blocks, House } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -90,6 +90,13 @@ export const Header = ({ className }: HeaderProps) => {
               : 'border-border/50 bg-surface/30 backdrop-blur-xl',
           )}
         >
+          <Link
+            to={ROUTES.HOME}
+            className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
+          >
+            <House size={14} strokeWidth={1.5} />
+            <span className="hidden sm:inline">Home</span>
+          </Link>
           <Link
             to={ROUTES.PLAYGROUND}
             className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
