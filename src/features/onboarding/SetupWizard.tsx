@@ -309,7 +309,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
             >
               {/* ── WELCOME layout ──────────────────────────────── */}
               {resolved.type === 'welcome' && (
-                <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
+                <div className="flex w-full max-w-md flex-col items-center px-2 text-center">
                   <span className="text-5xl" aria-hidden="true">
                     {'\u{1F44B}'}
                   </span>
@@ -350,7 +350,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
 
               {/* ── DONE layout ─────────────────────────────────── */}
               {resolved.type === 'done' && (
-                <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
+                <div className="flex w-full max-w-md flex-col items-center px-2 text-center">
                   <span className="text-5xl" aria-hidden="true">
                     {'\u{1F389}'}
                   </span>
@@ -408,7 +408,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
 
               {/* ── INTRO layout — centered, emoji, context ────── */}
               {resolved.type === 'intro' && (
-                <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
+                <div className="flex w-full max-w-md flex-col items-center px-2 text-center">
                   {resolved.emoji && (
                     <span className="text-4xl" aria-hidden="true">
                       {resolved.emoji}
@@ -425,7 +425,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
 
               {/* ── ACTION layout — centered, prominent button ──── */}
               {resolved.type === 'action' && (
-                <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
+                <div className="flex w-full max-w-md flex-col items-center px-2 text-center">
                   {resolved.emoji && (
                     <span className="text-3xl" aria-hidden="true">
                       {resolved.emoji}
@@ -460,16 +460,14 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                   )}
 
                   {resolved.celebration && (
-                    <p className="text-accent mt-auto pt-3 font-mono text-xs">
-                      {resolved.celebration}
-                    </p>
+                    <p className="text-accent mt-4 font-mono text-xs">{resolved.celebration}</p>
                   )}
                 </div>
               )}
 
               {/* ── VERIFY layout — centered, green success box ── */}
               {resolved.type === 'verify' && (
-                <div className="flex flex-1 flex-col items-center justify-center px-2 text-center">
+                <div className="flex w-full max-w-md flex-col items-center px-2 text-center">
                   {resolved.emoji && (
                     <span className="text-3xl" aria-hidden="true">
                       {resolved.emoji}
@@ -501,9 +499,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                   )}
 
                   {resolved.celebration && (
-                    <p className="text-accent mt-auto pt-3 font-mono text-xs">
-                      {resolved.celebration}
-                    </p>
+                    <p className="text-accent mt-4 font-mono text-xs">{resolved.celebration}</p>
                   )}
                 </div>
               )}
