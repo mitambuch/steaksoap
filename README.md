@@ -31,16 +31,41 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 | **Releases** | Automated version bump + changelog + tag | Manual |
 | **Multi-AI** | Claude Code + Cursor + Copilot rules | Single tool or none |
 
+## Prerequisites
+
+Install these once (if you don't have them already):
+
+| Tool | How to install |
+|---|---|
+| **Node.js 20+** | Download from [nodejs.org](https://nodejs.org) — pick LTS |
+| **pnpm** | Open a terminal, run: `npm install -g pnpm` |
+| **Git** | Download from [git-scm.com](https://git-scm.com) |
+| **VS Code** | Download from [code.visualstudio.com](https://code.visualstudio.com) |
+| **Claude Code** | Install from [claude.ai/code](https://claude.ai/code) |
+
+> **First time?** Open VS Code after cloning, it will suggest recommended extensions — click "Install All".
+
 ## Quick Start
 
-```bash
-# Clone and setup
-git clone https://github.com/mitambuch/steaksoap.git my-project
-cd my-project
-pnpm install
-pnpm setup
+Open a terminal (PowerShell, Terminal, or VS Code terminal) and run these one by one:
 
-# Start building
+```
+git clone https://github.com/mitambuch/steaksoap.git my-project
+```
+
+```
+cd my-project
+```
+
+```
+pnpm install
+```
+
+```
+pnpm setup
+```
+
+```
 pnpm dev
 ```
 
