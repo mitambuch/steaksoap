@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#0a0a0a"/>
-  <text y="72" x="50" text-anchor="middle" font-size="60" fill="white" font-family="system-ui">◈</text>
+  <rect width="100" height="100" rx="12" fill="#0a0a0a"/>
+  <path d="M50 15 C72 15, 85 28, 85 50 C85 72, 72 85, 50 85 C28 85, 15 72, 15 50 C15 28, 28 15, 50 15Z" fill="#FF6B6B" transform="rotate(-5 50 50)">
+    <animate attributeName="d" dur="4s" repeatCount="indefinite" values="
+      M50 15 C72 15, 85 28, 85 50 C85 72, 72 85, 50 85 C28 85, 15 72, 15 50 C15 28, 28 15, 50 15Z;
+      M50 18 C70 12, 88 30, 82 52 C78 74, 68 88, 48 85 C30 82, 12 70, 18 48 C22 28, 32 18, 50 18Z;
+      M50 15 C72 15, 85 28, 85 50 C85 72, 72 85, 50 85 C28 85, 15 72, 15 50 C15 28, 28 15, 50 15Z
+    "/>
+  </path>
 </svg>
