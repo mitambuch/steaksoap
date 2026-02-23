@@ -25,7 +25,7 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 |---|---|---|
 | **AI workflow** | 22 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
-| **UI components** | 14 accessible atoms ready to use | Empty src/ |
+| **UI components** | 24 accessible components ready to use | Empty src/ |
 | **Git workflow** | Conventional commits + auto changelog | Manual |
 | **Validation** | Lint + typecheck + test + build in one command | `npm run build` |
 | **Releases** | Automated version bump + changelog + tag | Manual |
@@ -129,7 +129,7 @@ Open Claude Code and type these commands:
 
 Your project includes:
 - A responsive landing page with Header, Hero, Features, and Footer
-- 14 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Spinner...)
+- 24 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Accordion, Switch, Timeline...)
 - Dark/light mode toggle
 - SEO head management
 - Error boundaries

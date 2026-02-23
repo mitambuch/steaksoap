@@ -1,19 +1,49 @@
 import { SeoHead } from '@components/features/SeoHead';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@components/ui/Accordion';
 import { Avatar } from '@components/ui/Avatar';
+import { AvatarGroup } from '@components/ui/AvatarGroup';
 import { Badge } from '@components/ui/Badge';
+import { Banner } from '@components/ui/Banner';
 import { Button } from '@components/ui/Button';
 import { Card } from '@components/ui/Card';
+import { Divider } from '@components/ui/Divider';
+import { EmptyState } from '@components/ui/EmptyState';
 import { Input } from '@components/ui/Input';
+import { Kbd } from '@components/ui/Kbd';
 import { Modal } from '@components/ui/Modal';
+import { ProgressBar } from '@components/ui/ProgressBar';
 import { Select } from '@components/ui/Select';
 import { Skeleton } from '@components/ui/Skeleton';
 import { Spinner } from '@components/ui/Spinner';
+import { Stat } from '@components/ui/Stat';
+import { Switch } from '@components/ui/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/Tabs';
 import { Textarea } from '@components/ui/Textarea';
+import { Timeline } from '@components/ui/Timeline';
 import { Tooltip } from '@components/ui/Tooltip';
 import { useCopyToClipboard } from '@hooks/useCopyToClipboard';
 import { useToast } from '@hooks/useToast';
-import { ArrowRight, Check, Copy, Heart, Moon, Plus, Search, Sun, Zap } from 'lucide-react';
+import { cn } from '@utils/cn';
+import {
+  ArrowRight,
+  Check,
+  Copy,
+  FileX,
+  Heart,
+  Inbox,
+  Moon,
+  Plus,
+  Search,
+  SearchX,
+  Star,
+  Sun,
+  Zap,
+} from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useState } from 'react';
 
@@ -120,6 +150,23 @@ function IconItem({ name, children }: { name: string; children: ReactNode }) {
   );
 }
 
+/* ─── Switch Demo (stateful) ────────────────────────────────── */
+
+function SwitchDemo() {
+  const [notifications, setNotifications] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+  const [analytics, setAnalytics] = useState(false);
+
+  return (
+    <div className="space-y-3">
+      <Switch label="Enable notifications" checked={notifications} onChange={setNotifications} />
+      <Switch label="Dark mode" checked={darkMode} onChange={setDarkMode} />
+      <Switch label="Send analytics" checked={analytics} onChange={setAnalytics} />
+      <Switch label="Disabled option" checked={false} disabled />
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════ */
 
 export default function Playground() {
@@ -141,7 +188,8 @@ export default function Playground() {
             </span>
             <h1 className="text-fg mt-3 text-4xl font-medium tracking-tight md:text-6xl">devkit</h1>
             <p className="text-muted mt-4 max-w-lg text-base leading-relaxed">
-              every token, every component, every state. click any chip to copy.
+              every token, every component, every pattern. click any chip to copy. scroll down for
+              ready-to-use modules.
             </p>
             <div className="bg-accent mt-6 h-px w-12" />
           </div>
@@ -603,6 +651,513 @@ export default function Playground() {
                   <Badge variant="outline">css</Badge>
                 </div>
               </Card>
+            </div>
+          </Section>
+
+          {/* ═══════════════════════════════════════════════════════
+              ASSEMBLED MODULES — ready-to-use patterns
+              ═══════════════════════════════════════════════════════ */}
+
+          {/* 14 — Accordion / FAQ */}
+          <Section number="14" title="accordion / faq">
+            <div className="space-y-8">
+              <div>
+                <SubLabel>single mode (one open at a time)</SubLabel>
+                <div className="border-border/50 rounded-lg border px-5">
+                  <Accordion type="single" defaultOpen="faq-1">
+                    <AccordionItem value="faq-1">
+                      <AccordionTrigger>What is steaksoap?</AccordionTrigger>
+                      <AccordionContent>
+                        An AI-native React system for solo builders. 22 slash commands, 4 agents, 12
+                        rules — the AI knows your codebase and follows your conventions. You
+                        describe it, the AI builds it.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="faq-2">
+                      <AccordionTrigger>Do I need coding experience?</AccordionTrigger>
+                      <AccordionContent>
+                        Not at all. The guided setup wizard walks you through everything from
+                        installing VS Code to running your first project. And once you're set up,
+                        you describe what you want in plain English and the AI handles the code.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="faq-3">
+                      <AccordionTrigger>Which AI tools are supported?</AccordionTrigger>
+                      <AccordionContent>
+                        Claude Code (primary), Cursor, and GitHub Copilot. The commands and rules
+                        are optimized for Claude Code but work with any AI coding assistant that
+                        reads markdown instructions.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="faq-4">
+                      <AccordionTrigger>Is it free?</AccordionTrigger>
+                      <AccordionContent>
+                        Yes, 100% free and MIT licensed. Clone it, modify it, ship it. No
+                        attribution required, no hidden costs, no premium tier.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="faq-5">
+                      <AccordionTrigger>How do I update to the latest version?</AccordionTrigger>
+                      <AccordionContent>
+                        Run <code className="text-accent font-mono text-xs">pnpm setup:update</code>{' '}
+                        in your terminal. It pulls the latest improvements from the template and
+                        merges them into your project without overwriting your changes.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </div>
+
+              <div>
+                <SubLabel>multiple mode (many open)</SubLabel>
+                <div className="border-border/50 rounded-lg border px-5">
+                  <Accordion type="multiple" defaultOpen={['multi-1', 'multi-2']}>
+                    <AccordionItem value="multi-1">
+                      <AccordionTrigger>First section</AccordionTrigger>
+                      <AccordionContent>
+                        Multiple items can be open simultaneously.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="multi-2">
+                      <AccordionTrigger>Second section</AccordionTrigger>
+                      <AccordionContent>
+                        This one starts open too. Try clicking the first.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="multi-3">
+                      <AccordionTrigger>Third section</AccordionTrigger>
+                      <AccordionContent>Independent of the others.</AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* 15 — Pricing table */}
+          <Section number="15" title="pricing table">
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  name: 'Free',
+                  price: '$0',
+                  period: 'forever',
+                  description: 'For side projects and experiments.',
+                  features: ['5 pages', 'Community support', 'Basic analytics', 'MIT license'],
+                  cta: 'Get started',
+                  highlighted: false,
+                },
+                {
+                  name: 'Pro',
+                  price: '$29',
+                  period: '/month',
+                  description: 'For serious solo builders.',
+                  features: [
+                    'Unlimited pages',
+                    'Priority support',
+                    'Advanced analytics',
+                    'Custom domain',
+                    'Remove branding',
+                  ],
+                  cta: 'Start free trial',
+                  highlighted: true,
+                },
+                {
+                  name: 'Enterprise',
+                  price: '$99',
+                  period: '/month',
+                  description: 'For agencies and teams.',
+                  features: [
+                    'Everything in Pro',
+                    'Team seats',
+                    'SLA guarantee',
+                    'Dedicated support',
+                    'Custom integrations',
+                    'Invoice billing',
+                  ],
+                  cta: 'Contact sales',
+                  highlighted: false,
+                },
+              ].map(plan => (
+                <div
+                  key={plan.name}
+                  className={cn(
+                    'border-border relative flex flex-col rounded-lg border p-6 transition-all duration-300',
+                    plan.highlighted
+                      ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_rgba(255,107,107,0.05)]'
+                      : 'hover:border-accent/15 bg-transparent',
+                  )}
+                >
+                  {plan.highlighted && (
+                    <span className="bg-accent text-bg absolute -top-3 right-4 rounded-full px-3 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                      Popular
+                    </span>
+                  )}
+                  <h3 className="text-fg font-mono text-sm font-medium uppercase">{plan.name}</h3>
+                  <div className="mt-3 flex items-baseline gap-1">
+                    <span className="text-fg text-3xl font-bold">{plan.price}</span>
+                    <span className="text-muted text-sm">{plan.period}</span>
+                  </div>
+                  <p className="text-muted mt-2 text-sm">{plan.description}</p>
+
+                  <ul className="mt-6 flex-1 space-y-2">
+                    {plan.features.map(f => (
+                      <li key={f} className="text-muted flex items-center gap-2 text-sm">
+                        <Check
+                          size={14}
+                          strokeWidth={2}
+                          className="text-success shrink-0"
+                          aria-hidden="true"
+                        />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button
+                    variant={plan.highlighted ? 'primary' : 'secondary'}
+                    className="mt-6 w-full"
+                    size="md"
+                  >
+                    {plan.cta}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          {/* 16 — Testimonials */}
+          <Section number="16" title="testimonials">
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  quote:
+                    "steaksoap changed how I build projects. I describe what I want, Claude builds it, and everything just works. Haven't touched code manually in weeks.",
+                  name: 'Alex Chen',
+                  role: 'Indie maker',
+                  avatar: 'https://i.pravatar.cc/150?u=alex',
+                },
+                {
+                  quote:
+                    "The slash commands are game-changing. /spec → /new-feature → /review → done. It's like having a senior engineer sitting next to me at all times.",
+                  name: 'Sarah Kim',
+                  role: 'Solo founder',
+                  avatar: 'https://i.pravatar.cc/150?u=sarah',
+                },
+                {
+                  quote:
+                    "I tried 20+ React starters. This is the only one where the AI integration isn't an afterthought. The rules and agents ARE the product.",
+                  name: 'Marcus Weber',
+                  role: 'Full-stack dev',
+                  avatar: 'https://i.pravatar.cc/150?u=marcus',
+                },
+              ].map(t => (
+                <Card key={t.name} padding="lg">
+                  <div className="flex h-full flex-col">
+                    <div className="mb-3 flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          size={14}
+                          fill="var(--color-accent)"
+                          strokeWidth={0}
+                          className="text-accent"
+                          aria-hidden="true"
+                        />
+                      ))}
+                    </div>
+                    <blockquote className="text-muted flex-1 text-sm leading-relaxed italic">
+                      &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                    <div className="border-border/50 mt-4 flex items-center gap-3 border-t pt-4">
+                      <Avatar src={t.avatar} alt={t.name} size="sm" />
+                      <div>
+                        <p className="text-fg text-sm font-medium">{t.name}</p>
+                        <p className="text-muted text-xs">{t.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Section>
+
+          {/* 17 — Contact form */}
+          <Section number="17" title="contact form">
+            <div className="border-border/50 mx-auto max-w-lg rounded-lg border p-6">
+              <h3 className="text-fg text-lg font-medium">Get in touch</h3>
+              <p className="text-muted mt-1 text-sm">We usually respond within 24 hours.</p>
+
+              <div className="mt-6 space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Input label="First name" placeholder="Jane" />
+                  <Input label="Last name" placeholder="Doe" />
+                </div>
+                <Input label="Email" type="email" placeholder="jane@example.com" />
+                <Select
+                  label="Subject"
+                  placeholder="Select a topic"
+                  options={[
+                    { value: 'general', label: 'General inquiry' },
+                    { value: 'support', label: 'Technical support' },
+                    { value: 'feedback', label: 'Feedback' },
+                    { value: 'partnership', label: 'Partnership' },
+                  ]}
+                />
+                <Textarea label="Message" placeholder="Tell us what's on your mind..." />
+                <Button
+                  className="w-full"
+                  onClick={() =>
+                    toast({
+                      variant: 'success',
+                      message: "Message sent! We'll get back to you soon.",
+                    })
+                  }
+                >
+                  Send message
+                </Button>
+              </div>
+            </div>
+          </Section>
+
+          {/* 18 — CTA section */}
+          <Section number="18" title="call to action">
+            <div className="border-accent/10 bg-accent/2 rounded-2xl border p-8 text-center md:p-12">
+              <h3 className="text-fg text-2xl font-medium md:text-3xl">
+                Ready to build something?
+              </h3>
+              <p className="text-muted mx-auto mt-3 max-w-md text-sm leading-relaxed md:text-base">
+                Clone steaksoap, let the AI handle the code, and ship your next project faster than
+                you thought possible.
+              </p>
+              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <Button size="lg">
+                  View on GitHub <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
+                </Button>
+                <Button variant="secondary" size="lg">
+                  Read the docs
+                </Button>
+              </div>
+              <p className="text-muted/50 mt-6 font-mono text-xs">
+                Free forever &middot; MIT license &middot; No account needed
+              </p>
+            </div>
+          </Section>
+
+          {/* 19 — Banners */}
+          <Section number="19" title="banners & alerts">
+            <div className="space-y-3">
+              <Banner variant="info">
+                New version available — <span className="font-medium underline">update now</span>
+              </Banner>
+              <Banner variant="success">
+                Deployment successful. Your site is live at project.vercel.app
+              </Banner>
+              <Banner variant="warning">
+                Your API key expires in 3 days. Rotate it in settings.
+              </Banner>
+              <Banner variant="danger">Build failed. Check the error log for details.</Banner>
+              <Banner variant="accent">
+                steaksoap v3.0 just dropped — 8 new commands, redesigned wizard
+              </Banner>
+            </div>
+          </Section>
+
+          {/* 20 — Stats row */}
+          <Section number="20" title="stats">
+            <div className="space-y-8">
+              <div>
+                <SubLabel>inline stats</SubLabel>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                  <Card padding="md">
+                    <Stat
+                      label="Total users"
+                      value="12,847"
+                      trend={{ value: '14.2%', positive: true }}
+                    />
+                  </Card>
+                  <Card padding="md">
+                    <Stat
+                      label="Revenue"
+                      value="$48.2k"
+                      trend={{ value: '7.1%', positive: true }}
+                    />
+                  </Card>
+                  <Card padding="md">
+                    <Stat
+                      label="Bounce rate"
+                      value="24.3%"
+                      trend={{ value: '3.2%', positive: false }}
+                    />
+                  </Card>
+                  <Card padding="md">
+                    <Stat
+                      label="Avg. session"
+                      value="4m 32s"
+                      trend={{ value: '12s', positive: true }}
+                    />
+                  </Card>
+                </div>
+              </div>
+
+              <div>
+                <SubLabel>progress bars</SubLabel>
+                <div className="max-w-md space-y-4">
+                  <ProgressBar value={78} variant="accent" showLabel />
+                  <ProgressBar value={92} variant="success" showLabel />
+                  <ProgressBar value={45} variant="warning" showLabel />
+                  <ProgressBar value={15} variant="danger" showLabel />
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* 21 — Timeline / changelog */}
+          <Section number="21" title="timeline">
+            <div className="max-w-lg">
+              <Timeline
+                items={[
+                  {
+                    title: 'v2.6 — Playground mega update',
+                    date: 'Feb 2026',
+                    badge: (
+                      <Badge variant="success" size="sm">
+                        latest
+                      </Badge>
+                    ),
+                    description:
+                      'FAQ, pricing table, testimonials, contact form, 10 new components, and assembled modules.',
+                  },
+                  {
+                    title: 'v2.5 — Wizard onboarding',
+                    date: 'Feb 2026',
+                    description:
+                      '30-slide guided setup wizard. From zero to running project in 15 minutes.',
+                  },
+                  {
+                    title: 'v2.0 — AI-native redesign',
+                    date: 'Jan 2026',
+                    badge: (
+                      <Badge variant="info" size="sm">
+                        major
+                      </Badge>
+                    ),
+                    description:
+                      'Complete rewrite. 22 commands, 4 agents, particle hero, neural flow design.',
+                  },
+                  {
+                    title: 'v1.0 — Initial release',
+                    date: 'Dec 2025',
+                    description: 'React 19 + Vite + Tailwind starter with Claude Code integration.',
+                  },
+                ]}
+              />
+            </div>
+          </Section>
+
+          {/* 22 — Empty states */}
+          <Section number="22" title="empty states">
+            <div className="grid gap-4 md:grid-cols-3">
+              <Card padding="none">
+                <EmptyState
+                  icon={<SearchX size={40} strokeWidth={1} />}
+                  title="No results found"
+                  description="Try adjusting your search or filters to find what you're looking for."
+                  action={
+                    <Button variant="secondary" size="sm">
+                      Clear filters
+                    </Button>
+                  }
+                />
+              </Card>
+              <Card padding="none">
+                <EmptyState
+                  icon={<Inbox size={40} strokeWidth={1} />}
+                  title="No items yet"
+                  description="Get started by creating your first item. It only takes a few seconds."
+                  action={<Button size="sm">Create first item</Button>}
+                />
+              </Card>
+              <Card padding="none">
+                <EmptyState
+                  icon={<FileX size={40} strokeWidth={1} />}
+                  title="Something went wrong"
+                  description="We couldn't load this content. Please try again or contact support."
+                  action={
+                    <Button variant="danger" size="sm">
+                      Retry
+                    </Button>
+                  }
+                />
+              </Card>
+            </div>
+          </Section>
+
+          {/* 23 — Switch, AvatarGroup, Kbd, Divider */}
+          <Section number="23" title="misc components">
+            <div className="space-y-8">
+              <div>
+                <SubLabel>switch</SubLabel>
+                <SwitchDemo />
+              </div>
+
+              <div>
+                <SubLabel>avatar group</SubLabel>
+                <div className="flex flex-wrap items-center gap-6">
+                  <AvatarGroup
+                    avatars={[
+                      { src: 'https://i.pravatar.cc/150?u=a', alt: 'Alice' },
+                      { src: 'https://i.pravatar.cc/150?u=b', alt: 'Bob' },
+                      { src: 'https://i.pravatar.cc/150?u=c', alt: 'Charlie' },
+                      { src: 'https://i.pravatar.cc/150?u=d', alt: 'Diana' },
+                      { src: 'https://i.pravatar.cc/150?u=e', alt: 'Eve' },
+                      { src: 'https://i.pravatar.cc/150?u=f', alt: 'Frank' },
+                    ]}
+                    max={4}
+                  />
+                  <span className="text-muted text-xs">max=4 — 6 avatars</span>
+                </div>
+              </div>
+
+              <div>
+                <SubLabel>keyboard shortcuts</SubLabel>
+                <div className="flex flex-wrap gap-3">
+                  <div className="border-border/50 flex items-center gap-2 rounded-lg border px-3 py-2">
+                    <Kbd>&lceil;</Kbd>
+                    <span className="text-muted text-xs">+</span>
+                    <Kbd>K</Kbd>
+                    <span className="text-muted ml-2 text-xs">command palette</span>
+                  </div>
+                  <div className="border-border/50 flex items-center gap-2 rounded-lg border px-3 py-2">
+                    <Kbd>&lceil;</Kbd>
+                    <span className="text-muted text-xs">+</span>
+                    <Kbd>S</Kbd>
+                    <span className="text-muted ml-2 text-xs">save</span>
+                  </div>
+                  <div className="border-border/50 flex items-center gap-2 rounded-lg border px-3 py-2">
+                    <Kbd>Esc</Kbd>
+                    <span className="text-muted ml-2 text-xs">close</span>
+                  </div>
+                  <div className="border-border/50 flex items-center gap-2 rounded-lg border px-3 py-2">
+                    <Kbd>&uarr;</Kbd>
+                    <Kbd>&darr;</Kbd>
+                    <span className="text-muted ml-2 text-xs">navigate</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <SubLabel>dividers</SubLabel>
+                <div className="max-w-md space-y-0">
+                  <p className="text-muted text-sm">Content above the divider.</p>
+                  <Divider />
+                  <p className="text-muted text-sm">Simple horizontal rule.</p>
+                  <Divider label="or" />
+                  <p className="text-muted text-sm">With a centered label.</p>
+                  <Divider label="section break" />
+                  <p className="text-muted text-sm">Content below.</p>
+                </div>
+              </div>
             </div>
           </Section>
         </div>
