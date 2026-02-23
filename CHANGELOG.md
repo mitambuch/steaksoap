@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.4.0](https://github.com/mitambuch/steaksoap/compare/v2.3.0...v2.4.0) (2026-02-23)
+
+### ✨ Features
+
+* **onboarding:** create setup wizard with 14 guided steps ([16bff3f](https://github.com/mitambuch/steaksoap/commit/16bff3f3dd53ac5c91de61f62e4c5203bba74b11))
+* **site:** add beginner onboarding bar and footer setup link ([184d31b](https://github.com/mitambuch/steaksoap/commit/184d31b8749e08867b9be2d5da2478ff56496aa4))
+
+### 📚 Documentation
+
+* **readme:** two-path getting started (novice wizard + dev quick) ([77e432f](https://github.com/mitambuch/steaksoap/commit/77e432fd189a95b2dbc06bc770e211581244f09a))
+
 ## [2.3.0](https://github.com/mitambuch/steaksoap/compare/v2.2.3...v2.3.0) (2026-02-23)
 
 ### ✨ Features
