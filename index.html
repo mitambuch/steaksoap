@@ -19,7 +19,8 @@
     <!-- Prevent flash of wrong theme (FOUC) -->
     <script>
       (function() {
-        var theme = localStorage.getItem('steaksoap-theme');
+        var theme;
+        try { theme = localStorage.getItem('steaksoap-theme'); } catch(e) { /* Safari private mode */ }
         if (!theme) {
           theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }

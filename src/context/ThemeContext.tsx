@@ -19,10 +19,27 @@ function getSystemTheme(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
+// WHY: Safari private mode and some iframes throw on localStorage access — must wrap in try/catch
+function getStoredTheme(): string | null {
+  try {
+    return localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function setStoredTheme(theme: string): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Safari private mode — fail silently
+  }
+}
+
 /** Get stored theme or fall back to system preference. */
 function getInitialTheme(): Theme {
   if (typeof window === 'undefined') return 'dark';
-  const stored = localStorage.getItem(STORAGE_KEY);
+  const stored = getStoredTheme();
   if (stored === 'light' || stored === 'dark') return stored;
   return getSystemTheme();
 }
@@ -40,14 +57,14 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const setTheme = useCallback((newTheme: Theme) => {
     setThemeState(newTheme);
-    localStorage.setItem(STORAGE_KEY, newTheme);
+    setStoredTheme(newTheme);
     applyTheme(newTheme);
   }, []);
 
   const toggleTheme = useCallback(() => {
     setThemeState(prev => {
       const next = prev === 'dark' ? 'light' : 'dark';
-      localStorage.setItem(STORAGE_KEY, next);
+      setStoredTheme(next);
       applyTheme(next);
       return next;
     });
@@ -65,7 +82,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => {
       // Only auto-switch if user hasn't explicitly chosen
-      if (!localStorage.getItem(STORAGE_KEY)) {
+      if (!getStoredTheme()) {
         setTheme(e.matches ? 'dark' : 'light');
       }
     };
