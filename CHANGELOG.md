@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.3.0](https://github.com/mitambuch/steaksoap/compare/v2.2.3...v2.3.0) (2026-02-23)
+
+### ✨ Features
+
+* **site:** per-line copy buttons and prerequisites section ([064bf04](https://github.com/mitambuch/steaksoap/commit/064bf048a9693ce9719f928591eb1d09a8d62c76))
+
+### 📚 Documentation
+
+* **readme:** add prerequisites and novice-friendly quick start ([8fbd0f6](https://github.com/mitambuch/steaksoap/commit/8fbd0f6d29e1c4a5db857ded8281dd93dc96fc35))
+
+### 🔧 Chores
+
+* **vscode:** clean extensions.json and add missing recommendations ([43c6d4e](https://github.com/mitambuch/steaksoap/commit/43c6d4e39c5ad2bcc13bec7493fccb0ec6ed28e8))
+
 ## [2.2.3](https://github.com/mitambuch/steaksoap/compare/v2.2.2...v2.2.3) (2026-02-23)
 
 ### 🐛 Bug Fixes
