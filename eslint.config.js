@@ -68,6 +68,49 @@ export default defineConfig([
     },
   },
 
+  // ─── Import boundaries — architecture enforcement ──────────
+  // ui/ components are pure visual atoms: no business logic, no page imports
+  {
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['@features/*', '@features/**', '../features/*', '../../features/*'],
+            message: 'ui/ components must not import from features/. Move business logic to features/ or hooks/.',
+          },
+          {
+            group: ['@pages/*', '@pages/**', '../pages/*', '../../pages/*'],
+            message: 'ui/ components must not import from pages/. Components should be page-agnostic.',
+          },
+          {
+            group: ['@app/*', '@app/**'],
+            message: 'ui/ components must not import from app/. Use props or context instead.',
+          },
+        ],
+      }],
+    },
+  },
+
+  // features/ contain business logic: can use ui/ and lib/, but not pages/ or routes/
+  {
+    files: ['src/features/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['@pages/*', '@pages/**', '../pages/*', '../../pages/*'],
+            message: 'features/ must not import from pages/. Pages orchestrate features, not the reverse.',
+          },
+          {
+            group: ['@app/routes/*', '@app/routes/**'],
+            message: 'features/ must not import from routes/. Routes import features, not the reverse.',
+          },
+        ],
+      }],
+    },
+  },
+
   // Config files (vite, vitest, etc.) → Node globals
   {
     files: ['*.config.{ts,js}', 'scripts/**/*.{ts,js}'],

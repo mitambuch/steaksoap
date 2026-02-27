@@ -104,3 +104,17 @@ export const Button = ({ variant = 'primary', size = 'md', isLoading, className,
 - Text in components MUST be readable at 320px (minimum 14px)
 - Fixed/absolute positioned elements MUST NOT cause overflow on mobile
 - Always test: "does this make sense on a phone screen?"
+
+## Import boundaries (enforced by ESLint)
+
+These boundaries are automatically enforced — violations block the lint.
+
+| Layer | Can import | Cannot import |
+|-------|-----------|---------------|
+| `components/ui/` | utils, config, hooks, lib, constants, context | features/, pages/, app/ |
+| `features/` | ui/, utils, config, hooks, lib, constants, context | pages/, app/routes/ |
+| `pages/` | everything | — |
+| `hooks/` | utils, config, lib, constants, context | — |
+
+If ESLint blocks an import, it means the architecture is wrong.
+Move the logic to the correct layer instead of disabling the rule.
