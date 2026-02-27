@@ -33,41 +33,54 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 
 ## Getting Started
 
-### Never coded before?
+### 1. Clone & install
 
-Visit [steaksoap.app](https://steaksoap.app) and click **"Start the guided setup"** at the bottom of the page. It walks you through everything step by step — from installing VS Code to seeing your site running.
-
-### Already have a dev setup?
-
-You need Node.js 20+, pnpm, and Git.
-
-```
+```bash
 git clone https://github.com/mitambuch/steaksoap.git my-project
-```
-
-```
 cd my-project
-```
-
-```
 pnpm install
 ```
 
-```
+### 2. Setup
+
+```bash
 pnpm setup
 ```
 
-```
+This renames the project, configures git, and validates everything.
+
+### 3. Start dev server
+
+```bash
 pnpm dev
 ```
 
-Open [localhost:5173](http://localhost:5173) — your site is running.
+Open [localhost:5173](http://localhost:5173) — you'll see the Welcome page with next steps.
 
-The setup wizard will:
-- Rename the project to your chosen name
-- Configure git remotes
-- Clean up template files
-- Give you a ready-to-use project
+### 4. Make it yours
+
+```bash
+claude
+```
+
+Then type `/init` — Claude will ask about your project and customize colors, fonts, and content.
+
+### 5. Detach from steaksoap (optional)
+
+If you cloned directly (not via "Use this template"), `pnpm setup` already handled
+the git remote. If you need to manually detach:
+
+```bash
+git remote remove template
+```
+
+### Pages
+
+| URL | What it is |
+|-----|------------|
+| `/` | Welcome page (replaced when you build your homepage) |
+| `/playground` | All UI components with your current design tokens |
+| `/steaksoap` | Original template for reference and inspiration |
 
 ## AI Commands
 
