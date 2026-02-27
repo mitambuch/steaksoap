@@ -18,8 +18,8 @@ export default {
     'scope-empty': [2, 'never'],
     // Max 72 chars sur la première ligne
     'subject-max-length': [2, 'always', 72],
-    // Minuscules uniquement
-    'subject-case': [2, 'always', 'lower-case'],
+    // Subject case: disabled (allow uppercase for flexibility)
+    'subject-case': [0],
     // Pas de point final
     'subject-full-stop': [2, 'never', '.'],
   },
