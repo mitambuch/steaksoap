@@ -55,7 +55,7 @@ This renames the project, configures git, and validates everything.
 pnpm dev
 ```
 
-Open [localhost:5173](http://localhost:5173) — you'll see the Welcome page with next steps.
+Open [localhost:5173](http://localhost:5173) — you'll see the showcase landing page.
 
 ### 4. Make it yours
 
@@ -78,7 +78,8 @@ git remote remove template
 
 | URL | What it is |
 |-----|------------|
-| `/` | Welcome page (replaced when you build your homepage) |
+| `/` | Showcase landing page (replaced by `pnpm setup`) |
+| `/welcome` | Post-clone setup guide (removed by `pnpm setup`) |
 | `/playground` | All UI components with your current design tokens |
 | `/steaksoap` | Original template for reference and inspiration |
 
