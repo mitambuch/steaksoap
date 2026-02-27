@@ -22,6 +22,7 @@ These rules apply to EVERY task, EVERY message, EVERY action. No exceptions.
    Not "update stuff" or "changes". Proper conventional commit messages.
 7. **Protected pages**: NEVER delete `/playground` or `/steaksoap` pages.
    NEVER remove them from `navItems` in `src/config/site.ts`.
+   `/welcome` is the post-clone setup guide — removed automatically by `pnpm setup`.
    When changing design tokens (colors, fonts), verify `/playground` renders correctly.
 
 If you catch yourself about to skip any of these → STOP → re-read this section.

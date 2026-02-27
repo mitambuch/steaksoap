@@ -76,6 +76,7 @@ src/
 - `/playground` — Component reference page. NEVER delete. NEVER remove from nav.
   When design tokens change, verify Playground still renders correctly.
 - `/steaksoap` — Original template showcase. NEVER delete. Keep for reference.
+- `/welcome` — Post-clone setup guide. Removed automatically by `pnpm setup`.
 
 ## Detailed Rules
 See .claude/rules/ — these files are loaded automatically based on what you're working on.

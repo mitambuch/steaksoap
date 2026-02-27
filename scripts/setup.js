@@ -252,6 +252,44 @@ async function runInit() {
     copyFileSync(templateHome, resolve(root, 'src/pages/Home.tsx'));
   }
 
+  // Always remove Welcome page (post-clone guide, not needed after setup)
+  const welcomePath = resolve(root, 'src/pages/Welcome.tsx');
+  if (existsSync(welcomePath)) rmSync(welcomePath);
+
+  // Remove Welcome route and import from routes/index.tsx
+  const welcomeRoutesPath = PATHS.routesConfig;
+  if (existsSync(welcomeRoutesPath)) {
+    let routes = readFileSync(welcomeRoutesPath, 'utf-8');
+    routes = routes.replace(
+      /const Welcome = lazy\(\(\) => import\('@pages\/Welcome'\)\);\n/,
+      '',
+    );
+    routes = routes.replace(
+      /\s*<Route path=\{ROUTES\.WELCOME\} element=\{<Welcome \/>\} \/>\n/,
+      '\n',
+    );
+    writeFileSync(welcomeRoutesPath, routes);
+  }
+
+  // Remove WELCOME from route constants
+  const welcomeRouteConstsPath = PATHS.routes;
+  if (existsSync(welcomeRouteConstsPath)) {
+    let consts = readFileSync(welcomeRouteConstsPath, 'utf-8');
+    consts = consts.replace(/\s*WELCOME:\s*'\/welcome',?\n/, '\n');
+    writeFileSync(welcomeRouteConstsPath, consts);
+  }
+
+  // Remove Welcome nav item from site config
+  const welcomeSiteConfigPath = PATHS.siteConfig;
+  if (existsSync(welcomeSiteConfigPath)) {
+    let siteTs = readFileSync(welcomeSiteConfigPath, 'utf-8');
+    siteTs = siteTs.replace(
+      /\s*\{\s*label:\s*'Welcome',\s*href:\s*ROUTES\.WELCOME\s*\},?\n/,
+      '\n',
+    );
+    writeFileSync(welcomeSiteConfigPath, siteTs);
+  }
+
   // Remove files no longer needed post-setup
   const filesToRemove = [
     // Always removed (not needed post-setup)

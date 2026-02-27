@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
    Pattern: const PageName = lazy(() => import('@pages/PageName'))
    ──────────────────────────────────────────────────────────── */
 const Home = lazy(() => import('@pages/Home'));
+const Welcome = lazy(() => import('@pages/Welcome'));
 const Playground = lazy(() => import('@pages/Playground'));
 const Steaksoap = lazy(() => import('@pages/Steaksoap'));
 const NotFound = lazy(() => import('@pages/NotFound'));
@@ -33,6 +34,7 @@ export default function AppRoutes() {
         {/* Root layout — wraps ALL pages with Header + Footer */}
         <Route element={<RootLayout />}>
           <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.WELCOME} element={<Welcome />} />
           <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
           <Route path={ROUTES.STEAKSOAP} element={<Steaksoap />} />
           {/* Add routes here: */}
