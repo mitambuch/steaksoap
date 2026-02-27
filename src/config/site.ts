@@ -23,6 +23,7 @@ export const siteConfig = {
   navItems: [
     { label: 'Home', href: ROUTES.HOME },
     { label: 'Playground', href: ROUTES.PLAYGROUND },
+    { label: 'Steaksoap', href: ROUTES.STEAKSOAP },
   ],
 
   // ─── Contact ───────────────────────────────────────────────

@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
    ──────────────────────────────────────────────────────────── */
 const Home = lazy(() => import('@pages/Home'));
 const Playground = lazy(() => import('@pages/Playground'));
+const Steaksoap = lazy(() => import('@pages/Steaksoap'));
 const NotFound = lazy(() => import('@pages/NotFound'));
 
 /* ─── Loading fallback — themed, no white flash ───────────────── */
@@ -33,6 +34,7 @@ export default function AppRoutes() {
         <Route element={<RootLayout />}>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
+          <Route path={ROUTES.STEAKSOAP} element={<Steaksoap />} />
           {/* Add routes here: */}
           {/* <Route path={ROUTES.ABOUT} element={<About />} /> */}
           {/* <Route path={ROUTES.PROJECT} element={<ProjectDetail />} /> */}
