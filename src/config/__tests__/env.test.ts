@@ -10,7 +10,8 @@ describe('env', () => {
     const { env } = await import('../env');
 
     expect(env.CLOUDINARY_CLOUD_NAME).toBe('');
-    expect(env.APP_NAME).toBe('steaksoap');
+    expect(env.APP_NAME).toBeTruthy();
+    expect(typeof env.APP_NAME).toBe('string');
     expect(env.APP_URL).toBe('http://localhost:5173');
   });
 

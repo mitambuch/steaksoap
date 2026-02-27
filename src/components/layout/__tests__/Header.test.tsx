@@ -1,3 +1,4 @@
+import { siteConfig } from '@config/site';
 import { ThemeProvider } from '@context/ThemeContext';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
@@ -19,7 +20,7 @@ function renderHeader(props: Partial<Parameters<typeof Header>[0]> = {}) {
 describe('Header', () => {
   it('renders project name', () => {
     renderHeader();
-    expect(screen.getByText('steaksoap')).toBeInTheDocument();
+    expect(screen.getByText(siteConfig.name)).toBeInTheDocument();
   });
 
   it('shows Playground link', () => {

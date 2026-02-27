@@ -11,7 +11,7 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-const STORAGE_KEY = 'steaksoap-theme';
+export const THEME_STORAGE_KEY = 'steaksoap-theme';
 
 /** Detect system preference for dark mode. */
 function getSystemTheme(): Theme {
@@ -22,7 +22,7 @@ function getSystemTheme(): Theme {
 // WHY: Safari private mode and some iframes throw on localStorage access — must wrap in try/catch
 function getStoredTheme(): string | null {
   try {
-    return localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(THEME_STORAGE_KEY);
   } catch {
     return null;
   }
@@ -30,7 +30,7 @@ function getStoredTheme(): string | null {
 
 function setStoredTheme(theme: string): void {
   try {
-    localStorage.setItem(STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
     // Safari private mode — fail silently
   }

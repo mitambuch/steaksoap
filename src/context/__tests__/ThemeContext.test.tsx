@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { ThemeProvider, useTheme } from '../ThemeContext';
+import { THEME_STORAGE_KEY, ThemeProvider, useTheme } from '../ThemeContext';
 
 function wrapper({ children }: { children: ReactNode }) {
   return <ThemeProvider>{children}</ThemeProvider>;
@@ -29,7 +29,7 @@ describe('useTheme', () => {
   it('persists theme to localStorage', () => {
     const { result } = renderHook(() => useTheme(), { wrapper });
     act(() => result.current.setTheme('light'));
-    expect(localStorage.getItem('steaksoap-theme')).toBe('light');
+    expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('light');
   });
 
   it('applies data-theme attribute to document', () => {
@@ -39,7 +39,7 @@ describe('useTheme', () => {
   });
 
   it('reads stored theme from localStorage', () => {
-    localStorage.setItem('steaksoap-theme', 'light');
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
     const { result } = renderHook(() => useTheme(), { wrapper });
     expect(result.current.theme).toBe('light');
   });
