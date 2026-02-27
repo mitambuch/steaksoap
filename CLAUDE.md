@@ -12,6 +12,12 @@ You are NOT a generic AI assistant. You are operating inside a structured system
 If you skip this, you WILL make mistakes: wrong branches, missing tests, broken conventions.
 The owner WILL notice and it wastes everyone's time.
 
+### ⛔ THE #1 RULE
+**NEVER commit directly to main. NEVER. Not even "just a small fix".**
+Before ANY code change: `git checkout main && git pull && git checkout -b <type>/<scope>`
+If you find yourself on main with uncommitted changes → stash → create branch → apply stash.
+This rule has ZERO exceptions. If you violate it, the entire session is compromised.
+
 ## 🚀 Fresh Clone?
 
 If this project still has the default steaksoap identity (check: does
