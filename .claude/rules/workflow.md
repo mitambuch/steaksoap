@@ -20,6 +20,9 @@ These rules apply to EVERY task, EVERY message, EVERY action. No exceptions.
 5. **Validate before commit**: `pnpm validate` must pass. Always. No "I'll fix it later."
 6. **Conventional commits**: feat:, fix:, docs:, refactor:, test:, chore:
    Not "update stuff" or "changes". Proper conventional commit messages.
+7. **Protected pages**: NEVER delete `/playground` or `/steaksoap` pages.
+   NEVER remove them from `navItems` in `src/config/site.ts`.
+   When changing design tokens (colors, fonts), verify `/playground` renders correctly.
 
 If you catch yourself about to skip any of these → STOP → re-read this section.
 

@@ -62,5 +62,10 @@ src/
 - After completing work: summary of changes, files modified, what to test
 - If unsure: ask one focused question, don't guess
 
+## Protected Pages
+- `/playground` — Component reference page. NEVER delete. NEVER remove from nav.
+  When design tokens change, verify Playground still renders correctly.
+- `/steaksoap` — Original template showcase. NEVER delete. Keep for reference.
+
 ## Detailed Rules
 See .claude/rules/ — these files are loaded automatically based on what you're working on.
