@@ -20,19 +20,21 @@ describe('Home', () => {
     expect(() => renderHome()).not.toThrow();
   });
 
-  it('renders the hero heading', () => {
+  it('renders the welcome heading', () => {
     renderHome();
-    expect(screen.getByText(/100% free/i)).toBeInTheDocument();
+    expect(screen.getByText(/welcome to steaksoap/i)).toBeInTheDocument();
   });
 
-  it('renders CTA links', () => {
+  it('renders the setup steps', () => {
     renderHome();
-    const links = screen.getAllByRole('link', { name: /github/i });
-    expect(links.length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(/open your terminal/i)).toBeInTheDocument();
+    expect(screen.getByText(/launch claude code/i)).toBeInTheDocument();
+    expect(screen.getByText(/tell claude what you want/i)).toBeInTheDocument();
   });
 
-  it('renders feature cards', () => {
+  it('renders the steaksoap credit link', () => {
     renderHome();
-    expect(screen.getByText('Zero config')).toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /built with steaksoap/i });
+    expect(link).toBeInTheDocument();
   });
 });
