@@ -118,4 +118,16 @@ export default defineConfig([
       globals: globals.node,
     },
   },
+
+  // E2E tests (Playwright) → no React rules, Node globals
+  {
+    files: ['e2e/**/*.{ts,js}'],
+    languageOptions: {
+      globals: globals.node,
+    },
+    rules: {
+      'react-hooks/rules-of-hooks': 'off',
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

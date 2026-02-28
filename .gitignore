@@ -33,6 +33,10 @@ Thumbs.db
 # Test coverage
 coverage/
 
+# Playwright
+test-results/
+playwright-report/
+
 # Claude Code (ignore local settings, keep shared commands, rules, agents, and decisions)
 .claude/*
 !.claude/commands/

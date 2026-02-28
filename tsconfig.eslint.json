@@ -3,5 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "include": ["src", "*.config.ts", "*.config.js", "scripts"]
+  "include": ["src", "*.config.ts", "*.config.js", "scripts", "e2e"]
 }
