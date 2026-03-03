@@ -736,13 +736,67 @@ export const SlideDefi = () => (
   </div>
 );
 
-/* ─── 10. Nomenclature ─────────────────────────────────────── */
+/* ─── 15. Nomenclature — Trois niveaux de lecture ─────────── */
+
+const NIVEAUX = [
+  {
+    display: 'Réso.ne',
+    displayStyle: 'text-accent font-bold tracking-tight',
+    fontSize: 'clamp(2rem, 4vw, 3rem)',
+    tag: 'Niveau 1',
+    label: 'La marque réseau',
+    text: 'Identifie le réseau. Présent partout. C\u2019est le lien entre tous les centres.',
+  },
+  {
+    display: 'Centre médical de Neuchâtel',
+    displayStyle: 'text-fg font-medium tracking-tight',
+    fontSize: 'clamp(1.4rem, 2.8vw, 2rem)',
+    tag: 'Niveau 2',
+    label: 'Le nom d\u2019usage',
+    text: 'Ce que le patient dit, ce qu\u2019il cherche sur Google, ce qu\u2019il lit en arrivant. C\u2019est le nom du quotidien.',
+  },
+  {
+    display: 'Réso.ne — Centre médical de Neuchâtel',
+    displayStyle: 'text-fg font-medium tracking-tight',
+    fontSize: 'clamp(1.2rem, 2.4vw, 1.7rem)',
+    tag: 'Niveau 3',
+    label: 'Le nom complet',
+    text: 'La version officielle. Documents, signalétique complète, site web, correspondance.',
+  },
+] as const;
 
 export const SlideNomenclature = () => (
-  <div className="flex h-full flex-col items-start justify-center p-8">
-    <H1>Nomenclature</H1>
-    <Divider />
-    <P>Contenu à venir.</P>
+  <div className="flex h-full flex-col p-10">
+    <H1>Trois niveaux de lecture</H1>
+
+    <div className="flex flex-1 flex-col justify-evenly">
+      {NIVEAUX.map((n, i) => (
+        <div key={n.tag} className="grid grid-cols-[1fr_1fr] items-center gap-12">
+          {/* Left — display name */}
+          <div
+            className={cn(
+              'border-border rounded-lg border px-8 py-6',
+              i === 0 && 'border-accent/30 bg-accent/5',
+            )}
+          >
+            <span className={n.displayStyle} style={{ fontSize: n.fontSize }}>
+              {n.display}
+            </span>
+          </div>
+
+          {/* Right — explanation */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-baseline gap-3">
+              <Badge variant="default" size="sm">
+                {n.tag}
+              </Badge>
+              <span className="text-fg text-lg font-medium">{n.label}</span>
+            </div>
+            <p className="text-base leading-relaxed text-(--sub)">{n.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
