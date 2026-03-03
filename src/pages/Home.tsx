@@ -16,11 +16,14 @@ import {
   SlideAnalyse,
   SlideApproche,
   SlideArchitecture,
+  SlideArchitectureChapter,
+  SlideAujourdhui,
   SlideBenchmark,
   SlideChiffres,
   SlideContexte,
   SlideCouverture,
   SlideDefi,
+  SlideDemain,
   SlideDirectionA,
   SlideDirectionB,
   SlideEtapes,
@@ -49,14 +52,17 @@ const SLIDE_COMPONENTS: FC[] = [
   SlideBenchmark, // 7
   SlideChiffres, // 8
   SlideParcours, // 9
-  SlideContexte, // 10
-  SlideDefi, // 11
-  SlideNomenclature, // 12
-  SlideArchitecture, // 13
-  SlideDirectionA, // 14
-  SlideDirectionB, // 15
-  SlideTypoLogo, // 16
-  SlideEtapes, // 17
+  SlideArchitectureChapter, // 10
+  SlideAujourdhui, // 11
+  SlideDemain, // 12
+  SlideContexte, // 13
+  SlideDefi, // 14
+  SlideNomenclature, // 15
+  SlideArchitecture, // 16
+  SlideDirectionA, // 17
+  SlideDirectionB, // 18
+  SlideTypoLogo, // 19
+  SlideEtapes, // 20
 ];
 
 /* ═══════════════════════════════════════════════════════════════ */

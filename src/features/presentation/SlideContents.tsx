@@ -560,7 +560,163 @@ export const SlideParcours = () => (
   </div>
 );
 
-/* ─── 8. Contexte stratégique ──────────────────────────────── */
+/* ─── 10. Architecture (chapter) ──────────────────────────── */
+
+export const SlideArchitectureChapter = () => (
+  <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+    <Label>Chapitre</Label>
+    <H1 className="text-accent">Architecture</H1>
+  </div>
+);
+
+/* ─── 11. Aujourd'hui ────────────────────────────────────── */
+
+const CENTRES = [
+  {
+    name: 'Groupe Santé Volta',
+    lieu: 'La Chaux-de-Fonds',
+    detail: 'Permanence + consultations gynécologie',
+    note: 'Bâtiment Volta (PPE, autres médecins présents non liés à Réso.ne)',
+  },
+  {
+    name: 'Groupe Santé Volta',
+    lieu: 'Fleurier',
+    detail: 'Consultations gynécologie',
+  },
+  {
+    name: 'Groupe Santé Volta',
+    lieu: 'Val-de-Ruz',
+    detail: 'Consultations uniquement',
+  },
+  {
+    name: 'Centre médical des Cadolles',
+    lieu: 'Neuchâtel',
+    detail: 'Permanence + premier recours + pédiatrie',
+    note: 'Logo différent de Volta',
+  },
+] as const;
+
+/* Offsets to scatter blocks deliberately — no alignment, no system */
+const SCATTER = [
+  'col-start-1 row-start-1 rotate-[-1deg]',
+  'col-start-2 row-start-1 translate-y-8 rotate-[0.5deg]',
+  'col-start-1 row-start-2 -translate-y-2 translate-x-4 rotate-[1deg]',
+  'col-start-2 row-start-2 translate-y-6 -translate-x-2 rotate-[-0.8deg]',
+] as const;
+
+export const SlideAujourdhui = () => (
+  <div className="flex h-full flex-col justify-between p-10">
+    <div>
+      <H1>Aujourd&apos;hui</H1>
+    </div>
+
+    {/* Scattered blocks — deliberately unaligned */}
+    <div className="grid flex-1 grid-cols-2 grid-rows-2 gap-6 py-4">
+      {CENTRES.map((c, i) => (
+        <div
+          key={c.lieu}
+          className={cn(
+            'border-border bg-surface/60 flex flex-col gap-2 rounded-lg border p-5',
+            SCATTER[i],
+          )}
+        >
+          <span className="text-fg text-lg font-bold">{c.name}</span>
+          <span className="text-accent font-mono text-sm font-medium">{c.lieu}</span>
+          <p className="text-sm leading-relaxed text-(--sub)">{c.detail}</p>
+          {'note' in c && c.note && <p className="text-muted mt-1 text-xs italic">{c.note}</p>}
+        </div>
+      ))}
+    </div>
+
+    <p className="text-muted text-base italic">
+      Quatre centres. Deux identités. Aucun lien visible entre eux, ni avec le RHNe. Le patient ne
+      sait pas qu&apos;il est dans un réseau.
+    </p>
+  </div>
+);
+
+/* ─── 12. Demain ─────────────────────────────────────────── */
+
+const CENTRES_DEMAIN = [
+  'Centre 1 — Neuchâtel',
+  'Centre 2 — La Chaux-de-Fonds',
+  'Centre 3 — Fleurier',
+  'Centre 4 — Val-de-Ruz',
+] as const;
+
+export const SlideDemain = () => (
+  <div className="flex h-full flex-col p-8">
+    <H1>Demain</H1>
+
+    {/* Structured hierarchy — fills entire remaining space */}
+    <div className="flex flex-1 flex-col items-center justify-evenly">
+      {/* RHNe — endorsement discret */}
+      <div className="flex flex-col items-center gap-1">
+        <div className="border-border rounded-lg border border-dashed px-8 py-4 text-center">
+          <span className="text-muted text-lg font-medium">RHNe</span>
+        </div>
+        <p className="text-muted text-center text-xs italic">
+          Endorsement discret — une mention, pas un logo, pas de co-signature
+        </p>
+      </div>
+
+      {/* Dotted connector */}
+      <div className="border-border/60 flex-1 border-l border-dashed" />
+
+      {/* Réso.ne — bloc principal dominant */}
+      <div className="border-accent/40 bg-accent/10 w-full max-w-lg rounded-xl border-2 px-12 py-8 text-center">
+        <span
+          className="text-accent font-bold tracking-tight"
+          style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}
+        >
+          Réso.ne
+        </span>
+        <p className="mt-2 text-lg text-(--sub)">Marque réseau</p>
+      </div>
+
+      {/* Connector to centres */}
+      <div className="border-accent/30 flex-1 border-l-2" />
+
+      {/* Horizontal bar — full width */}
+      <div className="bg-accent/30 h-0.5 w-full" />
+
+      {/* 4 vertical connectors */}
+      <div className="grid w-full grid-cols-4">
+        {CENTRES_DEMAIN.map(c => (
+          <div key={c} className="flex flex-col items-center">
+            <div className="border-accent/30 h-6 border-l-2" />
+          </div>
+        ))}
+      </div>
+
+      {/* 4 centres — aligned, identical */}
+      <div className="grid w-full grid-cols-4 gap-4">
+        {CENTRES_DEMAIN.map(c => (
+          <div
+            key={c}
+            className="border-accent/30 bg-accent/5 rounded-lg border px-4 py-5 text-center"
+          >
+            <span className="text-fg text-base font-medium">{c}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Spacer before future connector */}
+      <div className="flex-1" />
+
+      {/* Connector to future */}
+      <div className="bg-accent/30 h-0.5 w-full" />
+      <div className="border-accent/30 h-6 border-l-2" />
+
+      {/* Futurs sites — dashed, full width */}
+      <div className="border-border w-full rounded-lg border border-dashed px-6 py-4 text-center">
+        <span className="text-muted text-base italic">Futurs sites</span>
+      </div>
+    </div>
+  </div>
+);
+
+/* ─── 13. Contexte stratégique ──────────────────────────────── */
 
 export const SlideContexte = () => (
   <div className="flex h-full flex-col items-start justify-center p-8">
