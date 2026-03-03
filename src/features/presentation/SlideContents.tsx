@@ -560,16 +560,7 @@ export const SlideParcours = () => (
   </div>
 );
 
-/* ─── 10. Architecture (chapter) ──────────────────────────── */
-
-export const SlideArchitectureChapter = () => (
-  <div className="flex h-full flex-col items-center justify-center p-8 text-center">
-    <Label>Chapitre</Label>
-    <H1 className="text-accent">Architecture</H1>
-  </div>
-);
-
-/* ─── 11. Aujourd'hui ────────────────────────────────────── */
+/* ─── 10. Aujourd'hui ────────────────────────────────────── */
 
 const CENTRES = [
   {
@@ -748,7 +739,7 @@ const NIVEAUX = [
     text: 'Identifie le réseau. Présent partout. C\u2019est le lien entre tous les centres.',
   },
   {
-    display: 'Centre médical de Neuchâtel',
+    display: 'Centre médical de [lieu]',
     displayStyle: 'text-fg font-medium tracking-tight',
     fontSize: 'clamp(1.4rem, 2.8vw, 2rem)',
     tag: 'Niveau 2',
@@ -756,7 +747,7 @@ const NIVEAUX = [
     text: 'Ce que le patient dit, ce qu\u2019il cherche sur Google, ce qu\u2019il lit en arrivant. C\u2019est le nom du quotidien.',
   },
   {
-    display: 'Réso.ne — Centre médical de Neuchâtel',
+    display: 'Réso.ne — Centre médical de [lieu]',
     displayStyle: 'text-fg font-medium tracking-tight',
     fontSize: 'clamp(1.2rem, 2.4vw, 1.7rem)',
     tag: 'Niveau 3',
@@ -800,17 +791,260 @@ export const SlideNomenclature = () => (
   </div>
 );
 
-/* ─── 11. Architecture de marque ───────────────────────────── */
+/* ─── 16. Variante A — Nom de ville ──────────────────────── */
 
-export const SlideArchitecture = () => (
-  <div className="flex h-full flex-col items-start justify-center p-8">
-    <H1>Architecture de marque</H1>
-    <Divider />
-    <P>Contenu à venir.</P>
+const VARIANTE_A = [
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'de Neuchâtel' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'de La Chaux-de-Fonds' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'de Fleurier' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'du Val-de-Ruz' },
+] as const;
+
+export const SlideVarianteA = () => (
+  <div className="flex h-full flex-col p-10">
+    <div className="flex items-baseline gap-4">
+      <H1>Variante A — Nom de ville</H1>
+      <Badge variant="success" size="sm">
+        Recommandée
+      </Badge>
+    </div>
+
+    <div className="mt-2 flex flex-1 flex-col justify-evenly">
+      {VARIANTE_A.map((c, i) => (
+        <div key={c.lieu} className="flex flex-col gap-1">
+          <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+            Centre {i + 1}
+          </span>
+          <div className="flex items-center gap-2">
+            <div className="border-accent/30 bg-accent/5 rounded-md border px-4 py-3">
+              <span className="text-accent text-lg font-bold">{c.marque}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.descripteur}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.lieu}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-4 flex flex-col gap-3">
+      <p className="text-base leading-relaxed text-(--sub)">
+        Le patient cherche un médecin près de chez lui. Il cherche par ville, pas par quartier.
+        &laquo;&nbsp;Centre médical de Neuchâtel&nbsp;&raquo; est immédiatement compris par tout le
+        monde&nbsp;— un enfant de 10&nbsp;ans, une personne de 80&nbsp;ans, un nouveau résident du
+        canton.
+      </p>
+      <p className="text-base leading-relaxed text-(--sub)">
+        C&apos;est le modèle qui fonctionne à grande échelle&nbsp;: Medbase Lausanne, Medbase
+        Fribourg. Le principe &laquo;&nbsp;marque + ville&nbsp;&raquo; a fait ses preuves. Le nom de
+        quartier (Cadolles, Volta) disparaît de la marque mais reste dans l&apos;adresse physique.
+      </p>
+    </div>
   </div>
 );
 
-/* ─── 12. Direction A — Cousinage (chapter) ────────────────── */
+/* ─── 17. Variante B — Descripteur par activité ────────────── */
+
+const VARIANTE_B = [
+  { marque: 'Réso.ne', descripteur: 'Centre médical & permanence', lieu: 'de Neuchâtel' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical & permanence', lieu: 'de La Chaux-de-Fonds' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'de Fleurier' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'du Val-de-Ruz' },
+] as const;
+
+export const SlideVarianteB = () => (
+  <div className="flex h-full flex-col p-10">
+    <H1>Variante B — Descripteur par activité</H1>
+
+    <div className="mt-2 flex flex-1 flex-col justify-evenly">
+      {VARIANTE_B.map((c, i) => (
+        <div key={c.lieu} className="flex flex-col gap-1">
+          <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+            Centre {i + 1}
+          </span>
+          <div className="flex items-center gap-2">
+            <div className="border-accent/30 bg-accent/5 rounded-md border px-4 py-3">
+              <span className="text-accent text-lg font-bold">{c.marque}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.descripteur}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.lieu}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-4">
+      <p className="text-base leading-relaxed text-(--sub)">
+        Le patient sait d&apos;emblée s&apos;il peut venir sans rendez-vous ou pas. C&apos;est
+        utile, surtout un samedi matin. Mais le système n&apos;est pas uniforme&nbsp;: deux noms
+        longs, deux courts. Si demain Fleurier ouvre une permanence, il faut renommer. Le nom est
+        lié à l&apos;offre du moment plutôt qu&apos;à l&apos;identité du lieu&nbsp;— et sur une
+        façade, &laquo;&nbsp;Centre médical &amp; permanence de La Chaux-de-Fonds&nbsp;&raquo; pose
+        un problème de signalétique.
+      </p>
+    </div>
+  </div>
+);
+
+/* ─── 18. Variante C — Nom local + ville ──────────────────── */
+
+const VARIANTE_C = [
+  { marque: 'Réso.ne', descripteur: 'Centre médical des Cadolles', lieu: 'de Neuchâtel' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical Volta', lieu: 'de La Chaux-de-Fonds' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'de Fleurier' },
+  { marque: 'Réso.ne', descripteur: 'Centre médical', lieu: 'du Val-de-Ruz' },
+] as const;
+
+export const SlideVarianteC = () => (
+  <div className="flex h-full flex-col p-10">
+    <H1>Variante C — Nom local + ville</H1>
+
+    <div className="mt-2 flex flex-1 flex-col justify-evenly">
+      {VARIANTE_C.map((c, i) => (
+        <div key={c.lieu} className="flex flex-col gap-1">
+          <span className="text-muted font-mono text-[10px] tracking-widest uppercase">
+            Centre {i + 1}
+          </span>
+          <div className="flex items-center gap-2">
+            <div className="border-accent/30 bg-accent/5 rounded-md border px-4 py-3">
+              <span className="text-accent text-lg font-bold">{c.marque}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.descripteur}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.lieu}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-4">
+      <p className="text-base leading-relaxed text-(--sub)">
+        Les résidents de longue date connaissent &laquo;&nbsp;Volta&nbsp;&raquo; et &laquo;&nbsp;les
+        Cadolles&nbsp;&raquo;&nbsp;— ils continueront à dire ces noms quoi qu&apos;on décide. Le
+        naming officiel n&apos;est pas pour eux. Il est pour le nouveau résident qui cherche
+        &laquo;&nbsp;médecin Neuchâtel&nbsp;&raquo; sur Google et qui a besoin de comprendre en
+        3&nbsp;secondes. &laquo;&nbsp;Les Cadolles&nbsp;&raquo; ne lui dit rien. Et on garde
+        &laquo;&nbsp;Volta&nbsp;&raquo; dans la marque alors que le brief demande un nouveau départ.
+      </p>
+    </div>
+  </div>
+);
+
+/* ─── 19. Volta ────────────────────────────────────────────── */
+
+export const SlideVolta = () => (
+  <div className="flex h-full flex-col justify-between p-10">
+    {/* Top — titre */}
+    <div>
+      <H1>Volta</H1>
+    </div>
+
+    {/* Middle — deux colonnes : texte courant + citation */}
+    <div className="grid grid-cols-[1fr_auto] items-end gap-20">
+      <div className="flex flex-col gap-6">
+        <P className="max-w-none">
+          <strong className="text-accent">Volta est un bâtiment, pas une marque.</strong> La marque,
+          c&apos;est Réso.ne. L&apos;ancien Groupe Santé Volta a été racheté par le RHNe. La marque
+          Volta n&apos;existe plus&nbsp;— elle est remplacée par Réso.ne. Ce qui reste, c&apos;est
+          le bâtiment&nbsp;: l&apos;adresse rue Volta, la signalétique de l&apos;immeuble, le repère
+          physique que les habitants connaissent.
+        </P>
+        <P className="max-w-none">
+          Concrètement, le bâtiment est une PPE. D&apos;autres médecins y exercent sans faire partie
+          de Réso.ne. Si le centre porte le nom du bâtiment, le patient ne sait pas où s&apos;arrête
+          Réso.ne et où commence le reste. Et le nom ne voyage pas&nbsp;: si demain Réso.ne ouvre un
+          deuxième centre à La Chaux-de-Fonds ailleurs que rue Volta, le nom n&apos;a plus de sens.
+        </P>
+      </div>
+
+      {/* Citation — colonne droite */}
+      <blockquote className="border-accent w-64 border-l-[3px] pl-6">
+        <span
+          className="text-fg leading-[1.3] font-medium tracking-tight"
+          style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)' }}
+        >
+          Volta reste dans l&apos;adresse.
+          <br />
+          Il disparaît du nom de la marque.
+        </span>
+      </blockquote>
+    </div>
+
+    {/* Bottom spacer */}
+    <div />
+  </div>
+);
+
+/* ─── 20. Extensibilité ────────────────────────────────────── */
+
+const EXTENSIBILITE = [
+  {
+    label: 'Un centre d\u2019ophtalmologie ouvre à Milvignes',
+    marque: 'Réso.ne',
+    descripteur: 'Centre d\u2019ophtalmologie',
+    lieu: 'de Milvignes',
+  },
+  {
+    label: 'Un cabinet de gynécologie ouvre au Landeron',
+    marque: 'Réso.ne',
+    descripteur: 'Cabinet de gynécologie',
+    lieu: 'du Landeron',
+  },
+  {
+    label: 'Un cabinet de médecine générale ouvre au Locle',
+    marque: 'Réso.ne',
+    descripteur: 'Cabinet médical',
+    lieu: 'du Locle',
+  },
+] as const;
+
+export const SlideExtensibilite = () => (
+  <div className="flex h-full flex-col p-10">
+    <H1>Le système est extensible</H1>
+
+    <div className="mt-2 flex flex-1 flex-col justify-evenly">
+      {EXTENSIBILITE.map((c, i) => (
+        <div key={c.lieu} className="flex flex-col gap-1">
+          <P className="max-w-none">
+            Exemple {i + 1} — {c.label}
+          </P>
+          <div className="flex items-center gap-2">
+            <div className="border-accent/30 bg-accent/5 rounded-md border px-4 py-3">
+              <span className="text-accent text-lg font-bold">{c.marque}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.descripteur}</span>
+            </div>
+            <div className="border-border rounded-md border px-4 py-3">
+              <span className="text-fg text-lg font-medium">{c.lieu}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-4">
+      <p className="text-base leading-relaxed text-(--sub)">
+        Le descripteur s&apos;adapte à l&apos;activité. Le lieu s&apos;adapte à la géographie.
+        Réso.ne reste constant. Quel que soit le type de structure ou la localisation dans le
+        canton, le nom se construit tout seul. Pas besoin de réinventer le système à chaque
+        ouverture.
+      </p>
+    </div>
+  </div>
+);
+
+/* ─── 20. Direction A — Cousinage (chapter) ────────────────── */
 
 export const SlideDirectionA = () => (
   <div className="flex h-full flex-col items-center justify-center p-8 text-center">

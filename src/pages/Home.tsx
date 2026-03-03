@@ -15,8 +15,6 @@ import { NAV_GROUPS, SECTIONS, TOTAL_SLIDES } from '@data/sections';
 import {
   SlideAnalyse,
   SlideApproche,
-  SlideArchitecture,
-  SlideArchitectureChapter,
   SlideAujourdhui,
   SlideBenchmark,
   SlideChiffres,
@@ -27,6 +25,7 @@ import {
   SlideDirectionA,
   SlideDirectionB,
   SlideEtapes,
+  SlideExtensibilite,
   SlideMission,
   SlideNomenclature,
   SlideParcours,
@@ -34,6 +33,10 @@ import {
   SlidePrincipes,
   SlideResoNe,
   SlideTypoLogo,
+  SlideVarianteA,
+  SlideVarianteB,
+  SlideVarianteC,
+  SlideVolta,
 } from '@features/presentation/SlideContents';
 import { useKeyboard } from '@hooks/useKeyboard';
 import type { FC } from 'react';
@@ -52,17 +55,20 @@ const SLIDE_COMPONENTS: FC[] = [
   SlideBenchmark, // 7
   SlideChiffres, // 8
   SlideParcours, // 9
-  SlideArchitectureChapter, // 10
-  SlideAujourdhui, // 11
-  SlideDemain, // 12
-  SlideContexte, // 13
-  SlideDefi, // 14
-  SlideNomenclature, // 15
-  SlideArchitecture, // 16
-  SlideDirectionA, // 17
-  SlideDirectionB, // 18
-  SlideTypoLogo, // 19
-  SlideEtapes, // 20
+  SlideAujourdhui, // 10
+  SlideDemain, // 11
+  SlideContexte, // 12
+  SlideDefi, // 13
+  SlideNomenclature, // 14
+  SlideVarianteA, // 15
+  SlideVarianteB, // 16
+  SlideVarianteC, // 17
+  SlideVolta, // 18
+  SlideExtensibilite, // 19
+  SlideDirectionA, // 20
+  SlideDirectionB, // 21
+  SlideTypoLogo, // 22
+  SlideEtapes, // 23
 ];
 
 /* ═══════════════════════════════════════════════════════════════ */
