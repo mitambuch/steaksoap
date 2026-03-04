@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.0.1](https://github.com/mitambuch/steaksoap/compare/v3.0.0...v3.0.1) (2026-03-04)
+
+### ✨ Features
+
+* audit fixes — coverage 70%, E2E, security, CI audit ([#16](https://github.com/mitambuch/steaksoap/issues/16)) ([02164ab](https://github.com/mitambuch/steaksoap/commit/02164abf5d8651191eefc54f94fe48e558b70cb5))
+
+### 🐛 Bug Fixes
+
+* **audit:** comprehensive template audit fixes ([#24](https://github.com/mitambuch/steaksoap/issues/24)) ([fb0f307](https://github.com/mitambuch/steaksoap/commit/fb0f3070d4308497267687f079e5adcb5f79682f)), closes [#FF6B6B](https://github.com/mitambuch/steaksoap/issues/FF6B6B)
+* **ci:** remove explicit pnpm version to use packageManager field ([#18](https://github.com/mitambuch/steaksoap/issues/18)) ([407864c](https://github.com/mitambuch/steaksoap/commit/407864c44e97096be25fa9bcdf220183298b6dbb))
+
+### 🔧 Chores
+
+* **deploy:** trigger Vercel redeploy ([409e3d9](https://github.com/mitambuch/steaksoap/commit/409e3d998030f7333b65df1e60fdf0e71e06a642))
+
 ## [3.0.0](https://github.com/mitambuch/steaksoap/compare/v2.7.0...v3.0.0) (2026-02-27)
 
 ### ✨ Features
