@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.2.0](https://github.com/mitambuch/steaksoap/compare/v3.1.0...v3.2.0) (2026-03-04)
+
+### ✅ Tests
+
+* **quality:** E2E coverage, Lighthouse CI, and coverage thresholds ([#26](https://github.com/mitambuch/steaksoap/issues/26)) ([8861e58](https://github.com/mitambuch/steaksoap/commit/8861e58133c457266a3316ba79e9ec545464d11b))
+
 ## [3.1.0](https://github.com/mitambuch/steaksoap/compare/v3.0.1...v3.1.0) (2026-03-04)
 
 ### 🐛 Bug Fixes
