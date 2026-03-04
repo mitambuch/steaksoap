@@ -12,18 +12,27 @@
      node scripts/release.js major    → force major bump
    ═══════════════════════════════════════════════════════════════ */
 
-import { execSync } from 'child_process';
+import { execFileSync, execSync } from 'node:child_process';
 
 const bump = process.argv[2] ?? '';
+const validBumps = ['', 'patch', 'minor', 'major'];
+
+if (!validBumps.includes(bump)) {
+  console.error(`Invalid bump type: "${bump}". Use: patch, minor, or major.`);
+  process.exit(1);
+}
 
 try {
   const token = execSync('gh auth token', { encoding: 'utf-8' }).trim();
-  const cmd = bump ? `release-it ${bump}` : 'release-it';
+  const args = bump ? [bump, '--ci'] : ['--ci'];
 
-  execSync(cmd, {
+  execFileSync('npx', ['release-it', ...args], {
     stdio: 'inherit',
     env: { ...process.env, GITHUB_TOKEN: token },
   });
-} catch {
+} catch (err) {
+  console.error(
+    err instanceof Error ? `Release failed: ${err.message}` : 'Release failed',
+  );
   process.exit(1);
 }
