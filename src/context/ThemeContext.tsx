@@ -49,6 +49,7 @@ function applyTheme(theme: Theme) {
   const root = document.documentElement;
   root.classList.add('transition-theme');
   root.setAttribute('data-theme', theme);
+  setTimeout(() => root.classList.remove('transition-theme'), 1500);
 }
 
 /** Provides light/dark theme state with localStorage persistence and system preference detection. */
