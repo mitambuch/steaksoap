@@ -51,15 +51,15 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 107, 107, 0.5);
+  background: rgba(var(--color-accent-rgb), 0.5);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 107, 107, 0.7);
+  background: rgba(var(--color-accent-rgb), 0.7);
 }
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 107, 107, 0.5) transparent;
+  scrollbar-color: rgba(var(--color-accent-rgb), 0.5) transparent;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -67,6 +67,8 @@ html {
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
+  --color-accent-rgb: 255, 107, 107;
+
   --transition-fast: 150ms ease;
   --transition-base: 300ms ease;
   --transition-slow: 600ms ease;
