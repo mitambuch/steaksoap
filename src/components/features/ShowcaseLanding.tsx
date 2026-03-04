@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@components/ui/Accordion';
+import type { Feature } from '@data/showcase';
 import {
   featuredCommands,
   featuredExtensions,
@@ -12,6 +13,8 @@ import {
   moreExtensions,
   quickStartLines,
 } from '@data/showcase';
+import { SetupWizard } from '@features/onboarding';
+import { DynamicParticles } from '@features/particles/DynamicParticles';
 import { useInView } from '@hooks/useInView';
 import { cn } from '@utils/cn';
 import {
@@ -25,10 +28,6 @@ import {
   Zap,
 } from 'lucide-react';
 import { type ReactNode, useEffect, useState } from 'react';
-
-import type { Feature } from '../../data/showcase';
-import { SetupWizard } from '../../features/onboarding';
-import { DynamicParticles } from '../../features/particles/DynamicParticles';
 
 /* ─── Icon resolver ────────────────────────────────────────────── */
 
