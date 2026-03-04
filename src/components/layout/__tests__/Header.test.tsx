@@ -57,4 +57,16 @@ describe('Header', () => {
     const { container } = renderHeader();
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  it('renders the logo link to home', () => {
+    renderHeader();
+    const homeLink = screen.getAllByRole('link')[0];
+    expect(homeLink).toHaveAttribute('href', '/');
+  });
+
+  it('Playground link has correct route', () => {
+    renderHeader();
+    const playgroundLink = screen.getByRole('link', { name: /playground/i });
+    expect(playgroundLink).toHaveAttribute('href', '/playground');
+  });
 });

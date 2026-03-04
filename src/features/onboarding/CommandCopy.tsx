@@ -29,7 +29,7 @@ export function CommandCopy({ command, label }: CommandCopyProps) {
           type="button"
           onClick={() => void copy(command)}
           className={cn(
-            'inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md px-3 font-mono text-xs font-medium transition-all duration-200',
+            'inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md px-3 font-mono text-xs font-medium transition-[color,background-color,transform] duration-200',
             copied
               ? 'bg-success/15 text-success'
               : 'bg-accent/10 text-accent hover:bg-accent/20 active:scale-95',

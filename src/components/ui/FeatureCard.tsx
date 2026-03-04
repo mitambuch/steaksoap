@@ -16,7 +16,7 @@ export function FeatureCard({ icon, title, description, className }: FeatureCard
   return (
     <div
       className={cn(
-        'border-border bg-surface/50 rounded-lg border p-5 transition-all duration-500',
+        'border-border bg-surface/50 rounded-lg border p-5 transition-[border-color,background-color] duration-500',
         'hover:border-accent/20 hover:bg-surface',
         className,
       )}

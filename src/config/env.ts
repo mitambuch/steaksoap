@@ -12,6 +12,6 @@ export const env = {
   IS_PROD: import.meta.env.PROD,
 } as const;
 
-if (import.meta.env.PROD && !import.meta.env.VITE_APP_URL) {
+if (import.meta.env.DEV && !import.meta.env.VITE_APP_URL) {
   console.warn('[env] VITE_APP_URL not set — OG tags and canonical URLs will use localhost');
 }

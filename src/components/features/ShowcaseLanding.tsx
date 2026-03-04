@@ -58,7 +58,7 @@ function FadeIn({
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-700 ease-out',
+        'transition-[transform,opacity] duration-700 ease-out',
         isInView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
         className,
       )}
@@ -189,7 +189,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
               <button
                 type="button"
                 onClick={() => setShowWizard(true)}
-                className="btn-electric order-first inline-flex items-center justify-center gap-2 rounded-full border px-5 py-2.5 font-mono text-xs transition-all sm:order-last"
+                className="btn-electric order-first inline-flex items-center justify-center gap-2 rounded-full border px-5 py-2.5 font-mono text-xs transition-[color,background-color,border-color,box-shadow,filter] sm:order-last"
               >
                 <Sparkles size={14} aria-hidden="true" />
                 New to coding? Start the guided setup
@@ -200,7 +200,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                   href="https://github.com/mitambuch/steaksoap"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-accent border-fg/20 hover:border-accent text-on-accent inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 font-mono text-sm font-medium transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+                  className="bg-accent border-fg/20 hover:border-accent text-on-accent inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 font-mono text-sm font-medium transition-[color,background-color,border-color,transform,box-shadow,filter] duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
                 >
                   View on GitHub
                   <span aria-hidden="true">&rarr;</span>
@@ -208,7 +208,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                 <button
                   type="button"
                   onClick={() => scrollTo('features')}
-                  className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
+                  className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-6 py-3 font-mono text-sm backdrop-blur-md transition-[color,background-color,border-color,transform] duration-500 active:scale-[0.98]"
                 >
                   Get started
                   <span aria-hidden="true">&darr;</span>
@@ -255,7 +255,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
               const Icon = iconMap[feature.iconName];
               return (
                 <FadeIn key={feature.title} delay={i * 100}>
-                  <div className="group hover:border-accent/20 border-border bg-accent/2 hover:bg-accent/4 rounded-lg border p-6 backdrop-blur-sm transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,107,107,0.03)]">
+                  <div className="group hover:border-accent/20 border-border bg-accent/2 hover:bg-accent/4 rounded-lg border p-6 backdrop-blur-sm transition-[border-color,background-color,box-shadow] duration-500 hover:shadow-[0_0_40px_rgba(255,107,107,0.03)]">
                     <Icon
                       size={20}
                       strokeWidth={1.5}
@@ -294,7 +294,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {featuredCommands.map((cmd, i) => (
               <FadeIn key={cmd.name} delay={i * 80}>
-                <div className="group hover:border-accent/15 border-border rounded-lg border bg-transparent p-5 transition-all duration-300">
+                <div className="group hover:border-accent/15 border-border rounded-lg border bg-transparent p-5 transition-[border-color] duration-300">
                   <span className="text-accent font-mono text-sm">{cmd.name}</span>
                   <p className="text-muted mt-1 text-sm">{cmd.description}</p>
                 </div>
@@ -338,7 +338,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                   href={ext.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group hover:border-accent/15 border-border block rounded-lg border bg-transparent p-4 transition-all duration-300"
+                  className="group hover:border-accent/15 border-border block rounded-lg border bg-transparent p-4 transition-[border-color] duration-300"
                 >
                   <span className="text-fg group-hover:text-accent font-mono text-sm transition-colors duration-300">
                     {ext.name}
@@ -488,7 +488,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
               <button
                 type="button"
                 onClick={() => setShowWizard(true)}
-                className="btn-electric mt-6 inline-flex items-center gap-2 rounded-full border px-5 py-2 font-mono text-xs transition-all"
+                className="btn-electric mt-6 inline-flex items-center gap-2 rounded-full border px-5 py-2 font-mono text-xs transition-[color,background-color,border-color,box-shadow,filter]"
               >
                 <Sparkles size={14} aria-hidden="true" />
                 First time? We&apos;ll walk you through it
@@ -503,7 +503,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                 href="https://github.com/mitambuch/steaksoap"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-accent border-fg/20 hover:border-accent text-on-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+                className="bg-accent border-fg/20 hover:border-accent text-on-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium transition-[color,background-color,border-color,transform,box-shadow,filter] duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
               >
                 View on GitHub
                 <span aria-hidden="true">&rarr;</span>
@@ -512,7 +512,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                 href="https://vercel.com/new/clone?repository-url=https://github.com/mitambuch/steaksoap"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-8 py-3.5 font-mono text-sm backdrop-blur-md transition-all duration-500 active:scale-[0.98]"
+                className="text-fg border-border hover:border-accent/20 hover:bg-accent/5 inline-flex items-center justify-center gap-2 rounded-full border bg-transparent px-8 py-3.5 font-mono text-sm backdrop-blur-md transition-[color,background-color,border-color,transform] duration-500 active:scale-[0.98]"
               >
                 Deploy on Vercel
               </a>

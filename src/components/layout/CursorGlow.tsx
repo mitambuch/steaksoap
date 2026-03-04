@@ -63,7 +63,8 @@ export const CursorGlow = ({ enabled }: CursorGlowProps) => {
         <div
           className="h-75 w-75 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 60%)',
+            background:
+              'radial-gradient(circle, rgba(var(--color-accent-rgb), 0.3) 0%, transparent 60%)',
             filter: 'blur(40px)',
             opacity: 0.12,
           }}
@@ -83,7 +84,7 @@ export const CursorGlow = ({ enabled }: CursorGlowProps) => {
           className="bg-accent h-2 w-2 rounded-full"
           style={{
             boxShadow:
-              '0 0 8px rgba(255, 107, 107, 0.6), 0 0 20px rgba(255, 107, 107, 0.3), 0 0 40px rgba(255, 107, 107, 0.1)',
+              '0 0 8px rgba(var(--color-accent-rgb), 0.6), 0 0 20px rgba(var(--color-accent-rgb), 0.3), 0 0 40px rgba(var(--color-accent-rgb), 0.1)',
           }}
         />
       </div>

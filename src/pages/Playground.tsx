@@ -54,8 +54,9 @@ function Copyable({ text, className }: { text: string; className?: string }) {
 
   return (
     <button
+      aria-label={`Copy ${text} to clipboard`}
       onClick={() => void copy(text)}
-      className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-mono text-[10px] transition-all duration-300 ${
+      className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-mono text-[10px] transition-colors duration-300 ${
         copied
           ? 'bg-success/15 text-success'
           : 'bg-surface/50 text-muted hover:bg-surface hover:text-accent'
@@ -121,7 +122,7 @@ function Swatch({
   light: string;
 }) {
   return (
-    <div className="border-border/50 hover:border-accent/20 flex items-center gap-4 rounded-lg border p-3 transition-all duration-300">
+    <div className="border-border/50 hover:border-accent/20 flex items-center gap-4 rounded-lg border p-3 transition-[border-color] duration-300">
       <div
         className="border-border h-10 w-10 shrink-0 rounded-sm border"
         style={{ backgroundColor: `var(--color-${token})` }}
@@ -143,7 +144,7 @@ function Swatch({
 
 function IconItem({ name, children }: { name: string; children: ReactNode }) {
   return (
-    <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+    <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
       <div className="text-fg">{children}</div>
       <Copyable text={name} />
     </div>
@@ -197,32 +198,32 @@ export default function Playground() {
           {/* 01 — Typography */}
           <Section number="01" title="typography">
             <div className="space-y-6">
-              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-all duration-300">
+              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-[border-color] duration-300">
                 <p className="text-fg text-5xl font-bold md:text-7xl">headlines</p>
                 <Copyable text="text-5xl font-bold md:text-7xl" />
               </div>
-              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-all duration-300">
+              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-[border-color] duration-300">
                 <p className="text-fg text-4xl font-medium md:text-6xl">page titles</p>
                 <Copyable text="text-4xl font-medium md:text-6xl" />
               </div>
-              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-all duration-300">
+              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-[border-color] duration-300">
                 <p className="text-fg text-2xl font-medium md:text-4xl">section titles</p>
                 <Copyable text="text-2xl font-medium md:text-4xl" />
               </div>
-              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-all duration-300">
+              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-[border-color] duration-300">
                 <p className="text-fg text-base leading-relaxed md:text-xl">
                   the quick brown fox jumps over the lazy dog. space grotesk renders beautifully at
                   all sizes.
                 </p>
                 <Copyable text="text-base leading-relaxed md:text-xl" />
               </div>
-              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-all duration-300">
+              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-[border-color] duration-300">
                 <p className="text-fg text-xs font-bold tracking-widest uppercase">
                   buttons and ctas
                 </p>
                 <Copyable text="text-xs font-bold tracking-widest uppercase" />
               </div>
-              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-all duration-300">
+              <div className="border-border/50 hover:border-accent/20 space-y-2 rounded-lg border p-4 transition-[border-color] duration-300">
                 <p className="text-muted font-mono text-[10px] tracking-[0.2em] uppercase">
                   metadata and ui labels
                 </p>
@@ -264,7 +265,7 @@ export default function Playground() {
                   ).map(([variant, desc]) => (
                     <div
                       key={variant}
-                      className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-all duration-300"
+                      className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color] duration-300"
                     >
                       <Button variant={variant}>{variant}</Button>
                       <Copyable text={`variant="${variant}"`} />
@@ -287,14 +288,14 @@ export default function Playground() {
                   ).map(([size, classes]) => (
                     <div
                       key={size}
-                      className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-all duration-300"
+                      className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color] duration-300"
                     >
                       <Button size={size}>{size}</Button>
                       <Copyable text={`size="${size}"`} />
                       <Copyable text={classes} />
                     </div>
                   ))}
-                  <div className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-all duration-300">
+                  <div className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color] duration-300">
                     <Button size="icon" aria-label="icon button">
                       <Plus size={20} strokeWidth={1.5} aria-hidden="true" />
                     </Button>
@@ -330,7 +331,7 @@ export default function Playground() {
               ).map(([variant, classes]) => (
                 <div
                   key={variant}
-                  className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-3 transition-all duration-300"
+                  className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-3 transition-[border-color] duration-300"
                 >
                   <Badge variant={variant}>{variant}</Badge>
                   <Copyable text={`variant="${variant}"`} />
@@ -487,7 +488,7 @@ export default function Playground() {
               ).map(([variant, msg]) => (
                 <div
                   key={variant}
-                  className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-3 transition-all duration-300"
+                  className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-3 transition-[border-color] duration-300"
                 >
                   <Button
                     variant={variant === 'success' ? 'primary' : 'secondary'}
@@ -543,17 +544,17 @@ export default function Playground() {
               <div>
                 <SubLabel>sizes</SubLabel>
                 <div className="flex flex-wrap gap-3">
-                  <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+                  <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
                     <Zap size={14} strokeWidth={1.5} />
                     <Copyable text="size={14}" />
                     <span className="text-muted text-xs">inline</span>
                   </div>
-                  <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+                  <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
                     <Zap size={18} strokeWidth={1.5} />
                     <Copyable text="size={18}" />
                     <span className="text-muted text-xs">standard</span>
                   </div>
-                  <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+                  <div className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
                     <Zap size={24} strokeWidth={1.5} />
                     <Copyable text="size={24}" />
                     <span className="text-muted text-xs">large</span>
@@ -564,15 +565,15 @@ export default function Playground() {
               <div>
                 <SubLabel>stroke weight</SubLabel>
                 <div className="flex flex-wrap gap-3">
-                  <div className="border-border/50 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+                  <div className="border-border/50 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
                     <Heart size={20} strokeWidth={2} />
                     <span className="text-muted font-mono text-[10px]">2 default</span>
                   </div>
-                  <div className="border-accent/30 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+                  <div className="border-accent/30 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
                     <Heart size={20} strokeWidth={1.5} className="text-accent" />
                     <span className="text-accent font-mono text-[10px]">1.5 classe2</span>
                   </div>
-                  <div className="border-border/50 flex items-center gap-3 rounded-lg border px-3 py-2 transition-all duration-300">
+                  <div className="border-border/50 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
                     <Heart size={20} strokeWidth={1} />
                     <span className="text-muted font-mono text-[10px]">1 thin</span>
                   </div>
@@ -616,7 +617,7 @@ export default function Playground() {
               {(['sm', 'md', 'lg'] as const).map(size => (
                 <div
                   key={size}
-                  className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-4 py-3 transition-all duration-300"
+                  className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-4 py-3 transition-[border-color] duration-300"
                 >
                   <Spinner size={size} />
                   <Copyable text={`size="${size}"`} />
@@ -785,7 +786,7 @@ export default function Playground() {
                 <div
                   key={plan.name}
                   className={cn(
-                    'border-border relative flex flex-col rounded-lg border p-6 transition-all duration-300',
+                    'border-border relative flex flex-col rounded-lg border p-6 transition-[border-color,background-color,box-shadow] duration-300',
                     plan.highlighted
                       ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_rgba(255,107,107,0.05)]'
                       : 'hover:border-accent/15 bg-transparent',

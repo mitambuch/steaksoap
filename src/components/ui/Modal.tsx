@@ -100,7 +100,7 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
         aria-labelledby={title ? titleId : undefined}
         className={cn(
           'border-border bg-bg/95 relative z-10 w-full max-w-lg rounded-lg border p-6 backdrop-blur-md',
-          'shadow-lg transition-all duration-300',
+          'shadow-lg transition-[transform,opacity] duration-300',
           className,
         )}
       >
