@@ -35,7 +35,7 @@ export const Tooltip = ({ content, children, position = 'top', className }: Tool
           id={tooltipId}
           role="tooltip"
           className={cn(
-            'text-accent absolute z-50 rounded-md bg-[#0a0a0a] px-2.5 py-1.5 text-xs whitespace-nowrap',
+            'text-accent bg-surface absolute z-50 rounded-md px-2.5 py-1.5 text-xs whitespace-nowrap',
             'pointer-events-none',
             positionStyles[position],
             className,

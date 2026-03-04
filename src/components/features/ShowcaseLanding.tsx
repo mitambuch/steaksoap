@@ -200,7 +200,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                   href="https://github.com/mitambuch/steaksoap"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+                  className="bg-accent border-fg/20 hover:border-accent text-on-accent inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 font-mono text-sm font-medium transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
                 >
                   View on GitHub
                   <span aria-hidden="true">&rarr;</span>
@@ -503,7 +503,7 @@ export const ShowcaseLanding = ({ seoTitle, seoDescription }: ShowcaseLandingPro
                 href="https://github.com/mitambuch/steaksoap"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-accent border-fg/20 hover:border-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium text-[#0a0a0a] transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
+                className="bg-accent border-fg/20 hover:border-accent text-on-accent inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-mono text-sm font-medium transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]"
               >
                 View on GitHub
                 <span aria-hidden="true">&rarr;</span>
