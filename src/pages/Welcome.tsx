@@ -1,7 +1,9 @@
 import { SeoHead } from '@components/features/SeoHead';
+import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
 import { Check, Copy, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function CopyBlock({ code, label }: { code: string; label?: string }) {
   const [copied, setCopied] = useState(false);
@@ -148,17 +150,17 @@ export default function Welcome() {
             <li>
               <span className="text-accent mr-2">→</span>
               visit{' '}
-              <a href="/playground" className="text-fg underline underline-offset-2">
+              <Link to={ROUTES.PLAYGROUND} className="text-fg underline underline-offset-2">
                 /playground
-              </a>{' '}
+              </Link>{' '}
               to see all UI components
             </li>
             <li>
               <span className="text-accent mr-2">→</span>
               visit{' '}
-              <a href="/steaksoap" className="text-fg underline underline-offset-2">
+              <Link to={ROUTES.STEAKSOAP} className="text-fg underline underline-offset-2">
                 /steaksoap
-              </a>{' '}
+              </Link>{' '}
               for the original template reference
             </li>
             <li>

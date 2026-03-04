@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Input — text input field
+//
+// WHAT: Renders a styled text input with optional label and error
+// WHEN: Use in forms for single-line text entry
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { InputHTMLAttributes } from 'react';
 import { useId } from 'react';

@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Button — primary interactive element
+//
+// WHAT: Renders a styled button with variants, sizes, loading state
+// WHEN: Use for all clickable actions
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ButtonHTMLAttributes } from 'react';
 
@@ -11,7 +19,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
   primary:
-    'bg-accent text-[#0a0a0a] border border-fg/20 hover:border-fg/40 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]',
+    'bg-accent text-on-accent border border-fg/20 hover:border-fg/40 hover:shadow-[0_0_30px_rgba(255,107,107,0.4)] hover:brightness-90 active:scale-[0.97]',
   secondary:
     'bg-transparent text-fg border border-border backdrop-blur-md hover:border-accent/30 hover:bg-accent/5 active:scale-[0.97]',
   ghost: 'bg-transparent text-muted hover:text-fg hover:bg-accent/5 active:scale-[0.97]',
@@ -41,7 +49,7 @@ export const Button = ({
       disabled={disabled || isLoading}
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-full font-medium',
-        'transition-all duration-300',
+        'transition-[color,background-color,border-color,box-shadow,opacity,filter,transform] duration-300',
         'focus-visible:ring-accent focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-offset-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
         variantStyles[variant],

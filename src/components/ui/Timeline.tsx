@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Timeline — vertical event timeline
+//
+// WHAT: Renders chronological events in a vertical list
+// WHEN: Use for activity logs, history, changelog displays
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 

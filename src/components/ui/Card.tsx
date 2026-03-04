@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Card — content container with border
+//
+// WHAT: Renders a bordered container with optional padding
+// WHEN: Use to group related content visually
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 

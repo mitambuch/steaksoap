@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// ThemeToggle — dark/light mode switch
+//
+// WHAT: Renders a theme toggle button with sun/moon icons
+// WHEN: Placed in Header, toggles between dark and light themes
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { useTheme } from '@context/ThemeContext';
 import { cn } from '@utils/cn';
 

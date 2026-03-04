@@ -28,7 +28,16 @@ const WIZARD_VERSION = 5;
 
 /** Detect platform for Claude helper messages */
 function getPlatform(): string {
-  return navigator.platform.toLowerCase().includes('mac') ? 'Mac' : 'Windows';
+  // WHY: navigator.platform is deprecated — prefer userAgentData with fallback
+  const nav = navigator;
+  const platform =
+    'userAgentData' in nav &&
+    nav.userAgentData &&
+    typeof nav.userAgentData === 'object' &&
+    'platform' in nav.userAgentData
+      ? String(nav.userAgentData.platform)
+      : nav.platform;
+  return platform.toLowerCase().includes('mac') ? 'Mac' : 'Windows';
 }
 
 export function SetupWizard({ onClose }: SetupWizardProps) {
@@ -54,10 +63,14 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
   const [showQuitConfirm, setShowQuitConfirm] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem(
-      'steaksoap_wizard',
-      JSON.stringify({ version: WIZARD_VERSION, step: currentStep }),
-    );
+    try {
+      localStorage.setItem(
+        'steaksoap_wizard',
+        JSON.stringify({ version: WIZARD_VERSION, step: currentStep }),
+      );
+    } catch {
+      // Safari private mode — fail silently
+    }
   }, [currentStep]);
 
   // WHY: Restore focus to the element that opened the wizard on close

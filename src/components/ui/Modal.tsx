@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Modal — dialog overlay
+//
+// WHAT: Renders an accessible modal with focus trap and backdrop
+// WHEN: Use for confirmations, forms, or detail views
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import { X } from 'lucide-react';
 import type { ReactNode } from 'react';
@@ -32,8 +40,9 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
           dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
         if (focusableElements.length === 0) return;
 
-        const first = focusableElements[0]!;
-        const last = focusableElements[focusableElements.length - 1]!;
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+        if (!first || !last) return;
 
         if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();

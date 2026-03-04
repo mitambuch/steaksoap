@@ -40,8 +40,19 @@ export interface WizardSlide {
   celebration?: string;
 }
 
-// WHY: isMac is computed once at module level — navigator.platform is static
-const isMac = typeof navigator !== 'undefined' && navigator.platform.toLowerCase().includes('mac');
+// WHY: isMac is computed once at module level — prefer userAgentData with fallback
+const isMac = (() => {
+  if (typeof navigator === 'undefined') return false;
+  const nav = navigator;
+  const platform =
+    'userAgentData' in nav &&
+    nav.userAgentData &&
+    typeof nav.userAgentData === 'object' &&
+    'platform' in nav.userAgentData
+      ? String(nav.userAgentData.platform)
+      : nav.platform;
+  return platform.toLowerCase().includes('mac');
+})();
 
 // WHY: __PLATFORM_SHORTCUT__ is replaced at render time by the component
 // This keeps platform logic out of the data layer

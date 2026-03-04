@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Tooltip — hover/focus information popup
+//
+// WHAT: Displays additional context on hover or focus
+// WHEN: Use for icons, truncated text, or actions needing explanation
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 import { useId, useState } from 'react';
@@ -35,7 +43,7 @@ export const Tooltip = ({ content, children, position = 'top', className }: Tool
           id={tooltipId}
           role="tooltip"
           className={cn(
-            'text-accent absolute z-50 rounded-md bg-[#0a0a0a] px-2.5 py-1.5 text-xs whitespace-nowrap',
+            'text-accent bg-surface absolute z-50 rounded-md px-2.5 py-1.5 text-xs whitespace-nowrap',
             'pointer-events-none',
             positionStyles[position],
             className,

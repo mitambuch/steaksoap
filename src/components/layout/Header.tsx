@@ -8,7 +8,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 /* ─── GitHub SVG (brand icons removed from Lucide) ───────────── */
 
-function GitHubIcon({ size = 14, className }: { size?: number; className?: string }) {
+export function GitHubIcon({ size = 14, className }: { size?: number; className?: string }) {
   return (
     <svg
       width={size}

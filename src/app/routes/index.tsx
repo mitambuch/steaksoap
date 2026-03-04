@@ -1,17 +1,35 @@
 import RootLayout from '@app/layouts/RootLayout';
 import { Spinner } from '@components/ui/Spinner';
 import { ROUTES } from '@constants/routes';
+import type { ComponentType } from 'react';
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-/* ─── Lazy loading — each page is a separate chunk ─────────────
-   Pattern: const PageName = lazy(() => import('@pages/PageName'))
+/* ─── Lazy loading with retry — survives chunk load failures ───
+   Retries the dynamic import up to 3 times with exponential backoff.
+   Handles deploy-time hash mismatches when users have stale tabs.
    ──────────────────────────────────────────────────────────── */
-const Home = lazy(() => import('@pages/Home'));
-const Welcome = lazy(() => import('@pages/Welcome'));
-const Playground = lazy(() => import('@pages/Playground'));
-const Steaksoap = lazy(() => import('@pages/Steaksoap'));
-const NotFound = lazy(() => import('@pages/NotFound'));
+function lazyWithRetry<T extends ComponentType>(
+  factory: () => Promise<{ default: T }>,
+  retries = 3,
+) {
+  return lazy(() => {
+    const attempt = (remaining: number): Promise<{ default: T }> =>
+      factory().catch((err: unknown) => {
+        if (remaining <= 0) return Promise.reject(err);
+        return new Promise<{ default: T }>(resolve =>
+          setTimeout(() => resolve(attempt(remaining - 1)), 2 ** (retries - remaining) * 1000),
+        );
+      });
+    return attempt(retries);
+  });
+}
+
+const Home = lazyWithRetry(() => import('@pages/Home'));
+const Welcome = lazyWithRetry(() => import('@pages/Welcome'));
+const Playground = lazyWithRetry(() => import('@pages/Playground'));
+const Steaksoap = lazyWithRetry(() => import('@pages/Steaksoap'));
+const NotFound = lazyWithRetry(() => import('@pages/NotFound'));
 
 /* ─── Loading fallback — themed, no white flash ───────────────── */
 function PageLoader() {

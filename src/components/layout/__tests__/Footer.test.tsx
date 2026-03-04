@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { axe } from 'vitest-axe';
 
-import Footer from '../Footer';
+import { Footer } from '../Footer';
 
 // WHY: __APP_VERSION__ is defined by Vite's define config, not available in vitest by default
 beforeAll(() => {
