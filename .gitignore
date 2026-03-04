@@ -37,6 +37,11 @@ coverage/
 test-results/
 playwright-report/
 
+# Crypto keys (never commit)
+*.pem
+*.key
+*.p12
+
 # Claude Code (ignore local settings, keep shared commands, rules, agents, and decisions)
 .claude/*
 !.claude/commands/
