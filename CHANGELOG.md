@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.3.2](https://github.com/mitambuch/steaksoap/compare/v3.3.1...v3.3.2) (2026-03-04)
+
+### 🐛 Bug Fixes
+
+* **imports:** replace relative imports with aliases, remove stale .cursorrules ([#29](https://github.com/mitambuch/steaksoap/issues/29)) ([4579182](https://github.com/mitambuch/steaksoap/commit/45791825e8f3d97b3941d384a064967b24d0d26a))
+
 ## [3.3.1](https://github.com/mitambuch/steaksoap/compare/v3.3.0...v3.3.1) (2026-03-04)
 
 ## [3.3.0](https://github.com/mitambuch/steaksoap/compare/v3.2.0...v3.3.0) (2026-03-04)
