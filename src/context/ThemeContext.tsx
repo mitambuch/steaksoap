@@ -84,10 +84,9 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  // Apply theme on mount
-  useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+  // Apply theme on mount (once — setTheme/toggleTheme handle subsequent changes)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => applyTheme(theme), []);
 
   // Listen for system preference changes
   useEffect(() => {

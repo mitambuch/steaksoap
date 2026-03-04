@@ -669,7 +669,7 @@ export default function Playground() {
                     <AccordionItem value="faq-1">
                       <AccordionTrigger>What is steaksoap?</AccordionTrigger>
                       <AccordionContent>
-                        An AI-native React system for solo builders. 22 slash commands, 4 agents, 12
+                        An AI-native React system for solo builders. 23 slash commands, 4 agents, 12
                         rules — the AI knows your codebase and follows your conventions. You
                         describe it, the AI builds it.
                       </AccordionContent>
@@ -1047,7 +1047,7 @@ export default function Playground() {
                       </Badge>
                     ),
                     description:
-                      'Complete rewrite. 22 commands, 4 agents, particle hero, neural flow design.',
+                      'Complete rewrite. 23 commands, 4 agents, particle hero, neural flow design.',
                   },
                   {
                     title: 'v1.0 — Initial release',

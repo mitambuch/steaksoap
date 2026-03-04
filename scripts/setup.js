@@ -10,7 +10,7 @@
      pnpm setup --yes     → non-interactive init (CI/testing)
 
    The script auto-detects whether this is a fresh clone
-   (package name is "starter") or an already-initialized project.
+   (package name is "steaksoap") or an already-initialized project.
    ═══════════════════════════════════════════════════════════════ */
 
 import { execSync } from 'node:child_process';
@@ -261,7 +261,7 @@ async function runInit() {
   if (existsSync(welcomeRoutesPath)) {
     let routes = readFileSync(welcomeRoutesPath, 'utf-8');
     routes = routes.replace(
-      /const Welcome = lazy\(\(\) => import\('@pages\/Welcome'\)\);\n/,
+      /const Welcome = lazyWithRetry\(\(\) => import\('@pages\/Welcome'\)\);\n/,
       '',
     );
     routes = routes.replace(
@@ -303,7 +303,6 @@ async function runInit() {
       'src/components/ui/FeatureCard.tsx',
       'src/components/ui/CodeBlock.tsx',
       'src/components/ui/TechBadge.tsx',
-      'src/components/ui/Noise.tsx',
       'src/components/ui/Section.tsx',
       'src/hooks/useInView.ts',
     );
@@ -342,7 +341,7 @@ async function runInit() {
     if (existsSync(routesPath)) {
       let routes = readFileSync(routesPath, 'utf-8');
       routes = routes.replace(
-        /const Playground = lazy\(\(\) => import\('@pages\/Playground'\)\);\n/,
+        /const Playground = lazyWithRetry\(\(\) => import\('@pages\/Playground'\)\);\n/,
         '',
       );
       routes = routes.replace(
@@ -382,7 +381,7 @@ async function runInit() {
     if (existsSync(routesPath)) {
       let routes = readFileSync(routesPath, 'utf-8');
       routes = routes.replace(
-        /const Steaksoap = lazy\(\(\) => import\('@pages\/Steaksoap'\)\);\n/,
+        /const Steaksoap = lazyWithRetry\(\(\) => import\('@pages\/Steaksoap'\)\);\n/,
         '',
       );
       routes = routes.replace(
