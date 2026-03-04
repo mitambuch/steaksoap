@@ -4,8 +4,6 @@
    Everything else (SEO, footer, OG tags) reads from here.
    ═══════════════════════════════════════════════════════════════ */
 
-import { ROUTES } from '@constants/routes';
-
 import { env } from './env';
 
 export const siteConfig = {
@@ -16,16 +14,8 @@ export const siteConfig = {
 
   // ─── SEO defaults ──────────────────────────────────────────
   title: env.APP_NAME,
-  description: '',
+  description: 'Built with steaksoap — AI-first React starter kit',
   ogImage: '/images/og-image.jpg',
-
-  // ─── Navigation ──────────────────────────────────────────
-  navItems: [
-    { label: 'Home', href: ROUTES.HOME },
-    { label: 'Welcome', href: ROUTES.WELCOME },
-    { label: 'Playground', href: ROUTES.PLAYGROUND },
-    { label: 'Steaksoap', href: ROUTES.STEAKSOAP },
-  ],
 
   // ─── Contact ───────────────────────────────────────────────
   email: '',

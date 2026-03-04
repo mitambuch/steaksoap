@@ -20,27 +20,15 @@ export default function Footer() {
           </a>
         </p>
 
-        {/* Version + Setup guide */}
-        <div className="flex items-center gap-3">
-          <a
-            href="https://github.com/mitambuch/steaksoap/releases"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted/50 hover:text-accent font-mono text-[10px] underline-offset-2 transition-colors"
-          >
-            v{__APP_VERSION__}
-          </a>
-          <span className="text-muted/20 text-[10px]">&middot;</span>
-          <button
-            type="button"
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('open-setup-wizard'));
-            }}
-            className="text-muted/50 hover:text-accent font-mono text-[10px] underline-offset-2 transition-colors"
-          >
-            Setup guide
-          </button>
-        </div>
+        {/* Version */}
+        <a
+          href="https://github.com/mitambuch/steaksoap/releases"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted/50 hover:text-accent font-mono text-[10px] underline-offset-2 transition-colors"
+        >
+          v{__APP_VERSION__}
+        </a>
 
         {/* GitHub */}
         <a

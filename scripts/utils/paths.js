@@ -1,9 +1,11 @@
 // WHY: Centralized path constants — done.js and setup.js share these paths.
 // Single source of truth prevents drift between scripts.
 
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = process.cwd();
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = resolve(__dirname, '../..');
 
 export const PATHS = {
   root,

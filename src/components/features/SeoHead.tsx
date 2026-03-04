@@ -27,6 +27,7 @@ export function SeoHead({
   const { pathname } = useLocation();
   const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
   const pageUrl = canonicalUrl ?? `${siteConfig.url}${pathname}`;
+  const imageUrl = ogImage?.startsWith('http') ? ogImage : `${siteConfig.url}${ogImage}`;
 
   return (
     <>
@@ -37,7 +38,7 @@ export function SeoHead({
       {/* Open Graph — Facebook / LinkedIn sharing */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${siteConfig.url}${ogImage}`} />
+      <meta property="og:image" content={imageUrl} />
       <meta property="og:url" content={pageUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={siteConfig.locale} />
@@ -46,7 +47,7 @@ export function SeoHead({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${siteConfig.url}${ogImage}`} />
+      <meta name="twitter:image" content={imageUrl} />
 
       {/* No index (for staging, private pages, etc.) */}
       {noIndex && <meta name="robots" content="noindex, nofollow" />}

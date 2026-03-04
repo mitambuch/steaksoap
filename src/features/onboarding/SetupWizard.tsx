@@ -40,7 +40,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
     try {
       const raw = localStorage.getItem('steaksoap_wizard');
       if (!raw) return 0;
-      const data = JSON.parse(raw) as { version?: number; step?: number };
+      const data: Record<string, unknown> = JSON.parse(raw);
       if (data.version !== WIZARD_VERSION) return 0;
       if (typeof data.step !== 'number' || data.step < 0 || data.step >= wizardSlides.length)
         return 0;
@@ -62,7 +62,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
 
   // WHY: Restore focus to the element that opened the wizard on close
   useEffect(() => {
-    const prev = document.activeElement as HTMLElement | null;
+    const prev = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     return () => {
       prev?.focus();
     };

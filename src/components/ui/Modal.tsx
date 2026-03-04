@@ -50,6 +50,9 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
   useEffect(() => {
     if (!isOpen) return;
 
+    const previouslyFocused =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
 
@@ -65,6 +68,7 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
       document.body.style.overflow = '';
       document.removeEventListener('keydown', handleKeyDown);
       clearTimeout(timer);
+      previouslyFocused?.focus();
     };
   }, [isOpen, handleKeyDown]);
 

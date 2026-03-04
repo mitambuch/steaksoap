@@ -4,7 +4,7 @@ import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
 import { Blocks, House } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 /* ─── GitHub SVG (brand icons removed from Lucide) ───────────── */
 
@@ -70,6 +70,7 @@ interface HeaderProps {
 /** Floating header — classe2 style: morphing logo + separate pill. */
 export const Header = ({ className }: HeaderProps) => {
   const scrolled = useScrolled();
+  const { pathname } = useLocation();
   const [githubHovered, setGithubHovered] = useState(false);
 
   return (
@@ -92,6 +93,7 @@ export const Header = ({ className }: HeaderProps) => {
         >
           <Link
             to={ROUTES.HOME}
+            aria-current={pathname === ROUTES.HOME ? 'page' : undefined}
             className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
           >
             <House size={14} strokeWidth={1.5} />
@@ -99,6 +101,7 @@ export const Header = ({ className }: HeaderProps) => {
           </Link>
           <Link
             to={ROUTES.PLAYGROUND}
+            aria-current={pathname === ROUTES.PLAYGROUND ? 'page' : undefined}
             className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
           >
             <Blocks size={14} strokeWidth={1.5} />

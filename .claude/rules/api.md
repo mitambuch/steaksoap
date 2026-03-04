@@ -27,8 +27,8 @@ function useResource() {
         const res = await fetch('/api/resource', { signal: controller.signal });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json: unknown = await res.json();
-        // Validate response shape before trusting it
-        setData(json as Resource);
+        if (!isResource(json)) throw new Error('Invalid response shape');
+        setData(json);
       } catch (err) {
         if (!controller.signal.aborted) {
           setError(err instanceof Error ? err.message : 'Unknown error');

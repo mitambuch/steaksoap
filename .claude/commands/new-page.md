@@ -14,7 +14,7 @@ import { Container } from '@components/layout/Container';
 import { SeoHead } from '@components/features/SeoHead';
 
 /** $ARGUMENTS page. */
-export const $ARGUMENTS = () => {
+export default function $ARGUMENTS() {
   return (
     <>
       <SeoHead title="$ARGUMENTS" description="$ARGUMENTS page description." />
@@ -24,7 +24,7 @@ export const $ARGUMENTS = () => {
       </Container>
     </>
   );
-};
+}
 ```
 
 2. Add lazy route in `src/app/routes/` (find the route config file):
@@ -39,7 +39,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 
-import { $ARGUMENTS } from '../$ARGUMENTS';
+import $ARGUMENTS from '../$ARGUMENTS';
 
 describe('$ARGUMENTS page', () => {
   it('renders the heading', () => {

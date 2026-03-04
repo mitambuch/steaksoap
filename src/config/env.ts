@@ -5,9 +5,13 @@
    ═══════════════════════════════════════════════════════════════ */
 
 export const env = {
-  CLOUDINARY_CLOUD_NAME: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME ?? '',
+  CLOUDINARY_CLOUD_NAME: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || '',
   APP_NAME: import.meta.env.VITE_APP_NAME || 'steaksoap',
   APP_URL: import.meta.env.VITE_APP_URL || 'http://localhost:5173',
   IS_DEV: import.meta.env.DEV,
   IS_PROD: import.meta.env.PROD,
 } as const;
+
+if (import.meta.env.PROD && !import.meta.env.VITE_APP_URL) {
+  console.warn('[env] VITE_APP_URL not set — OG tags and canonical URLs will use localhost');
+}

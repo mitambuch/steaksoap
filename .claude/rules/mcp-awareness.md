@@ -1,3 +1,7 @@
+---
+paths: ["registry/**"]
+---
+
 # MCP Awareness
 
 ## When to recommend MCP servers

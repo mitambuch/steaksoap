@@ -73,12 +73,18 @@ interface AccordionItemProps {
   className?: string;
 }
 
-const ItemContext = createContext<string>('');
+interface ItemContextValue {
+  value: string;
+  contentId: string;
+}
+
+const ItemContext = createContext<ItemContextValue>({ value: '', contentId: '' });
 
 /** Single accordion panel. Must have AccordionTrigger + AccordionContent as children. */
 export function AccordionItem({ value, children, className }: AccordionItemProps) {
+  const contentId = useId();
   return (
-    <ItemContext.Provider value={value}>
+    <ItemContext.Provider value={{ value, contentId }}>
       <div className={cn('py-0', className)}>{children}</div>
     </ItemContext.Provider>
   );
@@ -94,8 +100,7 @@ interface AccordionTriggerProps {
 /** Clickable trigger that toggles the accordion content. */
 export function AccordionTrigger({ children, className }: AccordionTriggerProps) {
   const { openItems, toggle } = useAccordionContext();
-  const value = useContext(ItemContext);
-  const contentId = useId();
+  const { value, contentId } = useContext(ItemContext);
   const isOpen = openItems.has(value);
 
   return (
@@ -138,11 +143,12 @@ interface AccordionContentProps {
 /** Collapsible content panel with smooth height animation. */
 export function AccordionContent({ children, className }: AccordionContentProps) {
   const { openItems } = useAccordionContext();
-  const value = useContext(ItemContext);
+  const { value, contentId } = useContext(ItemContext);
   const isOpen = openItems.has(value);
 
   return (
     <div
+      id={contentId}
       role="region"
       className={cn(
         'grid transition-all duration-300 ease-out',
