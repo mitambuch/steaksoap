@@ -14,6 +14,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 export default function RootLayout() {
   const { pathname } = useLocation();
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
 
   return (
     <div className={cn('bg-bg text-fg flex min-h-screen flex-col', isDesktop && 'cursor-hidden')}>
@@ -23,10 +24,10 @@ export default function RootLayout() {
       >
         Skip to content
       </a>
-      <CursorGlow enabled={isDesktop} />
+      <CursorGlow enabled={isDesktop && !prefersReducedMotion} />
       <Header />
       <main id="main-content" className="flex-1 pt-20">
-        <div key={pathname} className="animate-page-enter">
+        <div key={pathname} className={prefersReducedMotion ? undefined : 'animate-page-enter'}>
           <Outlet />
         </div>
       </main>

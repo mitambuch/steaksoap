@@ -45,11 +45,24 @@ function getInitialTheme(): Theme {
 }
 
 /** Apply theme to document root with cinematic transition. */
+let transitionTimer: ReturnType<typeof setTimeout> | undefined;
+
 function applyTheme(theme: Theme) {
   const root = document.documentElement;
-  root.classList.add('transition-theme');
+
+  // WHY: Skip transition when user prefers reduced motion
+  const prefersReduced =
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    // Cancel any pending transition cleanup before starting a new one
+    clearTimeout(transitionTimer);
+    root.classList.add('transition-theme');
+    transitionTimer = setTimeout(() => root.classList.remove('transition-theme'), 1500);
+  }
+
   root.setAttribute('data-theme', theme);
-  setTimeout(() => root.classList.remove('transition-theme'), 1500);
 }
 
 /** Provides light/dark theme state with localStorage persistence and system preference detection. */
