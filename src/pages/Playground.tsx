@@ -54,6 +54,7 @@ function Copyable({ text, className }: { text: string; className?: string }) {
 
   return (
     <button
+      aria-label={`Copy ${text} to clipboard`}
       onClick={() => void copy(text)}
       className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-mono text-[10px] transition-colors duration-300 ${
         copied
