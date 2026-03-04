@@ -132,7 +132,7 @@ export const Select = ({
           disabled={disabled}
           className={cn(
             'bg-surface/80 text-fg w-full rounded-lg border px-3 py-2 pr-8 text-left backdrop-blur-sm',
-            'transition-all duration-300',
+            'transition-[border-color,box-shadow] duration-300',
             'focus:ring-1 focus:outline-none',
             'disabled:cursor-not-allowed disabled:opacity-50',
             error
@@ -173,7 +173,7 @@ export const Select = ({
           aria-labelledby={`${id}-label`}
           className={cn(
             'bg-surface border-border absolute top-full left-0 z-50 mt-1 w-full overflow-hidden rounded-lg border shadow-lg backdrop-blur-xl',
-            'transition-all duration-200',
+            'transition-[transform,opacity] duration-200',
             open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0',
           )}
         >

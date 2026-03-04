@@ -136,7 +136,7 @@ export function TabsTrigger({ value, children, className }: TabsTriggerProps) {
     >
       {children}
       {isActive && (
-        <span className="bg-accent absolute right-0 bottom-0 left-0 h-0.5 transition-all duration-300" />
+        <span className="bg-accent absolute right-0 bottom-0 left-0 h-0.5 transition-[width,left,right] duration-300" />
       )}
     </button>
   );

@@ -44,7 +44,7 @@ function MorphingLogo({ isActive }: { isActive: boolean }) {
     <Link to={ROUTES.HOME} className="group flex items-center gap-3 focus-visible:outline-none">
       <div
         className={cn(
-          'bg-accent h-5 w-5 transition-all duration-700 ease-in-out md:h-6 md:w-6',
+          'bg-accent h-5 w-5 transition-[transform,box-shadow] duration-700 ease-in-out md:h-6 md:w-6',
           isActive
             ? 'scale-125 shadow-[0_0_20px_rgba(255,107,107,0.7)]'
             : 'shadow-[0_0_12px_rgba(255,107,107,0.4)]',
@@ -85,7 +85,7 @@ export const Header = ({ className }: HeaderProps) => {
         {/* Pill nav — separate from logo */}
         <div
           className={cn(
-            'flex items-center rounded-full border transition-all duration-500',
+            'flex items-center rounded-full border transition-[border-color,background-color] duration-500',
             scrolled
               ? 'border-border bg-surface/60 backdrop-blur-xl'
               : 'border-border/50 bg-surface/30 backdrop-blur-xl',

@@ -37,7 +37,7 @@ export const Textarea = ({
         rows={rows}
         className={cn(
           'bg-surface/80 text-fg rounded-lg border px-3 py-2 backdrop-blur-sm',
-          'transition-all duration-300',
+          'transition-[border-color,box-shadow] duration-300',
           'placeholder:text-muted/60',
           'focus:ring-1 focus:outline-none',
           error

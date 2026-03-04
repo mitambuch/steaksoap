@@ -237,7 +237,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
         aria-modal="true"
         aria-labelledby="wizard-title"
         className={cn(
-          'bg-bg border-border relative z-10 flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border shadow-2xl transition-all duration-300',
+          'bg-bg border-border relative z-10 flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl border shadow-2xl transition-[height] duration-300',
           // WHY: Quit confirm is compact — let content dictate height instead of fixed 620px
           showQuitConfirm ? 'h-auto' : 'h-155',
         )}
@@ -256,7 +256,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
               <button
                 type="button"
                 onClick={() => setShowQuitConfirm(false)}
-                className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium transition-all hover:brightness-90"
+                className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium transition-[filter] hover:brightness-90"
               >
                 Continue setup
               </button>
@@ -296,7 +296,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                     <div
                       key={group}
                       className={cn(
-                        'h-1.5 rounded-full transition-all duration-300',
+                        'h-1.5 rounded-full transition-[width,background-color] duration-300',
                         i < currentGroupIndex
                           ? 'bg-accent w-1.5'
                           : i === currentGroupIndex
@@ -408,7 +408,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                     <button
                       type="button"
                       onClick={handleFinish}
-                      className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium transition-all hover:brightness-90"
+                      className="bg-accent text-bg rounded-full px-6 py-2.5 font-mono text-xs font-medium transition-[filter] hover:brightness-90"
                     >
                       Start building {'\u2192'}
                     </button>
@@ -463,7 +463,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                         href={resolved.actionValue}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-accent text-bg inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-mono text-sm transition-all hover:shadow-[0_0_20px_rgba(255,107,107,0.3)] hover:brightness-90"
+                        className="bg-accent text-bg inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-mono text-sm transition-[box-shadow,filter] hover:shadow-[0_0_20px_rgba(255,107,107,0.3)] hover:brightness-90"
                       >
                         {resolved.actionLabel} <ExternalLink size={14} aria-hidden="true" />
                       </a>
@@ -569,7 +569,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="bg-accent text-bg rounded-full px-5 py-2 font-mono text-xs font-medium transition-all hover:brightness-90"
+                      className="bg-accent text-bg rounded-full px-5 py-2 font-mono text-xs font-medium transition-[filter] hover:brightness-90"
                     >
                       {resolved.type === 'intro' ? 'Got it \u2192' : 'Done, next \u2192'}
                     </button>
@@ -584,7 +584,7 @@ export function SetupWizard({ onClose }: SetupWizardProps) {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="bg-accent text-bg rounded-full px-8 py-3 font-mono text-sm font-medium transition-all hover:brightness-90"
+                  className="bg-accent text-bg rounded-full px-8 py-3 font-mono text-sm font-medium transition-[filter] hover:brightness-90"
                 >
                   Let&apos;s do this {'\u2192'}
                 </button>

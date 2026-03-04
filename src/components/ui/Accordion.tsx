@@ -151,7 +151,7 @@ export function AccordionContent({ children, className }: AccordionContentProps)
       id={contentId}
       role="region"
       className={cn(
-        'grid transition-all duration-300 ease-out',
+        'grid transition-[grid-template-rows,opacity] duration-300 ease-out',
         isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
       )}
     >
