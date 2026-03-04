@@ -76,7 +76,7 @@ if (existsSync(routesPath) && existsSync(pagesDir)) {
   }
 
   const pageFiles = readdirSync(pagesDir)
-    .filter((f) => f.endsWith('.tsx') && f !== 'index.ts' && f !== 'NotFound.tsx');
+    .filter((f) => f.endsWith('.tsx') && !f.endsWith('.test.tsx') && f !== 'index.ts' && f !== 'NotFound.tsx');
 
   let routesMissing = false;
   for (const key of routeKeys) {
@@ -100,7 +100,7 @@ if (existsSync(routesPath) && existsSync(pagesDir)) {
 // ─── 2. Pages → Tests ───────────────────────────────────────
 if (existsSync(pagesDir)) {
   const pageFiles = readdirSync(pagesDir).filter(
-    (f) => f.endsWith('.tsx') && f !== 'index.ts',
+    (f) => f.endsWith('.tsx') && !f.endsWith('.test.tsx') && f !== 'index.ts',
   );
   // Pages may have tests in __tests__/ subdirectory or as sibling .test.tsx files
   const pagesTestDir = resolve(pagesDir, '__tests__');
@@ -212,12 +212,12 @@ if (topLevelTsx.length === 0) {
 
 // ─── 6. Orphan imports ──────────────────────────────────────
 try {
-  const aliasMatches = scanFiles(PATHS.src, /from '(@[^']+)'/g);
+  const aliasMatches = scanFiles(PATHS.src, /from ['"](@[^'"]+)['"]/g);
   const aliasMap = ALIASES;
 
   const imports = [
     ...new Set(
-      aliasMatches.map((m) => m.replace("from '", '').replace("'", '')),
+      aliasMatches.map((m) => m.replace(/from ['"]/, '').replace(/['"]/, '')),
     ),
   ];
 
