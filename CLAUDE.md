@@ -49,7 +49,7 @@ pnpm release          — create versioned release with changelog
 src/
 ├── app/            — routes, providers, app layout
 ├── components/ui/  — reusable atoms (Button, Input, Card, Modal…)
-├── components/layout/ — Header, Footer, Container, Section
+├── components/layout/ — Header, Footer, Container, CursorGlow
 ├── config/         — env.ts (with fallbacks), site.ts, cloudinary.ts
 ├── features/       — feature modules (component + hook + types)
 ├── hooks/          — custom React hooks
@@ -61,7 +61,7 @@ These are loaded automatically from `.claude/rules/` — details there, summary 
 - TypeScript strict — no `any`, no `as`, no `!`
 - Named exports, PascalCase files, mobile-first responsive
 - `cn()` for className, design tokens only, tests beside source
-- Path aliases: @components, @hooks, @pages, @utils, @config, @features
+- Path aliases: @components, @hooks, @pages, @utils, @config, @features, @constants, @context, @lib
 
 ## Workflow
 See `.claude/rules/workflow.md` for the full workflow (branching, validation, commits).

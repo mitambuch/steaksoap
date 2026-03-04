@@ -2,7 +2,7 @@
 
 **The AI-native React system for solo builders.**
 
-You describe it. The AI builds it. 22 commands, 4 agents, zero config.
+You describe it. The AI builds it. 23 commands, 4 agents, zero config.
 
 Not another React boilerplate — a complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
 
@@ -23,9 +23,9 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 
 | | steaksoap | Typical React Starter |
 |---|---|---|
-| **AI workflow** | 22 slash commands, 4 sub-agents | None or afterthought |
+| **AI workflow** | 23 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
-| **UI components** | 24 accessible components ready to use | Empty src/ |
+| **UI components** | 29 accessible components ready to use | Empty src/ |
 | **Git workflow** | Conventional commits + auto changelog | Manual |
 | **Validation** | Lint + typecheck + test + build in one command | `npm run build` |
 | **Releases** | Automated version bump + changelog + tag | Manual |
@@ -143,7 +143,7 @@ Open Claude Code and type these commands:
 
 Your project includes:
 - A responsive landing page with Header, Hero, Features, and Footer
-- 24 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Accordion, Switch, Timeline...)
+- 29 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Accordion, Switch, Timeline...)
 - Dark/light mode toggle
 - SEO head management
 - Error boundaries
@@ -186,7 +186,7 @@ Already have a project? Install steaksoap as a Claude Code plugin to get all com
 claude plugin marketplace add mitambuch/steaksoap
 ```
 
-This gives you access to all 22 slash commands and 4 sub-agents in your existing project.
+This gives you access to all 23 slash commands and 4 sub-agents in your existing project.
 
 ## Stay Updated
 

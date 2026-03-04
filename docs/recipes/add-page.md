@@ -75,14 +75,6 @@ describe('About', () => {
 });
 ```
 
-5. **(Optional) Add to navigation** — `src/config/site.ts`:
-
-```ts
-navItems: [
-  { label: 'Home', href: '/' },
-  { label: 'Playground', href: '/playground' },
-  { label: 'About', href: '/about' }, // ← add this
-],
-```
+5. **(Optional) Add to navigation** — edit `src/components/layout/Header.tsx` to add a `<NavLink>` for your new page.
 
 6. **Validate**: `pnpm validate`

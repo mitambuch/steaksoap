@@ -18,7 +18,7 @@ components:
 
 config:
   - changed-files:
-      - any-glob-to-any-file: ['*.config.*', 'tsconfig.*', '.eslintrc*']
+      - any-glob-to-any-file: ['*.config.*', 'tsconfig.*', 'eslint.config.*']
 
 tests:
   - changed-files:
