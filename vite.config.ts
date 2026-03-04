@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
           hostname: env.VITE_APP_URL || 'http://localhost:5173',
           // SPA : ajouter ici les routes client-side quand le projet grandit
           // dynamicRoutes: ['/about', '/contact'],
-          exclude: ['/404'],
+          exclude: ['/404', '/welcome', '/steaksoap'],
           generateRobotsTxt: true,
         }),
     ],
@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
         '@styles': resolve(__dirname, './src/styles'),
         '@types': resolve(__dirname, './src/types'),
         '@config': resolve(__dirname, './src/config'),
+        '@features': resolve(__dirname, './src/features'),
         '@lib': resolve(__dirname, './src/lib'),
         '@assets': resolve(__dirname, './src/assets'),
       },

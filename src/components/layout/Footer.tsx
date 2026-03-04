@@ -3,6 +3,8 @@
    Rendered in RootLayout, shared across all pages.
    ═══════════════════════════════════════════════════════════════ */
 
+import { siteConfig } from '@config/site';
+
 import { GitHubIcon } from './Header';
 
 export const Footer = () => {
@@ -24,7 +26,7 @@ export const Footer = () => {
 
         {/* Version */}
         <a
-          href="https://github.com/mitambuch/steaksoap/releases"
+          href={`${siteConfig.repo}/releases`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted/50 hover:text-accent font-mono text-[10px] underline-offset-2 transition-colors"
@@ -34,7 +36,7 @@ export const Footer = () => {
 
         {/* GitHub */}
         <a
-          href="https://github.com/mitambuch/steaksoap"
+          href={siteConfig.repo}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted hover:text-accent focus-visible:ring-accent flex items-center gap-2 rounded-sm font-mono text-xs transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-none"

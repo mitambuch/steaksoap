@@ -19,7 +19,7 @@ export default function $ARGUMENTS() {
     <>
       <SeoHead title="$ARGUMENTS" description="$ARGUMENTS page description." />
       <Container>
-        <h1 className="text-3xl font-bold text-fg mb-6">$ARGUMENTS</h1>
+        <h1 className="text-3xl font-medium text-fg mb-6">$ARGUMENTS</h1>
         <p className="text-muted">This is the $ARGUMENTS page. Edit this file to add your content.</p>
       </Container>
     </>
@@ -27,12 +27,15 @@ export default function $ARGUMENTS() {
 }
 ```
 
-2. Add lazy route in `src/app/routes/` (find the route config file):
-   - Add: `const $ARGUMENTS = lazy(() => import('@pages/$ARGUMENTS'));`
-   - Add route: `{ path: '/<kebab-case-of-$ARGUMENTS>', element: <$ARGUMENTS /> }`
-   - Import `lazy` from 'react' if not already imported
+2. Add route constant in `src/constants/routes.ts`:
+   - Add: `UPPER_CASE: '/<kebab-case-of-$ARGUMENTS>',` to the ROUTES object
 
-3. Create test `src/pages/__tests__/$ARGUMENTS.test.tsx`:
+3. Add lazy route in `src/app/routes/` (find the route config file):
+   - Add: `const $ARGUMENTS = lazyWithRetry(() => import('@pages/$ARGUMENTS'));`
+   - Add route: `<Route path={ROUTES.UPPER_CASE} element={<$ARGUMENTS />} />`
+   - Import ROUTES from '@constants/routes' if not already imported
+
+4. Create test `src/pages/__tests__/$ARGUMENTS.test.tsx`:
 
 ```tsx
 import { render, screen } from '@testing-library/react';
@@ -53,7 +56,7 @@ describe('$ARGUMENTS page', () => {
 });
 ```
 
-4. Run `pnpm validate` — must pass.
+5. Run `pnpm validate` — must pass.
 
 ## Validation
 - [ ] Page exists at src/pages/$ARGUMENTS.tsx

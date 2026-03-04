@@ -118,12 +118,12 @@ export default function Welcome() {
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { label: '25 slash commands', desc: 'for Claude Code' },
+              { label: '23 slash commands', desc: 'for Claude Code' },
               { label: '12 contextual rules', desc: 'for consistent AI behavior' },
               { label: 'design system', desc: 'dark + light mode, tokens' },
               { label: 'component playground', desc: '/playground' },
               { label: 'original template', desc: '/steaksoap' },
-              { label: '33 tests', desc: 'vitest + testing library' },
+              { label: '56 test files', desc: 'vitest + testing library' },
             ].map(item => (
               <div
                 key={item.label}
