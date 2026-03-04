@@ -37,6 +37,9 @@ coverage/
 test-results/
 playwright-report/
 
+# Lighthouse CI
+.lighthouseci/
+
 # Crypto keys (never commit)
 *.pem
 *.key
