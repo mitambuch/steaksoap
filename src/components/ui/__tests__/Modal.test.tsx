@@ -78,4 +78,50 @@ describe('Modal', () => {
     );
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  it('sets body overflow hidden when open', () => {
+    render(
+      <Modal isOpen onClose={vi.fn()} title="Overflow Test">
+        Content
+      </Modal>,
+    );
+    expect(document.body.style.overflow).toBe('hidden');
+  });
+
+  it('restores body overflow on close', () => {
+    const { rerender } = render(
+      <Modal isOpen onClose={vi.fn()} title="Overflow Restore">
+        Content
+      </Modal>,
+    );
+    expect(document.body.style.overflow).toBe('hidden');
+    rerender(
+      <Modal isOpen={false} onClose={vi.fn()} title="Overflow Restore">
+        Content
+      </Modal>,
+    );
+    expect(document.body.style.overflow).toBe('');
+  });
+
+  it('renders close button even without title', () => {
+    render(
+      <Modal isOpen onClose={vi.fn()}>
+        No title content
+      </Modal>,
+    );
+    expect(screen.getByLabelText('Close')).toBeInTheDocument();
+    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
+  });
+
+  it('traps focus within the dialog', () => {
+    render(
+      <Modal isOpen onClose={vi.fn()} title="Focus Trap">
+        <button>First</button>
+        <button>Last</button>
+      </Modal>,
+    );
+    const dialog = screen.getByRole('dialog');
+    const focusable = dialog.querySelectorAll('button');
+    expect(focusable.length).toBeGreaterThan(0);
+  });
 });

@@ -56,4 +56,66 @@ describe('Select', () => {
     const { container } = render(<Select label="Language" options={options} />);
     expect(await axe(container)).toHaveNoViolations();
   });
+
+  it('opens dropdown with ArrowDown key', async () => {
+    const user = userEvent.setup();
+    render(<Select label="Language" options={options} />);
+    const trigger = screen.getByRole('button');
+    trigger.focus();
+    await user.keyboard('{ArrowDown}');
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('navigates options with ArrowDown and ArrowUp', async () => {
+    const user = userEvent.setup();
+    render(<Select label="Language" options={options} />);
+    const trigger = screen.getByRole('button');
+    trigger.focus();
+    // Open and go down
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{ArrowDown}');
+    // Select with Enter
+    await user.keyboard('{Enter}');
+    expect(trigger).toHaveTextContent('English');
+  });
+
+  it('selects highlighted option with Enter key', async () => {
+    const user = userEvent.setup();
+    render(<Select label="Language" options={options} />);
+    const trigger = screen.getByRole('button');
+    trigger.focus();
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Enter}');
+    expect(trigger).toHaveTextContent('French');
+  });
+
+  it('closes dropdown with Escape key', async () => {
+    const user = userEvent.setup();
+    render(<Select label="Language" options={options} />);
+    const trigger = screen.getByRole('button');
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
+    await user.keyboard('{Escape}');
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('does not open when disabled', async () => {
+    const user = userEvent.setup();
+    render(<Select label="Language" options={options} disabled />);
+    const trigger = screen.getByRole('button');
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('ArrowUp does not go below 0', async () => {
+    const user = userEvent.setup();
+    render(<Select label="Language" options={options} />);
+    const trigger = screen.getByRole('button');
+    trigger.focus();
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{ArrowUp}');
+    await user.keyboard('{Enter}');
+    // Should still be on first option
+    expect(trigger).toHaveTextContent('French');
+  });
 });

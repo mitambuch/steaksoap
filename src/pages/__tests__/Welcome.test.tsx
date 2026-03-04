@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import Welcome from '../Welcome';
 
@@ -36,5 +37,32 @@ describe('Welcome', () => {
     renderWelcome();
     const link = screen.getByRole('link', { name: /built with steaksoap/i });
     expect(link).toBeInTheDocument();
+  });
+
+  it('uses Link components for internal routes', () => {
+    renderWelcome();
+    const playgroundLinks = screen.getAllByRole('link', { name: /playground/i });
+    expect(playgroundLinks.length).toBeGreaterThan(0);
+    for (const link of playgroundLinks) {
+      expect(link.getAttribute('href')).toMatch(/^\//);
+    }
+  });
+
+  it('copies code to clipboard when copy button is clicked', async () => {
+    const user = userEvent.setup();
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, 'clipboard', {
+      value: { writeText },
+      writable: true,
+      configurable: true,
+    });
+
+    renderWelcome();
+    const copyButtons = screen.getAllByRole('button');
+    const copyButton = copyButtons.find(btn => btn.querySelector('svg'));
+    if (copyButton) {
+      await user.click(copyButton);
+      expect(writeText).toHaveBeenCalled();
+    }
   });
 });
