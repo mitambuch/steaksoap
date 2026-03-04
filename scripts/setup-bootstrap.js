@@ -9,7 +9,7 @@
    --check: only remind user to run setup if project is unconfigured
    ═══════════════════════════════════════════════════════════════ */
 
-import { execSync } from 'node:child_process';
+import { execFileSync, execSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,6 +35,8 @@ if (!existsSync(nodeModules)) {
   execSync('pnpm install', { cwd: root, stdio: 'inherit' });
 }
 
-// Forward all args to setup.js
-const args = process.argv.slice(2).join(' ');
-execSync(`node scripts/setup.js ${args}`, { cwd: root, stdio: 'inherit' });
+// WHY: execFileSync prevents shell injection from crafted argv values
+execFileSync('node', ['scripts/setup.js', ...process.argv.slice(2)], {
+  cwd: root,
+  stdio: 'inherit',
+});
