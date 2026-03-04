@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.1.0](https://github.com/mitambuch/steaksoap/compare/v3.0.1...v3.1.0) (2026-03-04)
+
+### 🐛 Bug Fixes
+
+* **optimization:** performance, security, and quality audit v2 ([#25](https://github.com/mitambuch/steaksoap/issues/25)) ([912035e](https://github.com/mitambuch/steaksoap/commit/912035ef3b47bed0ece2fe368ae6551667b337c0)), closes [#0a0a0a](https://github.com/mitambuch/steaksoap/issues/0a0a0a) [#0a0a0a](https://github.com/mitambuch/steaksoap/issues/0a0a0a)
+
 ## [3.0.1](https://github.com/mitambuch/steaksoap/compare/v3.0.0...v3.0.1) (2026-03-04)
 
 ### ✨ Features
