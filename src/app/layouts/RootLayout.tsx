@@ -1,5 +1,5 @@
 import { CursorGlow } from '@components/layout/CursorGlow';
-import Footer from '@components/layout/Footer';
+import { Footer } from '@components/layout/Footer';
 import { Header } from '@components/layout/Header';
 import { useMediaQuery } from '@hooks/useMediaQuery';
 import { cn } from '@utils/cn';
