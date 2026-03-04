@@ -32,8 +32,11 @@ const runVisible = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
 
 // ─── Mode detection ─────────────────────────────────────────
 const isUpdate = process.argv.includes('--update');
-const isAutoYes =
+let isAutoYes =
   process.argv.includes('--yes') || process.argv.includes('-y');
+
+// Auto-enable non-interactive mode in CI / piped shells
+if (!process.stdin.isTTY) isAutoYes = true;
 
 // ─── Fresh clone detection ──────────────────────────────────
 const pkgPath = resolve(root, 'package.json');
@@ -230,10 +233,7 @@ async function runInit() {
     copyFileSync(envExample, envLocal);
   }
   let envContent = readFileSync(envLocal, 'utf-8');
-  envContent = envContent.replace(
-    /VITE_APP_NAME=.*/,
-    `VITE_APP_NAME=${displayName}`,
-  );
+  envContent = envContent.replace(/VITE_APP_NAME=.*/, () => `VITE_APP_NAME=${displayName}`);
   writeFileSync(envLocal, envContent);
 
   // ─── Reset CHANGELOG.md ────────────────────────────────
@@ -422,9 +422,10 @@ async function runInit() {
     runVisible('pnpm validate');
     clack.log.success('All checks passed');
   } catch {
-    clack.log.warn(
-      'Validation had issues — check the output above and fix before pushing',
+    clack.log.error(
+      'Validation failed — fix the errors above before pushing.',
     );
+    process.exit(1);
   }
 
   // ─── Initial commit + push ─────────────────────────────
