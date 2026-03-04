@@ -32,8 +32,9 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
           dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
         if (focusableElements.length === 0) return;
 
-        const first = focusableElements[0]!;
-        const last = focusableElements[focusableElements.length - 1]!;
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+        if (!first || !last) return;
 
         if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();
