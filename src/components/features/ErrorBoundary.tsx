@@ -4,6 +4,8 @@ interface Props {
   children: ReactNode;
   /** Custom fallback UI. If absent, displays the default fallback. */
   fallback?: ReactNode;
+  /** When any value changes, the boundary resets (e.g. pass [pathname]). */
+  resetKeys?: ReadonlyArray<unknown>;
 }
 
 interface State {
@@ -31,6 +33,17 @@ export class ErrorBoundary extends Component<Props, State> {
 
   static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>) {
+    if (
+      this.state.hasError &&
+      this.props.resetKeys &&
+      prevProps.resetKeys &&
+      this.props.resetKeys.some((key, i) => key !== prevProps.resetKeys?.[i])
+    ) {
+      this.setState({ hasError: false, error: undefined });
+    }
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
