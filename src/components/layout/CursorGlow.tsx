@@ -1,22 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-/* ─── Hook: track mouse position ─────────────────────────────── */
+/* ─── Hook: track mouse position via refs (zero re-renders) ──── */
 
+// WHY: Using refs + direct DOM mutation instead of useState for position
+// avoids 60+ React re-renders/sec on mousemove. Only the initial
+// visibility toggle triggers a single re-render.
 function useCursorGlow(enabled: boolean) {
-  const [pos, setPos] = useState({ x: -200, y: -200 });
   const [visible, setVisible] = useState(false);
+  const visibleRef = useRef(false);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+
+  const handleMove = useCallback((e: MouseEvent) => {
+    if (glowRef.current) {
+      glowRef.current.style.transform = `translate3d(${e.clientX - 150}px, ${e.clientY - 150}px, 0)`;
+    }
+    if (dotRef.current) {
+      dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    }
+    if (!visibleRef.current) {
+      visibleRef.current = true;
+      setVisible(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!enabled) return;
-    const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      if (!visible) setVisible(true);
-    };
-    window.addEventListener('mousemove', move);
-    return () => window.removeEventListener('mousemove', move);
-  }, [enabled, visible]);
+    window.addEventListener('mousemove', handleMove);
+    return () => window.removeEventListener('mousemove', handleMove);
+  }, [enabled, handleMove]);
 
-  return { pos, visible: enabled && visible };
+  return { visible: enabled && visible, glowRef, dotRef };
 }
 
 /* ─── Coral cursor glow (desktop only) ───────────────────────── */
@@ -30,8 +44,8 @@ interface CursorGlowProps {
  * Renders a subtle diffuse glow + a small accent dot.
  * Desktop only — pass `enabled` from useMediaQuery.
  */
-export function CursorGlow({ enabled }: CursorGlowProps) {
-  const { pos, visible } = useCursorGlow(enabled);
+export const CursorGlow = ({ enabled }: CursorGlowProps) => {
+  const { visible, glowRef, dotRef } = useCursorGlow(enabled);
 
   if (!visible) return null;
 
@@ -39,9 +53,10 @@ export function CursorGlow({ enabled }: CursorGlowProps) {
     <>
       {/* Large diffuse glow — subtle */}
       <div
+        ref={glowRef}
         className="pointer-events-none fixed top-0 left-0 z-9990"
         style={{
-          transform: `translate3d(${pos.x - 150}px, ${pos.y - 150}px, 0)`,
+          transform: 'translate3d(-200px, -200px, 0)',
           transition: 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)',
         }}
       >
@@ -57,9 +72,10 @@ export function CursorGlow({ enabled }: CursorGlowProps) {
 
       {/* Small accent dot */}
       <div
+        ref={dotRef}
         className="pointer-events-none fixed top-0 left-0 z-10000 flex items-center justify-center"
         style={{
-          transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`,
+          transform: 'translate(-200px, -200px) translate(-50%, -50%)',
           transition: 'transform 75ms ease-out',
         }}
       >
@@ -73,4 +89,4 @@ export function CursorGlow({ enabled }: CursorGlowProps) {
       </div>
     </>
   );
-}
+};
