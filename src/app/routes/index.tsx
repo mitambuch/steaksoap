@@ -31,11 +31,9 @@ export default function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        {/* Home — standalone presentation, no Header/Footer */}
-        <Route path={ROUTES.HOME} element={<Home />} />
-
-        {/* Root layout — wraps pages with Header + Footer */}
+        {/* Root layout — wraps ALL pages with Header + Footer */}
         <Route element={<RootLayout />}>
+          <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.WELCOME} element={<Welcome />} />
           <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
           <Route path={ROUTES.STEAKSOAP} element={<Steaksoap />} />

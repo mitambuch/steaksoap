@@ -1,21 +1,35 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FAF8F5" />
+    <meta name="theme-color" content="#000000" />
 
-    <title>Réso.NE — Brief créatif</title>
-    <meta name="description" content="Brief créatif — Identité visuelle Réso.NE" />
+    <!-- SEO defaults — overridden by <SeoHead /> in each page -->
+    <title>steaksoap</title>
+    <meta name="description" content="" />
 
-    <!-- Fonts: Josefin Sans (sans) + JetBrains Mono (mono) -->
+    <!-- Fonts: Space Grotesk (sans) + JetBrains Mono (mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Prevent flash of wrong theme (FOUC) -->
+    <!-- SYNC: key must match THEME_STORAGE_KEY in src/context/ThemeContext.tsx -->
+    <script>
+      (function() {
+        var theme;
+        try { theme = localStorage.getItem('steaksoap-theme'); } catch(e) { /* Safari private mode */ }
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

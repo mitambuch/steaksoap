@@ -36,7 +36,6 @@
       "@styles/*": ["./src/styles/*"],
       "@types/*": ["./src/types/*"],
       "@config/*": ["./src/config/*"],
-      "@features/*": ["./src/features/*"],
       "@lib/*": ["./src/lib/*"],
       "@assets/*": ["./src/assets/*"]
     }

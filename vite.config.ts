@@ -46,7 +46,6 @@ export default defineConfig(({ mode }) => {
         '@styles': resolve(__dirname, './src/styles'),
         '@types': resolve(__dirname, './src/types'),
         '@config': resolve(__dirname, './src/config'),
-        '@features': resolve(__dirname, './src/features'),
         '@lib': resolve(__dirname, './src/lib'),
         '@assets': resolve(__dirname, './src/assets'),
       },

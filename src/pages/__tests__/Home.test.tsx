@@ -6,6 +6,7 @@ import Home from '../Home';
 
 afterEach(cleanup);
 
+// WHY: SeoHead uses useLocation() — pages need a router context in tests
 function renderHome() {
   return render(
     <MemoryRouter>
@@ -19,19 +20,19 @@ describe('Home', () => {
     expect(() => renderHome()).not.toThrow();
   });
 
-  it('renders the presentation header with logo', () => {
+  it('renders the hero heading', () => {
     renderHome();
-    const logos = screen.getAllByText('RÉSO.NE');
-    expect(logos.length).toBeGreaterThan(0);
+    expect(screen.getByText(/100% free/i)).toBeInTheDocument();
   });
 
-  it('renders the first slide', () => {
+  it('renders the GitHub link', () => {
     renderHome();
-    expect(screen.getByText(/document confidentiel/i)).toBeInTheDocument();
+    const links = screen.getAllByRole('link', { name: /view on github/i });
+    expect(links.length).toBeGreaterThan(0);
   });
 
-  it('renders the navigation panel', () => {
+  it('renders the features section', () => {
     renderHome();
-    expect(screen.getByText('Sections')).toBeInTheDocument();
+    expect(screen.getByText(/features/i)).toBeInTheDocument();
   });
 });

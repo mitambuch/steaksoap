@@ -3,28 +3,45 @@
 @import './styles/animations.css';
 
 /* ═══════════════════════════════════════════════════════════════
-   THEME — Réso.NE light palette
+   THEME — design tokens → Tailwind utilities
    bg-bg, text-fg, text-accent, font-sans, font-mono, etc.
    ═══════════════════════════════════════════════════════════════ */
 
 @theme {
-  --color-bg: #faf8f5;
-  --color-fg: #1a1a1a;
-  --color-accent: #0b7a75;
-  --color-muted: #8a8a82;
-  --color-surface: #ffffff;
-  --color-border: #e8e5e0;
+  /* Dark mode — DEFAULT (classe2 "brutaliste suisse") */
+  --color-bg: #0a0a0a;
+  --color-fg: #f0f0f0;
+  --color-accent: #ff6b6b;
+  --color-muted: #8a8a8a;
+  --color-surface: #141414;
+  --color-border: #262626;
 
-  --color-success: #2d5f4a;
-  --color-warning: #d4956b;
-  --color-danger: #b91c1c;
-  --color-info: #0b7a75;
+  /* Semantic status colors — fluorescent */
+  --color-success: #6aff8a;
+  --color-warning: #ffd60a;
+  --color-danger: #dc2626;
+  --color-info: #52b0ff;
 
-  --font-family-sans: 'Josefin Sans', system-ui, sans-serif;
+  --font-family-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* ─── Custom scrollbar — thin teal accent ────────────────── */
+/* Light mode override (warm concrete gray — classe2 style) */
+[data-theme='light'] {
+  --color-bg: #b0b0a8;
+  --color-fg: #1a1a1a;
+  --color-accent: #ff6b6b;
+  --color-muted: #4a4a44;
+  --color-surface: #a4a49c;
+  --color-border: #96968e;
+
+  --color-success: #00c853;
+  --color-warning: #e6a800;
+  --color-danger: #b91c1c;
+  --color-info: #1e88e5;
+}
+
+/* ─── Custom scrollbar — thin coral accent ────────────────── */
 
 ::-webkit-scrollbar {
   width: 2px;
@@ -33,15 +50,15 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(11, 122, 117, 0.5);
+  background: rgba(255, 107, 107, 0.5);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(11, 122, 117, 0.7);
+  background: rgba(255, 107, 107, 0.7);
 }
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(11, 122, 117, 0.5) transparent;
+  scrollbar-color: rgba(255, 107, 107, 0.5) transparent;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -49,20 +66,6 @@ html {
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --sub: rgba(0, 0, 0, 0.6);
-  --dim: rgba(0, 0, 0, 0.35);
-  --accent-lo: rgba(11, 122, 117, 0.06);
-  --accent-md: rgba(11, 122, 117, 0.2);
-  --teal: #0b7a75;
-  --teal-light: #7ec8c8;
-  --green: #2d5f4a;
-  --sage: #8bb5a2;
-  --terracotta: #d4956b;
-  --terra-light: #e8985e;
-  --cream: #f4f1ec;
-  --teal-bg: #e8f5f4;
-  --green-bg: #eaf2ee;
-
   --transition-fast: 150ms ease;
   --transition-base: 300ms ease;
   --transition-slow: 600ms ease;
@@ -88,16 +91,6 @@ html {
 }
 
 /* ─── Global styles ────────────────────────────────────────── */
-
-html,
-body {
-  overflow: hidden;
-  height: 100%;
-}
-
-#root {
-  height: 100%;
-}
 
 body {
   background-color: var(--color-bg);
@@ -135,26 +128,6 @@ body {
 
 @utility animate-blink {
   animation: blink 1s step-end infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* ─── Scrollbar hide ──────────────────────────────────────── */
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
 }
 
 /* ─── Film grain ──────────────────────────────────────────── */
