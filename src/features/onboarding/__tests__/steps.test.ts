@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { wizardSlides } from '../steps';
+import { getPlatformShortcut, PLATFORM_SHORTCUT_PLACEHOLDER, wizardSlides } from '../steps';
 
 describe('wizardSlides', () => {
   it('has slides defined', () => {
@@ -48,6 +48,24 @@ describe('wizardSlides', () => {
     const verifySlides = wizardSlides.filter(s => s.type === 'verify');
     for (const slide of verifySlides) {
       expect(slide.command).toBeTruthy();
+    }
+  });
+
+  it('getPlatformShortcut returns a keyboard shortcut string', () => {
+    const shortcut = getPlatformShortcut();
+    expect(shortcut).toMatch(/Cmd|Ctrl/);
+    expect(shortcut).toContain('`');
+  });
+
+  it('PLATFORM_SHORTCUT_PLACEHOLDER is a non-empty string', () => {
+    expect(PLATFORM_SHORTCUT_PLACEHOLDER).toBeTruthy();
+    expect(typeof PLATFORM_SHORTCUT_PLACEHOLDER).toBe('string');
+  });
+
+  it('all slides have a group property', () => {
+    for (const slide of wizardSlides) {
+      expect(typeof slide.group).toBe('string');
+      expect(slide.group.length).toBeGreaterThan(0);
     }
   });
 });
