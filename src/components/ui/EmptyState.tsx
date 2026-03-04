@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// EmptyState — placeholder for empty content
+//
+// WHAT: Renders an icon, title, and description for empty views
+// WHEN: Use when a list or section has no data
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 

@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Skeleton — loading placeholder
+//
+// WHAT: Renders an animated placeholder shape
+// WHEN: Use while content is loading to prevent layout shift
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 
 interface SkeletonProps {

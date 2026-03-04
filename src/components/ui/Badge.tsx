@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Badge — small label tag
+//
+// WHAT: Renders a colored label with variant styling
+// WHEN: Use for status indicators, tags, categories
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 

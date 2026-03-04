@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Button — primary interactive element
+//
+// WHAT: Renders a styled button with variants, sizes, loading state
+// WHEN: Use for all clickable actions
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ButtonHTMLAttributes } from 'react';
 

@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Avatar — circular user image with fallback initials
+//
+// WHAT: Displays a user avatar image or initials fallback
+// WHEN: Use in user profiles, comments, team lists
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import { useState } from 'react';
 

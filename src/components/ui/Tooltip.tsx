@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Tooltip — hover/focus information popup
+//
+// WHAT: Displays additional context on hover or focus
+// WHEN: Use for icons, truncated text, or actions needing explanation
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 import { useId, useState } from 'react';

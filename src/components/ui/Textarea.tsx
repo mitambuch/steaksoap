@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Textarea — multi-line text input
+//
+// WHAT: Renders a styled textarea with optional label and error
+// WHEN: Use in forms for multi-line text entry
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { TextareaHTMLAttributes } from 'react';
 import { useId } from 'react';

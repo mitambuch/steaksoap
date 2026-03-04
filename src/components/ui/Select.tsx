@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Select — custom dropdown selector
+//
+// WHAT: Renders a styled dropdown with keyboard navigation
+// WHEN: Use for single-value selection from a list
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';

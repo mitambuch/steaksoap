@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// AvatarGroup — stacked avatar collection
+//
+// WHAT: Renders overlapping avatars with optional overflow count
+// WHEN: Use to show multiple users in compact space
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 
 import { Avatar } from './Avatar';

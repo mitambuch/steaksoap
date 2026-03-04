@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Divider — horizontal separator line
+//
+// WHAT: Renders a themed horizontal rule
+// WHEN: Use between content sections
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 
 interface DividerProps {

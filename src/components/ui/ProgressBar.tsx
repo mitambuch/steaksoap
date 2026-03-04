@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// ProgressBar — horizontal progress indicator
+//
+// WHAT: Renders a themed progress bar with percentage
+// WHEN: Use for loading states, upload progress, completion tracking
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 
 interface ProgressBarProps {

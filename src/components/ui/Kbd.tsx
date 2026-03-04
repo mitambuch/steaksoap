@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Kbd — keyboard shortcut display
+//
+// WHAT: Renders a styled keyboard key indicator
+// WHEN: Use to show keyboard shortcuts or key combinations
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import type { ReactNode } from 'react';
 

@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Modal — dialog overlay
+//
+// WHAT: Renders an accessible modal with focus trap and backdrop
+// WHEN: Use for confirmations, forms, or detail views
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 import { X } from 'lucide-react';
 import type { ReactNode } from 'react';

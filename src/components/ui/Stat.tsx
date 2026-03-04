@@ -1,3 +1,11 @@
+// ═══════════════════════════════════════════════════
+// Stat — metric display card
+//
+// WHAT: Renders a label-value pair for statistics
+// WHEN: Use in dashboards or summary sections
+// CHANGE COLORS: Edit design tokens in src/index.css
+// ═══════════════════════════════════════════════════
+
 import { cn } from '@utils/cn';
 
 interface StatProps {
