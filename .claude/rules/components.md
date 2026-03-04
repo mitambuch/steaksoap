@@ -59,7 +59,7 @@ export const Button = ({ variant = 'primary', size = 'md', isLoading, className,
 
 ## Rules
 - Functional components ONLY — no class components
-- Arrow functions with named export — no default exports
+- Arrow functions with named export — no default exports (exception: page components use `export default` for lazy loading)
 - Props interface defined ABOVE the component, named `<ComponentName>Props`
 - Destructure ALL props in the function signature
 - ALWAYS accept `className?: string` for override capability
