@@ -66,8 +66,6 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
 export function ToastContainer() {
   const { toasts, dismiss } = useToast();
 
-  if (toasts.length === 0) return null;
-
   return (
     <div
       aria-live="polite"

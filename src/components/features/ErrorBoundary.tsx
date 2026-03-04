@@ -62,10 +62,14 @@ export class ErrorBoundary extends Component<Props, State> {
       if (this.props.fallback) return this.props.fallback;
 
       return (
-        <section className="flex min-h-screen flex-col items-center justify-center gap-4">
-          <p className="text-6xl font-bold opacity-10">500</p>
-          <p className="opacity-50">Something went wrong.</p>
+        <section
+          role="alert"
+          className="flex min-h-screen flex-col items-center justify-center gap-4"
+        >
+          <h1 className="text-6xl font-bold opacity-10">500</h1>
+          <p className="opacity-80">Something went wrong.</p>
           <button
+            type="button"
             onClick={this.handleReset}
             className="underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100"
           >
