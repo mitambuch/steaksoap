@@ -248,7 +248,51 @@ try {
   warn('Could not scan for orphan imports');
 }
 
-// ─── 7. pnpm validate ───────────────────────────────────────
+// ─── 7. No empty directories in src/ ────────────────────────
+function isEmptyDir(dirPath) {
+  if (!existsSync(dirPath)) return false;
+  const stat = statSync(dirPath);
+  if (!stat.isDirectory()) return false;
+  const entries = readdirSync(dirPath);
+  return entries.length === 0 || entries.every((e) => isEmptyDir(join(dirPath, e)));
+}
+
+const srcSubDirs = readdirSync(PATHS.src).filter((f) => {
+  const full = join(PATHS.src, f);
+  return statSync(full).isDirectory() && f !== 'test' && f !== '__tests__';
+});
+
+let emptyDirFound = false;
+for (const dir of srcSubDirs) {
+  const full = join(PATHS.src, dir);
+  if (isEmptyDir(full)) {
+    warn(`src/${dir}/ is empty — remove it or populate it`);
+    emptyDirFound = true;
+  }
+}
+if (!emptyDirFound) {
+  pass('No empty directories in src/');
+}
+
+// ─── 8. README component count matches reality ─────────────
+const readmePath = resolve(root, 'README.md');
+if (existsSync(readmePath) && existsSync(PATHS.componentsUI)) {
+  const readme = readFileSync(readmePath, 'utf-8');
+  const countMatch = readme.match(/(\d+) accessible (?:UI )?components/);
+  if (countMatch) {
+    const claimed = parseInt(countMatch[1]);
+    const actual = readdirSync(PATHS.componentsUI).filter(
+      (f) => f.endsWith('.tsx') && f !== 'index.ts',
+    ).length;
+    if (claimed === actual) {
+      pass(`README component count matches (${actual})`);
+    } else {
+      warn(`README claims ${claimed} components but src/components/ui/ has ${actual}`);
+    }
+  }
+}
+
+// ─── 9. pnpm validate ───────────────────────────────────────
 console.log(`\n  ${dim('Running pnpm validate...')}\n`);
 try {
   execSync('pnpm validate', { cwd: root, stdio: 'inherit' });

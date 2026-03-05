@@ -8,7 +8,15 @@
 
 ## [3.3.1](https://github.com/mitambuch/steaksoap/compare/v3.3.0...v3.3.1) (2026-03-04)
 
+### 🐛 Bug Fixes
+
+* **audit:** setup.js regex, CSP hash, siteConfig centralization, branding coherence
+
 ## [3.3.0](https://github.com/mitambuch/steaksoap/compare/v3.2.0...v3.3.0) (2026-03-04)
+
+### ✨ Features
+
+* **quality:** coverage 80%+, transition-all cleanup, CSS variable tokens, a11y polish
 
 ## [3.2.0](https://github.com/mitambuch/steaksoap/compare/v3.1.0...v3.2.0) (2026-03-04)
 

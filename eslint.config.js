@@ -52,6 +52,7 @@ export default defineConfig([
       }],
       'no-unused-vars': 'off',
       'eqeqeq': ['error', 'always'],
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-eval': 'error',
       'no-implied-eval': 'error',
       'prefer-const': 'error',
