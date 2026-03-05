@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.3.3](https://github.com/mitambuch/steaksoap/compare/v3.3.2...v3.3.3) (2026-03-05)
+
+### 🐛 Bug Fixes
+
+* **quality:** polish trust signals — no-console, retries, ghost dirs, stats ([#30](https://github.com/mitambuch/steaksoap/issues/30)) ([f68f884](https://github.com/mitambuch/steaksoap/commit/f68f8841e1dff9fba0abe3cd5005bdfc19f6fa97))
+
 ## [3.3.2](https://github.com/mitambuch/steaksoap/compare/v3.3.1...v3.3.2) (2026-03-04)
 
 ### 🐛 Bug Fixes
