@@ -34,11 +34,8 @@
       "@utils/*": ["./src/utils/*"],
       "@constants/*": ["./src/constants/*"],
       "@styles/*": ["./src/styles/*"],
-      "@types/*": ["./src/types/*"],
       "@config/*": ["./src/config/*"],
-      "@features/*": ["./src/features/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@features/*": ["./src/features/*"]
     }
   },
   "include": ["src"]

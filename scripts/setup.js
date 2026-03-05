@@ -294,6 +294,7 @@ async function runInit() {
   const filesToRemove = [
     // Always removed (not needed post-setup)
     'src/features/counter',
+    'TEMPLATE.md',
   ];
 
   // Showcase-dependent files — only remove if Steaksoap page is also removed

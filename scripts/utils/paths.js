@@ -33,5 +33,4 @@ export const ALIASES = {
   '@features': 'src/features',
   '@constants': 'src/constants',
   '@context': 'src/context',
-  '@lib': 'src/lib',
 };
