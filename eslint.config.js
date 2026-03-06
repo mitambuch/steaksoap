@@ -88,6 +88,10 @@ export default defineConfig([
             group: ['@app/*', '@app/**'],
             message: 'ui/ components must not import from app/. Use props or context instead.',
           },
+          {
+            group: ['@workbench/*', '@workbench/**', '../workbench/*', '../../workbench/*'],
+            message: 'ui/ components must not import from workbench/. Workbench consumes ui/, not the reverse.',
+          },
         ],
       }],
     },
@@ -106,6 +110,10 @@ export default defineConfig([
           {
             group: ['@app/routes/*', '@app/routes/**'],
             message: 'features/ must not import from routes/. Routes import features, not the reverse.',
+          },
+          {
+            group: ['@workbench/*', '@workbench/**', '../workbench/*', '../../workbench/*'],
+            message: 'features/ must not import from workbench/. Workbench is a dev tool, not a dependency.',
           },
         ],
       }],

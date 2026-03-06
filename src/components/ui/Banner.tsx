@@ -1,5 +1,10 @@
 // ═══════════════════════════════════════════════════
 // Banner — dismissable notification bar
+//
+// WHAT: Full-width banner with variant colors and optional dismiss button
+// WHEN: Use for announcements, alerts, or status messages at the top of a page
+// CHANGE COLORS: Edit variant tokens (info, success, warning, danger) in src/index.css
+// CHANGE VARIANTS: Edit the variantStyles object below
 // ═══════════════════════════════════════════════════
 
 import { cn } from '@utils/cn';

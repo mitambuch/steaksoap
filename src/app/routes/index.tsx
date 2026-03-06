@@ -27,6 +27,7 @@ function lazyWithRetry<T extends ComponentType>(
 
 const Home = lazyWithRetry(() => import('@pages/Home'));
 const Playground = lazyWithRetry(() => import('@pages/Playground'));
+const Lab = lazyWithRetry(() => import('@pages/Lab'));
 const NotFound = lazyWithRetry(() => import('@pages/NotFound'));
 
 /* ─── Loading fallback — themed, no white flash ───────────────── */
@@ -51,6 +52,7 @@ export default function AppRoutes() {
         <Route element={<RootLayout />}>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
+          <Route path={ROUTES.LAB} element={<Lab />} />
           {/* Add routes here: */}
           {/* <Route path={ROUTES.ABOUT} element={<About />} /> */}
         </Route>

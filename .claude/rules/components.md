@@ -67,10 +67,11 @@ export const Button = ({ variant = 'primary', size = 'md', isLoading, className,
 - JSDoc comment on every exported component (one line is fine)
 
 ## Organization
-- `src/components/ui/` → reusable atoms: Button, Input, Card, Modal, Badge, Skeleton, Avatar, Tooltip, Select, Textarea
+- `src/components/ui/` → 24 reusable atoms (`ls src/components/ui/` for current list)
 - `src/components/layout/` → structural: Header, Footer, Container, CursorGlow
-- `src/components/features/` → domain-specific components (user creates these)
+- `src/components/features/` → core: ErrorBoundary, SeoHead. User adds domain components.
 - `src/features/<name>/` → feature modules: component + hook + types + barrel
+- `src/workbench/` → playground sections, shared visual utilities, demo data
 
 ## Naming
 - Component files: PascalCase — `Button.tsx`, `UserCard.tsx`
@@ -111,10 +112,13 @@ These boundaries are automatically enforced — violations block the lint.
 
 | Layer | Can import | Cannot import |
 |-------|-----------|---------------|
-| `components/ui/` | utils, config, hooks, lib, constants, context | features/, pages/, app/ |
-| `features/` | ui/, utils, config, hooks, lib, constants, context | pages/, app/routes/ |
+| `components/ui/` | utils, config, hooks, lib, constants, context | features/, pages/, app/, workbench/ |
+| `features/` | ui/, utils, config, hooks, lib, constants, context | pages/, app/routes/, workbench/ |
 | `pages/` | everything | — |
 | `hooks/` | utils, config, lib, constants, context | — |
+| `workbench/` | ui/, utils, config, hooks, lib, constants, context | pages/, app/, features/ |
 
 If ESLint blocks an import, it means the architecture is wrong.
 Move the logic to the correct layer instead of disabling the rule.
+
+See `styling.md` for reuse-first and token-first rules.

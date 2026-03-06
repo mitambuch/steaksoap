@@ -62,6 +62,7 @@ Then type `/init` — Claude will ask about your project and customize colors, f
 |-----|------------|
 | `/` | Home page |
 | `/playground` | All UI components with your current design tokens |
+| `/lab` | Experimental prototyping sandbox |
 
 ## AI Commands
 

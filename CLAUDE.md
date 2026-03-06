@@ -63,7 +63,7 @@ See `.claude/rules/workflow.md`. Batch mode is default — execute without askin
 - Unsure? One focused question, don't guess
 
 ## Protected Pages
-`/playground` — NEVER delete, NEVER remove from nav.
+`/playground` and `/lab` — NEVER delete, NEVER remove from nav.
 Verify after design token changes.
 
 ## Detailed Rules
