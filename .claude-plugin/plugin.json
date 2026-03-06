@@ -2,7 +2,7 @@
   "name": "project-core",
   "description": "AI-first React development toolkit: 23 slash commands, 4 specialized agents, and 12 contextual rules for vibe coding with Claude Code.",
   "version": "2.0.1",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "keywords": [
     "react",
     "vite",

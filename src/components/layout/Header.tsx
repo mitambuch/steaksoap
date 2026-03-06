@@ -29,7 +29,7 @@ function MorphingLogo() {
       aria-label="Home"
     >
       <div
-        className="bg-accent h-6 w-6 shadow-[0_0_12px_rgba(255,107,107,0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-7 md:w-7"
+        className="bg-accent h-6 w-6 shadow-[0_0_12px_rgba(196,64,64,0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-7 md:w-7"
         style={{
           animation: 'morph 4s ease-in-out infinite',
           borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',

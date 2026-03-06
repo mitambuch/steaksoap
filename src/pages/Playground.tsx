@@ -773,7 +773,7 @@ export default function Playground() {
                   className={cn(
                     'border-border relative flex flex-col rounded-lg border p-6 transition-[border-color,background-color,box-shadow] duration-300',
                     plan.highlighted
-                      ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_rgba(255,107,107,0.05)]'
+                      ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_rgba(196,64,64,0.05)]'
                       : 'hover:border-accent/15 bg-transparent',
                   )}
                 >
