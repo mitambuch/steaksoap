@@ -17,13 +17,16 @@ $ARGUMENTS — Natural language description. Examples:
    - Show: Current value -> Proposed value
    - Group by: Colors, Typography, Spacing
 
-3. Wait for user confirmation.
+3. Apply changes to `@theme { }` in src/index.css.
 
-4. Apply changes to `@theme { }` in src/index.css.
+4. If dark mode tokens exist (in `[data-theme='light']` or similar), update those too for consistency. Maintain contrast ratios.
 
-5. If dark mode tokens exist (in `[data-theme="dark"]` or similar), update those too for consistency. Maintain contrast ratios.
+5. Sync all dependents:
+   - If accent changed: update `--color-accent-rgb`, `DESIGN_SYSTEM.md`, `public/favicon.svg` if accent-colored, playground color swatches in `src/workbench/playground/data/colors.ts`
+   - If font changed: update `src/styles/fonts.css`, `index.html` font imports, `DESIGN_SYSTEM.md`
+   - If bg changed: update `index.html` meta theme-color
 
-6. Run `pnpm dev` and describe the visual result, or suggest the user check it.
+6. Run `pnpm validate`.
 
 ## Rules
 - NEVER break the @theme CSS syntax

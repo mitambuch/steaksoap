@@ -40,9 +40,7 @@ Examples: "a contact form", "user authentication", "a portfolio grid with filter
    - [account creation, API keys, etc. — or "None"]
    ```
 
-4. Present the spec to the user
-5. Ask: "Want me to proceed with this plan?"
-6. ONLY after explicit approval → start implementing
+4. Present the spec, then start implementing
 
 ## Rules
 - NEVER skip the spec and go straight to coding

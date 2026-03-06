@@ -39,12 +39,7 @@ $ARGUMENTS — File path, feature name, or "all recent" to check recent changes.
    - [file:line] Description
    ```
 
-5. **CONFIRM** — Wait for user approval:
-   - Present the plan clearly
-   - Ask: "Which categories should I fix? (all / must only / pick specific items)"
-   - Do NOT proceed without confirmation
-
-6. **APPLY** — Fix approved items:
+5. **APPLY** — Fix all MUST items, then SHOULD items:
    - Apply changes one file at a time
    - Preserve existing behavior
    - Don't introduce new features while refactoring
