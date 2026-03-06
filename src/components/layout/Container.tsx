@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   /** Max width variant. */
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
 }
 
 const sizeStyles: Record<NonNullable<ContainerProps['size']>, string> = {
@@ -11,6 +11,7 @@ const sizeStyles: Record<NonNullable<ContainerProps['size']>, string> = {
   md: 'max-w-4xl',
   lg: 'max-w-5xl',
   xl: 'max-w-7xl',
+  full: 'max-w-350',
 };
 
 /** Centered content container with consistent padding. */

@@ -17,7 +17,7 @@ Also read DESIGN_SYSTEM.md at the project root for the full visual reference.
 ### Style DNA
 - Buttons are capsules (rounded-full), not rectangles
 - Labels use mono micro style: `font-mono text-[10px] uppercase tracking-widest`
-- Accent #FF6B6B is used identically in dark AND light mode
+- Accent #c44040 is used identically in dark AND light mode
 - Prefer lowercase or capitalize for titles — avoid aggressive uppercase
 - Transitions are cinematic: 0.5s for interactions, 1.5s for theme changes
 - Borders are subtle: dark = white/10 feel, light = black/20 feel (via border token)

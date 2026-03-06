@@ -1,9 +1,17 @@
 import { ThemeToggle } from '@components/ui/ThemeToggle';
 import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
+import type { LucideIcon } from 'lucide-react';
 import { Blocks, House } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
+/* ─── Navigation items — edit this array to add/remove links ── */
+
+const NAV_ITEMS: { to: string; label: string; icon: LucideIcon }[] = [
+  { to: ROUTES.HOME, label: 'Home', icon: House },
+  { to: ROUTES.PLAYGROUND, label: 'Playground', icon: Blocks },
+];
 
 /* ─── Scroll-aware hook ──────────────────────────────────── */
 
@@ -29,7 +37,7 @@ function MorphingLogo() {
       aria-label="Home"
     >
       <div
-        className="bg-accent h-6 w-6 shadow-[0_0_12px_rgba(196,64,64,0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-7 md:w-7"
+        className="bg-accent h-6 w-6 shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-7 md:w-7"
         style={{
           animation: 'morph 4s ease-in-out infinite',
           borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
@@ -67,22 +75,17 @@ export const Header = ({ className }: HeaderProps) => {
               : 'border-border/50 bg-surface/30 backdrop-blur-xl',
           )}
         >
-          <Link
-            to={ROUTES.HOME}
-            aria-current={pathname === ROUTES.HOME ? 'page' : undefined}
-            className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
-          >
-            <House size={14} strokeWidth={1.5} />
-            <span className="hidden sm:inline">Home</span>
-          </Link>
-          <Link
-            to={ROUTES.PLAYGROUND}
-            aria-current={pathname === ROUTES.PLAYGROUND ? 'page' : undefined}
-            className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
-          >
-            <Blocks size={14} strokeWidth={1.5} />
-            <span className="hidden sm:inline">Playground</span>
-          </Link>
+          {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
+            <Link
+              key={to}
+              to={to}
+              aria-current={pathname === to ? 'page' : undefined}
+              className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
+            >
+              <Icon size={14} strokeWidth={1.5} />
+              <span className="hidden sm:inline">{label}</span>
+            </Link>
+          ))}
           <div className="px-2 py-1">
             <ThemeToggle className="hover:bg-accent/5 rounded-full p-1.5" />
           </div>

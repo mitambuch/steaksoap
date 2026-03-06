@@ -68,7 +68,7 @@ export const Button = ({ variant = 'primary', size = 'md', isLoading, className,
 
 ## Organization
 - `src/components/ui/` → reusable atoms: Button, Input, Card, Modal, Badge, Skeleton, Avatar, Tooltip, Select, Textarea
-- `src/components/layout/` → structural: Header, Footer, Container, Section, SeoHead
+- `src/components/layout/` → structural: Header, Footer, Container, CursorGlow
 - `src/components/features/` → domain-specific components (user creates these)
 - `src/features/<name>/` → feature modules: component + hook + types + barrel
 

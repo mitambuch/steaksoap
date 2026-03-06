@@ -8,7 +8,7 @@ This file tracks key technical decisions. Read this before any architecture choi
 - **Data fetching**: No library by default. Add TanStack Query via `/install-extension tanstack-query` if needed. Pattern in `.claude/rules/api.md`.
 - **Styling**: Tailwind CSS 4 with @theme tokens. No CSS modules, no CSS-in-JS. classe2 aesthetic by default.
 - **Font**: Space Grotesk (sans), JetBrains Mono (mono). Loaded via Google Fonts.
-- **Accent**: #FF6B6B (coral red) — identical in dark AND light mode. Never changes per-theme.
+- **Accent**: #c44040 (coral red) — identical in dark AND light mode. Never changes per-theme.
 - **Light mode bg**: #B0B0A8 (warm concrete gray) — classe2 aesthetic.
 - **Routing**: React Router 7 with lazy loading. Routes in `src/app/routes/index.tsx`.
 - **Testing**: Vitest + Testing Library + vitest-axe. Tests beside source files.
@@ -17,7 +17,7 @@ This file tracks key technical decisions. Read this before any architecture choi
 
 ## Patch history decisions
 
-- **Accent changed to Coral #FF6B6B**: thematic alignment with project identity.
+- **Accent changed to Coral #c44040**: thematic alignment with project identity.
 - **Light mode bg is warm gray**: not near-white. Matches classe2 aesthetic.
 - **Lucide React as default dep**: every project needs icons, tree-shakable.
 - **Toast/Tabs/Spinner in core**: most commonly needed UI patterns.

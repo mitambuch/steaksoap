@@ -35,7 +35,9 @@
       "@constants/*": ["./src/constants/*"],
       "@styles/*": ["./src/styles/*"],
       "@config/*": ["./src/config/*"],
-      "@features/*": ["./src/features/*"]
+      "@features/*": ["./src/features/*"],
+      "@workbench/*": ["./src/workbench/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   },
   "include": ["src"]
