@@ -15,7 +15,7 @@ paths: ["src/**", "scripts/**", "docs/**", "*.md", "*.json", "*.ts", "*.js"]
 6. **Protected pages**: Never delete `/playground` or `/lab`. Verify after design token changes.
 7. **Reuse Playground components**: Check workbench/ before creating new UI components.
 
-## Task checklist
+## Task checklist — standard (default)
 
 1. `git checkout main && git pull origin main`
 2. `git checkout -b <type>/<short-name>`
@@ -23,11 +23,17 @@ paths: ["src/**", "scripts/**", "docs/**", "*.md", "*.json", "*.ts", "*.js"]
 4. Code — explain important decisions
 5. `pnpm validate` — zero errors
 6. Commit (conventional, atomic)
-7. `git checkout main && git merge --no-ff <branch>`
-8. `git push origin main`
-9. `git branch -d <branch>`
-10. Evaluate if release is warranted (see git.md)
-11. Summarize: what changed, what to test
+7. Summarize: what changed, what to test
+
+**Stop here.** Merge, push, and release only on explicit request.
+
+## Merge & push (on request only)
+
+When the user says "push", "merge", or delivery is clearly requested:
+1. `git checkout main && git merge --no-ff <branch>`
+2. `git push origin main`
+3. `git branch -d <branch>`
+4. Evaluate if release is warranted (see git.md)
 
 ## User profile
 
@@ -58,7 +64,7 @@ PACKAGE: [name] — [what it does]  STATS: [downloads, last updated]  WHY: [reas
 
 | They say | You do |
 |---|---|
-| "add/fix X" | Full workflow: branch → code → validate → commit → merge → push |
+| "add/fix X" | Branch → code → validate → commit (stop). Merge/push only if asked. |
 | "commit" | git add + conventional commit |
 | "push" | git push origin main (or active branch) |
 | "release" | Immediate release with correct type |
