@@ -25,7 +25,7 @@ Object.defineProperty(window, 'matchMedia', {
   }),
 });
 
-// WHY: jsdom doesn't implement IntersectionObserver — useInView and scroll animations need this mock.
+// WHY: jsdom doesn't implement IntersectionObserver — scroll animations and lazy loading need this mock.
 class MockIntersectionObserver {
   observe() {}
   unobserve() {}

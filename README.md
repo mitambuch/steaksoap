@@ -6,7 +6,6 @@ React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm.
 
 23 commands, 4 agents, zero config. A complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![pnpm](https://img.shields.io/badge/pnpm-10-orange)
 
@@ -18,11 +17,10 @@ React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm.
 |---|---|---|
 | **AI workflow** | 23 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
-| **UI components** | 28 accessible components ready to use | Empty src/ |
+| **UI components** | 24 accessible components ready to use | Empty src/ |
 | **Git workflow** | Conventional commits + auto changelog | Manual |
 | **Validation** | Lint + typecheck + test + build in one command | `npm run build` |
 | **Releases** | Automated version bump + changelog + tag | Manual |
-| **Multi-AI** | Claude Code + Cursor + Copilot rules | Single tool or none |
 
 ## Getting Started
 
@@ -48,7 +46,7 @@ This renames the project, configures git, and validates everything.
 pnpm dev
 ```
 
-Open [localhost:5173](http://localhost:5173) — you'll see the showcase landing page.
+Open [localhost:5173](http://localhost:5173).
 
 ### 4. Make it yours
 
@@ -62,7 +60,7 @@ Then type `/init` — Claude will ask about your project and customize colors, f
 
 | URL | What it is |
 |-----|------------|
-| `/` | Landing page (replaced by `pnpm setup`) |
+| `/` | Home page |
 | `/playground` | All UI components with your current design tokens |
 
 ## AI Commands
@@ -83,11 +81,11 @@ Open Claude Code and type these commands:
 |---|---|
 | `/spec "contact form"` | Generate structured spec before coding |
 | `/status` | Git summary + health check + outdated deps |
-| `/deploy` | Build → validate → deploy to Vercel/Netlify |
-| `/release` | Evaluate commits → version bump → changelog → tag |
+| `/deploy` | Build, validate, deploy to Vercel/Netlify |
+| `/release` | Evaluate commits, version bump, changelog, tag |
 | `/update-deps` | Safe dependency updates with validation |
 | `/fix "button doesn't work"` | Systematic bug diagnosis and fix |
-| `/migrate "../old-project"` | Analyze existing project → structured migration plan |
+| `/migrate "../old-project"` | Analyze existing project, structured migration plan |
 
 ### Discovery
 | Command | What it does |
@@ -106,7 +104,7 @@ Open Claude Code and type these commands:
 | `/theme "make it blue"` | Modify design tokens interactively |
 | `/responsive-check` | Verify all breakpoints |
 
-[→ Full command reference](docs/commands.md)
+[Full command reference](docs/commands.md)
 
 ## Stack
 
@@ -124,8 +122,7 @@ Open Claude Code and type these commands:
 ## After Setup
 
 Your project includes:
-- A responsive landing page with Header, Hero, Features, and Footer
-- 28 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Accordion, Switch, Timeline...)
+- 24 accessible UI components (Button, Input, Card, Modal, Toast, Tabs, Accordion, Switch, Timeline...)
 - Dark/light mode toggle
 - SEO head management
 - Error boundaries
@@ -135,30 +132,19 @@ Your project includes:
 
 ```
 src/
-├── app/            ← Routes, providers, layout
+├── app/            — Routes, providers, layout
 ├── components/
-│   ├── ui/         ← Reusable atoms (Button, Input, Card...)
-│   ├── layout/     ← Header, Footer, Container, Section
-│   └── features/   ← Domain-specific components
-├── config/         ← env.ts, site.ts, cloudinary.ts
-├── features/       ← Feature modules (component + hook + types)
-├── hooks/          ← Custom React hooks
-├── pages/          ← Page components
-├── styles/         ← Global styles, @theme tokens
-└── utils/          ← cn(), helpers
+│   ├── ui/         — Reusable atoms (Button, Input, Card...)
+│   ├── layout/     — Header, Footer, Container, CursorGlow
+│   └── features/   — ErrorBoundary, SeoHead
+├── config/         — env.ts, site.ts, cloudinary.ts
+├── features/       — Feature modules (component + hook + types)
+├── hooks/          — Custom React hooks
+├── pages/          — Page components
+├── styles/         — Global styles, @theme tokens
+├── utils/          — cn(), helpers
+└── workbench/      — Playground sections, shared components, data
 ```
-
-## Recipes
-
-Step-by-step guides for common tasks:
-
-- [Add a page](docs/recipes/add-page.md)
-- [Add a component](docs/recipes/add-component.md)
-- [Add a feature](docs/recipes/add-feature.md)
-- [Configure env variables](docs/recipes/env-vars.md)
-- [Add an extension](docs/recipes/add-extension.md)
-- [Deploy](docs/recipes/deploy.md)
-- [Customize the theme](docs/recipes/customize-theme.md)
 
 ## Stay Updated
 
@@ -167,8 +153,6 @@ Pull improvements from the template:
 ```bash
 pnpm setup:update
 ```
-
-This fetches the latest changes from the upstream template and merges them into your project.
 
 ## Scripts
 
@@ -184,8 +168,4 @@ This fetches the latest changes from the upstream template and merges them into 
 
 ## License
 
-MIT — do whatever you want with it.
-
----
-
-MIT -- do whatever you want with it.
+UNLICENSED — private project.
