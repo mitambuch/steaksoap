@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
+import { axe } from 'vitest-axe';
 
 import { Tooltip } from '../Tooltip';
 
@@ -44,5 +45,14 @@ describe('Tooltip', () => {
     );
     await userEvent.hover(screen.getByRole('button'));
     expect(screen.getByRole('tooltip')).toBeInTheDocument();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <Tooltip content="Help text">
+        <button>Hover me</button>
+      </Tooltip>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { axe } from 'vitest-axe';
 
 import { Switch } from '../Switch';
 
@@ -41,5 +42,10 @@ describe('Switch', () => {
     render(<Switch label="Toggle" disabled onChange={onChange} />);
     await user.click(screen.getByRole('switch'));
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Switch label="Dark mode" />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

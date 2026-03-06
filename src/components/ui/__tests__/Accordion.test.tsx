@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
+import { axe } from 'vitest-axe';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../Accordion';
 
@@ -88,5 +89,17 @@ describe('Accordion', () => {
     );
 
     expect(screen.getByRole('button', { name: /first/i })).toHaveAttribute('aria-expanded', 'true');
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(
+      <Accordion>
+        <AccordionItem value="a">
+          <AccordionTrigger>Question</AccordionTrigger>
+          <AccordionContent>Answer</AccordionContent>
+        </AccordionItem>
+      </Accordion>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

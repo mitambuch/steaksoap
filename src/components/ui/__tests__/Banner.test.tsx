@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
+import { axe } from 'vitest-axe';
 
 import { Banner } from '../Banner';
 
@@ -23,5 +24,10 @@ describe('Banner', () => {
     render(<Banner dismissable={false}>Permanent</Banner>);
     expect(screen.getByText('Permanent')).toBeInTheDocument();
     expect(screen.queryByLabelText('Dismiss')).not.toBeInTheDocument();
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Banner>Accessible banner</Banner>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

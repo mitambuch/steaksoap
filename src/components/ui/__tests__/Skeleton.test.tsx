@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
+import { axe } from 'vitest-axe';
 
 import { Skeleton } from '../Skeleton';
 
@@ -33,5 +34,10 @@ describe('Skeleton', () => {
   it('accepts className override', () => {
     const { container } = render(<Skeleton className="w-32" />);
     expect(container.firstChild).toHaveClass('w-32');
+  });
+
+  it('has no accessibility violations', async () => {
+    const { container } = render(<Skeleton />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
