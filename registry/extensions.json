@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "steaksoap curated extension registry",
+  "description": "Curated extension registry",
   "extensions": [
     {
       "id": "three-js",

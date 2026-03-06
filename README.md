@@ -1,27 +1,20 @@
-# steaksoap
+# Project
 
-**The AI-native React system for solo builders.**
+**AI-native React development system.**
 
-You describe it. The AI builds it. 23 commands, 4 agents, zero config.
+React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm.
 
-Not another React boilerplate — a complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
+23 commands, 4 agents, zero config. A complete development system where AI rules, commands, and agents are the product. The React starter is the vehicle.
 
-[![CI](https://github.com/mitambuch/steaksoap/actions/workflows/ci.yml/badge.svg)](https://github.com/mitambuch/steaksoap/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
 ![pnpm](https://img.shields.io/badge/pnpm-10-orange)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/mitambuch/steaksoap&project-name=my-project)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mitambuch/steaksoap)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mitambuch/steaksoap)
-
 ---
 
-## Why steaksoap?
+## Why this project?
 
-There are hundreds of React + Vite + Tailwind starters. Here's what makes this one different:
-
-| | steaksoap | Typical React Starter |
+| | This Project | Typical React Starter |
 |---|---|---|
 | **AI workflow** | 23 slash commands, 4 sub-agents | None or afterthought |
 | **Setup** | One interactive wizard | Clone + manual config |
@@ -36,7 +29,7 @@ There are hundreds of React + Vite + Tailwind starters. Here's what makes this o
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/mitambuch/steaksoap.git my-project
+git clone <repo-url> my-project
 cd my-project
 pnpm install
 ```
@@ -65,23 +58,12 @@ claude
 
 Then type `/init` — Claude will ask about your project and customize colors, fonts, and content.
 
-### 5. Detach from steaksoap (optional)
-
-If you cloned directly (not via "Use this template"), `pnpm setup` already handled
-the git remote. If you need to manually detach:
-
-```bash
-git remote remove template
-```
-
 ### Pages
 
 | URL | What it is |
 |-----|------------|
-| `/` | Showcase landing page (replaced by `pnpm setup`) |
-| `/welcome` | Post-clone setup guide (removed by `pnpm setup`) |
+| `/` | Landing page (replaced by `pnpm setup`) |
 | `/playground` | All UI components with your current design tokens |
-| `/steaksoap` | Original template for reference and inspiration |
 
 ## AI Commands
 
@@ -178,16 +160,6 @@ Step-by-step guides for common tasks:
 - [Deploy](docs/recipes/deploy.md)
 - [Customize the theme](docs/recipes/customize-theme.md)
 
-## Use as Plugin
-
-Already have a project? Install steaksoap as a Claude Code plugin to get all commands, agents, and rules without cloning:
-
-```bash
-claude plugin marketplace add mitambuch/steaksoap
-```
-
-This gives you access to all 23 slash commands and 4 sub-agents in your existing project.
-
 ## Stay Updated
 
 Pull improvements from the template:
@@ -196,7 +168,7 @@ Pull improvements from the template:
 pnpm setup:update
 ```
 
-This fetches the latest changes from the steaksoap template and merges them into your project.
+This fetches the latest changes from the upstream template and merges them into your project.
 
 ## Scripts
 
@@ -220,4 +192,4 @@ MIT — do whatever you want with it.
 
 ---
 
-**Built by [mitambuch](https://github.com/mitambuch)** · [Report a bug](https://github.com/mitambuch/steaksoap/issues) · [Request a feature](https://github.com/mitambuch/steaksoap/issues)
+MIT -- do whatever you want with it.

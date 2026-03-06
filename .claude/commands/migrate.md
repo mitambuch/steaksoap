@@ -1,6 +1,6 @@
 # /migrate
 
-Transform an existing project into a steaksoap-powered project.
+Transform an existing project into a project using this system.
 
 ## Arguments
 $ARGUMENTS — Path to the existing project folder.
@@ -8,7 +8,7 @@ Examples: "../classe2-site", "../client-portfolio", "../old-react-app"
 
 ## Philosophy
 A migration is not a copy-paste. It's a rebirth.
-The old project had soul but no structure. steaksoap adds the structure.
+The old project had soul but no structure. This system adds the structure.
 Your job is to preserve the soul — every design choice, every animation,
 every pixel that makes this project unique — while upgrading everything else.
 
@@ -58,7 +58,7 @@ CURRENT STATE
 
 DESIGN IDENTITY
   ┌─────────────────┬────────────┬──────────────────────┐
-  │ Token           │ Hex        │ Maps to steaksoap    │
+  │ Token           │ Hex        │ Maps to token    │
   ├─────────────────┼────────────┼──────────────────────┤
   │ Acid (accent)   │ #FF6B6B    │ --color-accent ✅    │
   │ Void (dark bg)  │ #0A0A0A    │ --color-bg ✅        │
@@ -130,7 +130,7 @@ Commit: `feat(migrate): map design tokens from [source]`
 Port unique components FIRST. For each one:
 1. Create in `src/features/[name]/`
 2. Convert to TypeScript
-3. Adapt to steaksoap tokens
+3. Adapt to project tokens
 4. Use cn() for className
 5. Add `// WHY:` comments
 6. Add human-readable header
@@ -153,7 +153,7 @@ Commit per component: `feat(migrate): port [Name] from [source]`
 ## Phase 4 — PAGES
 
 For each page (Home first, then by importance):
-1. Create via steaksoap pattern (lazy route + page + constants)
+1. Create via project pattern (lazy route + page + constants)
 2. Port layout from source
 3. Port content
 4. Wire signature components

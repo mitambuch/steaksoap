@@ -6,7 +6,7 @@ paths: ["src/features/**", "src/hooks/**", "src/lib/**"]
 
 ## Default state
 
-steaksoap ships with NO data fetching library. This is intentional.
+This project ships with NO data fetching library. This is intentional.
 Check `.claude/decisions.md` before adding one.
 
 ## Pattern: fetch without a library

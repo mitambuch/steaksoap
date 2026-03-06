@@ -1,6 +1,6 @@
 # AI Sub-agents
 
-steaksoap includes 4 specialized agents in `.claude/agents/`.
+This project includes 4 specialized agents in `.claude/agents/`.
 These are personas that Claude Code can adopt for specific tasks.
 
 ## How to use

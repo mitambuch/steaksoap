@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "description": "steaksoap curated MCP server registry — tools for Claude Code itself",
+  "description": "Curated MCP server registry — tools for Claude Code itself",
   "mcp-servers": [
     {
       "id": "github",

@@ -20,10 +20,12 @@ These rules apply to EVERY task, EVERY message, EVERY action. No exceptions.
 5. **Validate before commit**: `pnpm validate` must pass. Always. No "I'll fix it later."
 6. **Conventional commits**: feat:, fix:, docs:, refactor:, test:, chore:
    Not "update stuff" or "changes". Proper conventional commit messages.
-7. **Protected pages**: NEVER delete `/playground` or `/steaksoap` pages.
-   NEVER remove them from `navItems` in `src/config/site.ts`.
-   `/welcome` is the post-clone setup guide — removed automatically by `pnpm setup`.
+7. **Protected pages**: NEVER delete `/playground`.
    When changing design tokens (colors, fonts), verify `/playground` renders correctly.
+8. **Reuse Playground components**: Before creating any new UI component, check
+   `src/pages/Playground.tsx` for existing implementations. The Playground contains
+   production-ready demos of all UI components (Button, Input, Modal, Accordion, etc.).
+   Import and reuse them — do NOT reinvent from scratch.
 
 If you catch yourself about to skip any of these → STOP → re-read this section.
 
@@ -43,7 +45,7 @@ is this checklist. Not reading the prompt. Not planning. THIS CHECKLIST.
 
 ## User profile
 
-steaksoap is designed for "vibe coders" — people who describe what they want
+This project is designed for "vibe coders" — people who describe what they want
 and let the AI handle implementation details.
 
 Assumptions about the user:
@@ -197,7 +199,7 @@ When in doubt, propose a plan and ask "Want me to go ahead?" — don't ask the u
 
 ## Smart model usage
 
-steaksoap users have limited AI credits. Every token counts.
+Users have limited AI credits. Every token counts.
 Before each task, evaluate complexity and recommend the right tool.
 
 ### Model recommendations

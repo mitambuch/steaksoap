@@ -11,7 +11,7 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-export const THEME_STORAGE_KEY = 'steaksoap-theme';
+export const THEME_STORAGE_KEY = 'app-theme';
 
 /** Detect system preference for dark mode. */
 function getSystemTheme(): Theme {

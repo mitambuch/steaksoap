@@ -1,6 +1,6 @@
 # /init — Project Identity Setup
 
-Transform this steaksoap template into YOUR project.
+Transform this template into YOUR project.
 
 ## When to use
 Run this ONCE after cloning, AFTER `pnpm setup` (which handles the technical setup).
@@ -8,7 +8,6 @@ Run this ONCE after cloning, AFTER `pnpm setup` (which handles the technical set
 
 ## Protected — do NOT touch these during /init
 - `/playground` page → KEEP, it reflects new tokens automatically
-- `/steaksoap` page → KEEP as reference
 - All slash commands in `.claude/commands/`
 - All rules in `.claude/rules/`
 - All agents in `.claude/agents/`
@@ -92,14 +91,13 @@ Update:
 In `index.html`:
 - Update `<title>` tag (line 11)
 - Update `<meta name="description">` (line 12)
-- Update the FOUC script localStorage key: `'steaksoap-theme'` → keep as-is
-  (localStorage keys don't need to match project name, changing breaks existing users)
+- Keep the FOUC script localStorage key as-is (changing it breaks existing users)
 
 ### 2.5 — CLAUDE.md
 
 Rewrite the header and context:
-- Replace `# steaksoap` with `# [project name]`
-- Replace the one-liner "AI-first React starter kit for vibe coders" with user's description
+- Replace `# Project` with `# [project name]`
+- Replace the stack description line with user's description
 - Add in a new "## Project Context" section:
   ```
   This project is a [user's description]. It has a [vibe] aesthetic.
@@ -110,34 +108,28 @@ Rewrite the header and context:
 
 ### 2.6 — README.md
 
-Replace the marketing sections at the top:
-- `# steaksoap` → `# [project name]`
+Replace the header sections at the top:
+- `# Project` → `# [project name]`
 - Update description paragraph
 - Keep ALL technical sections (Stack, Commands, Architecture)
 - Keep the Getting Started section
 
-### 2.7 — Welcome page: `src/pages/Home.tsx`
+### 2.7 — Home page: `src/pages/Home.tsx`
 
 Update text content:
-- "welcome to steaksoap" → "welcome to [project name]"
-- The example prompt in step 03 should reflect the user's actual project
+- Update the welcome message to reflect the project name
+- The example prompt should reflect the user's actual project
 
-### 2.8 — Footer cleanup consideration
+### 2.8 — Footer/Header cleanup consideration
 
-The Footer (`src/components/layout/Footer.tsx`) has hardcoded links:
-- `https://github.com/mitambuch/steaksoap/releases`
-- `https://github.com/mitambuch/steaksoap`
-- `Setup guide` button (dispatches 'open-setup-wizard' event)
+The Footer (`src/components/layout/Footer.tsx`) and Header may have hardcoded links.
 
-ASK the user: "The footer has links to the steaksoap GitHub repo and a setup
-wizard button. Want me to: (a) replace with your repo URL, (b) remove external
-links and keep just the credit, or (c) leave as-is for now?"
-
-Same question for the Header GitHub link (`src/components/layout/Header.tsx` line 108).
+ASK the user: "The footer/header may have external links. Want me to:
+(a) replace with your repo URL, (b) remove external links, or (c) leave as-is for now?"
 
 ### 2.9 — Favicon
 
-ASK: "Want me to keep the steaksoap favicon or would you like to change it later?
+ASK: "Want me to keep the current favicon or would you like to change it later?
 (You can always replace the files in /public/ manually.)"
 
 If they want to change: explain which files to replace:
@@ -152,9 +144,8 @@ pnpm validate
 ```
 
 Open browser and check:
-- `localhost:5173` → Welcome page with new project name
+- `localhost:5173` → Home page with new project name
 - `localhost:5173/playground` → Components with new colors
-- `localhost:5173/steaksoap` → Original showcase (untouched)
 - Toggle dark/light mode → both work with new tokens
 
 ## Step 4 — Summary

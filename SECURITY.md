@@ -15,7 +15,7 @@ If you discover a security vulnerability, please report it responsibly.
 
 **Do NOT open a public issue.**
 
-Use [GitHub's private vulnerability reporting](https://github.com/mitambuch/steaksoap/security/advisories/new).
+Use GitHub's private vulnerability reporting feature for this repository.
 
 ### What to include
 
@@ -32,7 +32,7 @@ Use [GitHub's private vulnerability reporting](https://github.com/mitambuch/stea
 
 ## Scope
 
-steaksoap is a client-side React starter kit. It does not handle:
+This project is a client-side React application. It does not handle:
 
 - Authentication or user data
 - Server-side processing
@@ -45,7 +45,7 @@ The main security surface is:
 - **Build tooling**: Vite dev server (local only, not for production hosting)
 - **Environment variables**: client-side only, no secrets should be in `VITE_*` vars
 
-This policy applies to the steaksoap template repository and its default configuration. Vulnerabilities in user-customized projects derived from steaksoap are the responsibility of the project owner.
+This policy applies to this repository and its default configuration.
 
 ## Best Practices for Users
 

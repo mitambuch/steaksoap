@@ -4,7 +4,7 @@ paths: ["package.json", "src/lib/**", "src/features/**"]
 
 # Extension Discovery Rule
 
-Before installing a new library or integration, check if the steaksoap registry has a curated extension for it.
+Before installing a new library or integration, check if the project registry has a curated extension for it.
 
 ## Process
 
@@ -17,7 +17,7 @@ Before installing a new library or integration, check if the steaksoap registry 
 
 Curated extensions include:
 - Verified package combinations that work together
-- Step-by-step setup instructions aligned with steaksoap conventions
+- Step-by-step setup instructions aligned with project conventions
 - Documentation links for the user
 - Proper environment variable handling
 

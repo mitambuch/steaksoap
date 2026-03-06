@@ -100,12 +100,6 @@ body {
   color: var(--color-fg);
 }
 
-/* a11y: cursor-hidden is showcase-only, removed by pnpm setup */
-.cursor-hidden,
-.cursor-hidden * {
-  cursor: none !important;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -149,47 +143,4 @@ body {
 
 .animate-noise {
   animation: noise 0.35s steps(2) infinite;
-}
-
-/* ─── Electric CTA — violet shimmer for wizard buttons ────── */
-
-.btn-electric {
-  --violet: #a855f7;
-  --violet-glow: rgba(168, 85, 247, 0.4);
-  position: relative;
-  border-color: color-mix(in srgb, var(--violet) 40%, transparent);
-  background: color-mix(in srgb, var(--violet) 8%, transparent);
-  color: var(--violet);
-  overflow: hidden;
-}
-
-/* WHY: Shimmer sweep — subtle light passing through the button */
-.btn-electric::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    color-mix(in srgb, var(--violet) 15%, transparent) 50%,
-    transparent 70%
-  );
-  background-size: 200% 100%;
-  animation: electric-shimmer 3s ease-in-out infinite;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.btn-electric:hover {
-  border-color: color-mix(in srgb, var(--violet) 60%, transparent);
-  background: color-mix(in srgb, var(--violet) 12%, transparent);
-  box-shadow:
-    0 0 20px var(--violet-glow),
-    0 0 40px color-mix(in srgb, var(--violet-glow) 50%, transparent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .btn-electric::before {
-    animation: none;
-  }
 }

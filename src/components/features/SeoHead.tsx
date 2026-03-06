@@ -25,7 +25,8 @@ export function SeoHead({
   noIndex = false,
 }: SeoHeadProps) {
   const { pathname } = useLocation();
-  const fullTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const fullTitle =
+    title && title !== siteConfig.name ? `${title} | ${siteConfig.name}` : siteConfig.name;
   const pageUrl = canonicalUrl ?? `${siteConfig.url}${pathname}`;
   const imageUrl = ogImage?.startsWith('http') ? ogImage : `${siteConfig.url}${ogImage}`;
 

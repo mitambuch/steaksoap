@@ -1,6 +1,6 @@
 # /install-extension
 
-Install a specific extension from the steaksoap registry by ID.
+Install a specific extension from the project registry by ID.
 
 ## Arguments
 $ARGUMENTS — Extension ID (e.g., "zustand", "three-js", "auth-clerk").

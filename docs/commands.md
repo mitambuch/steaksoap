@@ -1,6 +1,6 @@
 # AI Command Reference
 
-Complete list of Claude Code slash commands in steaksoap.
+Complete list of Claude Code slash commands in this project.
 
 ## Scaffolding
 
@@ -102,7 +102,7 @@ You: /migrate "../my-portfolio"
 
 Claude Code:
   1. Scans → reads package.json, file structure, styles
-  2. Compares → maps components to steaksoap equivalents
+  2. Compares → maps components to project equivalents
   3. Generates migration plan:
      - 4 pages to recreate via /new-page
      - 6 components to port to TypeScript + tokens
