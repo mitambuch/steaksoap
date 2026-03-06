@@ -47,6 +47,19 @@ a dark text container — never touch the accent value.
 - Canvas 2D context (`fillStyle`, `strokeStyle`)
 Always use the `--color-accent-rgb` CSS variable, never raw RGB values.
 
+## Token-first
+Never create a local color, typo, spacing, shadow, or radius if a system
+token already covers the need. `src/index.css` `@theme` is the single source.
+Components consume tokens — they never invent values.
+
+## Reuse-first
+Before creating a component, check in this order:
+1. `src/components/ui/` (atoms)
+2. `src/components/layout/` (structure)
+3. `src/workbench/playground/shared/` (visual utilities)
+4. `src/workbench/playground/sections/` (assembled modules)
+If an existing brick covers the need: use it or extend it. Don't recreate.
+
 ## Design token reference
 Check `src/index.css` @theme section for current values. Key tokens:
 - --color-bg: page background

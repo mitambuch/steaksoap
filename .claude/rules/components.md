@@ -118,3 +118,5 @@ These boundaries are automatically enforced — violations block the lint.
 
 If ESLint blocks an import, it means the architecture is wrong.
 Move the logic to the correct layer instead of disabling the rule.
+
+See `styling.md` for reuse-first and token-first rules.
