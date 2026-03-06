@@ -115,8 +115,8 @@ These boundaries are automatically enforced — violations block the lint.
 | `components/ui/` | utils, config, hooks, lib, constants, context | features/, pages/, app/, workbench/ |
 | `features/` | ui/, utils, config, hooks, lib, constants, context | pages/, app/routes/, workbench/ |
 | `pages/` | everything | — |
-| `hooks/` | utils, config, lib, constants, context | — |
-| `workbench/` | ui/, utils, config, hooks, lib, constants, context | pages/, app/, features/ |
+| `hooks/` | utils, config, lib, constants, context | features/, pages/, app/, workbench/ |
+| `workbench/` | ui/, features/, utils, config, hooks, lib, constants, context | pages/, app/ |
 
 If ESLint blocks an import, it means the architecture is wrong.
 Move the logic to the correct layer instead of disabling the rule.

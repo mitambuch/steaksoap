@@ -120,6 +120,52 @@ export default defineConfig([
     },
   },
 
+  // hooks/ are pure logic: no pages, no app, no features, no workbench
+  {
+    files: ['src/hooks/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['@features/*', '@features/**'],
+            message: 'hooks/ must not import from features/. Hooks are consumed by features, not the reverse.',
+          },
+          {
+            group: ['@pages/*', '@pages/**'],
+            message: 'hooks/ must not import from pages/.',
+          },
+          {
+            group: ['@app/*', '@app/**'],
+            message: 'hooks/ must not import from app/.',
+          },
+          {
+            group: ['@workbench/*', '@workbench/**'],
+            message: 'hooks/ must not import from workbench/.',
+          },
+        ],
+      }],
+    },
+  },
+
+  // workbench/ is a dev tool: no pages, no app (features/ allowed — workbench demos them)
+  {
+    files: ['src/workbench/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['@pages/*', '@pages/**'],
+            message: 'workbench/ must not import from pages/.',
+          },
+          {
+            group: ['@app/*', '@app/**'],
+            message: 'workbench/ must not import from app/.',
+          },
+        ],
+      }],
+    },
+  },
+
   // Config files (vite, vitest, etc.) → Node globals
   {
     files: ['*.config.{ts,js}', 'scripts/**/*.{ts,js}'],

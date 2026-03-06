@@ -27,6 +27,7 @@ project/
 │   ├── styles/           → fonts.css, animations.css
 │   ├── test/             → Test setup and utilities
 │   ├── utils/            → cn(), formatters, parsers
+│   ├── lib/              → API services, external integrations (created by /add-api)
 │   └── workbench/        → Playground sections, shared components, data
 └── [configs]             → vite, tsconfig, eslint, prettier, vercel…
 ```
