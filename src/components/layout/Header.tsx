@@ -38,7 +38,7 @@ function MorphingLogo() {
       aria-label="Home"
     >
       <div
-        className="bg-accent h-6 w-6 shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-7 md:w-7"
+        className="bg-accent duration-cinematic h-6 w-6 shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.4)] transition-[transform,box-shadow] ease-in-out md:h-7 md:w-7"
         style={{
           animation: 'morph 4s ease-in-out infinite',
           borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
@@ -70,7 +70,7 @@ export const Header = ({ className }: HeaderProps) => {
         {/* Pill nav */}
         <div
           className={cn(
-            'flex items-center rounded-full border transition-[border-color,background-color] duration-500',
+            'duration-slow flex items-center rounded-full border transition-[border-color,background-color]',
             scrolled
               ? 'border-border bg-surface/60 backdrop-blur-xl'
               : 'border-border/50 bg-surface/30 backdrop-blur-xl',
@@ -81,7 +81,7 @@ export const Header = ({ className }: HeaderProps) => {
               key={to}
               to={to}
               aria-current={pathname === to ? 'page' : undefined}
-              className="text-muted hover:text-accent border-border/50 flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors duration-300"
+              className="text-muted hover:text-accent border-border/50 duration-base flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors"
             >
               <Icon size={14} strokeWidth={1.5} />
               <span className="hidden sm:inline">{label}</span>

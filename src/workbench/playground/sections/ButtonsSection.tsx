@@ -20,7 +20,7 @@ export function ButtonsSection() {
             ).map(([variant, desc]) => (
               <div
                 key={variant}
-                className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color] duration-300"
+                className="border-border/50 hover:border-accent/20 duration-base flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color]"
               >
                 <Button variant={variant}>{variant}</Button>
                 <Copyable text={`variant="${variant}"`} />
@@ -42,14 +42,14 @@ export function ButtonsSection() {
             ).map(([size, classes]) => (
               <div
                 key={size}
-                className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color] duration-300"
+                className="border-border/50 hover:border-accent/20 duration-base flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color]"
               >
                 <Button size={size}>{size}</Button>
                 <Copyable text={`size="${size}"`} />
                 <Copyable text={classes} />
               </div>
             ))}
-            <div className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color] duration-300">
+            <div className="border-border/50 hover:border-accent/20 duration-base flex flex-wrap items-center gap-4 rounded-lg border p-4 transition-[border-color]">
               <Button size="icon" aria-label="icon button">
                 <Plus size={20} strokeWidth={1.5} aria-hidden="true" />
               </Button>

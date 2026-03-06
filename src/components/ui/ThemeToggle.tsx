@@ -25,7 +25,7 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       className={cn(
         'relative inline-flex items-center justify-center rounded-md p-2',
         'text-muted hover:text-accent hover:bg-surface',
-        'transition-colors duration-200',
+        'duration-fast transition-colors',
         'focus-visible:ring-accent focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-offset-2',
         className,
       )}
@@ -34,7 +34,7 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       {/* Sun icon — visible in dark mode (click to switch to light) */}
       <svg
         className={cn(
-          'h-3.5 w-3.5 transition-transform duration-200',
+          'duration-fast h-3.5 w-3.5 transition-transform',
           isDark ? 'scale-100' : 'absolute scale-0',
         )}
         fill="none"
@@ -53,7 +53,7 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       {/* Moon icon — visible in light mode (click to switch to dark) */}
       <svg
         className={cn(
-          'h-3.5 w-3.5 transition-transform duration-200',
+          'duration-fast h-3.5 w-3.5 transition-transform',
           !isDark ? 'scale-100' : 'absolute scale-0',
         )}
         fill="none"

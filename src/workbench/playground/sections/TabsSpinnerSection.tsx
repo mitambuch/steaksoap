@@ -39,7 +39,7 @@ export function TabsSpinnerSection() {
           {(['sm', 'md', 'lg'] as const).map(size => (
             <div
               key={size}
-              className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-4 py-3 transition-[border-color] duration-300"
+              className="border-border/50 hover:border-accent/20 duration-base flex items-center gap-3 rounded-lg border px-4 py-3 transition-[border-color]"
             >
               <Spinner size={size} />
               <Copyable text={`size="${size}"`} />

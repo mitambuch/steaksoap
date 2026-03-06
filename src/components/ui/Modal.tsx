@@ -87,7 +87,7 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
     <div className="fixed inset-0 z-200 flex items-center justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
+        className="duration-base absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -100,7 +100,7 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
         aria-labelledby={title ? titleId : undefined}
         className={cn(
           'border-border bg-bg/95 relative z-10 w-full max-w-lg rounded-lg border p-6 backdrop-blur-md',
-          'shadow-lg transition-[transform,opacity] duration-300',
+          'duration-base shadow-lg transition-[transform,opacity]',
           className,
         )}
       >
@@ -113,7 +113,7 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
             <button
               onClick={onClose}
               aria-label="Close"
-              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1 transition-colors duration-300 focus-visible:ring-2"
+              className="text-muted hover:text-fg focus-visible:ring-accent duration-base rounded-md p-1 transition-colors focus-visible:ring-2"
             >
               <X size={18} strokeWidth={1.5} aria-hidden="true" />
             </button>
@@ -126,7 +126,7 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
             <button
               onClick={onClose}
               aria-label="Close"
-              className="text-muted hover:text-fg focus-visible:ring-accent rounded-md p-1 transition-colors duration-300 focus-visible:ring-2"
+              className="text-muted hover:text-fg focus-visible:ring-accent duration-base rounded-md p-1 transition-colors focus-visible:ring-2"
             >
               <X size={18} strokeWidth={1.5} aria-hidden="true" />
             </button>

@@ -49,7 +49,7 @@ export const Button = ({
       disabled={disabled || isLoading}
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-full font-medium',
-        'transition-[color,background-color,border-color,box-shadow,opacity,filter,transform] duration-300',
+        'duration-base transition-[color,background-color,border-color,box-shadow,opacity,filter,transform]',
         'focus-visible:ring-accent focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-offset-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
         variantStyles[variant],

@@ -132,7 +132,7 @@ export const Select = ({
           disabled={disabled}
           className={cn(
             'bg-surface/80 text-fg w-full rounded-lg border px-3 py-2 pr-8 text-left backdrop-blur-sm',
-            'transition-[border-color,box-shadow] duration-300',
+            'duration-base transition-[border-color,box-shadow]',
             'focus:ring-1 focus:outline-none',
             'disabled:cursor-not-allowed disabled:opacity-50',
             error
@@ -152,7 +152,7 @@ export const Select = ({
         {/* Chevron */}
         <svg
           className={cn(
-            'text-muted pointer-events-none absolute top-1/2 right-2.5 h-4 w-4 -translate-y-1/2 transition-transform duration-200',
+            'text-muted duration-fast pointer-events-none absolute top-1/2 right-2.5 h-4 w-4 -translate-y-1/2 transition-transform',
             open && 'rotate-180',
           )}
           viewBox="0 0 20 20"
@@ -173,7 +173,7 @@ export const Select = ({
           aria-labelledby={`${id}-label`}
           className={cn(
             'bg-surface border-border absolute top-full left-0 z-50 mt-1 w-full overflow-hidden rounded-lg border shadow-lg backdrop-blur-xl',
-            'transition-[transform,opacity] duration-200',
+            'duration-fast transition-[transform,opacity]',
             open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-1 opacity-0',
           )}
         >
@@ -193,7 +193,7 @@ export const Select = ({
               role="option"
               aria-selected={opt.value === selected}
               className={cn(
-                'cursor-pointer px-3 py-2 text-sm transition-colors duration-150',
+                'duration-fast cursor-pointer px-3 py-2 text-sm transition-colors',
                 opt.value === selected
                   ? 'bg-accent text-bg'
                   : highlighted === i

@@ -39,7 +39,7 @@ export const Switch = ({
         onClick={() => onChange?.(!checked)}
         className={cn(
           'relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full',
-          'transition-colors duration-200',
+          'duration-fast transition-colors',
           'focus-visible:ring-accent focus-visible:ring-2 focus-visible:ring-offset-2',
           'disabled:cursor-not-allowed disabled:opacity-50',
           checked ? 'bg-accent' : 'bg-border',
@@ -48,7 +48,7 @@ export const Switch = ({
         <span
           className={cn(
             'bg-fg pointer-events-none inline-block h-4 w-4 rounded-full shadow-sm',
-            'transition-transform duration-200',
+            'duration-fast transition-transform',
             checked ? 'translate-x-6' : 'translate-x-1',
           )}
           aria-hidden="true"

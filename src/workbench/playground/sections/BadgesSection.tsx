@@ -18,7 +18,7 @@ export function BadgesSection() {
         ).map(([variant, classes]) => (
           <div
             key={variant}
-            className="border-border/50 hover:border-accent/20 flex flex-wrap items-center gap-4 rounded-lg border p-3 transition-[border-color] duration-300"
+            className="border-border/50 hover:border-accent/20 duration-base flex flex-wrap items-center gap-4 rounded-lg border p-3 transition-[border-color]"
           >
             <Badge variant={variant}>{variant}</Badge>
             <Copyable text={`variant="${variant}"`} />

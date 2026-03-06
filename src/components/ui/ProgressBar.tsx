@@ -55,7 +55,7 @@ export const ProgressBar = ({
       >
         <div
           className={cn(
-            'h-full rounded-full transition-[width] duration-500 ease-out',
+            'duration-slow h-full rounded-full transition-[width] ease-out',
             variantColors[variant],
           )}
           style={{ width: `${clamped}%` }}

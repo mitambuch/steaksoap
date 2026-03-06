@@ -36,7 +36,7 @@ export function IconsSection() {
             ].map(({ size, label }) => (
               <div
                 key={size}
-                className="border-border/50 hover:border-accent/20 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300"
+                className="border-border/50 hover:border-accent/20 duration-base flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color]"
               >
                 <Zap size={size} strokeWidth={1.5} />
                 <Copyable text={`size={${size}}`} />
@@ -49,15 +49,15 @@ export function IconsSection() {
         <div>
           <SubLabel>stroke weight</SubLabel>
           <div className="flex flex-wrap gap-3">
-            <div className="border-border/50 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
+            <div className="border-border/50 duration-base flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color]">
               <Heart size={20} strokeWidth={2} />
               <span className="text-muted font-mono text-[10px]">2 default</span>
             </div>
-            <div className="border-accent/30 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
+            <div className="border-accent/30 duration-base flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color]">
               <Heart size={20} strokeWidth={1.5} className="text-accent" />
               <span className="text-accent font-mono text-[10px]">1.5 classe2</span>
             </div>
-            <div className="border-border/50 flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color] duration-300">
+            <div className="border-border/50 duration-base flex items-center gap-3 rounded-lg border px-3 py-2 transition-[border-color]">
               <Heart size={20} strokeWidth={1} />
               <span className="text-muted font-mono text-[10px]">1 thin</span>
             </div>

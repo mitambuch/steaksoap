@@ -24,13 +24,20 @@ export const PATHS = {
   indexCSS: resolve(root, 'src/index.css'),
 };
 
+// MUST stay in sync with vite.config.ts resolve.alias and tsconfig.json paths
 export const ALIASES = {
+  '@': 'src',
+  '@app': 'src/app',
   '@components': 'src/components',
   '@hooks': 'src/hooks',
   '@pages': 'src/pages',
+  '@context': 'src/context',
+  '@data': 'src/data',
   '@utils': 'src/utils',
+  '@constants': 'src/constants',
+  '@styles': 'src/styles',
   '@config': 'src/config',
   '@features': 'src/features',
-  '@constants': 'src/constants',
-  '@context': 'src/context',
+  '@workbench': 'src/workbench',
+  '@lib': 'src/lib',
 };

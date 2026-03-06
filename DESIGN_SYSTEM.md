@@ -1,5 +1,8 @@
 # DESIGN SYSTEM
 
+> **Single source of truth: `src/index.css`** — this document is a human-readable summary.
+> All tokens below are defined in the `@theme` block. Change them there, they propagate everywhere.
+
 ## Palette
 
 | Name       | Token       | Dark Mode | Light Mode | Usage                          |
@@ -15,6 +18,17 @@
 | **Danger** | `danger`    | #DC2626   | #B91C1C    | Errors, destructive actions    |
 | **Info**   | `info`      | #52B0FF   | #1E88E5    | Informational, links           |
 | **On-Accent** | `on-accent` | #0A0A0A | #0A0A0A  | Text on accent backgrounds     |
+
+## Durations
+
+| Token          | Value  | Tailwind class       | Usage                       |
+|----------------|--------|----------------------|-----------------------------|
+| `duration-fast`| 150ms  | `duration-fast`      | Micro-interactions, toggles |
+| `duration-base`| 300ms  | `duration-base`      | Standard transitions        |
+| `duration-slow`| 500ms  | `duration-slow`      | Cards, emphasis             |
+| `duration-cinematic`| 700ms | `duration-cinematic` | Hero elements, dramatic |
+
+Theme switch uses a dedicated 1.5s transition (`.transition-theme` class).
 
 ## Typography
 
@@ -33,7 +47,7 @@ Font family: **Space Grotesk** (sans), **JetBrains Mono** (mono).
 
 - **Buttons**: Capsule shape (`rounded-full`), backdrop-blur on secondary
 - **Tags**: Compact (`rounded-sm`), accent bg for role, outline for skill
-- **Cards**: Subtle border, `duration-500` transitions, optional `hover:scale-[1.02]`
+- **Cards**: Subtle border, `duration-slow` transitions, optional `hover:scale-[1.02]`
 - **Borders**: `border-white/10` feel in dark, `border-black/20` feel in light (via tokens)
 
 ## Icons
@@ -59,5 +73,5 @@ Rules:
 
 - Accent `#c44040` is the SAME in dark and light mode
 - No uppercase on main titles — lowercase or capitalize only
-- Transitions are slow and cinematic (0.5s interactions, 1.5s theme switch)
+- Use duration tokens (`duration-base`, `duration-slow`), never raw values (`duration-300`)
 - Labels and micro text always mono, uppercase, wide tracking

@@ -111,7 +111,7 @@ export function AccordionTrigger({ children, className }: AccordionTriggerProps)
       aria-controls={contentId}
       className={cn(
         'text-fg flex w-full items-center justify-between py-4 text-left text-sm font-medium',
-        'transition-colors duration-200',
+        'duration-fast transition-colors',
         'hover:text-accent',
         'focus-visible:ring-accent focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
         className,
@@ -122,7 +122,7 @@ export function AccordionTrigger({ children, className }: AccordionTriggerProps)
         size={16}
         strokeWidth={1.5}
         className={cn(
-          'text-muted shrink-0 transition-transform duration-300',
+          'text-muted duration-base shrink-0 transition-transform',
           isOpen && 'rotate-180',
         )}
         aria-hidden="true"
@@ -151,7 +151,7 @@ export function AccordionContent({ children, className }: AccordionContentProps)
       id={contentId}
       role="region"
       className={cn(
-        'grid transition-[grid-template-rows,opacity] duration-300 ease-out',
+        'duration-base grid transition-[grid-template-rows,opacity] ease-out',
         isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
       )}
     >

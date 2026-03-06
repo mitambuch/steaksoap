@@ -13,7 +13,7 @@ export function PricingSection() {
           <div
             key={plan.name}
             className={cn(
-              'border-border relative flex flex-col rounded-lg border p-6 transition-[border-color,background-color,box-shadow] duration-300',
+              'border-border duration-base relative flex flex-col rounded-lg border p-6 transition-[border-color,background-color,box-shadow]',
               plan.highlighted
                 ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_rgba(var(--color-accent-rgb),0.05)]'
                 : 'hover:border-accent/15 bg-transparent',

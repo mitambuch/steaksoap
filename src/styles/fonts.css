@@ -1,36 +1,40 @@
 /* ═══════════════════════════════════════════════════════════════
-   FONTS — local font declarations (currently placeholder)
+   FONTS — Single source of truth for font loading.
+   Change fonts HERE → index.css @theme picks them up → done.
 
-   This file is a template for self-hosted fonts.
-   By default, the project loads fonts from Google Fonts in index.html.
-   If you want to self-host fonts for better privacy/performance:
-   1. Download .woff2 files into /public/fonts/
-   2. Uncomment and adapt the @font-face declarations below
-   3. Remove the Google Fonts <link> from index.html
-   ═══════════════════════════════════════════════════════════════
+   Currently: Google Fonts (remote).
+   To self-host: replace @import with @font-face below.
+   ═══════════════════════════════════════════════════════════════ */
 
-   Naming convention:
-   - Regular   → YourFont-Regular.woff2
-   - Medium    → YourFont-Medium.woff2
-   - Bold      → YourFont-Bold.woff2
-   - Italic    → YourFont-Italic.woff2
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
 
-   Duplicate this template for each weight:
-*/
-
+/* ─── Self-hosted alternative (uncomment + remove @import above) ── */
 /*
 @font-face {
-  font-family: 'YourFont';
-  src: url('/fonts/YourFont-Regular.woff2') format('woff2');
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
-  font-family: 'YourFont';
-  src: url('/fonts/YourFont-Bold.woff2') format('woff2');
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/SpaceGrotesk-Bold.woff2') format('woff2');
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }

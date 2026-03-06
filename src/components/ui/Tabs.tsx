@@ -128,7 +128,7 @@ export function TabsTrigger({ value, children, className }: TabsTriggerProps) {
       id={`tab-${value}`}
       tabIndex={isActive ? 0 : -1}
       className={cn(
-        'relative px-4 py-2 font-mono text-[10px] tracking-widest uppercase transition-colors duration-300',
+        'duration-base relative px-4 py-2 font-mono text-[10px] tracking-widest uppercase transition-colors',
         isActive ? 'text-accent' : 'text-muted hover:text-fg',
         className,
       )}
@@ -136,7 +136,7 @@ export function TabsTrigger({ value, children, className }: TabsTriggerProps) {
     >
       {children}
       {isActive && (
-        <span className="bg-accent absolute right-0 bottom-0 left-0 h-0.5 transition-[width,left,right] duration-300" />
+        <span className="bg-accent duration-base absolute right-0 bottom-0 left-0 h-0.5 transition-[width,left,right]" />
       )}
     </button>
   );

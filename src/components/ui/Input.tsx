@@ -29,7 +29,7 @@ export const Input = ({ label, error, helperText, className, ...rest }: InputPro
         id={id}
         className={cn(
           'bg-surface/80 text-fg rounded-lg border px-3 py-2 backdrop-blur-sm',
-          'transition-[border-color,box-shadow] duration-300',
+          'duration-base transition-[border-color,box-shadow]',
           'placeholder:text-muted/60',
           'focus:ring-1 focus:outline-none',
           error

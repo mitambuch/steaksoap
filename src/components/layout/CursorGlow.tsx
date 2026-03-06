@@ -54,7 +54,7 @@ export const CursorGlow = ({ enabled }: CursorGlowProps) => {
       {/* Large diffuse glow — subtle */}
       <div
         ref={glowRef}
-        className="pointer-events-none fixed top-0 left-0 z-9990"
+        className="pointer-events-none fixed top-0 left-0 z-(--z-cursor)"
         style={{
           transform: 'translate3d(-200px, -200px, 0)',
           transition: 'transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1)',
@@ -74,7 +74,7 @@ export const CursorGlow = ({ enabled }: CursorGlowProps) => {
       {/* Small accent dot */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-10000 flex items-center justify-center"
+        className="pointer-events-none fixed top-0 left-0 z-[calc(var(--z-cursor)+1)] flex items-center justify-center"
         style={{
           transform: 'translate(-200px, -200px) translate(-50%, -50%)',
           transition: 'transform 75ms ease-out',

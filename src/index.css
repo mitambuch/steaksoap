@@ -69,6 +69,12 @@ html {
 :root {
   --color-accent-rgb: 196, 64, 64;
 
+  /* Duration tokens — change here, propagates via @utility below */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --duration-cinematic: 700ms;
+
   --transition-fast: 150ms ease;
   --transition-base: 300ms ease;
   --transition-slow: 600ms ease;
@@ -125,6 +131,24 @@ body {
 
 @utility animate-blink {
   animation: blink 1s step-end infinite;
+}
+
+/* ─── Duration utilities — Tailwind 4 doesn't auto-generate from :root ── */
+@utility duration-fast {
+  --tw-duration: var(--duration-fast);
+  transition-duration: var(--duration-fast);
+}
+@utility duration-base {
+  --tw-duration: var(--duration-base);
+  transition-duration: var(--duration-base);
+}
+@utility duration-slow {
+  --tw-duration: var(--duration-slow);
+  transition-duration: var(--duration-slow);
+}
+@utility duration-cinematic {
+  --tw-duration: var(--duration-cinematic);
+  transition-duration: var(--duration-cinematic);
 }
 
 /* ─── Film grain ──────────────────────────────────────────── */
