@@ -6,7 +6,7 @@
    Works on Windows, macOS, and Linux.
 
    Usage :
-     node scripts/release.js          → interactive release
+     node scripts/release.js          → release (auto-detects bump type, non-interactive)
      node scripts/release.js patch    → force patch bump
      node scripts/release.js minor    → force minor bump
      node scripts/release.js major    → force major bump

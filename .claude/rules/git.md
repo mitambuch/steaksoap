@@ -35,7 +35,7 @@ Rules:
 ## Timing
 - Branch: before any modification
 - Commit: as soon as a logical change is done and working
-- Push: after every session or completed task
+- Push: only on explicit request (see workflow.md)
 - Merge: when branch is done + `pnpm validate` passes. Always `--no-ff`
 
 ## Release workflow — BATCH RELEASES

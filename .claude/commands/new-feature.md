@@ -7,13 +7,15 @@ $ARGUMENTS — Feature name in PascalCase. Examples: "UserProfile", "ShoppingCar
 
 ## Steps
 
-1. Derive names:
+1. **Reuse check**: Search `src/features/`, `src/components/`, `src/hooks/` for existing modules that overlap with the request. Propose extending or composing before creating from scratch.
+
+2. Derive names:
    - Folder: src/features/<kebab-case>/ (e.g., src/features/user-profile/)
    - Component: $ARGUMENTS (PascalCase)
    - Hook: use$ARGUMENTS
    - Types file: $ARGUMENTS.types.ts
 
-2. Create `src/features/<kebab-case>/$ARGUMENTS.types.ts`:
+3. Create `src/features/<kebab-case>/$ARGUMENTS.types.ts`:
 ```tsx
 /** Data model for the $ARGUMENTS feature. */
 export interface $ARGUMENTSData {
@@ -27,7 +29,7 @@ export interface $ARGUMENTSProps {
 }
 ```
 
-3. Create `src/features/<kebab-case>/use$ARGUMENTS.ts`:
+4. Create `src/features/<kebab-case>/use$ARGUMENTS.ts`:
 ```tsx
 import { useState } from 'react';
 
@@ -42,7 +44,7 @@ export const use$ARGUMENTS = () => {
 };
 ```
 
-4. Create `src/features/<kebab-case>/$ARGUMENTS.tsx`:
+5. Create `src/features/<kebab-case>/$ARGUMENTS.tsx`:
 ```tsx
 import { cn } from '@utils/cn';
 
@@ -64,14 +66,14 @@ export const $ARGUMENTS = ({ className }: $ARGUMENTSProps) => {
 };
 ```
 
-5. Create `src/features/<kebab-case>/index.ts`:
+6. Create `src/features/<kebab-case>/index.ts`:
 ```tsx
 export { $ARGUMENTS } from './$ARGUMENTS';
 export { use$ARGUMENTS } from './use$ARGUMENTS';
 export type { $ARGUMENTSData, $ARGUMENTSProps } from './$ARGUMENTS.types';
 ```
 
-6. Create `src/features/<kebab-case>/__tests__/$ARGUMENTS.test.tsx`:
+7. Create `src/features/<kebab-case>/__tests__/$ARGUMENTS.test.tsx`:
 ```tsx
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
@@ -86,7 +88,7 @@ describe('$ARGUMENTS', () => {
 });
 ```
 
-7. Run `pnpm validate`.
+8. Run `pnpm validate`.
 
 ## Validation
 - [ ] Feature folder created with 5 files + test
