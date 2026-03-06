@@ -67,9 +67,15 @@ NO, accumulate:
 
 ### Running a release
 ```bash
-GITHUB_TOKEN=$(gh auth token) npx release-it <type> --ci
+node scripts/release.js <type> "Descriptive Title"
 ```
-Or use: `pnpm release`, `pnpm release:patch`, `pnpm release:minor`, `pnpm release:major`
+Examples:
+- `node scripts/release.js patch "Cockpit Hardening & Quality Polish"`
+- `node scripts/release.js minor "Lab Page & Lint Boundaries"`
+- `node scripts/release.js "Audit Fixes & Reuse-First"` (auto-detect bump)
+
+**The title is mandatory.** It must describe what the release contains, not the version number.
+Good: "Performance & Quality Polish" — Bad: "v4.1.0", "release", "update"
 
 ### CHANGELOG rules
 - The `.release-it.json` defines which commit types appear in the CHANGELOG

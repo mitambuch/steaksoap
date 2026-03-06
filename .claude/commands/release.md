@@ -26,12 +26,22 @@ Evaluate pending changes and create a versioned release.
    - Changelog preview (list of commits grouped by type)
    - Ask for confirmation
 
-5. If confirmed, execute: `pnpm release` (runs release-it)
-   - This handles: version bump, CHANGELOG.md update, git tag, GitHub release
+5. Draft a descriptive release title (mandatory):
+   - Summarize the key changes in 3-6 words
+   - Good: "Cockpit Hardening & Reuse-First Generators"
+   - Bad: "v4.1.0", "release", "various fixes"
+   - Present the title to the user for approval
 
-6. Report: new version number, changelog URL, git tag name.
+6. If confirmed, execute:
+   ```bash
+   node scripts/release.js <type> "<Title>"
+   ```
+   This handles: version bump, CHANGELOG.md update, git tag, GitHub release with descriptive name.
+
+7. Report: new version number, release title, changelog URL, git tag name.
 
 ## Notes
 - Never release if validate fails
 - Batch changes — don't release after every commit
-- If user wants to force a specific version: `pnpm release:patch`, `pnpm release:minor`, `pnpm release:major`
+- The release title is **required** — the script will refuse to run without one
+- To force a specific version: `node scripts/release.js patch "Title"`, `minor`, or `major`
