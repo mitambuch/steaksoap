@@ -31,7 +31,7 @@ Run this ONCE after cloning, AFTER `pnpm setup` (which handles the technical set
    → Used in: font suggestions, spacing decisions, animation choices
 
 5. **Accent color**
-   "Pick an accent color. Hex code, color name, or 'keep current' (#ff6b6b)."
+   "Pick an accent color. Hex code, color name, or 'keep current' (#c44040)."
    → If the user gives a name like "blue" or "warm orange", pick an appropriate hex.
    → Show the chosen color and ask confirmation.
    → MUST check contrast ratio against both dark bg (#0a0a0a) and light bg (#b0b0a8).

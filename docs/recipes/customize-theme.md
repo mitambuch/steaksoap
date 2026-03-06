@@ -17,7 +17,7 @@
   /* Dark mode — DEFAULT (classe2 "brutaliste suisse") */
   --color-bg: #0a0a0a;
   --color-fg: #f0f0f0;
-  --color-accent: #ff6b6b;
+  --color-accent: #c44040;
   --color-muted: #8a8a8a;
   --color-surface: #141414;
   --color-border: #262626;
@@ -36,7 +36,7 @@ And the light mode override right below:
 [data-theme='light'] {
   --color-bg: #b0b0a8;
   --color-fg: #1a1a1a;
-  --color-accent: #ff6b6b;
+  --color-accent: #c44040;
   --color-muted: #4a4a44;
   --color-surface: #a4a49c;
   --color-border: #96968e;

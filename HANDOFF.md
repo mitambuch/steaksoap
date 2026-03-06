@@ -38,7 +38,7 @@ Change a value there and it updates everywhere automatically.
 
 ```css
 @theme {
-  --color-accent: #ff6b6b;  /* ← change this to change all accent colors */
+  --color-accent: #c44040;  /* ← change this to change all accent colors */
   --color-bg: #0a0a0a;      /* ← page background */
   --font-family-sans: 'Space Grotesk', system-ui, sans-serif;
 }
