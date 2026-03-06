@@ -166,11 +166,12 @@ export const Select = ({
           />
         </svg>
 
-        {/* Dropdown listbox */}
+        {/* Dropdown listbox — aria-hidden when closed so screen readers skip it */}
         <ul
           id={`${id}-listbox`}
           role="listbox"
           aria-labelledby={`${id}-label`}
+          aria-hidden={!open}
           className={cn(
             'bg-surface border-border absolute top-full left-0 z-50 mt-1 w-full overflow-hidden rounded-lg border shadow-lg backdrop-blur-xl',
             'duration-fast transition-[transform,opacity]',

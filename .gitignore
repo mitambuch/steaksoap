@@ -40,6 +40,9 @@ playwright-report/
 # Lighthouse CI
 .lighthouseci/
 
+# Bundle analysis
+stats.html
+
 # Crypto keys (never commit)
 *.pem
 *.key

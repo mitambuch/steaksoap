@@ -11,7 +11,7 @@
 
   "github": {
     "release": true,
-    "releaseName": "v${version} — RENAME ME",
+    "releaseName": "v${version}",
     "draft": false,
     "preRelease": false,
     "tokenRef": "GITHUB_TOKEN"

@@ -17,7 +17,11 @@ function ToastTrigger({
   message?: string;
 }) {
   const { toast } = useToast();
-  return <button onClick={() => toast({ variant, title, message })}>trigger</button>;
+  return (
+    <button onClick={() => toast({ variant, ...(title !== undefined && { title }), message })}>
+      trigger
+    </button>
+  );
 }
 
 describe('Toast', () => {

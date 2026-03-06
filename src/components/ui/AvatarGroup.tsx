@@ -11,7 +11,7 @@ import { cn } from '@utils/cn';
 import { Avatar } from './Avatar';
 
 interface AvatarGroupProps {
-  avatars: { src?: string; alt: string; fallback?: string }[];
+  avatars: { src?: string | undefined; alt: string; fallback?: string | undefined }[];
   max?: number;
   size?: 'sm' | 'md' | 'lg';
   className?: string;

@@ -150,6 +150,7 @@ export function AccordionContent({ children, className }: AccordionContentProps)
     <div
       id={contentId}
       role="region"
+      aria-hidden={!isOpen}
       className={cn(
         'duration-base grid transition-[grid-template-rows,opacity] ease-out',
         isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',

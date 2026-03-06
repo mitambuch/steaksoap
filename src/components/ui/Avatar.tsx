@@ -10,9 +10,9 @@ import { cn } from '@utils/cn';
 import { useState } from 'react';
 
 interface AvatarProps {
-  src?: string;
+  src?: string | undefined;
   alt: string;
-  fallback?: string;
+  fallback?: string | undefined;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }

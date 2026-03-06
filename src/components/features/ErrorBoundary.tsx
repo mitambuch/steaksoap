@@ -10,7 +10,7 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error?: Error;
+  error?: Error | undefined;
 }
 
 /**

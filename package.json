@@ -4,7 +4,7 @@
   "type": "module",
   "description": "React 19 + TypeScript + Vite 7 + Tailwind CSS 4",
   "author": "mitambuch",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -29,6 +29,7 @@
     "release:patch": "node scripts/release.js patch",
     "release:minor": "node scripts/release.js minor",
     "release:major": "node scripts/release.js major",
+    "analyze": "ANALYZE=true vite build",
     "audit:ci": "pnpm audit --prod --audit-level=high",
     "doctor": "node scripts/doctor.js",
     "done": "node scripts/done.js"
@@ -72,6 +73,7 @@
     "prettier": "^3.5.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "release-it": "^19.2.4",
+    "rollup-plugin-visualizer": "^7.0.1",
     "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3",
     "vite": "^7.2.4",

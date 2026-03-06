@@ -7,8 +7,14 @@
 // ═══════════════════════════════════════════════════
 
 import { cn } from '@utils/cn';
-import type { ReactNode } from 'react';
-import { useId, useState } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+  useId,
+  useState,
+} from 'react';
 
 interface TooltipProps {
   content: string;
@@ -29,6 +35,14 @@ export const Tooltip = ({ content, children, position = 'top', className }: Tool
   const [isVisible, setIsVisible] = useState(false);
   const tooltipId = useId();
 
+  // WHY: aria-describedby must be on the interactive element, not a wrapper div.
+  // cloneElement injects the attribute directly onto the child (e.g. <button>).
+  const child = isValidElement(children)
+    ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+        'aria-describedby': isVisible ? tooltipId : undefined,
+      })
+    : children;
+
   return (
     <div
       className="relative inline-block"
@@ -37,7 +51,7 @@ export const Tooltip = ({ content, children, position = 'top', className }: Tool
       onFocus={() => setIsVisible(true)}
       onBlur={() => setIsVisible(false)}
     >
-      <div aria-describedby={isVisible ? tooltipId : undefined}>{children}</div>
+      {child}
       {isVisible && (
         <div
           id={tooltipId}

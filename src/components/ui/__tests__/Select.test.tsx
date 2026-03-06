@@ -18,15 +18,25 @@ describe('Select', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
-  it('renders all options in listbox', () => {
+  it('renders all options in listbox when open', async () => {
+    const user = userEvent.setup();
     render(<Select label="Language" options={options} />);
+    await user.click(screen.getByRole('button'));
     expect(screen.getByRole('option', { name: 'French' })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'English' })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'German' })).toBeInTheDocument();
   });
 
-  it('shows placeholder when provided', () => {
+  it('hides listbox from screen readers when closed', () => {
+    render(<Select label="Language" options={options} />);
+    expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('option')).not.toBeInTheDocument();
+  });
+
+  it('shows placeholder when provided', async () => {
+    const user = userEvent.setup();
     render(<Select label="Language" options={options} placeholder="Pick one" />);
+    await user.click(screen.getByRole('button'));
     const placeholderOpt = screen.getByRole('option', { name: 'Pick one' });
     expect(placeholderOpt).toHaveAttribute('aria-disabled', 'true');
   });
