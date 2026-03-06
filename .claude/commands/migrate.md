@@ -113,15 +113,14 @@ ESTIMATED EFFORT
   Time:        3-5 hours with AI assistance
 ```
 
-Ask: "Ready to start? I'll go step by step, you validate each one."
+Present the diagnostic, then proceed in batch mode.
 
 ## Phase 2 — TOKEN MAPPING (5 minutes)
 
 1. Update `src/index.css` @theme with extracted colors
 2. Update font imports if different
-3. Run dev server
-4. Ask: "Check the Playground — colors and fonts match?"
-5. WAIT for confirmation
+3. Run dev server and verify Playground renders correctly
+4. `pnpm validate`
 
 Commit: `feat(migrate): map design tokens from [source]`
 
@@ -136,8 +135,7 @@ Port unique components FIRST. For each one:
 6. Add human-readable header
 7. **Create mobile variant if needed** (see diagnostic)
 8. Write test
-9. Show user: "Here's your [component]. Same as before?"
-10. WAIT for confirmation
+9. `pnpm validate`
 
 ### Mobile variant rules for signature components
 Every signature component MUST have a mobile strategy:
@@ -159,8 +157,7 @@ For each page (Home first, then by importance):
 4. Wire signature components
 5. **Verify mobile layout independently** — not just "does it shrink",
    but "does it WORK as a mobile experience"
-6. Show user: "Here's [page]. Compare with original."
-7. WAIT for confirmation
+6. `pnpm validate`
 
 Commit per page: `feat(migrate): recreate [PageName]`
 

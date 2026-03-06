@@ -66,5 +66,8 @@ See `.claude/rules/workflow.md`. Batch mode is default — execute without askin
 `/playground` and `/lab` — NEVER delete, NEVER remove from nav.
 Verify after design token changes.
 
+- `/playground` = structured design system showcase (all tokens, all components)
+- `/lab` = free-form experimentation sandbox (prototypes, ideas, tests)
+
 ## Detailed Rules
 See .claude/rules/ — loaded automatically based on task type.

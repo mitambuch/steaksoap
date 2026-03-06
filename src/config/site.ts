@@ -1,7 +1,8 @@
 /* ═══════════════════════════════════════════════════════════════
-   SITE CONFIG — centralized project/client data
+   SITE CONFIG — SEO, contact, and social data
    Edit this file ONCE per project.
-   Everything else (SEO, footer, OG tags) reads from here.
+   SeoHead, Footer, and OG tags read from here.
+   Navigation lives in Header.tsx (needs icons + routes).
    ═══════════════════════════════════════════════════════════════ */
 
 import { env } from './env';
