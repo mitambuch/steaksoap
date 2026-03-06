@@ -7,7 +7,9 @@ $ARGUMENTS — PascalCase page name. Examples: "About", "Pricing", "Contact"
 
 ## Steps
 
-1. Create `src/pages/$ARGUMENTS.tsx`:
+1. **Reuse check**: Search `src/pages/`, `src/workbench/playground/sections/` for existing pages or sections that overlap. Propose reusing or composing with them before creating from scratch.
+
+2. Create `src/pages/$ARGUMENTS.tsx`:
 
 ```tsx
 import { Container } from '@components/layout/Container';
@@ -27,15 +29,15 @@ export default function $ARGUMENTS() {
 }
 ```
 
-2. Add route constant in `src/constants/routes.ts`:
+3. Add route constant in `src/constants/routes.ts`:
    - Add: `UPPER_CASE: '/<kebab-case-of-$ARGUMENTS>',` to the ROUTES object
 
-3. Add lazy route in `src/app/routes/` (find the route config file):
+4. Add lazy route in `src/app/routes/` (find the route config file):
    - Add: `const $ARGUMENTS = lazyWithRetry(() => import('@pages/$ARGUMENTS'));`
    - Add route: `<Route path={ROUTES.UPPER_CASE} element={<$ARGUMENTS />} />`
    - Import ROUTES from '@constants/routes' if not already imported
 
-4. Create test `src/pages/__tests__/$ARGUMENTS.test.tsx`:
+5. Create test `src/pages/__tests__/$ARGUMENTS.test.tsx`:
 
 ```tsx
 import { render, screen } from '@testing-library/react';
@@ -56,7 +58,7 @@ describe('$ARGUMENTS page', () => {
 });
 ```
 
-5. Run `pnpm validate` — must pass.
+6. Run `pnpm validate` — must pass.
 
 ## Validation
 - [ ] Page exists at src/pages/$ARGUMENTS.tsx

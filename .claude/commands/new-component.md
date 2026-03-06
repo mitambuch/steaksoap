@@ -13,7 +13,12 @@ $ARGUMENTS — "ComponentName" or "ComponentName location"
    - Split by space. First word = ComponentName, second = location (default: "ui")
    - Target folder: src/components/<location>/
 
-2. Create `src/components/<location>/<ComponentName>.tsx`:
+2. **Reuse check (mandatory)**:
+   - Search `src/components/`, `src/workbench/` for existing components that overlap with the request.
+   - If a match exists: propose extending or composing with it instead of creating from scratch.
+   - Only proceed to creation if no existing component covers the need.
+
+3. Create `src/components/<location>/<ComponentName>.tsx`:
 
 ```tsx
 // ═══════════════════════════════════════════════════
@@ -42,7 +47,7 @@ export const <ComponentName> = ({ className, children }: <ComponentName>Props) =
 };
 ```
 
-3. Create test `src/components/<location>/__tests__/<ComponentName>.test.tsx`:
+4. Create test `src/components/<location>/__tests__/<ComponentName>.test.tsx`:
 
 ```tsx
 import { axe } from 'vitest-axe';
@@ -69,7 +74,7 @@ describe('<ComponentName>', () => {
 });
 ```
 
-4. Run `pnpm validate`.
+5. Run `pnpm validate`.
 
 ## Validation
 - [ ] Component file created with WHAT/WHEN/CHANGE header

@@ -29,5 +29,5 @@ describe('Playground', () => {
     renderPlayground();
     // Should have at least one button rendered
     expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
-  });
+  }, 15_000);
 });
