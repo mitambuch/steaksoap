@@ -182,10 +182,6 @@ This fetches the latest changes from the upstream template and merges them into 
 | `pnpm setup:update` | Pull template updates |
 | `pnpm release` | Create a new release |
 
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
 ## License
 
 MIT — do whatever you want with it.
