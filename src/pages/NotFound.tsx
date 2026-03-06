@@ -11,7 +11,8 @@ export default function NotFound() {
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full sm:h-[300px] sm:w-[300px]"
         style={{
-          background: 'radial-gradient(circle, rgba(196,64,64,0.04) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(var(--color-accent-rgb),0.04) 0%, transparent 70%)',
         }}
       />
 

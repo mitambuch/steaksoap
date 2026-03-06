@@ -4,7 +4,7 @@
 
 | Name       | Token       | Dark Mode | Light Mode | Usage                          |
 |------------|-------------|-----------|------------|--------------------------------|
-| **Accent** | `accent`    | #FF6B6B   | #FF6B6B    | CTAs, hovers, tags, highlights |
+| **Accent** | `accent`    | #c44040   | #c44040    | CTAs, hovers, tags, highlights |
 | **BG**     | `bg`        | #0A0A0A   | #B0B0A8    | Page background                |
 | **FG**     | `fg`        | #F0F0F0   | #1A1A1A    | Primary text                   |
 | **Muted**  | `muted`     | #8A8A8A   | #4A4A44    | Secondary text, labels         |
@@ -56,7 +56,7 @@ Rules:
 
 ## Rules
 
-- Accent `#FF6B6B` is the SAME in dark and light mode
+- Accent `#c44040` is the SAME in dark and light mode
 - No uppercase on main titles — lowercase or capitalize only
 - Transitions are slow and cinematic (0.5s interactions, 1.5s theme switch)
 - Labels and micro text always mono, uppercase, wide tracking

@@ -48,6 +48,8 @@ export default defineConfig({
       '@styles': resolve(__dirname, './src/styles'),
       '@config': resolve(__dirname, './src/config'),
       '@features': resolve(__dirname, './src/features'),
+      '@workbench': resolve(__dirname, './src/workbench'),
+      '@lib': resolve(__dirname, './src/lib'),
     },
   },
 });

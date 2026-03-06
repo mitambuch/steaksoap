@@ -30,16 +30,22 @@ Follow this order in className strings:
 
 ## Dark mode
 - Tokens are CSS custom properties set via `@theme`
-- `[data-theme="dark"]` and `[data-theme="light"]` on `<html>`
+- `[data-theme='light']` on `<html>` (dark is the default, no data-attribute needed)
 - Both themes MUST be tested for every component
 - Use semantic token names (bg-bg, text-fg) not raw colors
 
 ## Accent color rule
-The accent color (#FF6B6B "Coral Red") is IDENTICAL in dark and light mode.
+The accent color (#c44040 "Coral Red") is IDENTICAL in dark and light mode.
 NEVER change the accent between modes. NEVER suggest a "more readable" alternative
 for light mode. The brand identity depends on this consistency.
 If contrast is a concern on light backgrounds, adjust the BACKGROUND or add
 a dark text container — never touch the accent value.
+
+## Exception: box-shadow & canvas
+`rgba()` with `--color-accent-rgb` is acceptable in:
+- `box-shadow` values (Tailwind can't use tokens in `shadow-[]`)
+- Canvas 2D context (`fillStyle`, `strokeStyle`)
+Always use the `--color-accent-rgb` CSS variable, never raw RGB values.
 
 ## Design token reference
 Check `src/index.css` @theme section for current values. Key tokens:

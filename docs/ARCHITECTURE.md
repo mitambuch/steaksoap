@@ -1,9 +1,5 @@
 # Project Architecture
 
-This document explains **why** each folder exists and **what** goes in it.
-
----
-
 ## Overview
 
 ```
@@ -13,156 +9,62 @@ project/
 ├── .vscode/              → Editor config (extensions, settings)
 ├── docs/                 → Project documentation
 ├── public/               → Static files served as-is
-│   ├── fonts/            → Fonts served directly (not imported)
-│   └── images/           → Static images (favicon, og-image…)
+│   ├── fonts/            → Fonts (.woff2) referenced via /fonts/...
+│   └── images/           → favicon.svg, og-image.jpg…
 ├── src/                  → Source code
-│   ├── app/              → Application root
-│   ├── assets/           → Files imported in code
+│   ├── app/              → Routes, providers, app layout
 │   ├── components/       → Reusable React components
-│   ├── config/           → Application config
-│   ├── constants/        → Constant values
-│   ├── context/          → React Contexts
+│   │   ├── ui/           → Atoms: Button, Input, Badge, Card, Modal…
+│   │   ├── layout/       → Header, Footer, Container, CursorGlow
+│   │   └── features/     → ErrorBoundary, SeoHead, Toast…
+│   ├── config/           → env.ts, site.ts, cloudinary.ts
+│   ├── constants/        → routes.ts, global constants
+│   ├── context/          → React Contexts (ThemeContext…)
 │   ├── data/             → Static data / fixtures
-│   ├── features/         → Self-contained complex features
+│   ├── features/         → Complex feature modules
 │   ├── hooks/            → Custom React hooks
-│   ├── lib/              → Third-party library wrappers
-│   ├── pages/            → Pages (1 page = 1 route)
-│   ├── styles/           → Global styles
-│   └── utils/            → Pure utility functions
+│   ├── pages/            → Pages (1 file = 1 route)
+│   ├── styles/           → fonts.css, animations.css
+│   ├── test/             → Test setup and utilities
+│   ├── utils/            → cn(), formatters, parsers
+│   └── workbench/        → Playground sections, shared components, data
 └── [configs]             → vite, tsconfig, eslint, prettier, vercel…
 ```
 
----
+## Key rules
 
-## Folder details
-
-### `public/`
-
-Files served **as-is** by Vite. No imports, no transforms.
-- `fonts/` → `.woff2` files referenced in `@font-face` via absolute URL `/fonts/...`
-- `images/` → `favicon.svg`, `og-image.jpg`...
-
-> **Rule**: if a file is **imported** in code → it goes in `src/assets/`.
-> If it's **referenced by URL** → it goes in `public/`.
-
-### `src/app/`
-
-The application core. Contains:
-- `App.tsx` → Entry point: ErrorBoundary + BrowserRouter + Providers
-- `routes/index.tsx` → All route configuration (lazy loading)
-- `layouts/RootLayout.tsx` → Shared wrapper (Header + Outlet + Footer)
-
-### `src/assets/`
-
-Files **imported** in code (Vite transforms, hashes, and optimizes them):
-- `fonts/` → Fonts imported via `@font-face` in `fonts.css`
-- `images/` → Images imported in components via `import`
-- `icons/` → SVGs imported as React components
-
-### `src/components/`
-
-**Reusable** components used across multiple pages:
-- `ui/` → Atoms: Button, Input, Badge, Card, Modal…
-- `layout/` → Page structure: Header, Footer, Sidebar, Nav…
-- `features/` → Logic-bound components (ErrorBoundary, Toast…)
-
-> **Rule**: a component belongs here only if it's used in **2+ pages**.
-> If it's specific to a feature, it goes in `src/features/<name>/`.
-
-### `src/config/`
-
-Application configuration:
-- `cloudinary.ts` → Centralized helper for Cloudinary URLs
-
-### `src/constants/`
-
-Constant values used throughout the app:
-- `routes.ts` → All app URLs. **Never** hardcode strings in components.
-
-### `src/context/`
-
-React Contexts for global state: ThemeContext, AuthContext…
-
-### `src/data/`
-
-Static data: content JSON, fixtures, mock data.
-Useful for showcase sites where content is hardcoded (no CMS).
-
-### `src/features/`
-
-For **complex features** that deserve their own folder:
-
-```
-src/features/my-feature/
-├── MyFeature.tsx            → Main component
-├── useMyFeature.ts          → Feature-specific hook
-├── types.ts                 → Feature-specific types
-└── index.ts                 → Barrel export
-```
-
-> **Rule**: a feature gets its own folder when it has **3+ related files**.
-
-### `src/hooks/`
-
-Custom hooks **shared** across multiple components/pages:
-`useMediaQuery`, `useScroll`, `useSEO`…
-
-### `src/lib/`
-
-Wrappers and abstractions for third-party libraries: analytics, i18n, etc.
-Goal: **isolate** dependencies so a library swap only touches one file.
-
-### `src/pages/`
-
-**1 file = 1 page = 1 route.** Always lazy-loaded in `routes/index.tsx`.
-- `Home.tsx`, `About.tsx`, `Contact.tsx`, `NotFound.tsx`…
-
-### `src/styles/`
-
-Global styles:
-- `fonts.css` → `@font-face` declarations
-- `animations.css` → Global keyframes
-
-> **Rule**: design tokens (colors, fonts) are defined in `@theme` inside `src/index.css`. That's the **source of truth** for the design system (Tailwind v4 CSS-first).
-
-### `src/utils/`
-
-Pure utility functions: `cn()` (class merge), formatters, parsers…
-
----
+- **Imported in code** → `src/` (Vite transforms it)
+- **Referenced by URL** → `public/`
+- Component used in **2+ pages** → `src/components/`
+- Component specific to one feature → `src/features/<name>/`
+- Feature with **3+ related files** → gets its own folder in `src/features/`
+- Design tokens → `@theme` in `src/index.css` (source of truth, Tailwind v4 CSS-first)
+- Pages → always lazy-loaded in `src/app/routes/index.tsx`
 
 ## Naming conventions
 
 | Type | Convention | Example |
 |---|---|---|
 | React component | PascalCase | `HeroSection.tsx` |
-| Hook | camelCase with `use` | `useMediaQuery.ts` |
+| Hook | camelCase + `use` | `useMediaQuery.ts` |
 | Utility | camelCase | `formatDate.ts` |
 | Constant | UPPER_SNAKE_CASE | `MAX_RETRIES` |
 | Type/Interface | PascalCase | `NavItem` |
 | CSS file | kebab-case | `animations.css` |
 | Folder | kebab-case | `hero-section/` |
 
----
-
 ## Adding a page
 
-```bash
-# 1. Create the page
-# src/pages/About.tsx
-
-# 2. Add the route in constants/routes.ts
-# ABOUT: '/about',
-
-# 3. Add in src/app/routes/index.tsx
-# const About = lazy(() => import('@pages/About'));
-# <Route path={ROUTES.ABOUT} element={<About />} />
-```
+1. Create `src/pages/MyPage.tsx`
+2. Add route in `src/constants/routes.ts`
+3. Add lazy import in `src/app/routes/index.tsx`
 
 ## Adding a complex feature
 
-```bash
-mkdir -p src/features/my-feature
-# Create: index.ts, types.ts, MyFeature.tsx
-# + hooks/ if custom hooks are needed
+```
+src/features/my-feature/
+├── MyFeature.tsx    → Main component
+├── useMyFeature.ts  → Feature-specific hook
+├── types.ts         → Feature-specific types
+└── index.ts         → Barrel export
 ```

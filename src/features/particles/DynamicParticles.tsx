@@ -119,6 +119,11 @@ export function DynamicParticles() {
     let logicalWidth = window.innerWidth;
     let logicalHeight = window.innerHeight;
 
+    // Read accent RGB from CSS token so particles follow theme changes
+    const accentRgb =
+      getComputedStyle(document.documentElement).getPropertyValue('--color-accent-rgb').trim() ||
+      '196, 64, 64';
+
     const particleCount = isMobile ? MOBILE_PARTICLE_COUNT : DESKTOP_PARTICLE_COUNT;
 
     const resize = () => {
@@ -156,7 +161,7 @@ export function DynamicParticles() {
       // Update & draw particles
       for (const p of particles) {
         updateParticle(p, time, mouse, logicalWidth, logicalHeight);
-        ctx.fillStyle = `rgba(196, 64, 64, ${p.alpha * 0.6})`;
+        ctx.fillStyle = `rgba(${accentRgb}, ${p.alpha * 0.6})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
@@ -175,7 +180,7 @@ export function DynamicParticles() {
           const dy = pi.y - pj.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) {
-            ctx.strokeStyle = `rgba(196, 64, 64, ${0.2 * (1 - dist / CONNECTION_DIST) * pi.alpha})`;
+            ctx.strokeStyle = `rgba(${accentRgb}, ${0.2 * (1 - dist / CONNECTION_DIST) * pi.alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(pi.x, pi.y);
@@ -191,7 +196,7 @@ export function DynamicParticles() {
           const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
           if (cdist < CURSOR_DIST) {
             const opacity = 0.45 * (1 - cdist / CURSOR_DIST) * pi.alpha;
-            ctx.strokeStyle = `rgba(196, 64, 64, ${opacity})`;
+            ctx.strokeStyle = `rgba(${accentRgb}, ${opacity})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(pi.x, pi.y);

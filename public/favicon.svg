@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <path fill="#FF6B6B" transform="rotate(-5 50 50)">
+  <path fill="#c44040" transform="rotate(-5 50 50)">
     <animate attributeName="d" dur="4s" repeatCount="indefinite" values="
       M50 12 C74 12, 88 26, 88 50 C88 74, 74 88, 50 88 C26 88, 12 74, 12 50 C12 26, 26 12, 50 12Z;
       M50 16 C72 10, 90 28, 84 52 C80 76, 68 90, 48 88 C28 84, 10 72, 16 48 C20 26, 30 16, 50 16Z;

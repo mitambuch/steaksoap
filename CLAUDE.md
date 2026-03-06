@@ -1,39 +1,16 @@
-## ⚠️ BEFORE YOU DO ANYTHING
+## BEFORE YOU DO ANYTHING
 
-STOP. Read this ENTIRE file and .claude/rules/workflow.md BEFORE writing any code.
-Do NOT create branches, files, or commits until you have read and understood the workflow.
+Read this file and `.claude/rules/workflow.md` BEFORE writing any code.
+You operate inside a structured system: rules (.claude/rules/), commands (.claude/commands/), agents (.claude/agents/).
 
-You are NOT a generic AI assistant. You are operating inside a structured system with:
-- Rules that MUST be followed (.claude/rules/)
-- Commands that define quality standards (.claude/commands/)
-- Agents with specific expertise (.claude/agents/)
-- A workflow that dictates HOW you work (.claude/rules/workflow.md)
-
-If you skip this, you WILL make mistakes: wrong branches, missing tests, broken conventions.
-The owner WILL notice and it wastes everyone's time.
-
-### ⛔ THE #1 RULE
-**NEVER commit directly to main. NEVER. Not even "just a small fix".**
+### THE #1 RULE
+**NEVER commit directly to main.** Not even "just a small fix."
 Before ANY code change: `git checkout main && git pull && git checkout -b <type>/<scope>`
-If you find yourself on main with uncommitted changes → stash → create branch → apply stash.
-This rule has ZERO exceptions. If you violate it, the entire session is compromised.
-
-## Fresh Clone?
-
-If this project has not been set up yet, run:
-
-1. `pnpm setup` — renames the project, configures git, validates
-2. Then in Claude Code: `/init` — customizes colors, fonts, content, vibe
-
-After both are done, this section can be removed.
+On main with uncommitted changes? Stash → branch → apply. Zero exceptions.
 
 # Project
 
-React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm + Vitest + ESLint 9.
-The commands and rules are the product. The boilerplate is the vehicle.
-
-## Stack
-React 19 · TypeScript 5.9 · Vite 7 · Tailwind CSS 4 · pnpm · Vitest · ESLint 9
+React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm + Vitest + ESLint 9
 
 ## Commands
 pnpm dev              — dev server (port 5173)
@@ -54,26 +31,40 @@ src/
 ├── hooks/          — custom React hooks
 ├── pages/          — page components (one per route)
 ├── utils/          — cn() and helpers
+├── workbench/      — playground sections, shared components, data
 
-## Code Rules (brief)
-These are loaded automatically from `.claude/rules/` — details there, summary here:
+## Source of truth (in case of conflict)
+1. The actual code (always wins)
+2. `.claude/decisions.md`
+3. This file (CLAUDE.md)
+4. `.claude/rules/*.md`
+5. `docs/*.md` and other markdown
+
+If docs contradict code, the docs are wrong.
+
+## Autonomy
+Can do without asking: branch, code in scope, local refactor, sync docs, add/fix tests, run validate, update related MD.
+Must ask: delete a feature, add a dependency, change deploy config, force push, act outside scope.
+
+## Code Rules
+Loaded from `.claude/rules/` — summary:
 - TypeScript strict — no `any`, no `as`, no `!`
 - Named exports, PascalCase files, mobile-first responsive
 - `cn()` for className, design tokens only, tests beside source
-- Path aliases: @components, @hooks, @pages, @utils, @config, @features, @constants, @context, @lib
+- Path aliases: @components, @hooks, @pages, @utils, @config, @features, @constants, @context, @workbench, @lib
 
 ## Workflow
-See `.claude/rules/workflow.md` for the full workflow (branching, validation, commits).
-The essential rule: **NEVER commit to main. ALWAYS branch first. No exceptions.**
+See `.claude/rules/workflow.md`. Batch mode is default — execute without asking at each step.
+**NEVER commit to main. ALWAYS branch first.**
 
-## Communication Style
-- Start with ACTION (what you're doing), then WHERE (which files), then WHY
-- After completing work: summary of changes, files modified, what to test
-- If unsure: ask one focused question, don't guess
+## Communication
+- ACTION → WHERE → WHY
+- After work: summary + files modified + what to test
+- Unsure? One focused question, don't guess
 
 ## Protected Pages
-- `/playground` — Component reference page. NEVER delete. NEVER remove from nav.
-  When design tokens change, verify Playground still renders correctly.
+`/playground` — NEVER delete, NEVER remove from nav.
+Verify after design token changes.
 
 ## Detailed Rules
-See .claude/rules/ — these files are loaded automatically based on what you're working on.
+See .claude/rules/ — loaded automatically based on task type.

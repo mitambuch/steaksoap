@@ -60,7 +60,7 @@ DESIGN IDENTITY
   ┌─────────────────┬────────────┬──────────────────────┐
   │ Token           │ Hex        │ Maps to token    │
   ├─────────────────┼────────────┼──────────────────────┤
-  │ Acid (accent)   │ #FF6B6B    │ --color-accent ✅    │
+  │ Acid (accent)   │ #c44040    │ --color-accent ✅    │
   │ Void (dark bg)  │ #0A0A0A    │ --color-bg ✅        │
   │ Paper (light bg)│ #F4F4F0    │ --color-bg (light) ✅│
   │ Ink (text)      │ #1A1A1A    │ --color-fg ✅        │

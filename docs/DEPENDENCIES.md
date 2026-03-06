@@ -22,7 +22,7 @@ Everything this project uses, and why.
 |---|---|---|
 | Font (sans) | Space Grotesk | Google Fonts / local |
 | Font (mono) | JetBrains Mono | Google Fonts / local |
-| Accent color | #FF6B6B (Coral Red) | Same in dark & light |
+| Accent color | #c44040 (Coral Red) | Same in dark & light |
 | Dark background | #0A0A0A (Void) | @theme in index.css |
 | Light background | #B0B0A8 (Warm Concrete) | @theme in index.css |
 | Button shape | Capsule (rounded-full) | Button.tsx |
