@@ -95,7 +95,9 @@
       "esbuild"
     ],
     "overrides": {
-      "minimatch": ">=10.2.1"
+      "minimatch": ">=10.2.1",
+      "rollup": ">=4.58.0",
+      "basic-ftp": ">=5.2.0"
     }
   },
   "engines": {
