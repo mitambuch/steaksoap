@@ -14,6 +14,7 @@
 | **Warning**| `warning`   | #FFD60A   | #E6A800    | Warnings, caution              |
 | **Danger** | `danger`    | #DC2626   | #B91C1C    | Errors, destructive actions    |
 | **Info**   | `info`      | #52B0FF   | #1E88E5    | Informational, links           |
+| **On-Accent** | `on-accent` | #0A0A0A | #0A0A0A  | Text on accent backgrounds     |
 
 ## Typography
 

@@ -72,4 +72,4 @@ Best Practices: [X]/10
   [items]
 ```
 
-4. Ask: "Want me to fix these? Starting with the red ones."
+4. Fix all red items, then yellow. Summarize changes at the end.
