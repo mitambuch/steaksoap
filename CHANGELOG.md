@@ -1,5 +1,31 @@
 # Changelog
 
+## [4.0.0](https://github.com/mitambuch/steaksoap/compare/v3.3.3...v4.0.0) (2026-03-06)
+
+### ⚠ BREAKING CHANGES
+
+* **core:** This removes all steaksoap-specific showcase layers,
+making the repo a completely neutral starter at clone time.
+
+- Delete showcase pages: Steaksoap, Welcome, ShowcaseLanding
+- Delete showcase components: FeatureCard, CodeBlock, TechBadge, Section
+- Delete showcase hooks: useInView, useDebounce
+- Delete features: onboarding wizard, counter demo
+- Neutralize Home page to minimal siteConfig display
+- Move CursorGlow + Particles into Playground as interactive demos
+- Refactor Playground content from steaksoap branding to generic
+- Strip Header/Footer to essentials
+- Fix localStorage key collision, SeoHead title duplication
+- Simplify setup.js, remove showcase cleanup logic
+- Update package.json: UNLICENSED, private: true
+- All 241 tests passing, build clean
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+
+### ♻️  Refactoring
+
+* **core:** neutralize project for v4.0 — remove all showcase branding ([1263b3f](https://github.com/mitambuch/steaksoap/commit/1263b3f88a593a44278d2da4a96966525509de28))
+
 ## [3.3.3](https://github.com/mitambuch/steaksoap/compare/v3.3.2...v3.3.3) (2026-03-05)
 
 ### 🐛 Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "steaksoap",
-  "version": "3.3.3",
+  "version": "4.0.0",
   "type": "module",
   "description": "React 19 + TypeScript + Vite 7 + Tailwind CSS 4",
   "author": "mitambuch",
