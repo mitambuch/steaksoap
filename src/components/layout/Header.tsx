@@ -2,7 +2,7 @@ import { ThemeToggle } from '@components/ui/ThemeToggle';
 import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
 import type { LucideIcon } from 'lucide-react';
-import { Blocks, House } from 'lucide-react';
+import { Blocks, FlaskConical, House } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ import { Link, useLocation } from 'react-router-dom';
 const NAV_ITEMS: { to: string; label: string; icon: LucideIcon }[] = [
   { to: ROUTES.HOME, label: 'Home', icon: House },
   { to: ROUTES.PLAYGROUND, label: 'Playground', icon: Blocks },
+  { to: ROUTES.LAB, label: 'Lab', icon: FlaskConical },
 ];
 
 /* ─── Scroll-aware hook ──────────────────────────────────── */

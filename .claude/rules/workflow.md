@@ -12,7 +12,7 @@ paths: ["src/**", "scripts/**", "docs/**", "*.md", "*.json", "*.ts", "*.js"]
 3. **Check state**: `git status && git branch` before starting
 4. **Validate before commit**: `pnpm validate` must pass. No exceptions.
 5. **Conventional commits**: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`
-6. **Protected pages**: Never delete `/playground`. Verify it after design token changes.
+6. **Protected pages**: Never delete `/playground` or `/lab`. Verify after design token changes.
 7. **Reuse Playground components**: Check workbench/ before creating new UI components.
 
 ## Task checklist
