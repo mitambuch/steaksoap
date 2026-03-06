@@ -1,4 +1,4 @@
-# DESIGN SYSTEM — steaksoap
+# DESIGN SYSTEM
 
 ## Palette
 

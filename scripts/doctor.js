@@ -37,7 +37,7 @@ function fail(msg) {
   console.log(`  ${red('✗')} ${msg}`);
 }
 
-console.log(`\n  ${bold('steaksoap doctor')}\n`);
+console.log(`\n  ${bold('project doctor')}\n`);
 
 // ─── Node.js version ─────────────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));

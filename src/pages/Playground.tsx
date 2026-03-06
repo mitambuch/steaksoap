@@ -1,4 +1,5 @@
 import { SeoHead } from '@components/features/SeoHead';
+import { CursorGlow } from '@components/layout/CursorGlow';
 import {
   Accordion,
   AccordionContent,
@@ -26,6 +27,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/Tabs';
 import { Textarea } from '@components/ui/Textarea';
 import { Timeline } from '@components/ui/Timeline';
 import { Tooltip } from '@components/ui/Tooltip';
+import { DynamicParticles } from '@features/particles/DynamicParticles';
 import { useCopyToClipboard } from '@hooks/useCopyToClipboard';
 import { useToast } from '@hooks/useToast';
 import { cn } from '@utils/cn';
@@ -185,7 +187,7 @@ export default function Playground() {
           {/* Header */}
           <div>
             <span className="text-accent font-mono text-[10px] tracking-[0.2em] uppercase">
-              steaksoap
+              design system
             </span>
             <h1 className="text-fg mt-3 text-4xl font-medium tracking-tight md:text-6xl">devkit</h1>
             <p className="text-muted mt-4 max-w-lg text-base leading-relaxed">
@@ -667,42 +669,25 @@ export default function Playground() {
                 <div className="border-border/50 rounded-lg border px-5">
                   <Accordion type="single" defaultOpen="faq-1">
                     <AccordionItem value="faq-1">
-                      <AccordionTrigger>What is steaksoap?</AccordionTrigger>
+                      <AccordionTrigger>How does the accordion work?</AccordionTrigger>
                       <AccordionContent>
-                        An AI-native React system for solo builders. 23 slash commands, 4 agents, 12
-                        rules — the AI knows your codebase and follows your conventions. You
-                        describe it, the AI builds it.
+                        In single mode, only one item can be open at a time. Clicking another item
+                        automatically closes the current one. Use type=&quot;single&quot; for
+                        FAQ-style content.
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="faq-2">
-                      <AccordionTrigger>Do I need coding experience?</AccordionTrigger>
+                      <AccordionTrigger>Can I customize the animation?</AccordionTrigger>
                       <AccordionContent>
-                        Not at all. The guided setup wizard walks you through everything from
-                        installing VS Code to running your first project. And once you're set up,
-                        you describe what you want in plain English and the AI handles the code.
+                        Yes. The open/close animation uses CSS grid-rows transition. Adjust the
+                        duration in the Accordion component or override with className.
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="faq-3">
-                      <AccordionTrigger>Which AI tools are supported?</AccordionTrigger>
+                      <AccordionTrigger>Is it accessible?</AccordionTrigger>
                       <AccordionContent>
-                        Claude Code (primary), Cursor, and GitHub Copilot. The commands and rules
-                        are optimized for Claude Code but work with any AI coding assistant that
-                        reads markdown instructions.
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="faq-4">
-                      <AccordionTrigger>Is it free?</AccordionTrigger>
-                      <AccordionContent>
-                        Yes, 100% free and MIT licensed. Clone it, modify it, ship it. No
-                        attribution required, no hidden costs, no premium tier.
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="faq-5">
-                      <AccordionTrigger>How do I update to the latest version?</AccordionTrigger>
-                      <AccordionContent>
-                        Run <code className="text-accent font-mono text-xs">pnpm setup:update</code>{' '}
-                        in your terminal. It pulls the latest improvements from the template and
-                        merges them into your project without overwriting your changes.
+                        Fully. Uses aria-expanded, aria-controls, and keyboard navigation. Press
+                        Enter or Space to toggle, Tab to move between triggers.
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
@@ -744,41 +729,41 @@ export default function Playground() {
                   price: '$0',
                   period: 'forever',
                   description: 'For side projects and experiments.',
-                  features: ['Everything', 'No limits', 'MIT license', 'No account needed'],
-                  cta: 'Already yours',
+                  features: ['5 projects', 'Basic support', 'Community access', 'Documentation'],
+                  cta: 'Get started',
                   highlighted: false,
                   badge: null,
                 },
                 {
-                  name: 'Still Free',
-                  price: '$0',
-                  period: 'still forever',
-                  description: 'For serious solo builders.',
+                  name: 'Pro',
+                  price: '$29',
+                  period: '/month',
+                  description: 'For growing teams and businesses.',
                   features: [
-                    'Still everything',
-                    'Still no limits',
-                    'Priority support (jk, open an issue)',
-                    'Custom domain (it\u2019s your project)',
-                    'Remove branding (go ahead)',
+                    'Unlimited projects',
+                    'Priority support',
+                    'Custom domain',
+                    'Advanced analytics',
+                    'Team collaboration',
                   ],
-                  cta: 'Nice try',
+                  cta: 'Start free trial',
                   highlighted: true,
                   badge: 'Popular',
                 },
                 {
                   name: 'Enterprise',
-                  price: '$0',
-                  period: 'per eternity',
-                  description: 'For people who really want to pay.',
+                  price: '$99',
+                  period: '/month',
+                  description: 'For large organizations.',
                   features: [
-                    'Everything above',
-                    'Team seats (git clone)',
-                    'SLA guarantee (best effort lol)',
-                    'Dedicated support (GitHub Issues)',
-                    'Invoice billing ($0.00 due)',
-                    'A thank you star on GitHub',
+                    'Everything in Pro',
+                    'Unlimited team seats',
+                    'SLA guarantee',
+                    'Dedicated support',
+                    'Invoice billing',
+                    'Custom integrations',
                   ],
-                  cta: 'Contact nobody',
+                  cta: 'Contact sales',
                   highlighted: false,
                   badge: null,
                 },
@@ -836,21 +821,21 @@ export default function Playground() {
               {[
                 {
                   quote:
-                    "steaksoap changed how I build projects. I describe what I want, Claude builds it, and everything just works. Haven't touched code manually in weeks.",
+                    'This product changed how our team works. The interface is intuitive, the features are powerful, and the support is outstanding.',
                   name: 'Alex Chen',
                   role: 'Indie maker',
                   avatar: 'https://i.pravatar.cc/150?u=alex',
                 },
                 {
                   quote:
-                    "The slash commands are game-changing. /spec → /new-feature → /review → done. It's like having a senior engineer sitting next to me at all times.",
+                    'We evaluated 20+ alternatives and this was the clear winner. The attention to detail and developer experience is unmatched.',
                   name: 'Sarah Kim',
                   role: 'Solo founder',
                   avatar: 'https://i.pravatar.cc/150?u=sarah',
                 },
                 {
                   quote:
-                    "I tried 20+ React starters. This is the only one where the AI integration isn't an afterthought. The rules and agents ARE the product.",
+                    'Simple, fast, reliable. It does exactly what it promises and gets out of the way so we can focus on building.',
                   name: 'Marcus Weber',
                   role: 'Full-stack dev',
                   avatar: 'https://i.pravatar.cc/150?u=marcus',
@@ -931,8 +916,7 @@ export default function Playground() {
                 Ready to build something?
               </h3>
               <p className="text-muted mx-auto mt-3 max-w-md text-sm leading-relaxed md:text-base">
-                Clone steaksoap, let the AI handle the code, and ship your next project faster than
-                you thought possible.
+                Start building today. Sign up in seconds and launch your first project in minutes.
               </p>
               <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Button size="lg">
@@ -943,7 +927,7 @@ export default function Playground() {
                 </Button>
               </div>
               <p className="text-muted/50 mt-6 font-mono text-xs">
-                Free forever &middot; MIT license &middot; No account needed
+                Free trial &middot; No credit card required &middot; Cancel anytime
               </p>
             </div>
           </Section>
@@ -962,7 +946,7 @@ export default function Playground() {
               </Banner>
               <Banner variant="danger">Build failed. Check the error log for details.</Banner>
               <Banner variant="accent">
-                steaksoap v3.0 just dropped — 8 new commands, redesigned wizard
+                v3.0 just dropped — redesigned dashboard, 8 new features, improved performance
               </Banner>
             </div>
           </Section>
@@ -1022,24 +1006,18 @@ export default function Playground() {
               <Timeline
                 items={[
                   {
-                    title: 'v2.6 — Playground mega update',
-                    date: 'Feb 2026',
+                    title: 'v3.0 — Major redesign',
+                    date: 'Mar 2026',
                     badge: (
                       <Badge variant="success" size="sm">
                         latest
                       </Badge>
                     ),
                     description:
-                      'FAQ, pricing table, testimonials, contact form, 10 new components, and assembled modules.',
+                      'Complete UI overhaul with new design system, 10 new components, and improved performance.',
                   },
                   {
-                    title: 'v2.5 — Wizard onboarding',
-                    date: 'Feb 2026',
-                    description:
-                      '30-slide guided setup wizard. From zero to running project in 15 minutes.',
-                  },
-                  {
-                    title: 'v2.0 — AI-native redesign',
+                    title: 'v2.0 — API integration',
                     date: 'Jan 2026',
                     badge: (
                       <Badge variant="info" size="sm">
@@ -1047,12 +1025,12 @@ export default function Playground() {
                       </Badge>
                     ),
                     description:
-                      'Complete rewrite. 23 commands, 4 agents, particle hero, neural flow design.',
+                      'Added REST API support, authentication, and real-time notifications.',
                   },
                   {
                     title: 'v1.0 — Initial release',
-                    date: 'Dec 2025',
-                    description: 'React 19 + Vite + Tailwind starter with Claude Code integration.',
+                    date: 'Oct 2025',
+                    description: 'Core features, user management, and basic dashboard.',
                   },
                 ]}
               />
@@ -1164,8 +1142,69 @@ export default function Playground() {
               </div>
             </div>
           </Section>
+
+          {/* ═══════════════════════════════════════════════════════
+              EFFECTS — interactive visual components
+              ═══════════════════════════════════════════════════════ */}
+
+          {/* 24 — Cursor Glow */}
+          <Section number="24" title="cursor glow">
+            <CursorGlowDemo />
+          </Section>
+
+          {/* 25 — Particles */}
+          <Section number="25" title="particles">
+            <ParticlesDemo />
+          </Section>
         </div>
       </div>
     </>
+  );
+}
+
+/* ─── CursorGlow Demo (self-contained) ─────────────────────── */
+
+function CursorGlowDemo() {
+  const [enabled, setEnabled] = useState(false);
+
+  return (
+    <div className="space-y-4">
+      <p className="text-muted text-sm">
+        Custom coral cursor with radial glow. Desktop only — hover over the box below to see it.
+      </p>
+      <Switch label="Enable cursor glow" checked={enabled} onChange={setEnabled} />
+      <div className="border-border/50 relative h-64 overflow-hidden rounded-lg border">
+        {enabled && <CursorGlow enabled />}
+        <div className={cn('flex h-full items-center justify-center', enabled && 'cursor-none')}>
+          <p className="text-muted/60 font-mono text-xs">
+            {enabled ? 'move your mouse here' : 'toggle the switch above'}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Particles Demo (self-contained) ──────────────────────── */
+
+function ParticlesDemo() {
+  const [enabled, setEnabled] = useState(false);
+
+  return (
+    <div className="space-y-4">
+      <p className="text-muted text-sm">
+        Neural flow particle system. Canvas-based, respects prefers-reduced-motion. Coral accent
+        with cursor interaction on desktop.
+      </p>
+      <Switch label="Enable particles" checked={enabled} onChange={setEnabled} />
+      <div className="border-border/50 relative h-80 overflow-hidden rounded-lg border">
+        {enabled && <DynamicParticles />}
+        <div className="flex h-full items-center justify-center">
+          <p className="text-muted/60 font-mono text-xs">
+            {enabled ? 'move your mouse for interaction' : 'toggle the switch above'}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }

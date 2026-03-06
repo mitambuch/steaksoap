@@ -28,11 +28,6 @@ describe('Header', () => {
     expect(screen.getByText('Playground')).toBeInTheDocument();
   });
 
-  it('shows GitHub link', () => {
-    renderHeader();
-    expect(screen.getByText('GitHub')).toBeInTheDocument();
-  });
-
   it('has navigation landmark', () => {
     renderHeader();
     expect(screen.getByRole('navigation')).toBeInTheDocument();

@@ -1,6 +1,6 @@
 # /discover
 
-Find extensions and MCP servers from the steaksoap registries.
+Find extensions and MCP servers from the project registries.
 
 ## Arguments
 $ARGUMENTS — Natural language description of what you need (e.g., "3D rendering", "payments", "animations", "database", "GitHub automation").

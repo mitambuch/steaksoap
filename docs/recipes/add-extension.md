@@ -1,6 +1,6 @@
 # Add an Extension
 
-steaksoap includes a curated registry of extensions. Use `/discover` or `/install-extension` to add them.
+This project includes a curated registry of extensions. Use `/discover` or `/install-extension` to add them.
 
 ## Using /discover (recommended)
 

@@ -35,8 +35,8 @@ gh auth login
 ## Quick start (3 steps)
 
 ```bash
-# 1. Use this template on GitHub, or clone
-git clone https://github.com/mitambuch/steaksoap.git my-project
+# 1. Clone the project
+git clone <repo-url> my-project
 cd my-project
 
 # 2. Install dependencies
@@ -94,7 +94,7 @@ Accepts all defaults without prompting. Useful for CI/testing.
 | `pnpm test:watch` | Run tests in watch mode |
 | `pnpm validate` | Lint + typecheck + tests + build — **the final check** |
 | `pnpm setup` | Interactive setup wizard (or light setup if already initialized) |
-| `pnpm setup --update` | Pull updates from the steaksoap template |
+| `pnpm setup --update` | Pull updates from the upstream template |
 | `pnpm release` | Interactive release: bump + CHANGELOG + tag + GitHub Release |
 | `pnpm release:patch` | Force a patch bump (0.1.0 → 0.1.1) |
 | `pnpm release:minor` | Force a minor bump (0.1.0 → 0.2.0) |
@@ -132,18 +132,18 @@ After `pnpm setup`, edit:
 
 ---
 
-## Update from steaksoap
+## Update from upstream template
 
-If steaksoap has been improved (new config, fixes, upgrades), pull the changes:
+If the template has been improved (new config, fixes, upgrades), pull the changes:
 
 ```bash
 pnpm setup --update
 ```
 
-This fetches and merges updates from the steaksoap template.
+This fetches and merges updates from the upstream template.
 If there are conflicts, resolve them manually then `git add . && git commit`.
 
-This works because the `template` remote points to the steaksoap repo.
+This works because the `template` remote points to the upstream repo.
 Git smartly merges the template changes with your project code.
 
 ---

@@ -10,7 +10,8 @@
      pnpm setup --yes     → non-interactive init (CI/testing)
 
    The script auto-detects whether this is a fresh clone
-   (package name is "steaksoap") or an already-initialized project.
+   (package name still has the template default) or an
+   already-initialized project.
    ═══════════════════════════════════════════════════════════════ */
 
 import { execSync } from 'node:child_process';
@@ -18,8 +19,6 @@ import {
   copyFileSync,
   existsSync,
   readFileSync,
-  rmSync,
-  statSync,
   writeFileSync,
 } from 'node:fs';
 import { resolve } from 'node:path';
@@ -73,7 +72,7 @@ async function runInit() {
     clack = await import('@clack/prompts');
   }
 
-  clack.intro('steaksoap — New Project');
+  clack.intro('New Project Setup');
 
   // ─── Auto-detect defaults ───────────────────────────────
   const dirName = resolve(root).split(/[\\/]/).pop() || 'project';
@@ -88,18 +87,16 @@ async function runInit() {
     }
   }
 
-  let projectName, displayName, createRepo, keepPlayground, keepSteaksoap;
+  let projectName, displayName, createRepo;
 
   if (isAutoYes) {
     // ─── Non-interactive mode ───────────────────────────
     projectName = defaultSlug;
     displayName = defaultSlug;
     createRepo = false;
-    keepPlayground = false;
-    keepSteaksoap = true;
     clack.log.info(`Using defaults: ${projectName}`);
   } else {
-    // ─── Interactive wizard (3 questions) ───────────────
+    // ─── Interactive wizard ─────────────────────────────
     projectName = await clack.text({
       message: 'Project name (slug)',
       placeholder: defaultSlug,
@@ -146,50 +143,22 @@ async function runInit() {
         );
       }
     }
-
-    keepPlayground = await clack.confirm({
-      message: 'Keep the Playground page? (UI component showcase at /playground)',
-      initialValue: false,
-    });
-    if (clack.isCancel(keepPlayground)) {
-      clack.cancel('Setup cancelled.');
-      process.exit(0);
-    }
-
-    keepSteaksoap = await clack.confirm({
-      message: 'Keep the Steaksoap showcase page? (original template at /steaksoap)',
-      initialValue: true,
-    });
-    if (clack.isCancel(keepSteaksoap)) {
-      clack.cancel('Setup cancelled.');
-      process.exit(0);
-    }
   }
 
   // ─── Configure git remotes ──────────────────────────────
   const s = clack.spinner();
   s.start('Configuring project...');
 
-  const remotes = run('git remote').split('\n').filter(Boolean);
-  if (remotes.includes('origin') && !remotes.includes('template')) {
-    try {
+  try {
+    const remotes = run('git remote').split('\n').filter(Boolean);
+    if (remotes.includes('origin')) {
       const originUrl = run('git remote get-url origin');
-      const isTemplateOrigin =
-        originUrl.includes('mitambuch/starter') ||
-        originUrl.includes('mitambuch/steaksoap');
-
-      if (isTemplateOrigin) {
-        // Direct clone — rename origin to template so user can add their own origin
+      if (originUrl.includes('mitambuch/steaksoap')) {
         run('git remote rename origin template');
-      } else {
-        // "Use this template" — origin is already the user's repo, add template separately
-        run(
-          'git remote add template https://github.com/mitambuch/steaksoap.git',
-        );
       }
-    } catch {
-      // No git or remote issues — ignore silently
     }
+  } catch {
+    // No git or remote issues — ignore silently
   }
 
   // ─── Create GitHub repo ─────────────────────────────────
@@ -240,177 +209,8 @@ async function runInit() {
   const today = new Date().toISOString().split('T')[0];
   writeFileSync(
     resolve(root, 'CHANGELOG.md'),
-    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### Features\n\n- project initialized from steaksoap\n`,
+    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### Features\n\n- project initialized\n`,
   );
-
-  // ─── Clean up demo/showcase files ──────────────────────
-  s.message('Cleaning up demo files...');
-
-  // Replace showcase Home with minimal template
-  const templateHome = resolve(root, 'scripts/templates/Home.tsx');
-  if (existsSync(templateHome)) {
-    copyFileSync(templateHome, resolve(root, 'src/pages/Home.tsx'));
-  }
-
-  // Always remove Welcome page (post-clone guide, not needed after setup)
-  const welcomePath = resolve(root, 'src/pages/Welcome.tsx');
-  if (existsSync(welcomePath)) rmSync(welcomePath);
-
-  // Remove Welcome route and import from routes/index.tsx
-  const welcomeRoutesPath = PATHS.routesConfig;
-  if (existsSync(welcomeRoutesPath)) {
-    let routes = readFileSync(welcomeRoutesPath, 'utf-8');
-    routes = routes.replace(
-      /const Welcome = lazyWithRetry\(\(\) => import\('@pages\/Welcome'\)\);\n/,
-      '',
-    );
-    routes = routes.replace(
-      /\s*<Route path=\{ROUTES\.WELCOME\} element=\{<Welcome \/>\} \/>\n/,
-      '\n',
-    );
-    writeFileSync(welcomeRoutesPath, routes);
-  }
-
-  // Remove WELCOME from route constants
-  const welcomeRouteConstsPath = PATHS.routes;
-  if (existsSync(welcomeRouteConstsPath)) {
-    let consts = readFileSync(welcomeRouteConstsPath, 'utf-8');
-    consts = consts.replace(/\s*WELCOME:\s*'\/welcome',?\n/, '\n');
-    writeFileSync(welcomeRouteConstsPath, consts);
-  }
-
-  // Remove Welcome nav item from site config
-  const welcomeSiteConfigPath = PATHS.siteConfig;
-  if (existsSync(welcomeSiteConfigPath)) {
-    let siteTs = readFileSync(welcomeSiteConfigPath, 'utf-8');
-    siteTs = siteTs.replace(
-      /\s*\{\s*label:\s*'Welcome',\s*href:\s*ROUTES\.WELCOME\s*\},?\n/,
-      '\n',
-    );
-    writeFileSync(welcomeSiteConfigPath, siteTs);
-  }
-
-  // Remove files no longer needed post-setup
-  const filesToRemove = [
-    // Always removed (not needed post-setup)
-    'src/features/counter',
-    'TEMPLATE.md',
-  ];
-
-  // Showcase-dependent files — only remove if Steaksoap page is also removed
-  if (!keepSteaksoap) {
-    filesToRemove.push(
-      'src/data/showcase.ts',
-      'src/components/ui/FeatureCard.tsx',
-      'src/components/ui/CodeBlock.tsx',
-      'src/components/ui/TechBadge.tsx',
-      'src/components/ui/Section.tsx',
-      'src/hooks/useInView.ts',
-    );
-  }
-
-  for (const file of filesToRemove) {
-    const p = resolve(root, file);
-    if (existsSync(p)) {
-      const stat = statSync(p);
-      if (stat.isDirectory()) {
-        rmSync(p, { recursive: true });
-      } else {
-        rmSync(p);
-      }
-    }
-  }
-
-  // Remove cursor-hidden CSS utility (showcase-only, a11y concern)
-  const indexCssPath = PATHS.indexCSS;
-  if (existsSync(indexCssPath)) {
-    let css = readFileSync(indexCssPath, 'utf-8');
-    css = css.replace(
-      /\n?\/\* a11y: cursor-hidden.*\*\/\n\.cursor-hidden,\n\.cursor-hidden \* \{\n\s*cursor: none !important;\n\}\n/,
-      '\n',
-    );
-    writeFileSync(indexCssPath, css);
-  }
-
-  // Remove Playground page and route (unless user chose to keep it)
-  if (!keepPlayground) {
-    const playgroundPath = resolve(root, 'src/pages/Playground.tsx');
-    if (existsSync(playgroundPath)) rmSync(playgroundPath);
-
-    // Remove Playground route and import from routes/index.tsx
-    const routesPath = PATHS.routesConfig;
-    if (existsSync(routesPath)) {
-      let routes = readFileSync(routesPath, 'utf-8');
-      routes = routes.replace(
-        /const Playground = lazyWithRetry\(\(\) => import\('@pages\/Playground'\)\);\n/,
-        '',
-      );
-      routes = routes.replace(
-        /\s*<Route path=\{ROUTES\.PLAYGROUND\} element=\{<Playground \/>\} \/>\n/,
-        '\n',
-      );
-      writeFileSync(routesPath, routes);
-    }
-
-    // Remove PLAYGROUND from route constants
-    const routeConstsPath = PATHS.routes;
-    if (existsSync(routeConstsPath)) {
-      let consts = readFileSync(routeConstsPath, 'utf-8');
-      consts = consts.replace(/\s*PLAYGROUND:\s*'\/playground',?\n/, '\n');
-      writeFileSync(routeConstsPath, consts);
-    }
-
-    // Remove Playground nav item from site config
-    const siteConfigPath = PATHS.siteConfig;
-    if (existsSync(siteConfigPath)) {
-      let siteTs = readFileSync(siteConfigPath, 'utf-8');
-      siteTs = siteTs.replace(
-        /\s*\{\s*label:\s*'Playground',\s*href:\s*'\/playground'\s*\},?\n/,
-        '\n',
-      );
-      writeFileSync(siteConfigPath, siteTs);
-    }
-  }
-
-  // Remove Steaksoap page and route (unless user chose to keep it)
-  if (!keepSteaksoap) {
-    const steaksoapPath = resolve(root, 'src/pages/Steaksoap.tsx');
-    if (existsSync(steaksoapPath)) rmSync(steaksoapPath);
-
-    // Remove Steaksoap route and import from routes/index.tsx
-    const routesPath = PATHS.routesConfig;
-    if (existsSync(routesPath)) {
-      let routes = readFileSync(routesPath, 'utf-8');
-      routes = routes.replace(
-        /const Steaksoap = lazyWithRetry\(\(\) => import\('@pages\/Steaksoap'\)\);\n/,
-        '',
-      );
-      routes = routes.replace(
-        /\s*<Route path=\{ROUTES\.STEAKSOAP\} element=\{<Steaksoap \/>\} \/>\n/,
-        '\n',
-      );
-      writeFileSync(routesPath, routes);
-    }
-
-    // Remove STEAKSOAP from route constants
-    const routeConstsPath = PATHS.routes;
-    if (existsSync(routeConstsPath)) {
-      let consts = readFileSync(routeConstsPath, 'utf-8');
-      consts = consts.replace(/\s*STEAKSOAP:\s*'\/steaksoap',?\n/, '\n');
-      writeFileSync(routeConstsPath, consts);
-    }
-
-    // Remove Steaksoap nav item from site config
-    const steaksoapSiteConfigPath = PATHS.siteConfig;
-    if (existsSync(steaksoapSiteConfigPath)) {
-      let siteTs = readFileSync(steaksoapSiteConfigPath, 'utf-8');
-      siteTs = siteTs.replace(
-        /\s*\{\s*label:\s*'Steaksoap',\s*href:\s*ROUTES\.STEAKSOAP\s*\},?\n/,
-        '\n',
-      );
-      writeFileSync(steaksoapSiteConfigPath, siteTs);
-    }
-  }
 
   s.stop('Project configured');
 
@@ -432,7 +232,7 @@ async function runInit() {
   try {
     run('git add -A');
     run(
-      `git commit -m "chore(init): bootstrap ${projectName} from steaksoap"`,
+      `git commit -m "chore(init): bootstrap ${projectName}"`,
     );
 
     const currentRemotes = run('git remote').split('\n').filter(Boolean);
@@ -470,7 +270,7 @@ async function runInit() {
 // ═══════════════════════════════════════════════════════════════
 
 async function runSetup() {
-  console.log('\n  steaksoap — Setup\n');
+  console.log('\n  Project Setup\n');
   console.log('  ✓ Node.js ' + process.version);
 
   // Create .env.local if missing
@@ -504,7 +304,7 @@ async function runUpdate() {
   const TEMPLATE_REMOTE = 'template';
   const TEMPLATE_URL = 'https://github.com/mitambuch/steaksoap.git';
 
-  console.log('\n  steaksoap — Update from template\n');
+  console.log('\n  Update from template\n');
 
   // Check clean working tree
   const status = run('git status --porcelain');

@@ -17,7 +17,7 @@ This file tracks key technical decisions. Read this before any architecture choi
 
 ## Patch history decisions
 
-- **Accent changed to Coral #FF6B6B**: thematic alignment with steaksoap name.
+- **Accent changed to Coral #FF6B6B**: thematic alignment with project identity.
 - **Light mode bg is warm gray**: not near-white. Matches classe2 aesthetic.
 - **Lucide React as default dep**: every project needs icons, tree-shakable.
 - **Toast/Tabs/Spinner in core**: most commonly needed UI patterns.

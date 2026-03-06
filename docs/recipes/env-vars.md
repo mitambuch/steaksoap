@@ -8,7 +8,7 @@ Check `src/config/env.ts` for the full list. Current defaults:
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `VITE_APP_NAME` | `steaksoap` | App name in UI and meta tags |
+| `VITE_APP_NAME` | (project name) | App name in UI and meta tags |
 | `VITE_APP_URL` | `http://localhost:5173` | Base URL for SEO |
 | `VITE_CLOUDINARY_CLOUD_NAME` | (empty) | Cloudinary image optimization |
 

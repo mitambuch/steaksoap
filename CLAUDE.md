@@ -18,19 +18,18 @@ Before ANY code change: `git checkout main && git pull && git checkout -b <type>
 If you find yourself on main with uncommitted changes → stash → create branch → apply stash.
 This rule has ZERO exceptions. If you violate it, the entire session is compromised.
 
-## 🚀 Fresh Clone?
+## Fresh Clone?
 
-If this project still has the default steaksoap identity (check: does
-`package.json` name say "steaksoap"?), run these two commands:
+If this project has not been set up yet, run:
 
 1. `pnpm setup` — renames the project, configures git, validates
 2. Then in Claude Code: `/init` — customizes colors, fonts, content, vibe
 
 After both are done, this section can be removed.
 
-# steaksoap
+# Project
 
-AI-first React starter kit for vibe coders.
+React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + pnpm + Vitest + ESLint 9.
 The commands and rules are the product. The boilerplate is the vehicle.
 
 ## Stack
@@ -75,8 +74,6 @@ The essential rule: **NEVER commit to main. ALWAYS branch first. No exceptions.*
 ## Protected Pages
 - `/playground` — Component reference page. NEVER delete. NEVER remove from nav.
   When design tokens change, verify Playground still renders correctly.
-- `/steaksoap` — Original template showcase. NEVER delete. Keep for reference.
-- `/welcome` — Post-clone setup guide. Removed automatically by `pnpm setup`.
 
 ## Detailed Rules
 See .claude/rules/ — these files are loaded automatically based on what you're working on.

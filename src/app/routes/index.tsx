@@ -26,9 +26,7 @@ function lazyWithRetry<T extends ComponentType>(
 }
 
 const Home = lazyWithRetry(() => import('@pages/Home'));
-const Welcome = lazyWithRetry(() => import('@pages/Welcome'));
 const Playground = lazyWithRetry(() => import('@pages/Playground'));
-const Steaksoap = lazyWithRetry(() => import('@pages/Steaksoap'));
 const NotFound = lazyWithRetry(() => import('@pages/NotFound'));
 
 /* ─── Loading fallback — themed, no white flash ───────────────── */
@@ -52,12 +50,9 @@ export default function AppRoutes() {
         {/* Root layout — wraps ALL pages with Header + Footer */}
         <Route element={<RootLayout />}>
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.WELCOME} element={<Welcome />} />
           <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
-          <Route path={ROUTES.STEAKSOAP} element={<Steaksoap />} />
           {/* Add routes here: */}
           {/* <Route path={ROUTES.ABOUT} element={<About />} /> */}
-          {/* <Route path={ROUTES.PROJECT} element={<ProjectDetail />} /> */}
         </Route>
 
         {/* 404 — outside layout for a blank page if needed */}

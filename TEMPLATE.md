@@ -1,6 +1,6 @@
 # Template Maintenance Guide
 
-This file is for maintainers of the steaksoap template. If you're a user, ignore it.
+This file is for maintainers of the project template. If you're a user, ignore it.
 
 ## How the template update system works
 

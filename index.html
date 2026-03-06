@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#000000" />
 
     <!-- SEO defaults — overridden by <SeoHead /> in each page -->
-    <title>steaksoap</title>
+    <title>Project</title>
     <meta name="description" content="" />
 
     <!-- Fonts: Space Grotesk (sans) + JetBrains Mono (mono) -->
@@ -23,7 +23,7 @@
     <script>
       (function() {
         var theme;
-        try { theme = localStorage.getItem('steaksoap-theme'); } catch(e) { /* Safari private mode */ }
+        try { theme = localStorage.getItem('app-theme'); } catch(e) { /* Safari private mode */ }
         if (!theme) {
           theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }

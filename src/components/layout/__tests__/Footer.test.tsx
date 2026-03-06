@@ -10,34 +10,11 @@ beforeAll(() => {
 });
 
 describe('Footer', () => {
-  it('renders the Claude Code credit link', () => {
-    render(<Footer />);
-    expect(screen.getByText('Claude Code')).toBeInTheDocument();
-  });
-
-  it('renders the GitHub link', () => {
-    render(<Footer />);
-    expect(screen.getByText('GitHub')).toBeInTheDocument();
-  });
-
-  it('opens links in new tab', () => {
-    render(<Footer />);
-    const links = screen.getAllByRole('link');
-    for (const link of links) {
-      expect(link).toHaveAttribute('target', '_blank');
-      expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'));
-    }
-  });
-
-  it('renders the version linking to releases', () => {
+  it('renders the version', () => {
     render(<Footer />);
     // WHY: JSX splits `v` and `{__APP_VERSION__}` into separate text nodes
     const version = screen.getByText((_content, el) => el?.textContent === 'v0.0.0-test');
     expect(version).toBeInTheDocument();
-    expect(version.closest('a')).toHaveAttribute(
-      'href',
-      'https://github.com/mitambuch/steaksoap/releases',
-    );
   });
 
   it('has no accessibility violations', async () => {

@@ -58,7 +58,7 @@ function fail(msg) {
   console.log(`  ${red('✗')} ${msg}`);
 }
 
-console.log(`\n  ${bold('steaksoap done')} — structural coherence check\n`);
+console.log(`\n  ${bold('done')} — structural coherence check\n`);
 
 // ─── 1. Routes ↔ Pages ──────────────────────────────────────
 const routesPath = PATHS.routes;

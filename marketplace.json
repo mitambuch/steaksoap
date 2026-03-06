@@ -1,9 +1,9 @@
 {
-  "name": "steaksoap",
+  "name": "project",
   "description": "AI-first React development toolkit: commands, agents, and skills for vibe coding",
   "plugins": [
     {
-      "name": "steaksoap-core",
+      "name": "project-core",
       "description": "18 slash commands + 4 agents + contextual rules for React development",
       "path": "."
     }

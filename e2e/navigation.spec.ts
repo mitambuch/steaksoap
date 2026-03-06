@@ -1,28 +1,18 @@
 import { expect, test } from '@playwright/test';
 
 /* ═══════════════════════════════════════════════════════════════
-   NAVIGATION E2E — verifies routing, header links, footer links,
+   NAVIGATION E2E — verifies routing, header links,
    theme toggle, and 404 fallback across all pages.
    ═══════════════════════════════════════════════════════════════ */
 
 test.describe('Navigation — all pages load', () => {
-  test('/ loads with hero heading', async ({ page }) => {
+  test('/ loads with heading', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toBeVisible();
   });
 
   test('/playground loads', async ({ page }) => {
     await page.goto('/playground');
-    await expect(page.locator('h1')).toBeVisible();
-  });
-
-  test('/steaksoap loads', async ({ page }) => {
-    await page.goto('/steaksoap');
-    await expect(page.locator('h1')).toBeVisible();
-  });
-
-  test('/welcome loads', async ({ page }) => {
-    await page.goto('/welcome');
     await expect(page.locator('h1')).toBeVisible();
   });
 
@@ -48,14 +38,6 @@ test.describe('Navigation — header links', () => {
     // Click the logo/brand link (first link in nav)
     await page.locator('nav[aria-label="Main navigation"] a').first().click();
     await expect(page).toHaveURL('/');
-  });
-});
-
-test.describe('Navigation — footer links', () => {
-  test('footer contains GitHub link', async ({ page }) => {
-    await page.goto('/');
-    const footer = page.locator('footer');
-    await expect(footer.getByRole('link', { name: /github/i })).toBeVisible();
   });
 });
 

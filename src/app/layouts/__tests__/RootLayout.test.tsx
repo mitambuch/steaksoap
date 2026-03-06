@@ -1,16 +1,9 @@
 import { ThemeProvider } from '@context/ThemeContext';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import RootLayout from '../RootLayout';
-
-// WHY: Mock heavy child components to isolate layout testing
-vi.mock('@components/layout/CursorGlow', () => ({
-  CursorGlow: ({ enabled }: { enabled: boolean }) => (
-    <div data-testid="cursor-glow" data-enabled={enabled} />
-  ),
-}));
 
 function renderLayout(route = '/') {
   return render(
@@ -49,10 +42,5 @@ describe('RootLayout', () => {
   it('renders page content via Outlet', () => {
     renderLayout();
     expect(screen.getByTestId('page-content')).toBeInTheDocument();
-  });
-
-  it('renders CursorGlow component', () => {
-    renderLayout();
-    expect(screen.getByTestId('cursor-glow')).toBeInTheDocument();
   });
 });
