@@ -1,4 +1,3 @@
-import { siteConfig } from '@config/site';
 import { ThemeProvider } from '@context/ThemeContext';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
@@ -18,9 +17,9 @@ function renderHeader(props: Partial<Parameters<typeof Header>[0]> = {}) {
 }
 
 describe('Header', () => {
-  it('renders project name', () => {
+  it('renders the logo blob link', () => {
     renderHeader();
-    expect(screen.getByText(siteConfig.name)).toBeInTheDocument();
+    expect(screen.getByLabelText('Home')).toBeInTheDocument();
   });
 
   it('shows Playground link', () => {

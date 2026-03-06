@@ -1,5 +1,4 @@
 import { ThemeToggle } from '@components/ui/ThemeToggle';
-import { siteConfig } from '@config/site';
 import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
 import { Blocks, House } from 'lucide-react';
@@ -24,17 +23,18 @@ function useScrolled(threshold = 20) {
 
 function MorphingLogo() {
   return (
-    <Link to={ROUTES.HOME} className="group flex items-center gap-3 focus-visible:outline-none">
+    <Link
+      to={ROUTES.HOME}
+      className="group flex items-center focus-visible:outline-none"
+      aria-label="Home"
+    >
       <div
-        className="bg-accent h-5 w-5 shadow-[0_0_12px_rgba(255,107,107,0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-6 md:w-6"
+        className="bg-accent h-6 w-6 shadow-[0_0_12px_rgba(255,107,107,0.4)] transition-[transform,box-shadow] duration-700 ease-in-out md:h-7 md:w-7"
         style={{
           animation: 'morph 4s ease-in-out infinite',
           borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
         }}
       />
-      <span className="text-accent text-base leading-relaxed font-bold tracking-tighter opacity-95 md:text-xl">
-        {siteConfig.name}
-      </span>
     </Link>
   );
 }
