@@ -1,32 +1,48 @@
-# steaksoap
+# project-base
 
-AI-first React starter kit for vibe coders. Clone, setup, ship.
-
-[![Version](https://img.shields.io/badge/version-4.0.0-c44040)](https://github.com/Mircooo/steaksoap/releases)
-[![Build](https://img.shields.io/github/actions/workflow/status/Mircooo/steaksoap/ci.yml?branch=main)](https://github.com/Mircooo/steaksoap/actions)
-[![Coverage](https://img.shields.io/badge/coverage-75%25-brightgreen)](#testing)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D20-339933)](https://nodejs.org/)
-[![pnpm](https://img.shields.io/badge/pnpm-%3E%3D9-f69220)](https://pnpm.io/)
+Private production base for front-end projects.
+React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4.
 
 ---
 
-## Why steaksoap?
+## What this is
 
-- **AI-native workflow** — 23 slash commands + 4 agents + 12 contextual rules. Claude Code understands your project structure out of the box.
-- **Design system included** — Classe2 "brutaliste suisse" aesthetic. Dark + light mode, tokenized colors, durations, and typography. Single source of truth in `src/index.css`.
-- **Production-grade quality** — TypeScript strict (all flags), ESLint 9, Prettier, Husky, commitlint, 75%+ test coverage, Lighthouse CI, Playwright E2E.
-- **Clinical duplication** — `pnpm setup` wizard transforms the template into your project. Name, colors, fonts, routes — everything adapts.
-- **Zero config CI/CD** — GitHub Actions with matrix testing (Node 20+22), dependency review, security audit, bundle size checks, and Lighthouse scores.
+An internal foundation optimized for fast, clean front-end work:
+
+- **Concept presentations** and landing pages
+- **Premium showcase sites** and client websites
+- **Projects connecting to external APIs** (REST, GraphQL, headless CMS)
+- **Optional Sanity integration** (add when needed, not baked in)
+
+Not a public template. Not a framework. A disciplined starting point.
 
 ## Quick start
 
 ```bash
-npx degit Mircooo/steaksoap my-project
+# Clone from the canonical base
+git clone git@github.com:Mircooo/steaksoap.git my-project
 cd my-project
 pnpm install
-pnpm setup          # Interactive wizard — name, colors, cleanup
+pnpm setup          # Interactive wizard — name, repo (private), cleanup
 pnpm dev            # → http://localhost:5173
+```
+
+Then in Claude Code, run `/init` to customize colors, fonts, and content.
+
+## Keeping projects up to date
+
+Pull improvements from the canonical base into any derived project:
+
+```bash
+pnpm base:update
+```
+
+This fetches and merges `base/main` into your project. Resolve conflicts if any, then commit.
+
+The `base` remote is configured automatically during `pnpm setup`. If you need to add it manually:
+
+```bash
+git remote add base https://github.com/Mircooo/steaksoap.git
 ```
 
 ## Tech stack
@@ -34,7 +50,7 @@ pnpm dev            # → http://localhost:5173
 | Layer | Technology | Version |
 |-------|-----------|---------|
 | Framework | React | 19 |
-| Language | TypeScript | 5.9 |
+| Language | TypeScript | 5.9 (strict, all flags) |
 | Bundler | Vite | 7 |
 | Styling | Tailwind CSS | 4 |
 | Testing | Vitest + Playwright | latest |
@@ -42,27 +58,26 @@ pnpm dev            # → http://localhost:5173
 | Package manager | pnpm | 10 |
 | Icons | Lucide React | latest |
 
-## Features
-
-### Design system
+## Design system
 
 All tokens live in [`src/index.css`](src/index.css) — single source of truth.
 
-| Token | Dark | Light | Usage |
-|-------|------|-------|-------|
-| `accent` | #c44040 | #c44040 | CTAs, hovers, highlights |
-| `bg` | #0A0A0A | #B0B0A8 | Page background |
-| `fg` | #F0F0F0 | #1A1A1A | Primary text |
-| `surface` | #141414 | #A4A49C | Cards, panels |
-| `muted` | #8A8A8A | #4A4A44 | Secondary text |
+| Token | Dark | Light |
+|-------|------|-------|
+| `accent` | #c44040 | #c44040 |
+| `bg` | #0A0A0A | #B0B0A8 |
+| `fg` | #F0F0F0 | #1A1A1A |
+| `surface` | #141414 | #A4A49C |
+| `muted` | #8A8A8A | #4A4A44 |
 
-Fonts: **Space Grotesk** (sans) + **JetBrains Mono** (mono). Duration tokens: `fast` (150ms), `base` (300ms), `slow` (500ms), `cinematic` (700ms).
+Fonts: **Space Grotesk** (sans) + **JetBrains Mono** (mono).
+Duration tokens: `fast` (150ms), `base` (300ms), `slow` (500ms), `cinematic` (700ms).
 
-See [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md) for full reference.
+Customize per project via `/init` or edit `src/index.css` directly.
 
-### AI workflow
+## AI workflow
 
-23 slash commands, 4 specialized agents, 12 contextual rules.
+23 slash commands, 4 specialized agents, 12 contextual rules — all in `.claude/`.
 
 | Category | Commands |
 |----------|----------|
@@ -72,40 +87,13 @@ See [`DESIGN_SYSTEM.md`](DESIGN_SYSTEM.md) for full reference.
 | **Evolve** | `/refactor`, `/migrate`, `/theme`, `/init`, `/update-deps` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
-Agents: `debugger`, `designer`, `reviewer`, `tester` — each with focused context and tools.
-
-Full reference: [docs/commands.md](docs/commands.md).
-
-### Testing
-
-- **Unit**: Vitest with jsdom, 340+ tests, 75%+ coverage thresholds
-- **E2E**: Playwright on production build (not dev server)
-- **A11y**: axe-core integration (unit + E2E)
-- **Lighthouse CI**: a11y/best-practices/SEO ≥ 0.9, performance ≥ 0.8
-
-```bash
-pnpm test              # Unit tests
-pnpm test:coverage     # Coverage report
-pnpm test:e2e          # Playwright E2E
-pnpm validate          # Lint + typecheck + test + build
-```
-
-### CI/CD
-
-GitHub Actions pipeline:
-1. **validate** — ESLint, TypeScript, Vitest, Vite build (Node 20 + 22 matrix)
-2. **e2e** — Playwright on built preview
-3. **lighthouse** — Performance + a11y scores
-
-Plus: Dependabot weekly updates, dependency-review on PRs, security audit.
-
 ## Architecture
 
 ```
 src/
 ├── app/                — routes, providers, layout
 ├── components/
-│   ├── ui/             — 24 reusable atoms (Button, Card, Modal, Select, Tabs…)
+│   ├── ui/             — reusable atoms (Button, Card, Modal, Select, Tabs…)
 │   ├── layout/         — Header, Footer, Container, CursorGlow
 │   └── features/       — ErrorBoundary, SeoHead
 ├── config/             — env.ts, site.ts, cloudinary.ts
@@ -116,25 +104,8 @@ src/
 ├── styles/             — fonts.css, animations.css
 ├── utils/              — cn(), helpers
 ├── lib/                — API services
-└── workbench/          — playground sections, shared components, data
+└── workbench/          — playground sections, shared components
 ```
-
-**Path aliases**: `@components`, `@hooks`, `@pages`, `@utils`, `@config`, `@features`, `@context`, `@workbench`, `@lib`, `@styles`, `@constants`, `@data`, `@app`.
-
-## Pages
-
-| Route | Purpose |
-|-------|---------|
-| `/` | Showcase landing — brutaliste swiss design |
-| `/playground` | Interactive design system — all tokens, all components |
-| `/lab` | Experimentation sandbox — prototypes and ideas |
-
-## Principles
-
-- **Reuse-first** — check `components/ui/` before creating anything new
-- **Token-first** — no local colors/spacing if a token covers the need
-- **Branch-first** — never commit to `main` directly
-- **Validate-first** — `pnpm validate` before every commit
 
 ## Scripts
 
@@ -142,23 +113,51 @@ src/
 |---------|-------------|
 | `pnpm dev` | Dev server (port 5173) |
 | `pnpm build` | Production build |
-| `pnpm preview` | Preview production build |
 | `pnpm validate` | Lint + typecheck + test + build |
 | `pnpm test:coverage` | Unit tests with coverage report |
 | `pnpm test:e2e` | Playwright E2E tests |
 | `pnpm release` | Version bump + changelog + tag |
 | `pnpm setup` | Interactive project setup wizard |
+| `pnpm base:update` | Pull updates from upstream base |
+| `pnpm analyze` | Bundle size visualization |
 | `pnpm doctor` | Project health check |
 
-## Contributing
+## Testing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feat/my-feature`
-3. Run `pnpm validate` before committing
-4. Open a pull request
+- **Unit**: Vitest with jsdom, 340+ tests, 75%+ coverage thresholds
+- **E2E**: Playwright on production build
+- **A11y**: axe-core integration (unit + E2E)
+- **Lighthouse CI**: a11y/best-practices/SEO ≥ 0.9, performance ≥ 0.8
 
-Commits follow [Conventional Commits](https://www.conventionalcommits.org/) with scope: `feat(ui): add tooltip component`.
+## CI/CD
 
-## License
+GitHub Actions pipeline:
+1. **validate** — ESLint, TypeScript, Vitest, Vite build (Node 20 + 22 matrix)
+2. **e2e** — Playwright on built preview
+3. **lighthouse** — Performance + a11y scores
 
-[MIT](LICENSE) — Mirco
+## Security headers & external services
+
+The base ships with strict CSP and security headers in [`netlify.toml`](netlify.toml) and [`vercel.json`](vercel.json).
+
+When connecting to external APIs, Sanity, or third-party services, you'll need to expand these per project:
+
+```
+# Example: adding Sanity CDN and an external API
+img-src 'self' data: https://cdn.sanity.io https://res.cloudinary.com;
+connect-src 'self' https://api.example.com https://*.sanity.io;
+```
+
+**Where to adjust:**
+- `netlify.toml` → `Content-Security-Policy` header value
+- `vercel.json` → `Content-Security-Policy` header value
+- For other platforms: configure equivalent headers in your deployment config
+
+Do not loosen security globally. Add only the domains your project actually uses.
+
+## Principles
+
+- **Reuse-first** — check `components/ui/` before creating anything new
+- **Token-first** — no local colors/spacing if a token covers the need
+- **Branch-first** — never commit to `main` directly
+- **Validate-first** — `pnpm validate` before every commit

@@ -1,6 +1,6 @@
 # /init — Project Identity Setup
 
-Transform this template into YOUR project.
+Customize this base for YOUR project.
 
 ## When to use
 Run this ONCE after cloning, AFTER `pnpm setup` (which handles the technical setup).

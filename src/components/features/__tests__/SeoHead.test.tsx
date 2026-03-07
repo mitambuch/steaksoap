@@ -33,8 +33,14 @@ describe('SeoHead', () => {
     expect(ogDesc).toHaveAttribute('content', 'og desc');
   });
 
-  it('sets Twitter Card meta tags', () => {
+  it('sets Twitter Card to summary when no image', () => {
     renderSeoHead({ title: 'Tweet' });
+    const card = document.querySelector('meta[name="twitter:card"]');
+    expect(card).toHaveAttribute('content', 'summary');
+  });
+
+  it('sets Twitter Card to summary_large_image when image is provided', () => {
+    renderSeoHead({ title: 'Tweet', ogImage: '/images/og.jpg' });
     const card = document.querySelector('meta[name="twitter:card"]');
     expect(card).toHaveAttribute('content', 'summary_large_image');
   });
@@ -43,6 +49,12 @@ describe('SeoHead', () => {
     renderSeoHead({ noIndex: true });
     const robots = document.querySelector('meta[name="robots"]');
     expect(robots).toHaveAttribute('content', 'noindex, nofollow');
+  });
+
+  it('does not emit og:image when no image is configured', () => {
+    renderSeoHead({ title: 'No Image' });
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    expect(ogImage).toBeNull();
   });
 
   it('does not render noindex by default', () => {

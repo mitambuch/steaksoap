@@ -18,7 +18,7 @@ pnpm build            — production build
 pnpm preview          — preview production build
 pnpm validate         — lint + typecheck + test + build (run before every PR)
 pnpm setup            — interactive project setup wizard
-pnpm setup:update     — pull latest template improvements
+pnpm base:update      — pull latest improvements from upstream base
 pnpm release          — create versioned release with changelog
 
 ## Architecture

@@ -6,11 +6,11 @@
 
    Modes:
      pnpm setup           → auto-detect (init wizard or light setup)
-     pnpm setup --update  → pull updates from starter template
+     pnpm setup --update  → pull updates from upstream base
      pnpm setup --yes     → non-interactive init (CI/testing)
 
    The script auto-detects whether this is a fresh clone
-   (package name still has the template default) or an
+   (package name still matches the base project) or an
    already-initialized project.
    ═══════════════════════════════════════════════════════════════ */
 
@@ -29,6 +29,14 @@ const root = PATHS.root;
 const run = (cmd) => execSync(cmd, { cwd: root, encoding: 'utf-8' }).trim();
 const runVisible = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
 
+// ─── Upstream base config ────────────────────────────────────
+// Change these if your canonical base repo moves or is renamed.
+const BASE_REPO_OWNER = 'Mircooo';
+const BASE_REPO_NAME = 'steaksoap';
+const BASE_PACKAGE_NAME = 'steaksoap';
+const BASE_REMOTE_NAME = 'base';
+const BASE_REMOTE_URL = `https://github.com/${BASE_REPO_OWNER}/${BASE_REPO_NAME}.git`;
+
 // ─── Mode detection ─────────────────────────────────────────
 const isUpdate = process.argv.includes('--update');
 let isAutoYes =
@@ -40,7 +48,7 @@ if (!process.stdin.isTTY) isAutoYes = true;
 // ─── Fresh clone detection ──────────────────────────────────
 const pkgPath = resolve(root, 'package.json');
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
-const isFreshClone = pkg.name === 'steaksoap';
+const isFreshClone = pkg.name === BASE_PACKAGE_NAME;
 
 // ─── Node version check ────────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
@@ -153,8 +161,8 @@ async function runInit() {
     const remotes = run('git remote').split('\n').filter(Boolean);
     if (remotes.includes('origin')) {
       const originUrl = run('git remote get-url origin');
-      if (originUrl.includes('mitambuch/steaksoap')) {
-        run('git remote rename origin template');
+      if (originUrl.includes(`${BASE_REPO_OWNER}/${BASE_REPO_NAME}`) || originUrl.includes(`mitambuch/${BASE_REPO_NAME}`)) {
+        run(`git remote rename origin ${BASE_REMOTE_NAME}`);
       }
     }
   } catch {
@@ -166,7 +174,7 @@ async function runInit() {
     s.message(`Creating ${ghUser}/${projectName} on GitHub...`);
     try {
       run(
-        `gh repo create ${ghUser}/${projectName} --public --source=. --remote=origin`,
+        `gh repo create ${ghUser}/${projectName} --private --source=. --remote=origin`,
       );
     } catch (e) {
       if (e.message?.includes('already exists')) {
@@ -297,14 +305,11 @@ async function runSetup() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// UPDATE — pull latest changes from starter template
+// UPDATE — pull latest changes from upstream base
 // ═══════════════════════════════════════════════════════════════
 
 async function runUpdate() {
-  const TEMPLATE_REMOTE = 'template';
-  const TEMPLATE_URL = 'https://github.com/mitambuch/steaksoap.git';
-
-  console.log('\n  Update from template\n');
+  console.log('\n  Update from upstream base\n');
 
   // Check clean working tree
   const status = run('git status --porcelain');
@@ -316,23 +321,28 @@ async function runUpdate() {
   }
   console.log('  ✓ Working tree clean');
 
-  // Add template remote if needed
-  const remotes = run('git remote');
-  if (!remotes.split('\n').includes(TEMPLATE_REMOTE)) {
-    console.log(`  → Adding remote "${TEMPLATE_REMOTE}"...`);
-    run(`git remote add ${TEMPLATE_REMOTE} ${TEMPLATE_URL}`);
-    console.log(`  ✓ Remote "${TEMPLATE_REMOTE}" added`);
+  // Add base remote if needed (also migrate legacy "template" remote)
+  const remotes = run('git remote').split('\n').filter(Boolean);
+  if (remotes.includes('template') && !remotes.includes(BASE_REMOTE_NAME)) {
+    console.log(`  → Migrating "template" remote to "${BASE_REMOTE_NAME}"...`);
+    run(`git remote rename template ${BASE_REMOTE_NAME}`);
+    run(`git remote set-url ${BASE_REMOTE_NAME} ${BASE_REMOTE_URL}`);
+    console.log(`  ✓ Remote "${BASE_REMOTE_NAME}" configured`);
+  } else if (!remotes.includes(BASE_REMOTE_NAME)) {
+    console.log(`  → Adding remote "${BASE_REMOTE_NAME}"...`);
+    run(`git remote add ${BASE_REMOTE_NAME} ${BASE_REMOTE_URL}`);
+    console.log(`  ✓ Remote "${BASE_REMOTE_NAME}" added`);
   } else {
-    console.log(`  ✓ Remote "${TEMPLATE_REMOTE}" exists`);
+    console.log(`  ✓ Remote "${BASE_REMOTE_NAME}" exists`);
   }
 
   // Fetch + merge
   console.log('  → Fetching updates...');
-  runVisible(`git fetch ${TEMPLATE_REMOTE}`);
+  runVisible(`git fetch ${BASE_REMOTE_NAME}`);
 
-  console.log('  → Merging template/main...');
+  console.log(`  → Merging ${BASE_REMOTE_NAME}/main...`);
   try {
-    runVisible(`git merge ${TEMPLATE_REMOTE}/main --no-edit`);
+    runVisible(`git merge ${BASE_REMOTE_NAME}/main --no-edit`);
     console.log('\n  ✓ Merge complete');
   } catch {
     console.log(
