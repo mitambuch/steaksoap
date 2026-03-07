@@ -33,7 +33,6 @@ const runVisible = (cmd) => execSync(cmd, { stdio: 'inherit', cwd: root });
 // Change these if your canonical base repo moves or is renamed.
 const BASE_REPO_OWNER = 'Mircooo';
 const BASE_REPO_NAME = 'steaksoap';
-const BASE_PACKAGE_NAME = 'steaksoap';
 const BASE_REMOTE_NAME = 'base';
 const BASE_REMOTE_URL = `https://github.com/${BASE_REPO_OWNER}/${BASE_REPO_NAME}.git`;
 
@@ -46,9 +45,10 @@ let isAutoYes =
 if (!process.stdin.isTTY) isAutoYes = true;
 
 // ─── Fresh clone detection ──────────────────────────────────
+// Uses the _baseProject field — set to true in the base, removed during setup.
 const pkgPath = resolve(root, 'package.json');
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
-const isFreshClone = pkg.name === BASE_PACKAGE_NAME;
+const isFreshClone = pkg._baseProject === true;
 
 // ─── Node version check ────────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
@@ -191,6 +191,7 @@ async function runInit() {
   // ─── Update package.json ────────────────────────────────
   pkg.name = String(projectName);
   pkg.version = '0.1.0';
+  delete pkg._baseProject;
   if (ghUser && createRepo) {
     pkg.homepage = `https://github.com/${ghUser}/${projectName}`;
     pkg.repository = {
@@ -202,6 +203,15 @@ async function runInit() {
     };
   }
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+
+  // ─── Update manifest.json ───────────────────────────────
+  const manifestPath = resolve(root, 'public/manifest.json');
+  if (existsSync(manifestPath)) {
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+    manifest.name = String(displayName);
+    manifest.short_name = String(projectName);
+    writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+  }
 
   // ─── Create .env.local ─────────────────────────────────
   const envLocal = resolve(root, '.env.local');
