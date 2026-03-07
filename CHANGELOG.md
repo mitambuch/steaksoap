@@ -1,5 +1,45 @@
 # Changelog
 
+## [4.1.0](https://github.com/mitambuch/steaksoap/compare/v4.0.0...v4.1.0) (2026-03-07)
+
+### ✨ Features
+
+* **lab:** add Lab page with route and navigation ([ae0ff43](https://github.com/mitambuch/steaksoap/commit/ae0ff430ccb5e063752a77429db05e2516be4b15))
+* **lint:** enforce workbench import boundary ([b85f455](https://github.com/mitambuch/steaksoap/commit/b85f455db7f5fe2879d2ee2d42505331a9366aac))
+* **quality:** competition polish — a11y, PWA, license, README, strict TS ([f414ec4](https://github.com/mitambuch/steaksoap/commit/f414ec4a60015ee6f682ec2eb0a486bdcbbd7fba))
+* **rules:** add reuse-first and token-first rules ([4b3788a](https://github.com/mitambuch/steaksoap/commit/4b3788ade6b8f31af44f98f1c1e5d8aca8f5c794))
+* **site:** logo blob only, motivational home page ([4a89087](https://github.com/mitambuch/steaksoap/commit/4a89087c5dcf1978cc5c5304ed8ce5e257cdcd70))
+
+### 🐛 Bug Fixes
+
+* **audit:** resolve all audit issues ([ff1db8b](https://github.com/mitambuch/steaksoap/commit/ff1db8bcd04ad4071ac9ecb360579fbca9b66eeb))
+* **commands:** add header and a11y test to new-component template ([163b675](https://github.com/mitambuch/steaksoap/commit/163b67566b3ad71872e853e2ae5d5e22a5587a0b))
+* **components:** add missing header to Banner ([6d4783a](https://github.com/mitambuch/steaksoap/commit/6d4783a39bd399fadb64d65457cca82616d522cd))
+* **docs:** git doctrine, release comment, reuse-first ([7a2d03a](https://github.com/mitambuch/steaksoap/commit/7a2d03aae2e5aae81eda3da69fc0ede20e0150e5))
+* **docs:** harden cockpit — autonomy, docs, naming ([50f32af](https://github.com/mitambuch/steaksoap/commit/50f32afee8d27238a3f2550fbc4e0f6192a666ad))
+* **docs:** sync docs with current repo state ([61e2673](https://github.com/mitambuch/steaksoap/commit/61e26738867591a3b222aa1c010123d861895c6a))
+* **docs:** sync README with reality, fix hardcodes, reduce confirmations ([4311771](https://github.com/mitambuch/steaksoap/commit/43117711818f08780f06684aa4ea580630cf3836)), closes [#000000](https://github.com/mitambuch/steaksoap/issues/000000) [#0a0a0a](https://github.com/mitambuch/steaksoap/issues/0a0a0a)
+* **release:** require descriptive title for GitHub releases ([d6e3272](https://github.com/mitambuch/steaksoap/commit/d6e32720365de49bae83e2ef6afa04fd12990edf))
+* **rules:** sync components.md with actual codebase ([2912f8f](https://github.com/mitambuch/steaksoap/commit/2912f8f4c885384e9ea6058515eff35cf485faac))
+* **security:** override vulnerable transitive deps (rollup, basic-ftp) ([7f0b71e](https://github.com/mitambuch/steaksoap/commit/7f0b71eaf4056bd1f5e1b9cae3b45abc12c97f00))
+* **setup:** polish pre-release issues ([#32](https://github.com/mitambuch/steaksoap/issues/32)) ([ffe1a33](https://github.com/mitambuch/steaksoap/commit/ffe1a3371a367e8e889af501a4728ea97e9ae3ae))
+* **theme:** delete MIT license, darken accent color to [#c44040](https://github.com/mitambuch/steaksoap/issues/c44040) ([72cd06f](https://github.com/mitambuch/steaksoap/commit/72cd06ff109063113ecf9e74ace49a04861f89d7)), closes [#ff6b6b](https://github.com/mitambuch/steaksoap/issues/ff6b6b)
+
+### ♻️  Refactoring
+
+* **base:** reframe as private production base ([#31](https://github.com/mitambuch/steaksoap/issues/31)) ([921d98e](https://github.com/mitambuch/steaksoap/commit/921d98e996a3edce7507da66e3d036043afdf08f))
+* **docs:** optimize MD files for token efficiency and autonomy ([601fed6](https://github.com/mitambuch/steaksoap/commit/601fed6c1fa7e972d0e41fee519c39b2dcf68030))
+* **playground:** extract sections + fix accent desync + full-width layout ([f0fde0c](https://github.com/mitambuch/steaksoap/commit/f0fde0cf507fb31af1c9d16a6981c4e7ce03f085)), closes [#FF6B6B](https://github.com/mitambuch/steaksoap/issues/FF6B6B) [#c44040](https://github.com/mitambuch/steaksoap/issues/c44040)
+* **tokens:** centralize design system — single source of truth ([47d3ac7](https://github.com/mitambuch/steaksoap/commit/47d3ac7e73a9996219c1e29b74c01913971c3aa4))
+
+### 🔧 Chores
+
+* **cleanup:** remove open-source remnants and empty gitkeeps ([60f2a80](https://github.com/mitambuch/steaksoap/commit/60f2a80703a15d5a0d7be6fb01e48568f2b249bb))
+
+### ✅ Tests
+
+* **ui:** add axe a11y tests to 5 components ([7b785b8](https://github.com/mitambuch/steaksoap/commit/7b785b8cea6f1a9d96d990311d0aef959500cbca))
+
 ## [4.0.0](https://github.com/Mircooo/steaksoap/compare/v3.3.3...v4.0.0) (2026-03-06)
 
 ### ⚠ BREAKING CHANGES
