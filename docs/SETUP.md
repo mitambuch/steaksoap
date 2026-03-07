@@ -94,7 +94,7 @@ Accepts all defaults without prompting. Useful for CI/testing.
 | `pnpm test:watch` | Run tests in watch mode |
 | `pnpm validate` | Lint + typecheck + tests + build — **the final check** |
 | `pnpm setup` | Interactive setup wizard (or light setup if already initialized) |
-| `pnpm setup --update` | Pull updates from the upstream template |
+| `pnpm base:update` | Pull updates from the upstream base |
 | `pnpm release` | Interactive release: bump + CHANGELOG + tag + GitHub Release |
 | `pnpm release:patch` | Force a patch bump (0.1.0 → 0.1.1) |
 | `pnpm release:minor` | Force a minor bump (0.1.0 → 0.2.0) |
@@ -132,19 +132,22 @@ After `pnpm setup`, edit:
 
 ---
 
-## Update from upstream template
+## Update from upstream base
 
-If the template has been improved (new config, fixes, upgrades), pull the changes:
+When the base has been improved (new components, config fixes, upgrades), pull the changes:
 
 ```bash
-pnpm setup --update
+pnpm base:update
 ```
 
-This fetches and merges updates from the upstream template.
+This fetches and merges updates from the upstream base repo.
 If there are conflicts, resolve them manually then `git add . && git commit`.
 
-This works because the `template` remote points to the upstream repo.
-Git smartly merges the template changes with your project code.
+This works because the `base` remote points to the canonical upstream repo.
+Git smartly merges the base changes with your project-specific code.
+
+**Safe zones** (unlikely to conflict): `.claude/`, `scripts/`, `src/components/ui/`, config files.
+**Your zones** (may need manual merge): `src/pages/`, `src/features/`, `src/config/site.ts`.
 
 ---
 

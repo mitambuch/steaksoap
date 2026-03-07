@@ -15,7 +15,7 @@ export const siteConfig = {
 
   // ─── SEO defaults ──────────────────────────────────────────
   title: env.APP_NAME,
-  description: 'A modern React application',
+  description: '', // Set per-project description here
   ogImage: '', // Add your OG image to public/images/ and update this path
 
   // ─── Contact ───────────────────────────────────────────────

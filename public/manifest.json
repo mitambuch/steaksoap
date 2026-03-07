@@ -1,7 +1,7 @@
 {
-  "name": "steaksoap",
-  "short_name": "steaksoap",
-  "description": "AI-first React starter kit",
+  "name": "Project",
+  "short_name": "Project",
+  "description": "",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#0a0a0a",

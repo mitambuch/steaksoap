@@ -7,6 +7,9 @@
 
    Usage: node scripts/setup-bootstrap.js [--update] [--yes] [--check]
    --check: only remind user to run setup if project is unconfigured
+
+   NOTE: The base package name is also checked in setup.js (BASE_PACKAGE_NAME).
+   Keep both in sync if the canonical base project is renamed.
    ═══════════════════════════════════════════════════════════════ */
 
 import { execFileSync, execSync } from 'node:child_process';
