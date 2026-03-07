@@ -8,8 +8,7 @@
    Usage: node scripts/setup-bootstrap.js [--update] [--yes] [--check]
    --check: only remind user to run setup if project is unconfigured
 
-   NOTE: The base package name is also checked in setup.js (BASE_PACKAGE_NAME).
-   Keep both in sync if the canonical base project is renamed.
+   Detection uses pkg._baseProject field (set in base, removed during setup).
    ═══════════════════════════════════════════════════════════════ */
 
 import { execFileSync, execSync } from 'node:child_process';
@@ -27,7 +26,7 @@ const isCheckMode = process.argv.includes('--check');
 
 if (isCheckMode) {
   const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8'));
-  if (pkg.name === 'steaksoap') {
+  if (pkg._baseProject === true) {
     console.log('\n  \x1b[33m⚡ Fresh clone detected.\x1b[0m Run \x1b[1mpnpm setup\x1b[0m to initialize your project.\n');
   }
   process.exit(0);
