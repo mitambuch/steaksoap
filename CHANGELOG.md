@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.2.0](https://github.com/mitambuch/steaksoap/compare/v4.1.0...v4.2.0) (2026-03-30)
+
+### ✨ Features
+
+* **design:** add /design command — frontend design skill for vitrine sites ([900f50d](https://github.com/mitambuch/steaksoap/commit/900f50dfa006b4ef6ce0063d829352408397214e))
+* **design:** add explore/convert workflow + commands memo ([f373143](https://github.com/mitambuch/steaksoap/commit/f3731437ea1e152a91045156527e0c861bae44b3))
+* **registry:** add Sanity CMS and pre-rendering extensions ([d4a590c](https://github.com/mitambuch/steaksoap/commit/d4a590c64b37c429bf5552758eb91b095de265a1))
+
+### 🔧 Chores
+
+* **deps:** update safe dependencies + fix lighthouse config ([582b4fa](https://github.com/mitambuch/steaksoap/commit/582b4fa81b38f867de8d7a2760dbbfb67fd9cf68))
+
 ## [4.1.0](https://github.com/mitambuch/steaksoap/compare/v4.0.0...v4.1.0) (2026-03-07)
 
 ### ✨ Features
