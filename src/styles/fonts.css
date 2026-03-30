@@ -1,15 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
-   FONTS — Single source of truth for font loading.
+   FONTS — Self-hosted for privacy, performance, and reliability.
+   No external requests to Google. GDPR/nLPD compliant.
    Change fonts HERE → index.css @theme picks them up → done.
 
-   Currently: Google Fonts (remote).
-   To self-host: replace @import with @font-face below.
+   Files in public/fonts/ (woff2, ~82KB total).
+   Source: fontsource.org (open-source font CDN).
    ═══════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
-
-/* ─── Self-hosted alternative (uncomment + remove @import above) ── */
-/*
 @font-face {
   font-family: 'Space Grotesk';
   src: url('/fonts/SpaceGrotesk-Regular.woff2') format('woff2');
@@ -38,4 +35,10 @@
   font-style: normal;
   font-display: swap;
 }
-*/
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

@@ -119,8 +119,8 @@ For `rgba()` usage (box-shadow, canvas): use `var(--color-accent-rgb)` which is 
 
 | Token | Font | Loaded from |
 |---|---|---|
-| `--font-family-sans` | Space Grotesk (400, 500, 700) | Google Fonts |
-| `--font-family-mono` | JetBrains Mono (400, 500) | Google Fonts |
+| `--font-family-sans` | Space Grotesk (400, 500, 700) | Self-hosted (`public/fonts/`) |
+| `--font-family-mono` | JetBrains Mono (400, 500) | Self-hosted (`public/fonts/`) |
 
 ### Status Colors
 
@@ -250,7 +250,7 @@ Two GitHub Actions workflows:
 
 ## Security
 
-- **CSP**: Strict Content-Security-Policy (self + Google Fonts + Cloudinary only)
+- **CSP**: Strict Content-Security-Policy (self + Cloudinary only — no external font/script CDNs)
 - **HSTS**: 2-year max-age with includeSubDomains and preload
 - **X-Frame-Options**: DENY (prevents clickjacking)
 - **Permissions-Policy**: Disables camera, microphone, geolocation, payment, USB
