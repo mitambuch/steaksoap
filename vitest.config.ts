@@ -30,11 +30,12 @@ export default mergeConfig(
           'src/vite-env.d.ts',
           'src/main.tsx',
         ],
+        // WHY: Thresholds ratchet UP only — lock current coverage so it never decreases
         thresholds: {
-          statements: 75,
-          branches: 70,
-          functions: 75,
-          lines: 75,
+          statements: 76,
+          branches: 73,
+          functions: 85,
+          lines: 78,
         },
       },
     },

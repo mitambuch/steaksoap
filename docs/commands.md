@@ -217,6 +217,7 @@ See [recipes/add-extension.md](recipes/add-extension.md) for the full list of av
 | `/test` | `[file or feature]` | Run tests + find coverage gaps |
 | `/theme` | `"description of changes"` | Modify design tokens interactively |
 | `/responsive-check` | `[page or component]` | Verify all breakpoints (320px to 1440px) |
+| `/pre-delivery` | — | 10-step pre-ship checklist: validate, handoff, health, responsive, lighthouse, security, SEO, env, git |
 
 ### Example: Theme customization
 

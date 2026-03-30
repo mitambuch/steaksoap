@@ -2,7 +2,11 @@
   "ci": {
     "collect": {
       "startServerCommand": "pnpm preview",
-      "url": ["http://localhost:4173/"],
+      "url": [
+        "http://localhost:4173/",
+        "http://localhost:4173/playground",
+        "http://localhost:4173/lab"
+      ],
       "numberOfRuns": 3,
       "startServerReadyPattern": "Local"
     },
