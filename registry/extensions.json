@@ -325,6 +325,50 @@
         "https://developers.google.com/search/docs/appearance/structured-data",
         "https://schema.org"
       ]
+    },
+    {
+      "id": "cms-sanity",
+      "name": "Sanity CMS",
+      "description": "Headless CMS for client-editable content. Hosted Studio for editing, GROQ queries for fetching. Perfect for vitrine/showcase sites where clients need to update text, images, and pages without touching code.",
+      "tags": ["cms", "sanity", "content", "headless", "editing", "client", "vitrine"],
+      "category": "content",
+      "npm_packages": ["@sanity/client", "@sanity/image-url", "groq"],
+      "dev_packages": ["@sanity/cli"],
+      "setup_instructions": [
+        "Install packages: pnpm add @sanity/client @sanity/image-url groq && pnpm add -D @sanity/cli",
+        "Add env vars to .env.example and src/config/env.ts: VITE_SANITY_PROJECT_ID (required), VITE_SANITY_DATASET (default: 'production')",
+        "Create src/lib/sanity/client.ts — Sanity client with projectId, dataset, apiVersion, useCdn: true",
+        "Create src/lib/sanity/queries.ts — GROQ queries for pages, services, team, etc.",
+        "Create src/lib/sanity/image.ts — image URL builder using @sanity/image-url",
+        "Create src/hooks/useSanityQuery.ts — custom hook for fetching with loading/error states and AbortController",
+        "User action: create a Sanity account at sanity.io, run 'npx sanity init' to create project + dataset",
+        "User action: define schemas in Sanity Studio (page, service, teamMember, siteSettings, etc.)",
+        "User action: deploy Studio with 'npx sanity deploy' — clients access it at your-project.sanity.studio"
+      ],
+      "references": [
+        "https://www.sanity.io/docs/connect-your-content-to-your-front-end",
+        "https://www.sanity.io/docs/js-client",
+        "https://www.sanity.io/docs/image-url"
+      ]
+    },
+    {
+      "id": "prerender-ssg",
+      "name": "Pre-rendering / SSG",
+      "description": "Generate static HTML at build time for all routes. Improves SEO for crawlers that don't execute JavaScript. Optional — modern Google Bot handles SPAs fine, but useful for maximum SEO coverage.",
+      "tags": ["seo", "pre-rendering", "ssg", "static", "html", "crawlers"],
+      "category": "seo",
+      "npm_packages": ["vite-react-ssg"],
+      "setup_instructions": [
+        "Install package: pnpm add vite-react-ssg",
+        "Replace createBrowserRouter with ViteReactSSG in src/main.tsx",
+        "Export routes from src/app/routes/index.tsx for static generation",
+        "Update package.json build script to use vite-react-ssg build",
+        "Pre-rendered HTML files are generated in dist/ for each route",
+        "Deploy dist/ to any static host — same as before, but now with full HTML"
+      ],
+      "references": [
+        "https://github.com/Daydreamer-riri/vite-react-ssg"
+      ]
     }
   ]
 }
