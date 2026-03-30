@@ -50,6 +50,8 @@ Claude Code creates:
 | `/update-deps` | — | Safe dependency updates with validation after each |
 | `/fix` | `"description of bug"` | Systematic bug diagnosis and fix |
 | `/migrate` | `path or description` | Analyze existing project → structured migration plan |
+| `/handoff` | — | Generate HANDOFF.md — full project doc for human devs (no AI needed) |
+| `/health-check` | — | Monthly project audit: deps, tests, docs drift, code quality |
 
 ### Example: Speccing a feature
 
@@ -110,6 +112,46 @@ Claude Code:
      - Estimated: 2 hours with AI assistance
   4. Asks: "Want me to start with step 1?"
   5. Executes step by step → validate → commit after each group
+```
+
+### Example: Generating a handoff document
+
+```
+You: /handoff
+
+Claude Code:
+  1. Scans project: package.json, routes, components, features
+  2. Reads design tokens, config, decisions
+  3. Generates HANDOFF.md at project root:
+     - Quick start (3 steps)
+     - Full tech stack with versions
+     - Architecture overview
+     - All routes and pages
+     - Design system (colors, fonts, components)
+     - How-to guides (add page, change theme, deploy)
+     - Git workflow and CI/CD
+     - Technical decisions with reasoning
+  4. Zero references to AI tools — readable by any developer
+```
+
+### Example: Running a health check
+
+```
+You: /health-check
+
+Claude Code:
+  VALIDATION           ✅ Pass
+  DEPENDENCIES         ⚠️ 3 outdated (1 critical)
+  CODE QUALITY         ✅ Clean
+  TEST COVERAGE        ✅ 82%
+  DOCUMENTATION        ⚠️ 1 file drifted
+  INFRASTRUCTURE       ✅ Complete
+
+  SCORE: 8.5/10
+
+  🔴 Critical: update vite (security patch)
+  🟡 Important: HANDOFF.md is 2 months old — regenerate
+  🟢 Nice to have: add test for new ContactForm feature
 ```
 
 ## Discovery
@@ -175,6 +217,7 @@ See [recipes/add-extension.md](recipes/add-extension.md) for the full list of av
 | `/test` | `[file or feature]` | Run tests + find coverage gaps |
 | `/theme` | `"description of changes"` | Modify design tokens interactively |
 | `/responsive-check` | `[page or component]` | Verify all breakpoints (320px to 1440px) |
+| `/pre-delivery` | — | 10-step pre-ship checklist: validate, handoff, health, responsive, lighthouse, security, SEO, env, git |
 
 ### Example: Theme customization
 

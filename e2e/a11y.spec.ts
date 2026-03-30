@@ -10,6 +10,8 @@ import { expect, test } from '@playwright/test';
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'Playground', path: '/playground' },
+  { name: 'Lab', path: '/lab' },
+  { name: '404', path: '/this-does-not-exist' },
 ];
 
 for (const { name, path } of pages) {
