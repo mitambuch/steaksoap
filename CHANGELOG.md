@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.3.0](https://github.com/mitambuch/steaksoap/compare/v4.2.0...v4.3.0) (2026-03-30)
+
+### ✨ Features
+
+* **commands:** add /handoff and /health-check safety net commands ([86da3f2](https://github.com/mitambuch/steaksoap/commit/86da3f27d8d58d9ddb75c5fc445c932f95a5a76f))
+* **hardening:** pre-delivery command, HANDOFF.md, keyboard E2E, GitHub templates ([f1b1293](https://github.com/mitambuch/steaksoap/commit/f1b12935b985013b023e108be38ceab248c5110e))
+
+### ✅ Tests
+
+* **e2e:** multi-browser coverage + complete page testing ([b2e228c](https://github.com/mitambuch/steaksoap/commit/b2e228cfe8a26c6936ccb96018b002dcf7a32936))
+
 ## [4.2.0](https://github.com/mitambuch/steaksoap/compare/v4.1.0...v4.2.0) (2026-03-30)
 
 ### ✨ Features
