@@ -75,3 +75,45 @@ test.describe('Smoke — Playground', () => {
     expect(errors).toEqual([]);
   });
 });
+
+test.describe('Smoke — Lab', () => {
+  test('loads and shows the heading', async ({ page }) => {
+    await page.goto('/lab');
+    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.getByText('Lab')).toBeVisible();
+  });
+
+  test('has no console errors', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('console', msg => {
+      if (msg.type() === 'error') errors.push(msg.text());
+    });
+    await page.goto('/lab');
+    await page.waitForLoadState('networkidle');
+    expect(errors).toEqual([]);
+  });
+});
+
+test.describe('Smoke — 404', () => {
+  test('shows 404 for unknown routes', async ({ page }) => {
+    await page.goto('/this-does-not-exist');
+    await expect(page.locator('text=404')).toBeVisible();
+    await expect(page.getByText('Page not found')).toBeVisible();
+  });
+
+  test('404 page links back to home', async ({ page }) => {
+    await page.goto('/this-does-not-exist');
+    await page.getByRole('link', { name: /back to home/i }).click();
+    await expect(page).toHaveURL('/');
+  });
+
+  test('has no console errors', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('console', msg => {
+      if (msg.type() === 'error') errors.push(msg.text());
+    });
+    await page.goto('/this-does-not-exist');
+    await page.waitForLoadState('networkidle');
+    expect(errors).toEqual([]);
+  });
+});

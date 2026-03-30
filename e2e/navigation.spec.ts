@@ -16,6 +16,11 @@ test.describe('Navigation — all pages load', () => {
     await expect(page.locator('h1')).toBeVisible();
   });
 
+  test('/lab loads', async ({ page }) => {
+    await page.goto('/lab');
+    await expect(page.locator('h1')).toBeVisible();
+  });
+
   test('unknown route shows 404', async ({ page }) => {
     await page.goto('/this-does-not-exist');
     await expect(page.locator('text=404')).toBeVisible();
@@ -30,6 +35,13 @@ test.describe('Navigation — header links', () => {
       .first()
       .click();
     await expect(page).toHaveURL(/\/playground/);
+    await expect(page.locator('h1')).toBeVisible();
+  });
+
+  test('header navigates to Lab', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('link', { name: /lab/i }).first().click();
+    await expect(page).toHaveURL(/\/lab/);
     await expect(page.locator('h1')).toBeVisible();
   });
 
