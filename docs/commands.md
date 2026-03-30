@@ -11,6 +11,7 @@ Complete list of Claude Code slash commands in this project.
 | `/new-feature` | `FeatureName` | Feature folder (component + hook + types + barrel + test) |
 | `/new-hook` | `HookName` (without "use") | Custom hook + test |
 | `/add-api` | `resourceName` | TanStack Query service + hooks |
+| `/legal` | `"company info"` | Generate privacy policy + legal notice pages (nLPD/GDPR) |
 
 ### Example: Creating a full feature
 

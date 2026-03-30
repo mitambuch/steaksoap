@@ -7,7 +7,7 @@ This file tracks key technical decisions. Read this before any architecture choi
 - **State management**: React built-in (useState, useReducer, useContext). No external state library by default. Add Zustand via `/install-extension zustand` if needed.
 - **Data fetching**: No library by default. Add TanStack Query via `/install-extension tanstack-query` if needed. Pattern in `.claude/rules/api.md`.
 - **Styling**: Tailwind CSS 4 with @theme tokens. No CSS modules, no CSS-in-JS. classe2 aesthetic by default.
-- **Font**: Space Grotesk (sans), JetBrains Mono (mono). Loaded via Google Fonts.
+- **Font**: Space Grotesk (sans), JetBrains Mono (mono). Self-hosted in `public/fonts/` (no external requests, nLPD/GDPR compliant).
 - **Accent**: #c44040 (coral red) — identical in dark AND light mode. Never changes per-theme.
 - **Light mode bg**: #B0B0A8 (warm concrete gray) — classe2 aesthetic.
 - **Routing**: React Router 7 with lazy loading. Routes in `src/app/routes/index.tsx`.
@@ -31,3 +31,5 @@ This file tracks key technical decisions. Read this before any architecture choi
 - **Morphing logo**: organic blob in Header, all pages.
 - **Custom cursor**: coral dot + light halo, desktop only, all pages.
 - **MCP awareness**: Claude Code recommends MCP servers when it detects a need beyond its native capabilities. Registry in `registry/mcp-servers.json`, same pattern as extensions. `/discover` searches both extensions and MCP servers. `/connect` installs MCP servers.
+- **Fonts self-hosted**: No external font CDN (Google Fonts removed). Fonts in `public/fonts/` — zero third-party requests, nLPD/GDPR compliant, faster loading, no ad-blocker issues.
+- **Privacy by default**: No cookies, no tracking, no analytics by default. localStorage for theme only. `/legal` generates compliant legal pages per project. Cookie consent only needed if analytics or third-party embeds are added later.

@@ -83,7 +83,19 @@ Check deployment platform (Vercel/Netlify) headers:
 - [ ] Canonical URLs are correct
 - [ ] No orphan pages (every page reachable from navigation)
 
-## Step 8 — Environment cleanup
+## Step 8 — Legal compliance (nLPD/GDPR)
+
+- [ ] Privacy policy page exists (`/privacy`)
+- [ ] Legal notice / Impressum page exists (`/legal`)
+- [ ] Both pages have real company info (not placeholders)
+- [ ] Footer links to both legal pages
+- [ ] If analytics installed: privacy policy mentions it
+- [ ] If contact form exists: privacy policy mentions data collection
+- [ ] No third-party requests without consent (check Network tab in DevTools)
+
+If legal pages are missing, run `/legal "Company Name, Address, Email"`.
+
+## Step 9 — Environment cleanup
 
 - [ ] `.env.local` has production values (not localhost URLs)
 - [ ] No console.log in production code (ESLint catches this)
@@ -91,14 +103,14 @@ Check deployment platform (Vercel/Netlify) headers:
 - [ ] Favicon is the client's, not the template default
 - [ ] Site title in `src/config/site.ts` is the client's
 
-## Step 9 — Git hygiene
+## Step 10 — Git hygiene
 
 - [ ] On main branch, clean working tree
 - [ ] All feature branches merged and deleted
 - [ ] CHANGELOG.md up to date
 - [ ] Latest version tagged
 
-## Step 10 — Final report
+## Step 11 — Final report
 
 Present to the user:
 
