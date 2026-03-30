@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.5.0](https://github.com/mitambuch/steaksoap/compare/v4.4.0...v4.5.0) (2026-03-30)
+
+### ✨ Features
+
+* **privacy:** self-host fonts, tighten CSP, add /legal command ([3a5821e](https://github.com/mitambuch/steaksoap/commit/3a5821e75550b4cda2a7c1c27cbe1abb233cceb0))
+
 ## [4.4.0](https://github.com/mitambuch/steaksoap/compare/v4.3.0...v4.4.0) (2026-03-30)
 
 ## [4.3.0](https://github.com/mitambuch/steaksoap/compare/v4.2.0...v4.3.0) (2026-03-30)
