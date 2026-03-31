@@ -8,8 +8,9 @@ import { expect, test } from '@playwright/test';
 test.describe('Keyboard — focus visibility', () => {
   test('Tab moves focus through interactive elements on Home', async ({ page }) => {
     await page.goto('/');
-    // WHY: Explicitly focus the page body before tab-walking to ensure consistent behavior across browsers
-    await page.locator('body').focus();
+    // WHY: Focus the skip-link directly to start tab navigation from a known element
+    const skipLink = page.getByRole('link', { name: /skip to content/i });
+    await skipLink.focus();
     await page.keyboard.press('Tab');
     const firstFocused = page.locator(':focus');
     await expect(firstFocused).toBeVisible();
@@ -69,7 +70,8 @@ test.describe('Keyboard — navigation', () => {
 test.describe('Keyboard — no focus traps', () => {
   test('can Tab through entire Home page without getting stuck', async ({ page }) => {
     await page.goto('/');
-    await page.locator('body').focus();
+    const skipLink = page.getByRole('link', { name: /skip to content/i });
+    await skipLink.focus();
     const focusedElements: string[] = [];
 
     // Tab through 20 elements

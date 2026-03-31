@@ -24,7 +24,7 @@ const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
     'bg-transparent text-fg border border-border backdrop-blur-md hover:border-accent/30 hover:bg-accent/5 active:scale-[0.97]',
   ghost: 'bg-transparent text-muted hover:text-fg hover:bg-accent/5 active:scale-[0.97]',
   danger:
-    'bg-danger/10 text-danger border border-danger/30 hover:bg-danger/20 hover:border-danger/50 active:scale-[0.97]',
+    'bg-danger/10 text-danger-text border border-danger/30 hover:bg-danger/20 hover:border-danger/50 active:scale-[0.97]',
 };
 
 const sizeStyles: Record<NonNullable<ButtonProps['size']>, string> = {

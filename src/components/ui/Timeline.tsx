@@ -45,7 +45,7 @@ export const Timeline = ({ items, className }: TimelineProps) => {
           {/* Content */}
           <div className="flex-1 pt-0.5">
             <div className="flex items-center gap-2">
-              <h4 className="text-fg text-sm font-medium">{item.title}</h4>
+              <h3 className="text-fg text-sm font-medium">{item.title}</h3>
               {item.badge}
             </div>
             {item.date && (

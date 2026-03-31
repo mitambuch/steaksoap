@@ -9,6 +9,9 @@ export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: 'http://localhost:4173',
+    // WHY: Dark mode is the default theme — emulate dark color scheme so the
+    // inline theme script in index.html picks "dark" as the system preference.
+    colorScheme: 'dark',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
   },

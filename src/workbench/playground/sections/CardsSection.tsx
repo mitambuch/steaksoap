@@ -32,7 +32,7 @@ export function CardsSection() {
               total users
             </span>
             <p className="text-fg mt-2 text-3xl font-bold">12,847</p>
-            <p className="text-success mt-1 text-xs font-medium">+14.2% from last month</p>
+            <p className="text-success-text mt-1 text-xs font-medium">+14.2% from last month</p>
           </Card>
           <Card hover padding="lg">
             <div className="flex items-center gap-4">
