@@ -55,10 +55,8 @@ export default function AppRoutes() {
           <Route path={ROUTES.LAB} element={<Lab />} />
           {/* Add routes here: */}
           {/* <Route path={ROUTES.ABOUT} element={<About />} /> */}
+          <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
         </Route>
-
-        {/* 404 — outside layout for a blank page if needed */}
-        <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
       </Routes>
     </Suspense>
   );

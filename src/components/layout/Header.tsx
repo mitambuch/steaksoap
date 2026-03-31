@@ -77,8 +77,11 @@ export const Header = ({ className }: HeaderProps) => {
               aria-current={pathname === to ? 'page' : undefined}
               className="text-muted hover:text-accent border-border/50 duration-base flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors"
             >
-              <Icon size={14} strokeWidth={1.5} />
-              <span className="hidden sm:inline">{label}</span>
+              <Icon size={14} strokeWidth={1.5} aria-hidden="true" />
+              <span className="sr-only">{label}</span>
+              <span className="hidden sm:inline" aria-hidden="true">
+                {label}
+              </span>
             </Link>
           ))}
           <div className="px-2 py-1">

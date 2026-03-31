@@ -13,8 +13,8 @@ export function Copyable({ text, className }: { text: string; className?: string
       className={cn(
         'duration-base inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-mono text-[10px] transition-colors',
         copied
-          ? 'bg-success/15 text-success'
-          : 'bg-surface/50 text-muted hover:bg-surface hover:text-accent',
+          ? 'bg-success/15 text-success-text'
+          : 'bg-surface/50 text-muted hover:bg-surface hover:text-accent-text',
         className,
       )}
     >

@@ -23,6 +23,12 @@ const sizeStyles: Record<NonNullable<AvatarProps['size']>, string> = {
   lg: 'w-14 h-14 text-base',
 };
 
+const sizePx: Record<NonNullable<AvatarProps['size']>, number> = {
+  sm: 32,
+  md: 40,
+  lg: 56,
+};
+
 /** Circular avatar with image and fallback initials. */
 export const Avatar = ({ src, alt, fallback, size = 'md', className }: AvatarProps) => {
   const [hasError, setHasError] = useState(false);
@@ -40,6 +46,9 @@ export const Avatar = ({ src, alt, fallback, size = 'md', className }: AvatarPro
         <img
           src={src}
           alt={alt}
+          width={sizePx[size]}
+          height={sizePx[size]}
+          loading="lazy"
           className="h-full w-full object-cover"
           onError={() => setHasError(true)}
         />

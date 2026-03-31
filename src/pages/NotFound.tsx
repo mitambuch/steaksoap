@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
-    <section className="bg-bg text-fg relative flex min-h-screen flex-col items-center justify-center px-6">
+    <main className="bg-bg text-fg relative flex min-h-screen flex-col items-center justify-center px-6">
       <SeoHead title="404" description="Page not found." noIndex />
 
       {/* Radial glow */}
@@ -17,15 +17,15 @@ export default function NotFound() {
       />
 
       <div className="relative z-10 flex flex-col items-center gap-4">
-        <p className="text-accent/10 text-7xl font-bold sm:text-8xl md:text-9xl">404</p>
+        <h1 className="text-accent/10 text-7xl font-bold sm:text-8xl md:text-9xl">404</h1>
         <p className="text-muted text-sm sm:text-base">Page not found.</p>
         <Link
           to={ROUTES.HOME}
-          className="border-accent/20 text-accent/80 hover:border-accent/50 hover:text-accent mt-2 rounded-full border px-5 py-2 font-mono text-xs transition-colors"
+          className="border-accent/20 text-accent-text hover:border-accent/50 hover:text-accent mt-2 rounded-full border px-5 py-2 font-mono text-xs transition-colors"
         >
           Back to home
         </Link>
       </div>
-    </section>
+    </main>
   );
 }

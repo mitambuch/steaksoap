@@ -6,7 +6,7 @@ export default function Home() {
       <SeoHead />
 
       <div className="mx-auto flex min-h-[calc(100vh-10rem)] max-w-3xl flex-col justify-center px-6">
-        <p className="text-accent font-mono text-sm tracking-wide">v4.0 — fresh start</p>
+        <p className="text-accent-text font-mono text-sm tracking-wide">v4.0 — fresh start</p>
         <h1 className="text-fg mt-3 text-3xl font-medium tracking-tight md:text-5xl">
           Build something great.
         </h1>

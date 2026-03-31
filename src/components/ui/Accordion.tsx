@@ -106,6 +106,7 @@ export function AccordionTrigger({ children, className }: AccordionTriggerProps)
   return (
     <button
       type="button"
+      id={`${contentId}-trigger`}
       onClick={() => toggle(value)}
       aria-expanded={isOpen}
       aria-controls={contentId}
@@ -150,6 +151,7 @@ export function AccordionContent({ children, className }: AccordionContentProps)
     <div
       id={contentId}
       role="region"
+      aria-labelledby={`${contentId}-trigger`}
       aria-hidden={!isOpen}
       className={cn(
         'duration-base grid transition-[grid-template-rows,opacity] ease-out',

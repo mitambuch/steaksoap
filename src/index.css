@@ -2,6 +2,10 @@
 @import './styles/fonts.css';
 @import './styles/animations.css';
 
+/* WHY: Tailwind 4 auto-detects source files — exclude prompt/rule files that contain
+   class-like patterns (e.g. [file:line]) which trigger invalid CSS utility warnings. */
+@source not '../.claude/**';
+
 /* ═══════════════════════════════════════════════════════════════
    THEME — design tokens → Tailwind utilities
    bg-bg, text-fg, text-accent, font-sans, font-mono, etc.
@@ -23,6 +27,13 @@
   --color-danger: #dc2626;
   --color-info: #52b0ff;
 
+  /* Text-safe variants — meet WCAG AA (4.5:1) on dark bg #0a0a0a */
+  --color-success-text: #6aff8a;
+  --color-warning-text: #ffd60a;
+  --color-danger-text: #ff6b6b;
+  --color-info-text: #52b0ff;
+  --color-accent-text: #e05a5a;
+
   --font-family-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -40,6 +51,13 @@
   --color-warning: #e6a800;
   --color-danger: #b91c1c;
   --color-info: #1e88e5;
+
+  /* Text-safe variants — meet WCAG AA (4.5:1) on light bg #b0b0a8 */
+  --color-success-text: #005f27;
+  --color-warning-text: #6b4f00;
+  --color-danger-text: #7f1111;
+  --color-info-text: #0d4a7f;
+  --color-accent-text: #982e2e;
 }
 
 /* ─── Custom scrollbar — thin coral accent ────────────────── */
