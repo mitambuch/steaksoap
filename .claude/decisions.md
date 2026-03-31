@@ -27,9 +27,7 @@ This file tracks key technical decisions. Read this before any architecture choi
 - **/audit merged into /lighthouse**: /audit was a subset, removed.
 - **/fix delegates to debugger agent**: single source of truth for debug workflow.
 - **Structure is non-negotiable**: scripts assume fixed directories. Intentional.
-- **DynamicParticles**: signature visual effect, disabled on mobile.
-- **Morphing logo**: organic blob in Header, all pages.
-- **Custom cursor**: coral dot + light halo, desktop only, all pages.
+- **No showcase effects in base**: particles, cursor glow, and morphing blob removed from base. Header shows project name as text. Effects can be re-added per project if needed.
 - **MCP awareness**: Claude Code recommends MCP servers when it detects a need beyond its native capabilities. Registry in `registry/mcp-servers.json`, same pattern as extensions. `/discover` searches both extensions and MCP servers. `/connect` installs MCP servers.
 - **Fonts self-hosted**: No external font CDN (Google Fonts removed). Fonts in `public/fonts/` — zero third-party requests, nLPD/GDPR compliant, faster loading, no ad-blocker issues.
 - **Privacy by default**: No cookies, no tracking, no analytics by default. localStorage for theme only. `/legal` generates compliant legal pages per project. Cookie consent only needed if analytics or third-party embeds are added later.

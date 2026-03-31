@@ -94,7 +94,7 @@ src/
 ├── app/                — routes, providers, layout
 ├── components/
 │   ├── ui/             — reusable atoms (Button, Card, Modal, Select, Tabs…)
-│   ├── layout/         — Header, Footer, Container, CursorGlow
+│   ├── layout/         — Header, Footer, Container
 │   └── features/       — ErrorBoundary, SeoHead
 ├── config/             — env.ts, site.ts, cloudinary.ts
 ├── context/            — ThemeContext

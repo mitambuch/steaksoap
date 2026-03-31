@@ -12,7 +12,7 @@
 
 1. **Choose the location**:
    - `src/components/ui/` — reusable atoms (Button, Input, Card, Badge)
-   - `src/components/layout/` — structural (Header, Footer, Container, CursorGlow)
+   - `src/components/layout/` — structural (Header, Footer, Container)
    - `src/components/features/` — domain-specific (ErrorBoundary, etc.)
 
 2. **Create the component** — e.g., `src/components/ui/AlertBanner.tsx`:

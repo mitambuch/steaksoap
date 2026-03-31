@@ -68,7 +68,7 @@ export const Button = ({ variant = 'primary', size = 'md', isLoading, className,
 
 ## Organization
 - `src/components/ui/` → 24 reusable atoms (`ls src/components/ui/` for current list)
-- `src/components/layout/` → structural: Header, Footer, Container, CursorGlow
+- `src/components/layout/` → structural: Header, Footer, Container
 - `src/components/features/` → core: ErrorBoundary, SeoHead. User adds domain components.
 - `src/features/<name>/` → feature modules: component + hook + types + barrel
 - `src/workbench/` → playground sections, shared visual utilities, demo data

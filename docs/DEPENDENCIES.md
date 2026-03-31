@@ -28,7 +28,7 @@ Everything this project uses, and why.
 | Button shape | Capsule (rounded-full) | Button.tsx |
 | Transitions | 0.5s interactions, 1.5s theme switch | index.css |
 
-Full visual reference: see `DESIGN_SYSTEM.md`
+Full visual reference: see `src/index.css` @theme block and `/playground`
 
 ## Runtime Dependencies
 

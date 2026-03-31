@@ -58,12 +58,12 @@ src/
 │   └── layouts/      → Shared layouts
 ├── components/
 │   ├── ui/           → 24 reusable atoms (Button, Card, Modal, Select, Tabs…)
-│   ├── layout/       → Header, Footer, Container, CursorGlow
+│   ├── layout/       → Header, Footer, Container
 │   └── features/     → ErrorBoundary, SeoHead
 ├── config/           → env.ts (with fallbacks), site.ts, cloudinary.ts
 ├── constants/        → routes.ts, global constants
 ├── context/          → React Contexts (ThemeContext)
-├── features/         → Complex feature modules (particles/)
+├── features/         → Complex feature modules
 ├── hooks/            → Custom React hooks (useMediaQuery, useCopyToClipboard, useToast)
 ├── pages/            → Page components (one per route, default export for lazy loading)
 ├── styles/           → fonts.css, animations.css
