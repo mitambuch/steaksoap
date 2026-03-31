@@ -1,11 +1,12 @@
 import { SeoHead } from '@components/features/SeoHead';
 import { ROUTES } from '@constants/routes';
+import { notFoundPage } from '@data/pages';
 import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
     <div className="bg-bg text-fg relative flex min-h-screen flex-col items-center justify-center px-6">
-      <SeoHead title="404" description="Page not found." noIndex />
+      <SeoHead title={notFoundPage.seo.title} description={notFoundPage.seo.description} noIndex />
 
       {/* Radial glow */}
       <div
@@ -17,13 +18,15 @@ export default function NotFound() {
       />
 
       <div className="relative z-10 flex flex-col items-center gap-4">
-        <h1 className="text-accent/10 text-7xl font-bold sm:text-8xl md:text-9xl">404</h1>
-        <p className="text-muted text-sm sm:text-base">Page not found.</p>
+        <h1 className="text-accent/10 text-7xl font-bold sm:text-8xl md:text-9xl">
+          {notFoundPage.headline}
+        </h1>
+        <p className="text-muted text-sm sm:text-base">{notFoundPage.subline}</p>
         <Link
           to={ROUTES.HOME}
           className="border-accent/20 text-accent-text hover:border-accent/50 hover:text-accent mt-2 rounded-full border px-5 py-2 font-mono text-xs transition-colors"
         >
-          Back to home
+          {notFoundPage.cta}
         </Link>
       </div>
     </div>
