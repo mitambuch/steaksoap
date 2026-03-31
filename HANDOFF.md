@@ -276,7 +276,7 @@ Two GitHub Actions workflows:
 
 ## The .claude/ Directory
 
-This folder contains AI-assisted development tooling: 30 slash commands, 12 rules, 4 agents.
+This folder contains AI-assisted development tooling: 31 slash commands, 12 rules, 4 agents.
 **It is completely optional.** Removing `.claude/` does not affect the app in any way.
 The app compiles and runs identically without it. It's a productivity layer, not a dependency.
 

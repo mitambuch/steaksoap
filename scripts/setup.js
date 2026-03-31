@@ -19,6 +19,7 @@ import {
   copyFileSync,
   existsSync,
   readFileSync,
+  unlinkSync,
   writeFileSync,
 } from 'node:fs';
 import { resolve } from 'node:path';
@@ -210,6 +211,7 @@ async function runInit() {
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
     manifest.name = String(displayName);
     manifest.short_name = String(projectName);
+    manifest.description = String(displayName);
     writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
   }
 
@@ -223,8 +225,44 @@ async function runInit() {
   envContent = envContent.replace(/VITE_APP_NAME=.*/, () => `VITE_APP_NAME=${displayName}`);
   writeFileSync(envLocal, envContent);
 
-  // ─── Reset CHANGELOG.md ────────────────────────────────
+  // ─── Clean template artifacts ──────────────────────────
   const today = new Date().toISOString().split('T')[0];
+
+  // WHY: index.html <title> shows "Project" until React hydrates — set it at setup time
+  const indexHtmlPath = resolve(root, 'index.html');
+  if (existsSync(indexHtmlPath)) {
+    let indexHtml = readFileSync(indexHtmlPath, 'utf-8');
+    indexHtml = indexHtml.replace(/<title>.*<\/title>/, `<title>${displayName}</title>`);
+    writeFileSync(indexHtmlPath, indexHtml);
+  }
+
+  // WHY: README keeps template clone instructions — strip them, keep tech reference
+  const readmePath = resolve(root, 'README.md');
+  if (existsSync(readmePath)) {
+    const readme = readFileSync(readmePath, 'utf-8');
+    const techStackIdx = readme.indexOf('## Tech stack');
+    if (techStackIdx !== -1) {
+      writeFileSync(readmePath, `# ${displayName}\n\n---\n\n${readme.slice(techStackIdx)}`);
+    }
+  }
+
+  // WHY: HANDOFF.md stays frozen with template name and version
+  const handoffPath = resolve(root, 'HANDOFF.md');
+  if (existsSync(handoffPath)) {
+    let handoff = readFileSync(handoffPath, 'utf-8');
+    handoff = handoff.replace(/^# .+/m, `# ${displayName} — Developer Handoff`);
+    handoff = handoff.replace(/Project version: .+/, `Project version: 0.1.0`);
+    handoff = handoff.replace(/Generated on: .+/, `Generated on: ${today}`);
+    writeFileSync(handoffPath, handoff);
+  }
+
+  // WHY: Template logo image is meaningless in client projects
+  const templateImg = resolve(root, 'public/images/steaksoap.png');
+  if (existsSync(templateImg)) {
+    unlinkSync(templateImg);
+  }
+
+  // ─── Reset CHANGELOG.md ────────────────────────────────
   writeFileSync(
     resolve(root, 'CHANGELOG.md'),
     `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [0.1.0] (${today})\n\n### Features\n\n- project initialized\n`,

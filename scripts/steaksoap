@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ═══════════════════════════════════════════════════════════════
+# steaksoap — one-command project bootstrap
+# Usage: steaksoap new <project-name>
+#
+# Clone the base, install deps, run the setup wizard.
+# Put this script in your PATH to use it globally.
+# ═══════════════════════════════════════════════════════════════
+
+REPO="https://github.com/Mircooo/steaksoap.git"
+
+if [ "${1:-}" != "new" ] || [ -z "${2:-}" ]; then
+  echo ""
+  echo "  Usage: steaksoap new <project-name>"
+  echo ""
+  echo "  Example: steaksoap new mon-projet"
+  echo ""
+  exit 1
+fi
+
+NAME="$2"
+
+if [ -d "$NAME" ]; then
+  echo "  Error: directory '$NAME' already exists."
+  exit 1
+fi
+
+echo ""
+echo "  Creating project '$NAME'..."
+echo ""
+
+git clone "$REPO" "$NAME"
+cd "$NAME"
+pnpm install
+pnpm setup
+
+echo ""
+echo "  Next steps:"
+echo "    cd $NAME"
+echo "    Open Claude Code"
+echo "    /brief    → design direction"
+echo "    /init     → colors, fonts, styling"
+echo "    pnpm dev  → start building"
+echo ""

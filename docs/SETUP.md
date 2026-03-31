@@ -79,6 +79,35 @@ Accepts all defaults without prompting. Useful for CI/testing.
 
 ---
 
+## Recommended workflow (new project)
+
+The fastest path from zero to building:
+
+```bash
+# 1. One-command bootstrap (or clone + pnpm install + pnpm setup manually)
+steaksoap new my-project
+cd my-project
+
+# 2. In Claude Code — design direction
+/brief                      # 5 questions → writes Design Direction + Composition Rules to CLAUDE.md
+
+# 3. In Claude Code — styling
+/init                       # reads brief, applies colors, fonts, tokens, marks project as initialized
+
+# 4. Start building
+pnpm dev
+```
+
+| Step | What it does | Where it writes |
+|------|-------------|----------------|
+| `pnpm setup` | Technical: name, repo, cleanup artifacts | package.json, .env.local, manifest.json, index.html, README, HANDOFF, CHANGELOG |
+| `/brief` | Creative intent: type, universe, references, interface, anti-patterns | CLAUDE.md (Design Direction + Composition Rules) |
+| `/init` | Styling: colors, fonts, vibe, content | src/index.css, site.ts, fonts.css, Home.tsx, manifest.json |
+
+Each step writes to different files. No overlap. No duplication.
+
+---
+
 ## Available commands
 
 | Command | What it does |

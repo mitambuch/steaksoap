@@ -292,7 +292,56 @@ if (existsSync(readmePath) && existsSync(PATHS.componentsUI)) {
   }
 }
 
-// ─── 9. pnpm validate ───────────────────────────────────────
+// ─── 9. Template artifacts ───────────────────────────────────
+// WHY: After pnpm setup, no template-specific references should remain in project files
+{
+  const templatePattern = /steaksoap|project-base/i;
+  let artifactsFound = false;
+
+  // Check key files that setup.js should have cleaned
+  for (const fileName of ['README.md', 'HANDOFF.md', 'index.html']) {
+    const filePath = resolve(root, fileName);
+    if (existsSync(filePath)) {
+      const content = readFileSync(filePath, 'utf-8');
+      if (templatePattern.test(content)) {
+        warn(`Template artifact in ${fileName} — run pnpm setup to clean`);
+        artifactsFound = true;
+      }
+    }
+  }
+
+  // Scan src/ for template references (using existing scanFiles helper)
+  const srcMatches = scanFiles(PATHS.src, /steaksoap|project-base/gi);
+  if (srcMatches.length > 0) {
+    warn(`Template references found in src/ (${srcMatches.length} matches)`);
+    artifactsFound = true;
+  }
+
+  // Check for leftover template image
+  if (existsSync(resolve(root, 'public/images/steaksoap.png'))) {
+    warn('Template image public/images/steaksoap.png still exists');
+    artifactsFound = true;
+  }
+
+  if (!artifactsFound) {
+    pass('No template artifacts remaining');
+  }
+}
+
+// ─── 10. Initialization check ────────────────────────────────
+{
+  const siteTsPath = resolve(root, 'src/config/site.ts');
+  if (existsSync(siteTsPath)) {
+    const siteTsContent = readFileSync(siteTsPath, 'utf-8');
+    if (siteTsContent.includes('initialized: false')) {
+      warn('Project not initialized — run /init to customize');
+    } else if (siteTsContent.includes('initialized: true')) {
+      pass('Project initialized');
+    }
+  }
+}
+
+// ─── 11. pnpm validate ──────────────────────────────────────
 console.log(`\n  ${dim('Running pnpm validate...')}\n`);
 try {
   execSync('pnpm validate', { cwd: root, stdio: 'inherit' });
