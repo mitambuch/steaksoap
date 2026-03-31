@@ -29,34 +29,15 @@ function useScrolled(threshold = 20) {
   return scrolled;
 }
 
-/* ─── MorphingLogo — organic blob + text ─────────────────── */
+/* ─── Logo — project name as text link ──────────────────── */
 
-function MorphingLogo() {
-  // WHY: After /init, show project name instead of abstract blob
-  if (siteConfig.initialized) {
-    return (
-      <Link
-        to={ROUTES.HOME}
-        className="text-fg text-sm font-medium tracking-tight focus-visible:outline-none md:text-base"
-      >
-        {siteConfig.name}
-      </Link>
-    );
-  }
-
+function Logo() {
   return (
     <Link
       to={ROUTES.HOME}
-      className="group flex items-center focus-visible:outline-none"
-      aria-label="Home"
+      className="text-fg text-sm font-medium tracking-tight focus-visible:outline-none md:text-base"
     >
-      <div
-        className="bg-accent duration-cinematic h-6 w-6 shadow-[0_0_12px_rgba(var(--color-accent-rgb),0.4)] transition-[transform,box-shadow] ease-in-out md:h-7 md:w-7"
-        style={{
-          animation: 'morph 4s ease-in-out infinite',
-          borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-        }}
-      />
+      {siteConfig.name}
     </Link>
   );
 }
@@ -78,7 +59,7 @@ export const Header = ({ className }: HeaderProps) => {
       className={cn('fixed top-0 right-0 left-0 z-50', 'px-6 py-4 md:px-8 md:py-5', className)}
     >
       <div className="mx-auto flex w-full max-w-[2440px] items-center justify-between">
-        <MorphingLogo />
+        <Logo />
 
         {/* Pill nav */}
         <div

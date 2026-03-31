@@ -17,5 +17,5 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-UyY4jH+qa1fkU+QkQkGiEfhceOhXXHRl+U/tziXigVY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://res.cloudinary.com; connect-src 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-JB8O2J5Zgwr3llKmpAFyFt/FmXGiEXK8wBMF6az4/lw='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://res.cloudinary.com; connect-src 'self'"
     Cross-Origin-Opener-Policy = "same-origin"

@@ -19,7 +19,6 @@ cat src/pages/DesignExplore.tsx
 Then read our design system:
 ```bash
 grep -A 80 "@theme" src/index.css
-cat DESIGN_SYSTEM.md
 ls src/components/ui/
 ```
 
@@ -74,7 +73,6 @@ Once the user approves the mapping:
 
 ### 2a. New tokens (if approved)
 Edit `src/index.css` @theme block. Update both dark and light modes.
-Update `DESIGN_SYSTEM.md` to reflect new tokens.
 
 ### 2b. New components (if approved)
 For each approved component, follow `/new-component` pattern:
@@ -159,7 +157,6 @@ FILES MODIFIED:
   - src/index.css (if new tokens)
   - src/constants/routes.ts
   - src/app/routes/index.tsx
-  - DESIGN_SYSTEM.md (if new tokens)
 
 VALIDATION: pnpm validate → PASS
 ```

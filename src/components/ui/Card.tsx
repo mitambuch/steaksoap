@@ -32,7 +32,7 @@ export const Card = ({ className, padding = 'md', hover = false, children }: Car
       className={cn(
         'border-border bg-surface/80 duration-slow rounded-lg border backdrop-blur-sm transition-[border-color,background-color,transform,box-shadow]',
         hover &&
-          'hover:border-accent/20 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(var(--color-accent-rgb),0.03)]',
+          'hover:border-accent/20 hover:scale-[1.02] hover:shadow-[0_0_30px_color-mix(in_srgb,var(--color-accent)_3%,transparent)]',
         paddingStyles[padding],
         className,
       )}

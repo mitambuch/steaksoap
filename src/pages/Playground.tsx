@@ -9,7 +9,6 @@ import {
   ColorsSection,
   ContactSection,
   CTASection,
-  EffectsSection,
   EmptyStatesSection,
   FormsSection,
   IconsSection,
@@ -108,9 +107,6 @@ export default function Playground() {
           </div>
 
           <MiscSection />
-
-          {/* Effects — full width for canvas demos */}
-          <EffectsSection />
         </div>
       </div>
     </>

@@ -22,8 +22,8 @@ $ARGUMENTS — Natural language description. Examples:
 4. If dark mode tokens exist (in `[data-theme='light']` or similar), update those too for consistency. Maintain contrast ratios.
 
 5. Sync all dependents:
-   - If accent changed: update `--color-accent-rgb`, `DESIGN_SYSTEM.md`, `public/favicon.svg` if accent-colored, playground color swatches in `src/workbench/playground/data/colors.ts`
-   - If font changed: update `src/styles/fonts.css`, `index.html` font imports, `DESIGN_SYSTEM.md`
+   - If accent changed: update `public/favicon.svg` if accent-colored, playground color swatches in `src/workbench/playground/data/colors.ts`
+   - If font changed: update `src/styles/fonts.css`, `index.html` font imports
    - If bg changed: update `index.html` meta theme-color
 
 6. Run `pnpm validate`.

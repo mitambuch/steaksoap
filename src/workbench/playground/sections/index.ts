@@ -7,7 +7,6 @@ export { CardsSection } from './CardsSection';
 export { ColorsSection } from './ColorsSection';
 export { ContactSection } from './ContactSection';
 export { CTASection } from './CTASection';
-export { EffectsSection } from './EffectsSection';
 export { EmptyStatesSection } from './EmptyStatesSection';
 export { FormsSection } from './FormsSection';
 export { IconsSection } from './IconsSection';

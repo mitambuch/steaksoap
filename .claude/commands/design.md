@@ -55,7 +55,6 @@ Read the current design system before coding:
 
 ```bash
 grep -A 80 "@theme" src/index.css
-cat DESIGN_SYSTEM.md
 ls src/components/ui/
 ```
 

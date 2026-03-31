@@ -268,7 +268,7 @@ See [agents.md](agents.md) for full documentation.
 You: "Act as the designer agent and improve the About page"
 
 Claude Code (as designer):
-  1. Reads src/index.css tokens + DESIGN_SYSTEM.md
+  1. Reads src/index.css tokens
   2. Reads src/pages/About.tsx
   3. Proposes: larger hero, mono micro labels, capsule CTAs
   4. Applies changes following the classe2 style DNA

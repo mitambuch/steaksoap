@@ -58,12 +58,12 @@ src/
 │   └── layouts/      → Shared layouts
 ├── components/
 │   ├── ui/           → 24 reusable atoms (Button, Card, Modal, Select, Tabs…)
-│   ├── layout/       → Header, Footer, Container, CursorGlow
+│   ├── layout/       → Header, Footer, Container
 │   └── features/     → ErrorBoundary, SeoHead
 ├── config/           → env.ts (with fallbacks), site.ts, cloudinary.ts
 ├── constants/        → routes.ts, global constants
 ├── context/          → React Contexts (ThemeContext)
-├── features/         → Complex feature modules (particles/)
+├── features/         → Complex feature modules
 ├── hooks/            → Custom React hooks (useMediaQuery, useCopyToClipboard, useToast)
 ├── pages/            → Page components (one per route, default export for lazy loading)
 ├── styles/           → fonts.css, animations.css
@@ -113,7 +113,7 @@ Route constants are in `src/constants/routes.ts`. Never hardcode route strings �
 
 **The accent color is identical in dark and light mode.** This is a brand decision, not a bug.
 
-For `rgba()` usage (box-shadow, canvas): use `var(--color-accent-rgb)` which is `196, 64, 64`.
+For transparent accent usage (box-shadow, gradients): use `color-mix(in srgb, var(--color-accent) X%, transparent)`.
 
 ### Fonts
 
@@ -169,9 +169,8 @@ Each component:
 ### Change the color theme
 
 1. Edit `src/index.css` → `@theme { }` block (change `--color-accent`, etc.)
-2. Update `--color-accent-rgb` in `:root` to match (R, G, B format)
-3. Check both dark AND light mode in the Playground page
-4. Run `pnpm validate`
+2. Check both dark AND light mode in the Playground page
+3. Run `pnpm validate`
 
 ### Deploy
 

@@ -12,7 +12,7 @@ grep -A 50 "@theme" src/index.css
 ```
 This is your palette, your type scale, your spacing system. Don't deviate.
 
-Also read DESIGN_SYSTEM.md at the project root for the full visual reference.
+Also read `src/index.css` @theme block for the full token reference.
 
 ### Style DNA
 - Buttons are capsules (rounded-full), not rectangles
