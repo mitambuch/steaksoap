@@ -4,6 +4,16 @@ paths: ["src/**", "scripts/**", "docs/**", "*.md", "*.json", "*.ts", "*.js"]
 
 # Workflow Rules
 
+## Session start (first thing, every session)
+
+Before any work, get oriented:
+1. `git log --oneline -10` — what happened recently
+2. `git status && git branch` — where are we now
+3. Read CLAUDE.md — architecture, conventions, and if present: Design Direction + Composition Rules
+4. Read `.claude/decisions.md` — active architectural decisions
+
+This replaces re-explaining context. The code and git history are the source of truth.
+
 ## Non-negotiable (every task, every time)
 
 1. **Branch from main**: `git checkout main && git pull && git checkout -b <type>/<scope>`
