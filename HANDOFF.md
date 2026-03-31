@@ -113,7 +113,7 @@ Route constants are in `src/constants/routes.ts`. Never hardcode route strings â
 
 **The accent color is identical in dark and light mode.** This is a brand decision, not a bug.
 
-For `rgba()` usage (box-shadow, canvas): use `var(--color-accent-rgb)` which is `196, 64, 64`.
+For transparent accent usage (box-shadow, gradients): use `color-mix(in srgb, var(--color-accent) X%, transparent)`.
 
 ### Fonts
 
@@ -169,9 +169,8 @@ Each component:
 ### Change the color theme
 
 1. Edit `src/index.css` â†’ `@theme { }` block (change `--color-accent`, etc.)
-2. Update `--color-accent-rgb` in `:root` to match (R, G, B format)
-3. Check both dark AND light mode in the Playground page
-4. Run `pnpm validate`
+2. Check both dark AND light mode in the Playground page
+3. Run `pnpm validate`
 
 ### Deploy
 

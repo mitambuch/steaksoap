@@ -127,9 +127,8 @@ Project version: [version]
 4. Add test in `__tests__/` folder next to it
 
 ### Change the color theme
-1. Edit `src/index.css` → `@theme { }` block
-2. Update `--color-accent-rgb` in `:root` to match (R, G, B format)
-3. Check Playground page to verify all tokens
+1. Edit `src/index.css` → `@theme { }` block (change `--color-accent`, etc.)
+2. Check Playground page to verify all tokens
 
 ### Deploy
 [Read from existing deploy recipe or CI config]

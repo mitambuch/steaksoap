@@ -75,8 +75,8 @@ Edit the `[data-theme='light']` block (lines 30-42 approximately):
 
 Also update the scrollbar colors (lines 48-60) to use the new accent.
 
-IMPORTANT: When changing `--color-accent`, ALWAYS also update `--color-accent-rgb` in the
-`:root` block with the matching R, G, B values. These MUST stay in sync.
+NOTE: `--color-accent-rgb` has been replaced by `color-mix()`. No manual RGB sync needed.
+Transparent accent is achieved with `color-mix(in srgb, var(--color-accent) X%, transparent)`.
 
 ### 2.2 --- Fonts (if changed)
 

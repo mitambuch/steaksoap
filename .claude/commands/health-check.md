@@ -51,10 +51,9 @@ Check for:
 ### Token consistency
 Verify design tokens are in sync:
 1. Read accent color from `src/index.css` @theme
-2. Read `--color-accent-rgb` from `:root`
-3. Grep for hardcoded color values in `src/` (any hex that matches accent but isn't using the token)
+2. Grep for hardcoded color values in `src/` (any hex that matches accent but isn't using the token)
+3. Verify all transparent accent usages use `color-mix()`, not `rgba()` with manual RGB
 4. Check that `.claude/decisions.md` matches the actual accent value
-5. Check that `.claude/rules/styling.md` matches
 
 ### Import hygiene
 ```bash

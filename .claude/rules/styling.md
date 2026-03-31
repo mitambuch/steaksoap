@@ -41,11 +41,11 @@ for light mode. The brand identity depends on this consistency.
 If contrast is a concern on light backgrounds, adjust the BACKGROUND or add
 a dark text container — never touch the accent value.
 
-## Exception: box-shadow & canvas
-`rgba()` with `--color-accent-rgb` is acceptable in:
+## Transparent accent colors
+Use `color-mix(in srgb, var(--color-accent) X%, transparent)` for:
 - `box-shadow` values (Tailwind can't use tokens in `shadow-[]`)
-- Canvas 2D context (`fillStyle`, `strokeStyle`)
-Always use the `--color-accent-rgb` CSS variable, never raw RGB values.
+- Gradients, overlays, canvas 2D context
+No manual RGB sync needed — `color-mix()` reads the token directly.
 
 ## Token-first
 Never create a local color, typo, spacing, shadow, or radius if a system

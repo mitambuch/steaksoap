@@ -15,7 +15,7 @@ export function PricingSection() {
             className={cn(
               'border-border duration-base relative flex flex-col rounded-lg border p-6 transition-[border-color,background-color,box-shadow]',
               plan.highlighted
-                ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_rgba(var(--color-accent-rgb),0.05)]'
+                ? 'border-accent/40 bg-accent/3 shadow-[0_0_40px_color-mix(in_srgb,var(--color-accent)_5%,transparent)]'
                 : 'hover:border-accent/15 bg-transparent',
             )}
           >

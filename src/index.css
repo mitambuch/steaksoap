@@ -51,15 +51,15 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--color-accent-rgb), 0.5);
+  background: color-mix(in srgb, var(--color-accent) 50%, transparent);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--color-accent-rgb), 0.7);
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(var(--color-accent-rgb), 0.5) transparent;
+  scrollbar-color: color-mix(in srgb, var(--color-accent) 50%, transparent) transparent;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -67,8 +67,6 @@ html {
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --color-accent-rgb: 196, 64, 64;
-
   /* Duration tokens — change here, propagates via @utility below */
   --duration-fast: 150ms;
   --duration-base: 300ms;
