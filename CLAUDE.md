@@ -25,7 +25,7 @@ pnpm release          — create versioned release with changelog
 src/
 ├── app/            — routes, providers, app layout
 ├── components/ui/  — reusable atoms (Button, Input, Card, Modal…)
-├── components/layout/ — Header, Footer, Container
+├── components/layout/ — Header, Container
 ├── config/         — env.ts (with fallbacks), site.ts, cloudinary.ts
 ├── features/       — feature modules (component + hook + types)
 ├── hooks/          — custom React hooks
@@ -49,7 +49,7 @@ Must ask: delete a feature, add a dependency, change deploy config, force push, 
 ## Reuse-first (mandatory)
 Before creating ANY component, check existing ones in this order:
 1. `src/components/ui/` — 24 atoms (Button, Card, Modal, Select, Tabs…)
-2. `src/components/layout/` — Header, Footer, Container
+2. `src/components/layout/` — Header, Container
 3. `src/workbench/playground/shared/` — Copyable, Swatch, Section…
 If something exists: use it or extend it. Never recreate.
 

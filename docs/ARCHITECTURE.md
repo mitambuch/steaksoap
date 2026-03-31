@@ -15,7 +15,7 @@ project/
 │   ├── app/              → Routes, providers, app layout
 │   ├── components/       → Reusable React components
 │   │   ├── ui/           → Atoms: Button, Input, Badge, Card, Modal…
-│   │   ├── layout/       → Header, Footer, Container
+│   │   ├── layout/       → Header, Container
 │   │   └── features/     → ErrorBoundary, SeoHead, Toast…
 │   ├── config/           → env.ts, site.ts, cloudinary.ts
 │   ├── constants/        → routes.ts, global constants
