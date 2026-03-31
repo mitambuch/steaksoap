@@ -29,4 +29,7 @@ export const siteConfig = {
     facebook: '',
     linkedin: '',
   },
+
+  // WHY: Set to true by /init — controls setup banner and Header display
+  initialized: false,
 } as const;

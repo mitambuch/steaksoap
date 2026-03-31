@@ -1,4 +1,5 @@
 import { ThemeToggle } from '@components/ui/ThemeToggle';
+import { siteConfig } from '@config/site';
 import { ROUTES } from '@constants/routes';
 import { cn } from '@utils/cn';
 import type { LucideIcon } from 'lucide-react';
@@ -31,6 +32,18 @@ function useScrolled(threshold = 20) {
 /* ─── MorphingLogo — organic blob + text ─────────────────── */
 
 function MorphingLogo() {
+  // WHY: After /init, show project name instead of abstract blob
+  if (siteConfig.initialized) {
+    return (
+      <Link
+        to={ROUTES.HOME}
+        className="text-fg text-sm font-medium tracking-tight focus-visible:outline-none md:text-base"
+      >
+        {siteConfig.name}
+      </Link>
+    );
+  }
+
   return (
     <Link
       to={ROUTES.HOME}

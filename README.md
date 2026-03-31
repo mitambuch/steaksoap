@@ -27,7 +27,7 @@ pnpm setup          # Interactive wizard — name, repo (private), cleanup
 pnpm dev            # → http://localhost:5173
 ```
 
-Then in Claude Code, run `/init` to customize colors, fonts, and content.
+Then in Claude Code, run `/brief` (design direction) then `/init` (colors, fonts, styling).
 
 ## Keeping projects up to date
 
@@ -77,14 +77,14 @@ Customize per project via `/init` or edit `src/index.css` directly.
 
 ## AI workflow
 
-23 slash commands, 4 specialized agents, 12 contextual rules — all in `.claude/`.
+24 slash commands, 4 specialized agents, 12 contextual rules — all in `.claude/`.
 
 | Category | Commands |
 |----------|----------|
 | **Scaffold** | `/new-page`, `/new-component`, `/new-feature`, `/new-hook`, `/add-api` |
 | **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check` |
 | **Ship** | `/release`, `/deploy`, `/commit` |
-| **Evolve** | `/refactor`, `/migrate`, `/theme`, `/init`, `/update-deps` |
+| **Evolve** | `/brief`, `/init`, `/refactor`, `/migrate`, `/theme`, `/update-deps` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
 ## Architecture

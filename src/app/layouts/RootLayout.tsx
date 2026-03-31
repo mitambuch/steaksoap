@@ -1,5 +1,7 @@
 import { Footer } from '@components/layout/Footer';
 import { Header } from '@components/layout/Header';
+import { Banner } from '@components/ui/Banner';
+import { siteConfig } from '@config/site';
 import { useMediaQuery } from '@hooks/useMediaQuery';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -21,6 +23,12 @@ export default function RootLayout() {
       >
         Skip to content
       </a>
+      {!siteConfig.initialized && (
+        <Banner variant="warning">
+          Project not initialized — run <code className="font-mono font-bold">pnpm setup</code> then{' '}
+          <code className="font-mono font-bold">/init</code>
+        </Banner>
+      )}
       <Header />
       <main id="main-content" className="flex-1 pt-20">
         <div key={pathname} className={prefersReducedMotion ? undefined : 'animate-page-enter'}>
