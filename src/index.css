@@ -19,7 +19,7 @@
   --color-muted: #8a8a8a;
   --color-surface: #141414;
   --color-border: #262626;
-  --color-on-accent: #0a0a0a;
+  --color-on-accent: #ffffff;
 
   /* Semantic status colors — fluorescent */
   --color-success: #6aff8a;
@@ -43,7 +43,7 @@
   --color-bg: #b0b0a8;
   --color-fg: #1a1a1a;
   --color-accent: #c44040;
-  --color-muted: #4a4a44;
+  --color-muted: #353530;
   --color-surface: #a4a49c;
   --color-border: #96968e;
 
@@ -52,12 +52,12 @@
   --color-danger: #b91c1c;
   --color-info: #1e88e5;
 
-  /* Text-safe variants — meet WCAG AA (4.5:1) on light bg #b0b0a8 */
-  --color-success-text: #005f27;
-  --color-warning-text: #6b4f00;
+  /* Text-safe variants — meet WCAG AA (4.5:1) on light bg and composites */
+  --color-success-text: #004d1f;
+  --color-warning-text: #4d3800;
+  --color-info-text: #0a3d6a;
   --color-danger-text: #7f1111;
-  --color-info-text: #0d4a7f;
-  --color-accent-text: #982e2e;
+  --color-accent-text: #751e1e;
 }
 
 /* ─── Custom scrollbar — thin coral accent ────────────────── */

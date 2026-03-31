@@ -20,11 +20,11 @@ interface BannerProps {
 }
 
 const variantStyles: Record<NonNullable<BannerProps['variant']>, string> = {
-  info: 'bg-info/10 text-info border-info/20',
-  success: 'bg-success/10 text-success border-success/20',
-  warning: 'bg-warning/10 text-warning border-warning/20',
-  danger: 'bg-danger/10 text-danger border-danger/20',
-  accent: 'bg-accent/10 text-accent border-accent/20',
+  info: 'bg-info/10 text-info-text border-info/20',
+  success: 'bg-success/10 text-success-text border-success/20',
+  warning: 'bg-warning/10 text-warning-text border-warning/20',
+  danger: 'bg-danger/10 text-danger-text border-danger/20',
+  accent: 'bg-accent/10 text-accent-text border-accent/20',
 };
 
 /** Sticky notification bar with optional dismiss. */

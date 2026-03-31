@@ -40,7 +40,7 @@ export default function Playground() {
       <div className="bg-bg text-fg min-h-screen">
         {/* Hero header — full width, generous breathing room */}
         <div className="mx-auto max-w-350 px-6 pt-12 pb-8 md:px-10 md:pt-16 md:pb-12">
-          <span className="text-accent font-mono text-[10px] tracking-[0.2em] uppercase">
+          <span className="text-accent-text font-mono text-[10px] tracking-[0.2em] uppercase">
             design system
           </span>
           <h1 className="text-fg mt-3 text-4xl font-medium tracking-tight md:text-6xl lg:text-7xl">

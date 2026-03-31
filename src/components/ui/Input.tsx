@@ -42,7 +42,7 @@ export const Input = ({ label, error, helperText, className, ...rest }: InputPro
         {...rest}
       />
       {error && (
-        <p id={`${id}-error`} className="text-danger text-sm" role="alert">
+        <p id={`${id}-error`} className="text-danger-text text-sm" role="alert">
           {error}
         </p>
       )}

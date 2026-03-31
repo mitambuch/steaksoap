@@ -17,12 +17,12 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<NonNullable<BadgeProps['variant']>, string> = {
-  default: 'bg-accent text-bg font-bold',
+  default: 'bg-accent text-on-accent font-bold',
   outline: 'border border-border bg-transparent',
-  success: 'bg-success/15 text-success',
-  warning: 'bg-warning/15 text-warning',
-  danger: 'bg-danger/15 text-danger',
-  info: 'bg-info/15 text-info',
+  success: 'bg-success/15 text-success-text',
+  warning: 'bg-warning/15 text-warning-text',
+  danger: 'bg-danger/15 text-danger-text',
+  info: 'bg-info/15 text-info-text',
 };
 
 const sizeStyles: Record<NonNullable<BadgeProps['size']>, string> = {

@@ -25,7 +25,7 @@ export const Stat = ({ label, value, trend, className }: StatProps) => {
         <span
           className={cn(
             'mt-1 text-xs font-medium',
-            trend.positive ? 'text-success' : 'text-danger',
+            trend.positive ? 'text-success-text' : 'text-danger-text',
           )}
         >
           {trend.positive ? '\u2191' : '\u2193'} {trend.value}

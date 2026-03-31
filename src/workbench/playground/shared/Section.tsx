@@ -13,10 +13,10 @@ export function Section({
   return (
     <section className="border-border/50 border-t pt-12">
       <h2 className="mb-8 flex items-baseline gap-3">
-        <span className="text-accent font-mono text-[10px] tracking-[0.2em] uppercase">
+        <span className="text-accent-text font-mono text-[10px] tracking-[0.2em] uppercase">
           {number}
         </span>
-        <span className="text-muted/60 font-mono text-[10px] tracking-[0.2em] uppercase">
+        <span className="text-muted font-mono text-[10px] tracking-[0.2em] uppercase">
           // {title}
         </span>
       </h2>

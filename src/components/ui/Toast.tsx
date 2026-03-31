@@ -15,10 +15,10 @@ import { AlertTriangle, Check, Info, X } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 const variantStyles: Record<ToastData['variant'], string> = {
-  success: 'border-success/30 bg-success/10 text-success',
-  error: 'border-danger/30 bg-danger/10 text-danger',
-  warning: 'border-warning/30 bg-warning/10 text-warning',
-  info: 'border-info/30 bg-info/10 text-info',
+  success: 'border-success/30 bg-success/10 text-success-text',
+  error: 'border-danger/30 bg-danger/10 text-danger-text',
+  warning: 'border-warning/30 bg-warning/10 text-warning-text',
+  info: 'border-info/30 bg-info/10 text-info-text',
 };
 
 // WHY: strokeWidth 1.5 matches classe2 elegance — lighter than default 2
