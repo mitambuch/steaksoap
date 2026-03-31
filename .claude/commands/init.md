@@ -143,14 +143,7 @@ Update text content:
 - Update the welcome message to reflect the project name
 - The example prompt should reflect the user's actual project
 
-### 2.8 --- Footer/Header cleanup consideration
-
-The Footer (`src/components/layout/Footer.tsx`) and Header may have hardcoded links.
-
-ASK the user: "The footer/header may have external links. Want me to:
-(a) replace with your repo URL, (b) remove external links, or (c) leave as-is for now?"
-
-### 2.9 --- Favicon
+### 2.8 --- Favicon
 
 ASK: "Want me to keep the current favicon or would you like to change it later?
 (You can always replace the files in /public/ manually.)"
@@ -160,7 +153,7 @@ If they want to change: explain which files to replace:
 - `public/favicon-32.png` (32x32 fallback)
 - `public/apple-touch-icon.png` (180x180 for iOS)
 
-### 2.10 --- Mark as initialized
+### 2.9 --- Mark as initialized
 
 In `src/config/site.ts`, change `initialized: false` to `initialized: true`.
 This removes the setup banner from RootLayout and switches the Header to show the project name.
@@ -191,7 +184,6 @@ Changed:
   -> README.md: project identity
   -> src/pages/Home.tsx: welcome text
   [-> src/styles/fonts.css + index.html: font if changed]
-  [-> Footer.tsx / Header.tsx: links if changed]
 
 Next steps:
   -> Describe your homepage and I'll build it

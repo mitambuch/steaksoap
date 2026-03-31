@@ -58,7 +58,7 @@ src/
 │   └── layouts/      → Shared layouts
 ├── components/
 │   ├── ui/           → 24 reusable atoms (Button, Card, Modal, Select, Tabs…)
-│   ├── layout/       → Header, Footer, Container
+│   ├── layout/       → Header, Container
 │   └── features/     → ErrorBoundary, SeoHead
 ├── config/           → env.ts (with fallbacks), site.ts, cloudinary.ts
 ├── constants/        → routes.ts, global constants
