@@ -1,5 +1,33 @@
 # Changelog
 
+## [4.6.0](https://github.com/mitambuch/steaksoap/compare/v4.5.0...v4.6.0) (2026-03-31)
+
+### ✨ Features
+
+* **agent:** upgrade designer with context, recipes, contrast ([c161fd2](https://github.com/mitambuch/steaksoap/commit/c161fd27ba8265a2a45b009e8eae8a12db7ed932))
+* **commands:** new-page and design read brief context ([62f1bb7](https://github.com/mitambuch/steaksoap/commit/62f1bb7abdf5693144061d485d82eb3deeb146f8))
+* **setup:** improve clone-to-build workflow ([fa840a4](https://github.com/mitambuch/steaksoap/commit/fa840a4fdacb39e56157ab26eeb8d37ed9ef4233))
+
+### 🐛 Bug Fixes
+
+* **security:** recalculate CSP hash for FOUC script ([9bfbbe8](https://github.com/mitambuch/steaksoap/commit/9bfbbe84deba199dab8950820dc66deef78617c0))
+* **test:** update Header test for text logo ([2a9d164](https://github.com/mitambuch/steaksoap/commit/2a9d1640686718fd8eb80b8d99727a684fc0f3ca))
+* **tokens:** replace accent-rgb with color-mix() ([1c686c5](https://github.com/mitambuch/steaksoap/commit/1c686c501cacc1de5d6e2056e6f95f6b36efdd17))
+
+### ♻️  Refactoring
+
+* **base:** remove template showcase effects ([3347af0](https://github.com/mitambuch/steaksoap/commit/3347af0510f1e060d8ad5f1c2de900fec870ce5b))
+* **layout:** remove Footer, move banner to bottom ([ef292d5](https://github.com/mitambuch/steaksoap/commit/ef292d565f959d8ae48f28ad64e3e0a72091f765))
+
+### 📚 Documentation
+
+* **cleanup:** consolidate docs, remove redundant files ([2fe8497](https://github.com/mitambuch/steaksoap/commit/2fe84974e86656297a57ff82fcb67e773497faf6))
+* **cleanup:** remove Footer references from all docs ([e802cf0](https://github.com/mitambuch/steaksoap/commit/e802cf061fbfb3bcd83b488d49c2e115cbc3a592))
+
+### 🔧 Chores
+
+* **workflow:** add session start orientation step ([55f11b5](https://github.com/mitambuch/steaksoap/commit/55f11b52974697140cceaff76eaa483d03f213e2))
+
 ## [4.5.0](https://github.com/mitambuch/steaksoap/compare/v4.4.0...v4.5.0) (2026-03-30)
 
 ### ✨ Features
