@@ -17,9 +17,11 @@ function renderHeader(props: Partial<Parameters<typeof Header>[0]> = {}) {
 }
 
 describe('Header', () => {
-  it('renders the logo blob link', () => {
+  it('renders the project name as home link', () => {
     renderHeader();
-    expect(screen.getByLabelText('Home')).toBeInTheDocument();
+    const homeLink = screen.getAllByRole('link')[0];
+    expect(homeLink).toHaveAttribute('href', '/');
+    expect(homeLink).toHaveTextContent(/./);
   });
 
   it('shows Playground link', () => {
