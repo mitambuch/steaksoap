@@ -10,16 +10,24 @@ $ARGUMENTS — Natural language description of what to design. Examples:
 - "contact section with map placeholder, clean and minimal"
 - "services grid for a restaurant, warm and inviting"
 
-## Phase 1 — Design Thinking (BEFORE any code)
+## Phase 1 --- Design Thinking (BEFORE any code)
 
-Before writing a single line, answer these questions:
+### 0. Load context (CHECK FIRST)
+Read CLAUDE.md for `## Design Direction` and `## Composition Rules`.
 
-### 1. Context
-- **Who visits?** (age, expectations, device — most vitrine visitors are on mobile)
+**If they exist** (written by /brief):
+- Skip questions 1 and 2 below --- the answers are already there.
+- Use Design Direction for vibe/aesthetic, Composition Rules for layout decisions.
+- Confirm briefly: "Brief says [Personality line]. I'm designing with that in mind."
+
+**If they do NOT exist**: ask questions 1 and 2 as usual.
+
+### 1. Context (skip if brief exists)
+- **Who visits?** (age, expectations, device --- most vitrine visitors are on mobile)
 - **What's the goal?** (book appointment, call, see services, get directions)
 - **What's the vibe?** (the client's brand personality)
 
-### 2. Aesthetic Direction
+### 2. Aesthetic Direction (skip if brief exists)
 Pick ONE clear direction and commit fully. Don't be generic. Examples:
 - Brutalist / raw / industrial
 - Luxury / refined / editorial
@@ -30,7 +38,7 @@ Pick ONE clear direction and commit fully. Don't be generic. Examples:
 
 **CRITICAL**: Every client site must feel UNIQUE. Never produce the same layout twice.
 Never default to safe, predictable choices. The user comes here because ChatGPT and Gemini
-produce generic AI slop — we don't.
+produce generic AI slop --- we don't.
 
 ### 3. The Memorable Thing
 What's the ONE detail someone will remember about this page?
@@ -62,13 +70,13 @@ ls src/components/ui/
 - **Token-first**: NEVER hardcode colors. Use bg-bg, text-fg, text-accent, text-muted, bg-surface, border-border
 - **Reuse-first**: check src/components/ui/ BEFORE creating anything new
 - **cn()**: ALL className merging via cn() from @utils/cn
-- **Accent consistency**: #c44040 is IDENTICAL in dark and light mode. Never change it per theme.
+- **Accent consistency**: accent color is IDENTICAL in dark and light mode (read from @theme). Never change it per theme.
 - **Duration tokens**: Use duration-fast, duration-base, duration-slow, duration-cinematic. Never raw ms values.
 - **Responsive**: Mobile-first. Design for 320px, enhance at md: and lg:
 
 ### Typography DNA
-- Display fonts: Space Grotesk (bold, medium) — hero headlines
-- Mono micro: `font-mono text-[10px] uppercase tracking-widest` — labels, metadata
+- Display fonts: read from @theme --font-family-sans --- hero headlines
+- Mono micro: `font-mono text-[10px] uppercase tracking-widest` --- labels, metadata
 - No aggressive UPPERCASE on titles — prefer lowercase or capitalize
 - Pair weight + color for hierarchy, not just size
 
@@ -85,8 +93,8 @@ ls src/components/ui/
 | Generic AI slop | What WE do |
 |---|---|
 | Centered everything, symmetrical | Asymmetric layouts, grid-breaking elements |
-| Purple gradients on white | Bold use of accent #c44040 with dramatic contrast |
-| Inter/Roboto/Arial everywhere | Space Grotesk with intentional weight pairing |
+| Purple gradients on white | Bold use of accent color with dramatic contrast |
+| Inter/Roboto/Arial everywhere | Project font with intentional weight pairing |
 | Predictable hero → features → CTA | Narrative flow that tells the client's story |
 | Small safe animations | Cinematic reveals, staggered delays, scroll-triggered moments |
 | Stock photo grids | Creative image compositions, overlaps, bleeds |
