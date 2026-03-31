@@ -18,7 +18,7 @@
 
     <!-- Prevent flash of wrong theme (FOUC) -->
     <!-- SYNC: key must match THEME_STORAGE_KEY in src/context/ThemeContext.tsx -->
-    <!-- SYNC: If you change this script, recalculate the CSP sha256 hash in netlify.toml AND vercel.json -->
+    <!-- SYNC: CSP hash is auto-synced by scripts/sync-csp-hash.js (runs on prebuild) -->
     <script>
       (function() {
         var theme;

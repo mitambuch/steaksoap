@@ -9,6 +9,7 @@
   "_baseProject": true,
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/sync-csp-hash.js",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
