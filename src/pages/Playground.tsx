@@ -1,4 +1,5 @@
 import { SeoHead } from '@components/features/SeoHead';
+import { playgroundPage } from '@data/pages';
 import {
   AccordionSection,
   AvatarsSkeletonSection,
@@ -33,22 +34,18 @@ import {
 export default function Playground() {
   return (
     <>
-      <SeoHead
-        title="playground"
-        description="design system devkit — all components, tokens, and typography."
-      />
+      <SeoHead title={playgroundPage.seo.title} description={playgroundPage.seo.description} />
       <div className="bg-bg text-fg min-h-screen">
         {/* Hero header — full width, generous breathing room */}
         <div className="mx-auto max-w-350 px-6 pt-12 pb-8 md:px-10 md:pt-16 md:pb-12">
           <span className="text-accent-text font-mono text-[10px] tracking-[0.2em] uppercase">
-            design system
+            {playgroundPage.label}
           </span>
           <h1 className="text-fg mt-3 text-4xl font-medium tracking-tight md:text-6xl lg:text-7xl">
-            devkit
+            {playgroundPage.headline}
           </h1>
           <p className="text-muted mt-4 max-w-xl text-base leading-relaxed md:text-lg">
-            every token, every component, every pattern. click any chip to copy. scroll down for
-            ready-to-use modules.
+            {playgroundPage.subline}
           </p>
           <div className="bg-accent mt-6 h-px w-16" />
         </div>
