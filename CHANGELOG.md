@@ -1,5 +1,19 @@
 # Changelog
 
+## [4.6.1](https://github.com/mitambuch/steaksoap/compare/v4.6.0...v4.6.1) (2026-03-31)
+
+### 🐛 Bug Fixes
+
+* **a11y:** pass all E2E tests — contrast tokens, keyboard, and axe ([9100d05](https://github.com/mitambuch/steaksoap/commit/9100d058deb187263e890f6260d5fb5e6044bd93)), closes [#353530](https://github.com/mitambuch/steaksoap/issues/353530) [#751e1e](https://github.com/mitambuch/steaksoap/issues/751e1e) [#ffffff](https://github.com/mitambuch/steaksoap/issues/ffffff)
+* **audit:** resolve CSP, a11y, perf, and test issues ([e962a45](https://github.com/mitambuch/steaksoap/commit/e962a45e903ee83fc865dd0fceca2b2284cdb47e))
+* **ci:** require Node 22 — matches rollup-plugin-visualizer engine ([2649023](https://github.com/mitambuch/steaksoap/commit/2649023dfd3fde370d07ab34a00e569744a5d730))
+* **ui:** use stable key in AvatarGroup instead of array index ([3c6394b](https://github.com/mitambuch/steaksoap/commit/3c6394bdaa9945a6e42ff315f001af4568ccdf08))
+
+### 🔧 Chores
+
+* **deps:** update dependencies and fix all security vulnerabilities ([c574710](https://github.com/mitambuch/steaksoap/commit/c5747105e4f9f7a4f737edecd14d9293111aa04f))
+* **security:** auto-sync CSP hash on every build ([dba1637](https://github.com/mitambuch/steaksoap/commit/dba163732b51d75801db78d6fab0b639f517df83))
+
 ## [4.6.0](https://github.com/mitambuch/steaksoap/compare/v4.5.0...v4.6.0) (2026-03-31)
 
 ### ✨ Features
