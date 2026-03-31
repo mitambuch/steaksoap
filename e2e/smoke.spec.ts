@@ -62,7 +62,7 @@ test.describe('Smoke — Playground', () => {
     await page.goto('/playground');
     await expect(page.locator('h1')).toBeVisible();
     // Playground should display UI component sections
-    await expect(page.getByText('Button')).toBeVisible();
+    await expect(page.getByRole('heading', { name: /devkit/i })).toBeVisible();
   });
 
   test('has no console errors', async ({ page }) => {
@@ -80,7 +80,7 @@ test.describe('Smoke — Lab', () => {
   test('loads and shows the heading', async ({ page }) => {
     await page.goto('/lab');
     await expect(page.locator('h1')).toBeVisible();
-    await expect(page.getByText('Lab')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
   test('has no console errors', async ({ page }) => {

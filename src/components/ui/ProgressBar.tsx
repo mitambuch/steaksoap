@@ -11,6 +11,8 @@ import { cn } from '@utils/cn';
 interface ProgressBarProps {
   /** Progress value from 0 to 100. */
   value: number;
+  /** Accessible name for the progress bar (required for a11y). */
+  label?: string;
   variant?: 'accent' | 'success' | 'warning' | 'danger' | 'info';
   size?: 'sm' | 'md';
   showLabel?: boolean;
@@ -28,6 +30,7 @@ const variantColors: Record<NonNullable<ProgressBarProps['variant']>, string> = 
 /** Animated progress bar with percentage label option. */
 export const ProgressBar = ({
   value,
+  label = 'Progress',
   variant = 'accent',
   size = 'md',
   showLabel = false,
@@ -49,6 +52,7 @@ export const ProgressBar = ({
           size === 'sm' ? 'h-1' : 'h-2',
         )}
         role="progressbar"
+        aria-label={label}
         aria-valuenow={clamped}
         aria-valuemin={0}
         aria-valuemax={100}

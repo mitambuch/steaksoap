@@ -27,13 +27,13 @@ export function PricingSection() {
             <h3 className="text-fg font-mono text-sm font-medium uppercase">{plan.name}</h3>
             <div className="mt-3 flex items-baseline gap-1">
               <span className="text-fg text-3xl font-bold">{plan.price}</span>
-              <span className="text-muted text-sm">{plan.period}</span>
+              <span className="text-fg/60 text-sm">{plan.period}</span>
             </div>
-            <p className="text-muted mt-2 text-sm">{plan.description}</p>
+            <p className="text-fg/70 mt-2 text-sm">{plan.description}</p>
 
             <ul className="mt-6 flex-1 space-y-2">
               {plan.features.map(f => (
-                <li key={f} className="text-muted flex items-center gap-2 text-sm">
+                <li key={f} className="text-fg/70 flex items-center gap-2 text-sm">
                   <Check
                     size={14}
                     strokeWidth={2}

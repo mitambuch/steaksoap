@@ -26,7 +26,7 @@ describe('Header', () => {
 
   it('shows Playground link', () => {
     renderHeader();
-    expect(screen.getByText('Playground')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /playground/i })).toBeInTheDocument();
   });
 
   it('has navigation landmark', () => {

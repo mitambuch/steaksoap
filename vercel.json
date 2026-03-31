@@ -17,7 +17,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-JB8O2J5Zgwr3llKmpAFyFt/FmXGiEXK8wBMF6az4/lw='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://res.cloudinary.com; connect-src 'self'"
+          "value": "default-src 'self'; script-src 'self' 'sha256-wwPqzA0ZWfbqSj6y58O0xWP4wF3WbZH30uKifyuEwwM='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://res.cloudinary.com; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
         },
         {
           "key": "Cross-Origin-Opener-Policy",

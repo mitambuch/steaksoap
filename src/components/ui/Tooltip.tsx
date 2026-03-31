@@ -7,14 +7,7 @@
 // ═══════════════════════════════════════════════════
 
 import { cn } from '@utils/cn';
-import {
-  cloneElement,
-  isValidElement,
-  type ReactElement,
-  type ReactNode,
-  useId,
-  useState,
-} from 'react';
+import { cloneElement, isValidElement, type ReactNode, useId, useState } from 'react';
 
 interface TooltipProps {
   content: string;
@@ -37,8 +30,8 @@ export const Tooltip = ({ content, children, position = 'top', className }: Tool
 
   // WHY: aria-describedby must be on the interactive element, not a wrapper div.
   // cloneElement injects the attribute directly onto the child (e.g. <button>).
-  const child = isValidElement(children)
-    ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+  const child = isValidElement<Record<string, unknown>>(children)
+    ? cloneElement(children, {
         'aria-describedby': isVisible ? tooltipId : undefined,
       })
     : children;

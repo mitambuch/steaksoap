@@ -29,10 +29,10 @@ export function StatsSection() {
         <div>
           <SubLabel>progress bars</SubLabel>
           <div className="max-w-md space-y-4">
-            <ProgressBar value={78} variant="accent" showLabel />
-            <ProgressBar value={92} variant="success" showLabel />
-            <ProgressBar value={45} variant="warning" showLabel />
-            <ProgressBar value={15} variant="danger" showLabel />
+            <ProgressBar value={78} variant="accent" label="Overall progress" showLabel />
+            <ProgressBar value={92} variant="success" label="Tasks completed" showLabel />
+            <ProgressBar value={45} variant="warning" label="Storage used" showLabel />
+            <ProgressBar value={15} variant="danger" label="Error rate" showLabel />
           </div>
         </div>
       </div>
