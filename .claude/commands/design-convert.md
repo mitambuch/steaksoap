@@ -67,9 +67,36 @@ PROPOSAL: GradientText
 
 Present these proposals to the user. Wait for approval before proceeding.
 
-## Step 2 — Convert
+## Step 1b --- The Adaptation Question (ask the user)
 
-Once the user approves the mapping:
+For each major creative choice in the exploration that DIFFERS from current tokens, present all decisions as a single block:
+
+**FONTS:**
+Exploration uses [X]. Current system has [read from @theme --font-family-sans/mono].
+- Option A: Update project fonts to [X] (changes the entire project feel)
+- Option B: Keep current fonts, adapt the design (may lose some personality)
+- User decides.
+
+**COLORS:**
+Exploration uses palette [X]. Current accent is [read from @theme --color-accent].
+- Option A: Update accent + add new tokens (changes the entire project palette)
+- Option B: Map exploration colors to closest existing tokens
+- Option C: Hybrid --- keep accent, add 1-2 new tokens for this page only
+- User decides.
+
+**ANIMATIONS:**
+Exploration has [X effect]. Current system uses CSS transitions only.
+- Option A: Keep as-is (CSS @keyframes, no library)
+- Option B: Simplify to standard transitions
+- If the effect needs a library: propose it via /discover first
+- User decides.
+
+Present all decisions together. Don't ask one by one.
+The user's answer shapes the entire conversion strategy.
+
+## Step 2 --- Convert
+
+Once the user approves the mapping and adaptation decisions:
 
 ### 2a. New tokens (if approved)
 Edit `src/index.css` @theme block. Update both dark and light modes.
