@@ -24,8 +24,8 @@ export const AvatarGroup = ({ avatars, max = 4, size = 'md', className }: Avatar
 
   return (
     <div className={cn('flex -space-x-2', className)}>
-      {visible.map((avatar, i) => (
-        <div key={i} className="ring-bg rounded-full ring-2">
+      {visible.map(avatar => (
+        <div key={avatar.alt} className="ring-bg rounded-full ring-2">
           <Avatar src={avatar.src} alt={avatar.alt} fallback={avatar.fallback} size={size} />
         </div>
       ))}
