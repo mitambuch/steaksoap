@@ -20,10 +20,9 @@ function renderLayout(route = '/') {
 }
 
 describe('RootLayout', () => {
-  it('renders Header and Footer', () => {
+  it('renders Header', () => {
     renderLayout();
     expect(screen.getByRole('navigation', { name: /main navigation/i })).toBeInTheDocument();
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
   it('renders the skip-to-content link', () => {

@@ -42,13 +42,13 @@ function PageLoader() {
 /* ─── Main router ─────────────────────────────────────────────
    Page transition (animate-page-enter) lives in RootLayout around <Outlet />,
    NOT here. Wrapping <Routes> with key={pathname} would remount the entire
-   layout (Header, Footer, contexts) on every navigation.
+   layout (Header, contexts) on every navigation.
    ─────────────────────────────────────────────────────────── */
 export default function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        {/* Root layout — wraps ALL pages with Header + Footer */}
+        {/* Root layout — wraps ALL pages with Header */}
         <Route element={<RootLayout />}>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.PLAYGROUND} element={<Playground />} />
