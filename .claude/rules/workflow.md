@@ -39,11 +39,13 @@ This replaces re-explaining context. The code and git history are the source of 
 
 ## Merge & push (on request only)
 
-When the user says "push", "merge", or delivery is clearly requested:
+When the user says "merge", "push", or delivery is clearly requested:
 1. `git checkout main && git merge --no-ff <branch>`
 2. `git push origin main`
 3. `git branch -d <branch>`
 4. Evaluate if release is warranted (see git.md)
+
+"push" always means: merge to main + push to origin. Not a raw `git push` of a feature branch.
 
 ## User profile
 
@@ -76,7 +78,7 @@ PACKAGE: [name] — [what it does]  STATS: [downloads, last updated]  WHY: [reas
 |---|---|
 | "add/fix X" | Branch → code → validate → commit (stop). Merge/push only if asked. |
 | "commit" | git add + conventional commit |
-| "push" | git push origin main (or active branch) |
+| "push" | Merge to main + git push origin main |
 | "release" | Immediate release with correct type |
 | "status?" | git status + log since last release + summary |
 

@@ -24,7 +24,7 @@ export default function NotFound() {
         <p className="text-muted text-sm sm:text-base">{notFoundPage.subline}</p>
         <Link
           to={ROUTES.HOME}
-          className="border-accent/20 text-accent-text hover:border-accent/50 hover:text-accent mt-2 rounded-full border px-5 py-2 font-mono text-xs transition-colors"
+          className="border-accent/20 text-accent-text hover:border-accent/50 hover:text-accent focus-visible:ring-accent mt-2 rounded-full border px-5 py-2 font-mono text-xs transition-colors focus-visible:ring-2 focus-visible:outline-none"
         >
           {notFoundPage.cta}
         </Link>

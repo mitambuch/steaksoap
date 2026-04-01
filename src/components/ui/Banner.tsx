@@ -52,7 +52,7 @@ export const Banner = ({
           type="button"
           onClick={() => setVisible(false)}
           aria-label="Dismiss"
-          className="shrink-0 rounded-md p-0.5 opacity-70 transition-opacity hover:opacity-100"
+          className="focus-visible:ring-accent shrink-0 rounded-md p-0.5 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
         >
           <X size={14} strokeWidth={1.5} aria-hidden="true" />
         </button>

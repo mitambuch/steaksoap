@@ -35,7 +35,7 @@ function Logo() {
   return (
     <Link
       to={ROUTES.HOME}
-      className="text-fg text-sm font-medium tracking-tight focus-visible:outline-none md:text-base"
+      className="text-fg focus-visible:ring-accent rounded-sm text-sm font-medium tracking-tight focus-visible:ring-2 focus-visible:outline-none md:text-base"
     >
       {siteConfig.name}
     </Link>

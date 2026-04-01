@@ -23,7 +23,7 @@ $ARGUMENTS — Natural language description. Examples:
 
 5. Sync all dependents:
    - If accent changed: update `public/favicon.svg` if accent-colored, playground color swatches in `src/workbench/playground/data/colors.ts`
-   - If font changed: update `src/styles/fonts.css`, `index.html` font imports
+   - If font changed: update `src/styles/fonts.css` and add font files to `public/fonts/`
    - If bg changed: update `index.html` meta theme-color
 
 6. Run `pnpm validate`.

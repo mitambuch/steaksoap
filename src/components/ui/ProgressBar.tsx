@@ -42,7 +42,7 @@ export const ProgressBar = ({
     <div className={cn('w-full', className)}>
       {showLabel && (
         <div className="mb-1.5 flex items-center justify-between">
-          <span className="text-muted font-mono text-[10px]">Progress</span>
+          <span className="text-muted font-mono text-[10px]">{label}</span>
           <span className="text-fg font-mono text-[10px] font-medium">{clamped}%</span>
         </div>
       )}

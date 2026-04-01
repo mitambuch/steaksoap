@@ -71,7 +71,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <button
             type="button"
             onClick={this.handleReset}
-            className="underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100"
+            className="focus-visible:ring-accent rounded-sm underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
           >
             Try again
           </button>

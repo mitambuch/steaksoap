@@ -100,13 +100,13 @@ Customize per project via `/init` or edit `src/index.css` directly.
 
 ## AI workflow
 
-24 slash commands, 4 specialized agents, 12 contextual rules — all in `.claude/`.
+31 slash commands, 4 specialized agents, 12 contextual rules — all in `.claude/`.
 
 | Category | Commands |
 |----------|----------|
 | **Scaffold** | `/new-page`, `/new-component`, `/new-feature`, `/new-hook`, `/add-api` |
 | **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check` |
-| **Ship** | `/release`, `/deploy`, `/commit` |
+| **Ship** | `/release`, `/deploy`, `/handoff`, `/pre-delivery` |
 | **Evolve** | `/brief`, `/init`, `/refactor`, `/migrate`, `/theme`, `/update-deps` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
@@ -147,7 +147,7 @@ src/
 
 ## Testing
 
-- **Unit**: Vitest with jsdom, 340+ tests, 75%+ coverage thresholds
+- **Unit**: Vitest with jsdom, 242+ tests
 - **E2E**: Playwright on production build
 - **A11y**: axe-core integration (unit + E2E)
 - **Lighthouse CI**: a11y/best-practices/SEO ≥ 0.9, performance ≥ 0.8
@@ -155,7 +155,7 @@ src/
 ## CI/CD
 
 GitHub Actions pipeline:
-1. **validate** — ESLint, TypeScript, Vitest, Vite build (Node 20 + 22 matrix)
+1. **validate** — ESLint, TypeScript, Vitest, Vite build (Node 22)
 2. **e2e** — Playwright on built preview
 3. **lighthouse** — Performance + a11y scores
 
