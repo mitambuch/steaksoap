@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 /* ═══════════════════════════════════════════════════════════════
    SMOKE TESTS — essential checks that the app runs correctly.
-   Chromium only, no CI integration (run manually with pnpm test:e2e).
+   Runs on all browsers (Chromium, Firefox, WebKit) in CI.
    ═══════════════════════════════════════════════════════════════ */
 
 test.describe('Smoke — Home page', () => {
