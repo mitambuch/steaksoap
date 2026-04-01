@@ -1,4 +1,4 @@
-# steaksoap — Developer Handoff
+# project-base — Developer Handoff
 
 > This document contains everything a developer needs to understand, run,
 > and maintain this project. No AI tools required.
