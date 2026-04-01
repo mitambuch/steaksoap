@@ -132,6 +132,9 @@ export const Select = ({
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-controls={`${id}-listbox`}
+          aria-activedescendant={
+            open && highlighted >= 0 ? `${id}-option-${highlighted}` : undefined
+          }
           aria-describedby={error ? `${id}-error` : undefined}
         >
           {selectedLabel || placeholder || '\u00A0'}
@@ -176,9 +179,12 @@ export const Select = ({
               {placeholder}
             </li>
           )}
+          {/* WHY: keyboard interaction is on the trigger via aria-activedescendant — options only need click for mouse users */}
           {options.map((opt, i) => (
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events -- keyboard handled by trigger button via aria-activedescendant
             <li
               key={opt.value}
+              id={`${id}-option-${i}`}
               role="option"
               aria-selected={opt.value === selected}
               className={cn(
@@ -190,12 +196,6 @@ export const Select = ({
                     : 'text-fg hover:bg-accent/10',
               )}
               onClick={() => pick(opt)}
-              onKeyDown={e => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  pick(opt);
-                }
-              }}
               onMouseEnter={() => setHighlighted(i)}
             >
               {opt.label}

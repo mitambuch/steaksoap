@@ -221,10 +221,13 @@ try {
     ),
   ];
 
+  // WHY: sort aliases by length descending so @components matches before @
+  const sortedAliases = Object.keys(aliasMap).sort((a, b) => b.length - a.length);
+
   let orphanCount = 0;
   for (const imp of imports) {
-    // Find matching alias
-    const alias = Object.keys(aliasMap).find((a) => imp.startsWith(a));
+    // Skip external scoped packages (e.g. @testing-library/react, @tanstack/query)
+    const alias = sortedAliases.find((a) => imp === a || imp.startsWith(`${a}/`));
     if (!alias) continue;
 
     const relativePath = imp.replace(alias, aliasMap[alias]);

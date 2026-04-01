@@ -53,7 +53,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
       </div>
       <button
         onClick={() => onDismiss(toast.id)}
-        className="mt-0.5 shrink-0 opacity-50 transition-opacity hover:opacity-100"
+        className="focus-visible:ring-accent mt-0.5 shrink-0 rounded-sm opacity-50 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
         aria-label="Dismiss notification"
       >
         <X size={14} strokeWidth={1.5} />

@@ -122,7 +122,7 @@ src/
 ├── config/             — env.ts, site.ts, cloudinary.ts
 ├── context/            — ThemeContext
 ├── features/           — feature modules (component + hook + types)
-├── hooks/              — useToast, useMediaQuery, useCopyToClipboard, useDebounce, useInView
+├── hooks/              — useToast, useMediaQuery, useCopyToClipboard
 ├── pages/              — page components (one per route)
 ├── styles/             — fonts.css, animations.css
 ├── utils/              — cn(), helpers
