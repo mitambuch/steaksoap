@@ -37,5 +37,5 @@ Object.defineProperty(window, 'IntersectionObserver', {
 });
 
 // WHY: jsdom doesn't implement HTMLCanvasElement.getContext — chart/canvas components trigger warnings without this stub.
-HTMLCanvasElement.prototype.getContext = (() =>
-  null) as typeof HTMLCanvasElement.prototype.getContext;
+const nullContext: typeof HTMLCanvasElement.prototype.getContext = () => null;
+HTMLCanvasElement.prototype.getContext = nullContext;

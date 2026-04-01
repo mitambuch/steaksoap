@@ -21,7 +21,7 @@ const variantStyles: Record<ToastData['variant'], string> = {
   info: 'border-info/30 bg-info/10 text-info-text',
 };
 
-// WHY: strokeWidth 1.5 matches classe2 elegance — lighter than default 2
+// WHY: strokeWidth 1.5 matches the lighter icon weight used across the system
 const variantIcons: Record<ToastData['variant'], ReactNode> = {
   success: <Check size={16} strokeWidth={1.5} />,
   error: <X size={16} strokeWidth={1.5} />,

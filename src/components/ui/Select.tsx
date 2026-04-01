@@ -7,8 +7,8 @@
 // ═══════════════════════════════════════════════════
 
 import { cn } from '@utils/cn';
-import type { KeyboardEvent } from 'react';
-import { useEffect, useId, useRef, useState } from 'react';
+import type { FocusEvent, KeyboardEvent } from 'react';
+import { useCallback, useId, useRef, useState } from 'react';
 
 interface SelectOption {
   value: string;
@@ -47,15 +47,10 @@ export const Select = ({
   /* Controlled vs uncontrolled: use prop when provided, internal otherwise */
   const selected = value !== undefined ? value : internal;
 
-  /* Close on outside click */
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (e.target instanceof Node && !containerRef.current?.contains(e.target)) setOpen(false);
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, [open]);
+  /* WHY: close when focus leaves the entire widget (covers Tab, click-away, and screen reader navigation) */
+  const handleBlur = useCallback((e: FocusEvent<HTMLDivElement>) => {
+    if (!containerRef.current?.contains(e.relatedTarget)) setOpen(false);
+  }, []);
 
   const pick = (opt: SelectOption) => {
     setInternal(opt.value);
@@ -107,17 +102,10 @@ export const Select = ({
     }
   };
 
-  const handleOptionKeyDown = (e: KeyboardEvent<HTMLLIElement>, opt: SelectOption) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      pick(opt);
-    }
-  };
-
   const selectedLabel = options.find(o => o.value === selected)?.label;
 
   return (
-    <div className="flex flex-col gap-1.5" ref={containerRef}>
+    <div className="flex flex-col gap-1.5" ref={containerRef} onBlur={handleBlur}>
       <label id={`${id}-label`} htmlFor={id} className="text-fg text-sm font-medium">
         {label}
       </label>
@@ -202,7 +190,12 @@ export const Select = ({
                     : 'text-fg hover:bg-accent/10',
               )}
               onClick={() => pick(opt)}
-              onKeyDown={e => handleOptionKeyDown(e, opt)}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  pick(opt);
+                }
+              }}
               onMouseEnter={() => setHighlighted(i)}
             >
               {opt.label}

@@ -40,12 +40,13 @@ describe('ProgressBar', () => {
     expect(container.firstChild).toHaveClass('mt-4');
   });
 
+  it('renders the label prop as visible text when showLabel is true', () => {
+    render(<ProgressBar value={50} label="Upload" showLabel />);
+    expect(screen.getByText('Upload')).toBeInTheDocument();
+  });
+
   it('has no accessibility violations', async () => {
-    const { container } = render(<ProgressBar value={60} showLabel />);
-    // The component lacks aria-label on the progressbar element (known limitation).
-    // Disable that specific rule so we can still test for other a11y violations.
-    expect(
-      await axe(container, { rules: { 'aria-progressbar-name': { enabled: false } } }),
-    ).toHaveNoViolations();
+    const { container } = render(<ProgressBar value={60} label="Loading" showLabel />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

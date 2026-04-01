@@ -4,7 +4,7 @@
 > and maintain this project. No AI tools required.
 
 Generated on: 2026-03-30
-Project version: 4.2.0
+Project version: 4.6.1
 
 ---
 
@@ -229,12 +229,11 @@ To customize: copy `.env.example` to `.env.local` and edit.
 Two GitHub Actions workflows:
 
 ### ci.yml (on push to main + PRs)
-1. **Validate** (Node 20 + 22 matrix): lint → typecheck → test → build
+1. **Validate** (Node 22): lint → typecheck → test → build
 2. **Security audit**: `pnpm audit --prod --audit-level=high`
 3. **Bundle size check**: warns if total dist > 500KB
-4. **Accessibility checks**: images without alt, cursor:none usage
-5. **E2E tests**: Playwright on Chromium + Firefox + WebKit
-6. **Lighthouse CI**: Performance, A11y, Best Practices, SEO (all require 90+ score)
+4. **E2E tests**: Playwright on Chromium + Firefox + WebKit (reuses build artifact)
+5. **Lighthouse CI**: Performance, A11y, Best Practices, SEO (all require 90+ score, reuses build artifact)
 
 ### dependency-review.yml (on PRs)
 - Blocks PRs with moderate+ severity vulnerabilities
@@ -275,7 +274,7 @@ Two GitHub Actions workflows:
 
 ## The .claude/ Directory
 
-This folder contains AI-assisted development tooling: 31 slash commands, 12 rules, 4 agents.
+This folder contains AI-assisted development tooling: 31 commands, 12 rules, 4 agents.
 **It is completely optional.** Removing `.claude/` does not affect the app in any way.
 The app compiles and runs identically without it. It's a productivity layer, not a dependency.
 

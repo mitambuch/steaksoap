@@ -11,7 +11,7 @@ export function Copyable({ text, className }: { text: string; className?: string
       aria-label={`Copy ${text} to clipboard`}
       onClick={() => void copy(text)}
       className={cn(
-        'duration-base inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-mono text-[10px] transition-colors',
+        'duration-base focus-visible:ring-accent inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 font-mono text-[10px] transition-colors focus-visible:ring-2 focus-visible:outline-none',
         copied
           ? 'bg-success/15 text-success-text'
           : 'bg-surface/50 text-muted hover:bg-surface hover:text-accent-text',
