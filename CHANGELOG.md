@@ -1,5 +1,21 @@
 # Changelog
 
+## [5.0.0](https://github.com/mitambuch/steaksoap/compare/v4.6.1...v5.0.0) (2026-04-01)
+
+### 🐛 Bug Fixes
+
+* **audit:** align naming + fix api.md unsafe example ([3ac50cb](https://github.com/mitambuch/steaksoap/commit/3ac50cb38540f0383cd6522aeb5d7d1c4275b642))
+* **audit:** apply Codex final audit remediations ([56697b5](https://github.com/mitambuch/steaksoap/commit/56697b55bf2521f8b40e4bd6924af898139831c7))
+* **audit:** apply Gemini audit remediations ([3c29e4a](https://github.com/mitambuch/steaksoap/commit/3c29e4a37ae85e9ccd372c06ba73151b043f236f))
+* **audit:** resolve all Codex final NO-GO items ([a24f128](https://github.com/mitambuch/steaksoap/commit/a24f12882282cfb4dbac6cd40b8ca0772581aa67)), closes [#0a0a0a](https://github.com/mitambuch/steaksoap/issues/0a0a0a) [#ffffff](https://github.com/mitambuch/steaksoap/issues/ffffff)
+* **audit:** resolve Codex final polish — all NO-GO items cleared ([43729fe](https://github.com/mitambuch/steaksoap/commit/43729fefeb431fbbd61b3e0be537279d9cbb2517))
+* **docs:** remove outdated Footer reference, update tagline version ([28fb992](https://github.com/mitambuch/steaksoap/commit/28fb992ca81febdfc54428e479890f2e573f711a))
+* **guardrails:** close 3 gaps in automated enforcement ([0f95b3f](https://github.com/mitambuch/steaksoap/commit/0f95b3fd2f79a0f40c4f3eea7a255f88c67931ef))
+
+### ♻️  Refactoring
+
+* **content:** extract page text into src/data/pages.ts ([d2c4c84](https://github.com/mitambuch/steaksoap/commit/d2c4c84a6578c22e91070aff1ce927a07f6574f4))
+
 ## [4.6.1](https://github.com/mitambuch/steaksoap/compare/v4.6.0...v4.6.1) (2026-03-31)
 
 ### 🐛 Bug Fixes
