@@ -65,11 +65,11 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
 
-    // Focus first focusable element
+    // WHY: focus first focusable element, or the dialog itself as fallback
     const timer = setTimeout(() => {
       if (dialogRef.current) {
         const firstFocusable = dialogRef.current.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
-        firstFocusable?.focus();
+        (firstFocusable ?? dialogRef.current).focus();
       }
     }, 0);
 
@@ -92,12 +92,13 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
         aria-hidden="true"
       />
 
-      {/* Dialog */}
+      {/* Dialog — tabIndex for focus fallback when no focusable children */}
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
+        tabIndex={-1}
         className={cn(
           'border-border bg-bg/95 relative z-10 w-full max-w-lg rounded-lg border p-6 backdrop-blur-md',
           'duration-base shadow-lg transition-[transform,opacity]',
