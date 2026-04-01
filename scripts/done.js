@@ -354,14 +354,21 @@ if (isBaseProject) {
 }
 
 // ─── 11. pnpm validate ──────────────────────────────────────
-console.log(`\n  ${dim('Running pnpm validate...')}\n`);
-try {
-  execSync('pnpm validate', { cwd: root, stdio: 'inherit' });
-  console.log('');
-  pass('pnpm validate passes');
-} catch {
-  console.log('');
-  fail('pnpm validate failed — fix errors above');
+// WHY: skip when called from CI or release (validate already runs separately there)
+const skipValidate = process.argv.includes('--quick');
+
+if (skipValidate) {
+  pass('pnpm validate skipped (--quick mode)');
+} else {
+  console.log(`\n  ${dim('Running pnpm validate...')}\n`);
+  try {
+    execSync('pnpm validate', { cwd: root, stdio: 'inherit' });
+    console.log('');
+    pass('pnpm validate passes');
+  } catch {
+    console.log('');
+    fail('pnpm validate failed — fix errors above');
+  }
 }
 
 // ─── Summary ─────────────────────────────────────────────────
