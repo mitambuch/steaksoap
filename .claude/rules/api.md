@@ -57,7 +57,9 @@ function useResource(id: string) {
     queryFn: async ({ signal }) => {
       const res = await fetch(`/api/resource/${id}`, { signal });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return (await res.json()) satisfies Resource;
+      const data: unknown = await res.json();
+      // WHY: validate shape before trusting — use zod, valibot, or a type guard
+      return resourceSchema.parse(data);
     },
   });
 }
