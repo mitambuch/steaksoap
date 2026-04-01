@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    SITE CONFIG — SEO, contact, and social data
    Edit this file ONCE per project.
-   SeoHead, Footer, and OG tags read from here.
+   SeoHead and OG tags read from here.
    Navigation lives in Header.tsx (needs icons + routes).
    ═══════════════════════════════════════════════════════════════ */
 
