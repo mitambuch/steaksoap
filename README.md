@@ -31,13 +31,36 @@ Then in Claude Code, run `/brief` (design direction) then `/init` (colors, fonts
 
 ## Keeping projects up to date
 
-Pull improvements from the canonical base into any derived project:
+Two strategies for pulling upstream improvements:
+
+### Selective patch (recommended)
+
+```bash
+pnpm base:patch
+```
+
+Cherry-pick updates by zone — only pull what you need, avoid merge conflicts:
+
+| Zone | What it updates |
+|------|----------------|
+| `infra` | `.claude/`, `scripts/`, config files |
+| `ui` | `src/components/ui/`, `src/components/layout/` |
+| `all` | Full merge (same as `base:update`) |
+
+```bash
+pnpm base:patch infra    # infrastructure only
+pnpm base:patch ui       # UI components only
+```
+
+### Full merge
 
 ```bash
 pnpm base:update
 ```
 
-This fetches and merges `base/main` into your project. Resolve conflicts if any, then commit.
+Fetches and merges everything from `base/main`. Resolve conflicts if any, then commit.
+
+### Remote setup
 
 The `base` remote is configured automatically during `pnpm setup`. If you need to add it manually:
 

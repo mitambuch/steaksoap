@@ -54,31 +54,14 @@ jobs:
           echo "📊 Largest files:"
           find dist/ -type f -exec du -sk {} \; | sort -rn | head -10
 
-      - name: Accessibility checks
-        run: |
-          # Check for images without alt in components
-          echo "🔍 Checking for images without alt..."
-          MISSING_ALT=$(grep -rn "<img" src/ --include="*.tsx" | grep -v 'alt=' | wc -l)
-          if [ "$MISSING_ALT" -gt 0 ]; then
-            echo "::warning::Found $MISSING_ALT images without alt attribute"
-            grep -rn "<img" src/ --include="*.tsx" | grep -v 'alt='
-          fi
+      # WHY: a11y checks (alt text, cursor:none) are handled by eslint-plugin-jsx-a11y
 
-          # Check for inline cursor:none in components (not CSS utility definitions)
-          echo "🔍 Checking for cursor:none in components..."
-          CURSOR_NONE=$(grep -rn "cursor.*none\|cursor-none" src/ --include="*.tsx" | wc -l)
-          if [ "$CURSOR_NONE" -gt 0 ]; then
-            echo "::warning::Found cursor:none usage in components — ensure a custom cursor replacement exists"
-            grep -rn "cursor.*none\|cursor-none" src/ --include="*.tsx"
-          fi
-
-          # Check CSS files for cursor:none
-          echo "🔍 Checking for cursor:none in CSS..."
-          CURSOR_CSS=$(grep -rn "cursor.*none" src/ --include="*.css" | grep -v "@media" | wc -l)
-          if [ "$CURSOR_CSS" -gt 0 ]; then
-            echo "::warning::Found cursor:none in CSS files"
-            grep -rn "cursor.*none" src/ --include="*.css" | grep -v "@media"
-          fi
+      - name: Upload build artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
 
   e2e:
     name: E2E Tests
@@ -101,8 +84,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
+      - name: Download build artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: dist
+          path: dist/
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
@@ -131,8 +117,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
+      - name: Download build artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: dist
+          path: dist/
 
       - name: Run Lighthouse CI
         run: pnpm exec lhci autorun

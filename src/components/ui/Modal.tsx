@@ -105,33 +105,20 @@ export const Modal = ({ isOpen, onClose, title, children, className }: ModalProp
         )}
       >
         {/* Header */}
-        {title && (
-          <div className="mb-4 flex items-center justify-between">
+        <div className={cn('mb-4 flex items-center', title ? 'justify-between' : 'justify-end')}>
+          {title && (
             <h2 id={titleId} className="text-fg text-lg font-semibold">
               {title}
             </h2>
-            <button
-              onClick={onClose}
-              aria-label="Close"
-              className="text-muted hover:text-fg focus-visible:ring-accent duration-base rounded-md p-1 transition-colors focus-visible:ring-2"
-            >
-              <X size={18} strokeWidth={1.5} aria-hidden="true" />
-            </button>
-          </div>
-        )}
-
-        {/* Close button when no title */}
-        {!title && (
-          <div className="mb-4 flex justify-end">
-            <button
-              onClick={onClose}
-              aria-label="Close"
-              className="text-muted hover:text-fg focus-visible:ring-accent duration-base rounded-md p-1 transition-colors focus-visible:ring-2"
-            >
-              <X size={18} strokeWidth={1.5} aria-hidden="true" />
-            </button>
-          </div>
-        )}
+          )}
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="text-muted hover:text-fg focus-visible:ring-accent duration-base rounded-md p-1 transition-colors focus-visible:ring-2"
+          >
+            <X size={18} strokeWidth={1.5} aria-hidden="true" />
+          </button>
+        </div>
 
         {/* Content */}
         {children}
