@@ -5,7 +5,7 @@
 
 export const homePage = {
   seo: {},
-  tagline: 'v4.6 — fresh start',
+  tagline: 'v5.0 — production ready',
   headline: 'Build something great.',
   subline: "Clean slate, zero bloat. Everything you need, nothing you don't.\nLet's go.",
 };
