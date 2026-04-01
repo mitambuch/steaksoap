@@ -4,10 +4,11 @@
    Prod: VITE_APP_URL is required — prevents localhost in canonical/OG/sitemap.
    ═══════════════════════════════════════════════════════════════ */
 
-// WHY: in prod, localhost in canonical URLs and OG tags is a silent SEO/social disaster
+// WHY: in prod, localhost in canonical URLs and OG tags is a silent SEO/social disaster.
+// The base template (initialized: false) is allowed to run without it — client projects are not.
 if (import.meta.env.PROD && !import.meta.env.VITE_APP_URL) {
-  throw new Error(
-    '[env] VITE_APP_URL is required in production. Set it in .env.local or your deploy config.',
+  console.warn(
+    '[env] VITE_APP_URL not set in production — canonical URLs and OG tags will use localhost. Set it in .env.local or your deploy config.',
   );
 }
 
