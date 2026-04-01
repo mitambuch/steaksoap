@@ -57,7 +57,7 @@ function useResource(id: string) {
     queryFn: async ({ signal }) => {
       const res = await fetch(`/api/resource/${id}`, { signal });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json() as Promise<Resource>;
+      return (await res.json()) satisfies Resource;
     },
   });
 }

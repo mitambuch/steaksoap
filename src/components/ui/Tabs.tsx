@@ -122,13 +122,14 @@ export function TabsTrigger({ value, children, className }: TabsTriggerProps) {
 
   return (
     <button
+      type="button"
       role="tab"
       aria-selected={isActive}
       aria-controls={`tabpanel-${value}`}
       id={`tab-${value}`}
       tabIndex={isActive ? 0 : -1}
       className={cn(
-        'duration-base relative px-4 py-2 font-mono text-[10px] tracking-widest uppercase transition-colors',
+        'duration-base focus-visible:ring-accent relative px-4 py-2 font-mono text-[10px] tracking-widest uppercase transition-colors focus-visible:ring-2 focus-visible:outline-none',
         isActive ? 'text-accent' : 'text-muted hover:text-fg',
         className,
       )}
