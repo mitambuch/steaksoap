@@ -124,4 +124,16 @@ describe('Modal', () => {
     const focusable = dialog.querySelectorAll('button');
     expect(focusable.length).toBeGreaterThan(0);
   });
+
+  it('dialog has tabIndex for focus fallback when no focusable children exist', () => {
+    render(
+      <Modal isOpen onClose={vi.fn()}>
+        <p>Content</p>
+      </Modal>,
+    );
+    const dialog = screen.getByRole('dialog');
+    // WHY: tabIndex={-1} allows programmatic focus on the dialog itself
+    // when no interactive children exist (defensive a11y pattern)
+    expect(dialog).toHaveAttribute('tabindex', '-1');
+  });
 });

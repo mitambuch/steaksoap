@@ -27,7 +27,8 @@ src/
 ├── components/ui/  — reusable atoms (Button, Input, Card, Modal…)
 ├── components/layout/ — Header, Container
 ├── config/         — env.ts (with fallbacks), site.ts, cloudinary.ts
-├── features/       — feature modules (component + hook + types)
+├── features/       — feature modules (component + hook + types per feature)
+├── components/features/ — app-wide React patterns (ErrorBoundary, SeoHead) — NOT the same as src/features/
 ├── hooks/          — custom React hooks
 ├── pages/          — page components (one per route)
 ├── utils/          — cn() and helpers
