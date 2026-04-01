@@ -33,15 +33,15 @@ Each client project is created from this template via `pnpm setup`, which cuts t
 
 | Layer | Tool | Version | Why |
 |---|---|---|---|
-| Framework | React | 19.2.0 | Component model, ecosystem, stability |
-| Language | TypeScript | 5.9.3 | Strict mode, zero `any`, catches bugs at compile time |
-| Build | Vite | 7.2.4 | Fast HMR, optimized production builds |
-| Styling | Tailwind CSS | 4.2.2 | Utility-first, design tokens via CSS-native `@theme` |
-| Testing | Vitest | 4.1.2 | Vite-native, fast, compatible with Testing Library |
-| E2E Testing | Playwright | 1.58.2 | Cross-browser (Chromium, Firefox, WebKit) |
+| Framework | React | 19 | Component model, ecosystem, stability |
+| Language | TypeScript | 5.9 | Strict mode, zero `any`, catches bugs at compile time |
+| Build | Vite | 7 | Fast HMR, optimized production builds |
+| Styling | Tailwind CSS | 4 | Utility-first, design tokens via CSS-native `@theme` |
+| Testing | Vitest | latest | Vite-native, fast, compatible with Testing Library |
+| E2E Testing | Playwright | latest | Cross-browser (Chromium, Firefox, WebKit) |
 | Linting | ESLint 9 + Prettier | latest | Auto-fixed on commit via Husky pre-commit hook |
 | Commit enforcement | commitlint + Husky | latest | Conventional commit format enforced |
-| Package manager | pnpm | 10.28.0 | Fast, strict, disk-efficient |
+| Package manager | pnpm | 10 | Fast, strict, disk-efficient |
 | Icons | Lucide React | latest | Tree-shakable SVG icons |
 | Class merging | clsx + tailwind-merge | latest | `cn()` utility handles Tailwind class conflicts |
 

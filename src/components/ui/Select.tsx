@@ -129,6 +129,7 @@ export const Select = ({
             !selectedLabel && 'text-muted/60',
             className,
           )}
+          role="combobox"
           aria-haspopup="listbox"
           aria-expanded={open}
           aria-controls={`${id}-listbox`}

@@ -52,6 +52,7 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
         <p className={cn('text-sm', toast.title && 'mt-0.5 opacity-80')}>{toast.message}</p>
       </div>
       <button
+        type="button"
         onClick={() => onDismiss(toast.id)}
         className="focus-visible:ring-accent mt-0.5 shrink-0 rounded-sm opacity-50 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
         aria-label="Dismiss notification"

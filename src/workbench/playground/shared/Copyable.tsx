@@ -8,6 +8,7 @@ export function Copyable({ text, className }: { text: string; className?: string
 
   return (
     <button
+      type="button"
       aria-label={`Copy ${text} to clipboard`}
       onClick={() => void copy(text)}
       className={cn(

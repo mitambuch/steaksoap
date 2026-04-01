@@ -15,6 +15,10 @@ import { ALIASES, PATHS } from './utils/paths.js';
 
 const root = PATHS.root;
 
+// WHY: the base repo itself has template artifacts and initialized: false — that's expected, not a warning
+const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8'));
+const isBaseProject = pkg._baseProject === true;
+
 // WHY: Node-native file scanner replaces grep for Windows compatibility (grep not available on vanilla Windows)
 function scanFiles(dir, pattern, extensions = ['.ts', '.tsx']) {
   const results = [];
@@ -297,7 +301,10 @@ if (existsSync(readmePath) && existsSync(PATHS.componentsUI)) {
 
 // ─── 9. Template artifacts ───────────────────────────────────
 // WHY: After pnpm setup, no template-specific references should remain in project files
-{
+// Skip when running in the base project itself — template refs are expected there
+if (isBaseProject) {
+  pass('Base project — template artifact check skipped');
+} else {
   const templatePattern = /steaksoap|project-base/i;
   let artifactsFound = false;
 
@@ -332,7 +339,9 @@ if (existsSync(readmePath) && existsSync(PATHS.componentsUI)) {
 }
 
 // ─── 10. Initialization check ────────────────────────────────
-{
+if (isBaseProject) {
+  pass('Base project — initialization check skipped');
+} else {
   const siteTsPath = resolve(root, 'src/config/site.ts');
   if (existsSync(siteTsPath)) {
     const siteTsContent = readFileSync(siteTsPath, 'utf-8');
