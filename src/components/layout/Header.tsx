@@ -75,7 +75,7 @@ export const Header = ({ className }: HeaderProps) => {
               key={to}
               to={to}
               aria-current={pathname === to ? 'page' : undefined}
-              className="text-muted hover:text-accent border-border/50 duration-base flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors"
+              className="text-muted hover:text-accent focus-visible:ring-accent border-border/50 duration-base flex items-center gap-1.5 border-r px-4 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-inset"
             >
               <Icon size={14} strokeWidth={1.5} aria-hidden="true" />
               <span className="sr-only">{label}</span>
