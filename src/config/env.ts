@@ -1,8 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════
    ENV — environment variable access with safe fallbacks
-   Every variable has a fallback so the app always starts,
-   even without .env.local. No build crashes, no mandatory config.
+   Dev: everything has a fallback so the app always starts.
+   Prod: VITE_APP_URL is required — prevents localhost in canonical/OG/sitemap.
    ═══════════════════════════════════════════════════════════════ */
+
+// WHY: in prod, localhost in canonical URLs and OG tags is a silent SEO/social disaster
+if (import.meta.env.PROD && !import.meta.env.VITE_APP_URL) {
+  throw new Error(
+    '[env] VITE_APP_URL is required in production. Set it in .env.local or your deploy config.',
+  );
+}
 
 export const env = {
   CLOUDINARY_CLOUD_NAME: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || '',
@@ -11,7 +18,3 @@ export const env = {
   IS_DEV: import.meta.env.DEV,
   IS_PROD: import.meta.env.PROD,
 } as const;
-
-if (import.meta.env.DEV && !import.meta.env.VITE_APP_URL) {
-  console.warn('[env] VITE_APP_URL not set — OG tags and canonical URLs will use localhost');
-}

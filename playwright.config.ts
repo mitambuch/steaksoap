@@ -30,7 +30,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm build && pnpm preview',
+    // WHY: in CI, dist/ comes from the build artifact — only preview needed.
+    // Locally, build first if dist/ doesn't exist.
+    command: process.env.CI ? 'pnpm preview' : 'pnpm build && pnpm preview',
     url: 'http://localhost:4173',
     reuseExistingServer: true,
     timeout: 60000,

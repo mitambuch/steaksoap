@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => {
       // Sitemap + robots.txt only in production build (not in dev/preview)
       isProd &&
         Sitemap({
+          // WHY: no fallback in prod — prevents localhost sitemap (env.ts throws if missing)
           hostname: env.VITE_APP_URL || 'http://localhost:5173',
           // SPA : ajouter ici les routes client-side quand le projet grandit
           // dynamicRoutes: ['/about', '/contact'],

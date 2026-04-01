@@ -41,10 +41,10 @@ console.log(`\n  ${bold('project doctor')}\n`);
 
 // ─── Node.js version ─────────────────────────────────────────
 const nodeVersion = parseInt(process.version.slice(1));
-if (nodeVersion >= 20) {
-  pass(`Node ${process.version} (required: >=20)`);
+if (nodeVersion >= 22) {
+  pass(`Node ${process.version} (required: >=22)`);
 } else {
-  fail(`Node ${process.version} — version 20+ required`);
+  fail(`Node ${process.version} — version 22+ required (see package.json engines)`);
 }
 
 // ─── pnpm version ────────────────────────────────────────────
@@ -87,10 +87,21 @@ if (existsSync(eslintConfig)) {
 
 // ─── Husky ───────────────────────────────────────────────────
 const huskyDir = resolve(root, '.husky');
-if (existsSync(huskyDir)) {
-  pass('Husky: active (hooks installed)');
-} else {
+const preCommitHook = resolve(huskyDir, 'pre-commit');
+const commitMsgHook = resolve(huskyDir, 'commit-msg');
+
+if (!existsSync(huskyDir)) {
   warn('.husky/ directory not found — run: pnpm prepare');
+} else if (!existsSync(preCommitHook) || !existsSync(commitMsgHook)) {
+  warn('Husky hooks incomplete — run: pnpm prepare');
+} else {
+  // WHY: also verify we're in a git repo — hooks don't work outside one
+  try {
+    execSync('git rev-parse --is-inside-work-tree', { cwd: root, stdio: 'pipe' });
+    pass('Husky: active (hooks + git repo verified)');
+  } catch {
+    warn('Husky: hooks exist but not inside a git repository');
+  }
 }
 
 // ─── Git working tree ────────────────────────────────────────
