@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.3.1](https://github.com/mitambuch/steaksoap/compare/v5.3.0...v5.3.1) (2026-04-16)
+
+### 🔧 Chores
+
+* **memory:** catch up v5.2.2 + v5.3.0 release journals ([880278e](https://github.com/mitambuch/steaksoap/commit/880278e605fbb9df707f60206bb5bfbb0acb4998))
+
+### ✅ Tests
+
+* **scripts:** smoke tests for ensure-pnpm preinstall guard ([8fbbf93](https://github.com/mitambuch/steaksoap/commit/8fbbf93ddc09daf2614b2711cbfd7ca39e22b331))
+* **scripts:** smoke tests for memory-index schema + INDEX generation ([0d34d9b](https://github.com/mitambuch/steaksoap/commit/0d34d9b3b894f1466fd325e2b9c8c7360ba61409))
+* **scripts:** smoke tests for sync-reference-counts drift detection ([b10ee4a](https://github.com/mitambuch/steaksoap/commit/b10ee4a991fe62719f24abc2241172f2232bf2af))
+
 ## [5.3.0](https://github.com/mitambuch/steaksoap/compare/v5.2.2...v5.3.0) (2026-04-16)
 
 ### ✨ Features
