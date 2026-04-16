@@ -52,9 +52,17 @@ const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
 const isFreshClone = pkg._baseProject === true;
 
 // ─── Node version check ────────────────────────────────────
-const nodeVersion = parseInt(process.version.slice(1));
-if (nodeVersion < 20) {
-  console.error(`\n  ✗ Node.js 20+ required (current: ${process.version})\n`);
+// WHY: single source of truth is package.json "engines.node". Hard-coding
+// a separate minor here caused a mismatch (setup allowed 20, doctor + engines
+// required 22 → users got "setup OK, commands fail later"). External audit
+// flagged this. Now we read + parse from engines.
+const requiredNode = parseInt(pkg.engines?.node?.match(/\d+/)?.[0] ?? '0');
+const currentNode = parseInt(process.version.slice(1));
+if (Number.isFinite(requiredNode) && currentNode < requiredNode) {
+  console.error(
+    `\n  ✗ Node.js ${requiredNode}+ required (current: ${process.version})\n` +
+      `    Source: package.json engines.node = ${pkg.engines?.node}\n`,
+  );
   process.exit(1);
 }
 
