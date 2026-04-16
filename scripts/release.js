@@ -54,10 +54,18 @@ try {
   // WHY: Pass title via CLI override — overrides .release-it.json releaseName
   args.push(`--github.releaseName=${title}`);
 
-  execFileSync('npx', ['release-it', ...args], {
+  // WHY: On Windows, npx is npx.cmd — Node's execFileSync doesn't auto-resolve
+  // the .cmd extension. Using shell: true would fix npx but break argument
+  // escaping for titles containing `&` (Windows cmd treats it as separator).
+  // Explicit .cmd on Windows = best of both.
+  const npxBin = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+
+  // WHY: RELEASE_IT=1 signals to .husky/pre-commit that this commit is a
+  // release-it generated commit on main (`chore(release): v${version}`) and
+  // should bypass the anti-main gate. Only set by this trusted wrapper.
+  execFileSync(npxBin, ['release-it', ...args], {
     stdio: 'inherit',
-    env: { ...process.env, GITHUB_TOKEN: token },
-    shell: true,
+    env: { ...process.env, GITHUB_TOKEN: token, RELEASE_IT: '1' },
   });
 } catch (err) {
   console.error(
