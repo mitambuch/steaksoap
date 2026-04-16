@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.1.2](https://github.com/mitambuch/steaksoap/compare/v5.1.1...v5.1.2) (2026-04-16)
+
+### 🐛 Bug Fixes
+
+* **deps:** resolve 6 Dependabot high/medium CVEs (all dev-scope) ([a9455fb](https://github.com/mitambuch/steaksoap/commit/a9455fb4ef4c4d6ac20000f7b73de8831ede27da))
+* **memory:** strict validation — exit non-zero on malformed entries ([ed4f421](https://github.com/mitambuch/steaksoap/commit/ed4f4215c5ae314e15f56c705c493f14f9a4ac4a))
+* **scripts:** read required Node from package.json engines (one source) ([492b297](https://github.com/mitambuch/steaksoap/commit/492b2978f54de7632c20694aaee04e7d201df2a7))
+* **seo:** hard-fail prod build on initialized projects missing VITE_APP_URL ([9e6c870](https://github.com/mitambuch/steaksoap/commit/9e6c8700820c1743d04a00560b0dc608808c80f3))
+
+### 🔧 Chores
+
+* **memory:** record v5.1.1 release + session 3 journal ([0f7c619](https://github.com/mitambuch/steaksoap/commit/0f7c619fda2eb797ff176515be134b0e16375fda))
+
 ## [5.1.1](https://github.com/mitambuch/steaksoap/compare/v5.1.0...v5.1.1) (2026-04-16)
 
 ### 🐛 Bug Fixes
