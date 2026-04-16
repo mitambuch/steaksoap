@@ -1,5 +1,21 @@
 # Changelog
 
+## [5.1.1](https://github.com/mitambuch/steaksoap/compare/v5.1.0...v5.1.1) (2026-04-16)
+
+### 🐛 Bug Fixes
+
+* **a11y:** raise --color-accent-text above WCAG AA threshold on dark bg ([f214270](https://github.com/mitambuch/steaksoap/commit/f2142700093b9c7b0f8f1c5bfb0443e3079c689d)), closes [#e05a5a](https://github.com/mitambuch/steaksoap/issues/e05a5a) [#c44040](https://github.com/mitambuch/steaksoap/issues/c44040) [#ff6b6b](https://github.com/mitambuch/steaksoap/issues/ff6b6b) [#0a0a0a](https://github.com/mitambuch/steaksoap/issues/0a0a0a)
+* **base-patch:** complete infra zone + document TAGS.md template ownership ([862f741](https://github.com/mitambuch/steaksoap/commit/862f741154f0e283a7b68cd49c25c7f5095b64c1))
+* **install:** replace npx only-allow with local ensure-pnpm script ([54b8cd1](https://github.com/mitambuch/steaksoap/commit/54b8cd1b1048e15248c806244f1400cc311f448d))
+* **release:** run full validation (incl. E2E) in release preflight ([6129df9](https://github.com/mitambuch/steaksoap/commit/6129df9c88703d5625e69f2d60db6ae7c1200976))
+* **test:** skip webkit Tab-cycling tests (Safari default behavior) ([b6b0bb4](https://github.com/mitambuch/steaksoap/commit/b6b0bb43604964ac09cd0471c38fe3555866554a))
+
+### 🔧 Chores
+
+* **memory:** integrate external audit + triage P0/P1/P2 ([30f5695](https://github.com/mitambuch/steaksoap/commit/30f5695d1559654871c4608288816250b4152fc1))
+* **memory:** record v5.1.0 release in tagged memory ([90784be](https://github.com/mitambuch/steaksoap/commit/90784be7f17e27be14274212e8d1095df821ba8b))
+* **memory:** wrap session 2 + log dependabot backlog ([37b029e](https://github.com/mitambuch/steaksoap/commit/37b029e1ec5a8f41c1eb3b51bf2d006fdc5a6775))
+
 ## [5.1.0](https://github.com/mitambuch/steaksoap/compare/v5.0.0...v5.1.0) (2026-04-16)
 
 ### ✨ Features
