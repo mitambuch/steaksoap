@@ -16,7 +16,11 @@ import { join, relative } from 'node:path';
 
 import { PATHS } from './utils/paths.js';
 
-const MEMORY_DIR = join(PATHS.root, '.claude/memory');
+// WHY: STEAKSOAP_TEST_ROOT env var lets smoke tests point the script at a
+// temp-dir fixture instead of the real repo root. Production runs don't
+// set it and fall through to PATHS.root unchanged.
+const ROOT = process.env.STEAKSOAP_TEST_ROOT || PATHS.root;
+const MEMORY_DIR = join(ROOT, '.claude/memory');
 const INDEX_PATH = join(MEMORY_DIR, 'INDEX.md');
 const TAGS_PATH = join(MEMORY_DIR, 'TAGS.md');
 const TYPES = ['decisions', 'feedback', 'patterns', 'frictions', 'sessions'];
@@ -24,7 +28,7 @@ const REQUIRED_FIELDS = ['id', 'date', 'type', 'tags', 'scope', 'status'];
 
 const errors = [];
 const recordError = (file, reason) =>
-  errors.push(`${relative(PATHS.root, file).replace(/\\/g, '/')}: ${reason}`);
+  errors.push(`${relative(ROOT, file).replace(/\\/g, '/')}: ${reason}`);
 
 // Parse canonical tag vocabulary from TAGS.md
 function loadCanonicalTags() {
@@ -174,7 +178,7 @@ function main() {
   lines.push('');
 
   writeFileSync(INDEX_PATH, lines.join('\n') + '\n');
-  console.log(`  ✓ Wrote ${relative(PATHS.root, INDEX_PATH)} (${all.length} entries)`);
+  console.log(`  ✓ Wrote ${relative(ROOT, INDEX_PATH)} (${all.length} entries)`);
   if (unknownTags.size > 0) {
     console.warn(`  ⚠ ${unknownTags.size} unknown tag(s). See INDEX.md for details.`);
   }
