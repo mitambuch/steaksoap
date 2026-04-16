@@ -22,7 +22,7 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
-    /* Path aliases — toujours sync avec vite.config.ts */
+    /* Path aliases — single source of truth (vite.config.ts derives resolve.alias from this) */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],

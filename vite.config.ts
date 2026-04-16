@@ -12,6 +12,20 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
 const isBaseProject = pkg._baseProject === true;
 
+// WHY: tsconfig.json is the single source of truth for path aliases.
+// Stripping JSON comments here keeps us dep-free (no jsonc parser needed).
+const tsconfigRaw = readFileSync(resolve(__dirname, 'tsconfig.json'), 'utf-8');
+const tsconfig = JSON.parse(
+  tsconfigRaw.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, ''),
+);
+const tsPaths: Record<string, string[]> = tsconfig.compilerOptions?.paths ?? {};
+const alias = Object.fromEntries(
+  Object.entries(tsPaths).map(([key, [target]]) => [
+    key.replace(/\/\*$/, ''),
+    resolve(__dirname, (target ?? '').replace(/\/\*$/, '')),
+  ]),
+);
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const isProd = mode === 'production';
@@ -59,24 +73,7 @@ export default defineConfig(({ mode }) => {
       __APP_VERSION__: JSON.stringify(pkg.version),
     },
 
-    resolve: {
-      alias: {
-        '@': resolve(__dirname, './src'),
-        '@app': resolve(__dirname, './src/app'),
-        '@components': resolve(__dirname, './src/components'),
-        '@hooks': resolve(__dirname, './src/hooks'),
-        '@pages': resolve(__dirname, './src/pages'),
-        '@context': resolve(__dirname, './src/context'),
-        '@data': resolve(__dirname, './src/data'),
-        '@utils': resolve(__dirname, './src/utils'),
-        '@constants': resolve(__dirname, './src/constants'),
-        '@styles': resolve(__dirname, './src/styles'),
-        '@config': resolve(__dirname, './src/config'),
-        '@features': resolve(__dirname, './src/features'),
-        '@workbench': resolve(__dirname, './src/workbench'),
-        '@lib': resolve(__dirname, './src/lib'),
-      },
-    },
+    resolve: { alias },
 
     build: {
       chunkSizeWarningLimit: 500,
