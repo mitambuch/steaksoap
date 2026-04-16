@@ -2,12 +2,19 @@
 id: dependabot-vulns-backlog-2026-04-16
 date: 2026-04-16
 type: friction
-tags: [#security, #friction, #template, #p1, #active]
+tags: [#security, #friction, #template, #p1, #deprecated]
 scope: template
-status: active
+status: deprecated
 ---
 
 # 6 Dependabot Vulnerabilities Signaled Post-v5.1.0 Push
+
+> **RESOLVED 2026-04-17.** All 6 alerts closed by GitHub Dependabot
+> (state: `fixed`). Verified via `gh api repos/mitambuch/steaksoap/dependabot/alerts`
+> → 0 open alerts. `pnpm audit` (prod + dev, 960 deps) → 0 vulnerabilities.
+> Fix shipped across v5.1.1 → v5.2.0 (vite bump + pnpm overrides) — see
+> [audit-cycle-closed](../decisions/2026-04-16-audit-cycle-closed.md):28.
+> Kept for history per memory protocol (never delete, only deprecate).
 
 ## The signal
 
