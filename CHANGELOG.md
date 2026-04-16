@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.4.0](https://github.com/mitambuch/steaksoap/compare/v5.3.1...v5.4.0) (2026-04-16)
+
+### ✨ Features
+
+* **docs:** sync-reference-counts now validates tables + README phrases ([042ec4d](https://github.com/mitambuch/steaksoap/commit/042ec4df51e753635acfb03b94809ff5b4490038))
+
+### 📚 Documentation
+
+* **truth:** align README + REFERENCE with v5.3.1 reality ([73dd30c](https://github.com/mitambuch/steaksoap/commit/73dd30ce402a6d7be1aeaabf0ccca8f684889515))
+
+### 🔧 Chores
+
+* **memory:** wrap session 7 + record v5.3.1 ([aeb21cb](https://github.com/mitambuch/steaksoap/commit/aeb21cbc4cb45ad003b5f15c4e70ebe4663e4b7d))
+
 ## [5.3.1](https://github.com/mitambuch/steaksoap/compare/v5.3.0...v5.3.1) (2026-04-16)
 
 ### 🔧 Chores
