@@ -39,7 +39,10 @@ function ToastItem({ toast, onDismiss }: ToastItemProps) {
     <div
       role="alert"
       className={cn(
-        'pointer-events-auto flex w-80 items-start gap-3 rounded-lg border p-4 shadow-lg backdrop-blur-md',
+        // WHY max-w-[calc(100vw-2rem)]: on 320px viewports, w-80 (320px) + the
+        // right-4 positioning (~16px gutter) overflowed horizontally. Desktop
+        // keeps the 320px target; mobile clips to fit.
+        'pointer-events-auto flex w-80 max-w-[calc(100vw-2rem)] items-start gap-3 rounded-lg border p-4 shadow-lg backdrop-blur-md',
         'animate-toast-in',
         variantStyles[toast.variant],
       )}
