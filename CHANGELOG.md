@@ -1,5 +1,30 @@
 # Changelog
 
+## [5.1.0](https://github.com/mitambuch/steaksoap/compare/v5.0.0...v5.1.0) (2026-04-16)
+
+### ✨ Features
+
+* **workflow:** add hooks, delegation, sizing rule, release journaling ([52b9c1e](https://github.com/mitambuch/steaksoap/commit/52b9c1e2f1db2a4189e1a6809ccb537c5aa61967))
+* **workflow:** install mechanical floor + tagged memory system ([79876fa](https://github.com/mitambuch/steaksoap/commit/79876faa7b22f549a4cfa26c5991eda04df3db8a))
+
+### 🐛 Bug Fixes
+
+* **audit:** apply external audit remediations ([593b109](https://github.com/mitambuch/steaksoap/commit/593b1095ae9465b6c1f1f96bf1797c728ea243ac))
+* **config:** downgrade VITE_APP_URL prod guard from throw to warn ([894f625](https://github.com/mitambuch/steaksoap/commit/894f625a9e1231ebc6149cef3dd70576080fe895))
+* **content:** update tagline to v5.0 ([4428daa](https://github.com/mitambuch/steaksoap/commit/4428daa1ad1e67e436351dfdadd74eee8c1b418b))
+* **release:** allow release-it commits on main + correct Windows npx ([932102f](https://github.com/mitambuch/steaksoap/commit/932102f43e9fc286a6e156296248175a048d2eda))
+* **release:** resolve npx via shell on Windows ([89692bd](https://github.com/mitambuch/steaksoap/commit/89692bdd0f9fef763909ea77154e75202370389d))
+* **release:** use execSync with quoted title for Windows compat ([56803e8](https://github.com/mitambuch/steaksoap/commit/56803e830fc39f4ef4744b83b271196ac2b209e8))
+
+### 📚 Documentation
+
+* **memory:** add workflow-v2 rollout session journal + regen INDEX ([deacab1](https://github.com/mitambuch/steaksoap/commit/deacab1849c07a8372d25d456cafdbcb491ab927))
+* **reference:** add complete feature reference for v5 ([97e1a5f](https://github.com/mitambuch/steaksoap/commit/97e1a5f3995b82e158b91f0410e2682ffdb6e064))
+
+### ✅ Tests
+
+* **audit:** harden audit remediations with tests + doctrine ([8fb5e30](https://github.com/mitambuch/steaksoap/commit/8fb5e30f2c5dffa3c8d4ffda6d930b74f6e3f914))
+
 ## [5.0.0](https://github.com/mitambuch/steaksoap/compare/v4.6.1...v5.0.0) (2026-04-01)
 
 ### 🐛 Bug Fixes
