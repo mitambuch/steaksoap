@@ -23,7 +23,8 @@
 
   "hooks": {
     "before:init": ["node scripts/done.js --quick", "pnpm validate"],
-    "before:release": ["node scripts/fix-changelog.js"]
+    "before:release": ["node scripts/fix-changelog.js"],
+    "after:release": ["node scripts/memory-record-release.js"]
   },
 
   "plugins": {

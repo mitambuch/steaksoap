@@ -36,12 +36,60 @@ src/
 
 ## Source of truth (in case of conflict)
 1. The actual code (always wins)
-2. `.claude/decisions.md`
-3. This file (CLAUDE.md)
-4. `.claude/rules/*.md`
-5. `docs/*.md` and other markdown
+2. `.claude/memory/` (tagged decisions, patterns, feedback, frictions)
+3. `.claude/decisions.md` (pointer to memory index — legacy)
+4. This file (CLAUDE.md)
+5. `.claude/rules/*.md`
+6. `docs/*.md` and other markdown
 
 If docs contradict code, the docs are wrong.
+
+## Memory
+
+Project-scoped persistent memory lives in `.claude/memory/`, tracked in Git.
+- `.claude/memory/INDEX.md` — auto-generated sommaire (run `pnpm memory:index`)
+- `.claude/memory/TAGS.md` — canonical tag vocabulary (closed set)
+- `.claude/memory/{decisions,feedback,patterns,frictions,sessions}/` — entries
+
+**Before any non-trivial task**: `grep -rl "#<domain>" .claude/memory/` to surface prior context.
+**At end of every session**: write journal entry in `sessions/YYYY-MM-DD-HHMM.md`, run `pnpm memory:index`.
+Full protocol: `.claude/rules/memory-protocol.md`.
+
+## Session protocol
+
+**Start of every session** (before any code):
+1. `git log --oneline -10` + `git status && git branch`
+2. Read `CLAUDE.md` + `.claude/memory/INDEX.md` + most recent `sessions/` entry
+3. Grep memory for any tags relevant to the incoming task
+
+**End of every session** (mandatory):
+1. Output RELEASE CHECK block (see `.claude/rules/releases.md`)
+2. Write `sessions/YYYY-MM-DD-HHMM.md` journal entry
+3. Run `pnpm memory:index`
+4. Summarize: what changed, what to test
+
+## Release proactivity
+
+At session end, always output:
+```
+RELEASE CHECK:
+- Commits depuis dernière release : X (types)
+- Recommandation : [release vX.Y.Z | wait]
+- Raison : [explicit]
+```
+Full rule: `.claude/rules/releases.md`.
+
+## User mobilization
+
+When a task requires the owner, use this standardized block:
+```
+🧑 ACTION HUMAINE REQUISE
+QUOI : [exact action]
+POURQUOI : [reason]
+COMMENT : [steps]
+LIVRABLE : [what to return]
+```
+Use cases: screenshots, cross-device tests, API keys, taste/brand judgment, client validation.
 
 ## Autonomy
 Can do without asking: branch, code in scope, local refactor, sync docs, add/fix tests, run validate, update related MD.
@@ -78,4 +126,5 @@ Verify after design token changes.
 - `/lab` = free-form experimentation sandbox (prototypes, ideas, tests)
 
 ## Detailed Rules
-See .claude/rules/ — loaded automatically based on task type.
+See `.claude/rules/` — most loaded automatically based on task type.
+**Always-loaded** (every task, every file): `critical.md`, `memory-protocol.md`, `principles.md`, `releases.md`, `workflow.md`.

@@ -48,9 +48,11 @@ stats.html
 *.key
 *.p12
 
-# Claude Code (ignore local settings, keep shared commands, rules, agents, and decisions)
+# Claude Code (ignore local settings, keep shared commands, rules, agents, decisions, memory, and shared settings)
 .claude/*
 !.claude/commands/
 !.claude/rules/
 !.claude/agents/
+!.claude/memory/
 !.claude/decisions.md
+!.claude/settings.json

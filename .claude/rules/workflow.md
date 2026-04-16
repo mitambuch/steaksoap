@@ -120,6 +120,40 @@ Never wait for the user to figure things out:
 The user should never research libraries, read docs for setup, or touch terminal/git/config.
 They only: create accounts, copy API keys, approve payments.
 
+## User mobilization (when help is needed)
+
+The owner is part of the equation, not a spectator. Use them when only a human
+can do the task: visual judgment, account creation, API keys, cross-device
+testing, taste calls. Use this exact format every time so it's scannable:
+
+```
+🧑 ACTION HUMAINE REQUISE
+QUOI    : [exact action — single sentence]
+POURQUOI: [why this is needed now, not optional]
+COMMENT : [step-by-step, numbered if multi-step]
+LIVRABLE : [what you need back from the user — screenshot, key, yes/no, file path]
+DEADLINE: [optional — only if blocking other work]
+```
+
+When to mobilize:
+- Visual checks (screenshot a page, click test, design judgment)
+- Account creation, API keys, payment authorizations
+- Brand / taste / copy decisions only the owner can make
+- Cross-device testing on physical hardware Claude can't reach
+- Validations from third parties (client approval, legal review)
+
+When NOT to mobilize:
+- Anything Claude can do (running commands, reading files, writing code)
+- Asking the owner to research a library — Claude must check the extension
+  registry and recommend instead.
+
+## Delegation to a parallel Sonnet session
+
+For heavy research, independent implementations, or work that would burn this
+session's context, generate a self-contained handoff with `/delegate <task>`.
+The owner pastes the output into a sibling session, runs it, then pastes the
+result back here for `/integrate`.
+
 ## Execution modes
 
 ### Batch mode (default)

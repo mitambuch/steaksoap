@@ -1,1 +1,10 @@
+branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+  echo ""
+  echo "  ✗ refuse: commit on $branch is not allowed."
+  echo "  → run: git checkout -b <type>/<scope>"
+  echo ""
+  exit 1
+fi
+
 pnpm lint-staged

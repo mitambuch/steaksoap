@@ -388,6 +388,28 @@ async function runUpdate() {
   console.log('  → Fetching updates...');
   runVisible(`git fetch ${BASE_REMOTE_NAME}`);
 
+  // Client-owned memory paths — never overwritten by upstream.
+  // MUST stay in sync with scripts/base-patch.js PROTECTED list.
+  const PROTECTED = [
+    '.claude/memory/decisions/',
+    '.claude/memory/feedback/',
+    '.claude/memory/patterns/',
+    '.claude/memory/frictions/',
+    '.claude/memory/sessions/',
+    '.claude/memory/INDEX.md',
+  ];
+  const protectedBackup = new Map();
+  for (const p of PROTECTED) {
+    try {
+      const list = run(`git ls-files "${p}"`).split('\n').filter(Boolean);
+      for (const f of list) {
+        protectedBackup.set(f, readFileSync(resolve(PATHS.root, f), 'utf-8'));
+      }
+    } catch {
+      // path may not exist yet — skip
+    }
+  }
+
   console.log(`  → Merging ${BASE_REMOTE_NAME}/main...`);
   try {
     runVisible(`git merge ${BASE_REMOTE_NAME}/main --no-edit`);
@@ -396,6 +418,14 @@ async function runUpdate() {
     console.log(
       '\n  ⚠ Conflicts detected. Resolve them manually then: git add . && git commit',
     );
+  }
+
+  // Restore protected memory files if merge altered them
+  if (protectedBackup.size > 0) {
+    for (const [file, content] of protectedBackup) {
+      writeFileSync(resolve(PATHS.root, file), content);
+    }
+    console.log(`  ✓ Restored ${protectedBackup.size} protected memory file(s).`);
   }
 
   // Reinstall deps (versions may have changed)

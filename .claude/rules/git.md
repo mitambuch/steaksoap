@@ -32,6 +32,28 @@ Rules:
 - Lowercase only, no trailing period
 - Scope is required (commitlint enforces scope-empty rule)
 
+## Commit body — enriched format for feat/fix (required)
+
+Every `feat` and `fix` commit must include a structured body. The pre-existing
+commit-msg hook warns (not blocks) if `WHY:` is missing.
+
+```
+type(scope): title (<72 chars)
+
+WHY: why this change, now — link to the motivation
+WHAT: the concrete change — what the diff does
+IMPACT: files / features / users affected
+TEST: how the change is validated (command, manual step, reference)
+REFS: optional — link to memory entry, issue, or decision
+      e.g. REFS: .claude/memory/decisions/2026-04-16-template-baseline.md
+```
+
+For `chore`, `docs`, `style`, `refactor`, `test`: body is free-form and optional
+(no WHY enforcement). Keep reasons inline if non-obvious.
+
+The intent is **no silent decisions** — every meaningful change has a paper trail
+in the Git log ("psychopath-level logs" — owner's own words).
+
 ## Timing
 - Branch: before any modification
 - Commit: as soon as a logical change is done and working
