@@ -114,7 +114,8 @@ All in `src/components/ui/`. Every component accepts `className` and uses `cn()`
 
 | File | Description |
 |------|-------------|
-| `src/app/layouts/RootLayout.tsx` | Shared wrapper: Header, skip-to-content, page transitions, Banner, ToastContainer |
+| `src/app/layouts/RootLayout.tsx` | Shared wrapper: Header, skip-to-content, page transitions, Banner |
+| `src/app/App.tsx` | Router root: providers (Theme, Toast) and `<ToastContainer />` mount |
 | `src/app/routes/index.tsx` | React Router 7 with lazy-loaded pages and chunk retry logic |
 | `src/constants/routes.ts` | Route constants: `HOME`, `PLAYGROUND`, `LAB`, `NOT_FOUND` |
 
@@ -178,6 +179,7 @@ All in `.claude/commands/`.
 | **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check`, `/health-check` |
 | **Ship** | `/release`, `/deploy`, `/handoff`, `/pre-delivery`, `/changelog-client` |
 | **Evolve** | `/refactor`, `/migrate`, `/update-deps`, `/legal` |
+| **Delegate** | `/delegate`, `/integrate` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
 ---
@@ -199,20 +201,27 @@ All in `.claude/agents/`.
 
 All in `.claude/rules/`. Auto-loaded by context.
 
-| Rule | Scope |
-|------|-------|
-| `workflow.md` | Session start, branching, batch mode, communication format |
-| `components.md` | Component structure, props, a11y requirements, import boundaries |
-| `styling.md` | Tailwind 4 tokens, cn(), dark mode, accent rule, reuse-first |
-| `testing.md` | Vitest, Testing Library, test behavior not implementation, coverage |
-| `git.md` | Conventional commits, release batching, pre-merge checklist |
-| `responsive.md` | Mobile-first (320px), dual-variant thinking, touch targets |
-| `performance.md` | Images, lazy loading, bundle size, GPU-only animations, Lighthouse 90+ |
-| `security.md` | Env vars with fallbacks, dependency audit, no eval/innerHTML |
-| `routing.md` | React Router 7, lazy loading, route organization |
-| `api.md` | Data fetching patterns, AbortController, TanStack Query |
-| `extensions.md` | Check registry before adding dependencies |
-| `mcp-awareness.md` | MCP server registry for external capabilities |
+Always-loaded rules (`paths: ["**"]`) fire on every task regardless of which files are touched. Path-triggered rules load only when matching files are staged/edited.
+
+| Rule | Load | Scope |
+|------|------|-------|
+| `critical.md` | **always** | Six non-negotiables: branch-first, memory consult, release check, Karpathy, user mobilization, validate-before-commit |
+| `memory-protocol.md` | **always** | `.claude/memory/` structure, frontmatter schema, when to read/write, TAGS.md ownership |
+| `principles.md` | **always** | Karpathy four: think before coding, simplicity first, surgical changes, goal-driven execution |
+| `releases.md` | **always** | End-of-session RELEASE CHECK format, when to release, auto-journal |
+| `workflow.md` | **always** | Session start, branching, batch mode, communication, user mobilization, /delegate |
+| `sizing.md` | `src/**` | LOC limits (300/500), function size caps, split triggers, ESLint warn |
+| `git.md` | `.github/**`, `scripts/release.js`, `CHANGELOG.md` | Conventional commits, enriched WHY/WHAT/IMPACT/TEST body, release batching |
+| `components.md` | `src/components/**`, `src/features/**` | Component structure, props, a11y requirements, import boundaries |
+| `styling.md` | `src/**/*.css`, `src/**/*.tsx`, `src/styles/**` | Tailwind 4 tokens, cn(), dark mode, accent rule, reuse-first |
+| `testing.md` | `src/**/*.test.*`, `src/test/**`, `vitest.config.*` | Vitest, Testing Library, test behavior not implementation, coverage |
+| `responsive.md` | `src/components/**`, `src/features/**`, `src/pages/**` | Mobile-first (320px), dual-variant thinking, touch targets |
+| `performance.md` | `src/**/*.{ts,tsx}` | Images, lazy loading, bundle size, GPU-only animations, Lighthouse 90+ |
+| `security.md` | `src/config/**`, `.env*`, `package.json` | Env vars with fallbacks, dependency audit, no eval/innerHTML |
+| `routing.md` | `src/app/routes/**`, `src/pages/**` | React Router 7, lazy loading, route organization |
+| `api.md` | `src/features/**`, `src/hooks/**`, `src/lib/**` | Data fetching patterns, AbortController, TanStack Query |
+| `extensions.md` | `package.json`, `src/lib/**`, `src/features/**` | Check registry before adding dependencies |
+| `mcp-awareness.md` | `registry/**` | MCP server registry for external capabilities |
 
 ---
 
@@ -243,7 +252,7 @@ Accordion, AvatarsSkeleton, Badges, Banners, Buttons, Cards, Colors, Contact, CT
 | File | Description |
 |------|-------------|
 | `vite.config.ts` | Vite 7 + React + Tailwind 4 + sitemap + bundle visualizer |
-| `vitest.config.ts` | Vitest with jsdom, coverage thresholds (76/73/85/78%) |
+| `vitest.config.ts` | Vitest with jsdom, coverage thresholds (88/80/89/91%) — ratchets up only |
 | `playwright.config.ts` | E2E on 3 browsers, dark mode, 2 retries in CI |
 | `eslint.config.js` | ESLint 9 flat config + TypeScript + jsx-a11y + import sort + import boundaries |
 | `prettier.config.js` | Semi, single quotes, trailing commas, 100 width, Tailwind class sorting |

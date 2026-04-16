@@ -100,14 +100,16 @@ Customize per project via `/init` or edit `src/index.css` directly.
 
 ## AI workflow
 
-31 slash commands, 4 specialized agents, 12 contextual rules — all in `.claude/`.
+33 slash commands, 4 specialized agents, 17 contextual rules — all in `.claude/`.
 
 | Category | Commands |
 |----------|----------|
-| **Scaffold** | `/new-page`, `/new-component`, `/new-feature`, `/new-hook`, `/add-api` |
-| **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check` |
-| **Ship** | `/release`, `/deploy`, `/handoff`, `/pre-delivery` |
-| **Evolve** | `/brief`, `/init`, `/refactor`, `/migrate`, `/theme`, `/update-deps` |
+| **Scaffold** | `/new-page`, `/new-component`, `/new-feature`, `/new-hook`, `/add-api`, `/init` |
+| **Design** | `/brief`, `/design`, `/design-explore`, `/design-convert` |
+| **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check`, `/health-check` |
+| **Ship** | `/release`, `/deploy`, `/handoff`, `/pre-delivery`, `/changelog-client` |
+| **Evolve** | `/refactor`, `/migrate`, `/theme`, `/update-deps`, `/legal` |
+| **Delegate** | `/delegate`, `/integrate` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
 ## Architecture
@@ -147,10 +149,10 @@ src/
 
 ## Testing
 
-- **Unit**: Vitest with jsdom, 242+ tests
-- **E2E**: Playwright on production build
+- **Unit**: Vitest with jsdom, 259+ tests (incl. 15 script smoke tests)
+- **E2E**: Playwright on production build (Chromium + Firefox + WebKit)
 - **A11y**: axe-core integration (unit + E2E)
-- **Lighthouse CI**: a11y/best-practices/SEO ≥ 0.9, performance ≥ 0.8
+- **Lighthouse CI**: a11y + best-practices + SEO + performance ≥ 0.9
 
 ## CI/CD
 
