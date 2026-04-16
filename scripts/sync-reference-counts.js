@@ -16,11 +16,14 @@
    ═══════════════════════════════════════════════════════════════ */
 
 import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
 
 import { PATHS } from './utils/paths.js';
 
-const REFERENCE_PATH = join(PATHS.root, 'docs/REFERENCE.md');
+// WHY: STEAKSOAP_TEST_ROOT env var lets smoke tests point the script at a
+// temp-dir fixture instead of the real repo root.
+const ROOT = process.env.STEAKSOAP_TEST_ROOT || PATHS.root;
+const REFERENCE_PATH = join(ROOT, 'docs/REFERENCE.md');
 
 function countFiles(dir, predicate) {
   try {
@@ -37,22 +40,22 @@ function countFiles(dir, predicate) {
 
 // Count .tsx files at the top level (exclude index/barrel + __tests__ dir).
 const uiCount = countFiles(
-  join(PATHS.root, 'src/components/ui'),
+  join(ROOT, 'src/components/ui'),
   (n) => n.endsWith('.tsx') && !n.startsWith('index.') && !n.includes('.test.'),
 );
 
 const commandsCount = countFiles(
-  join(PATHS.root, '.claude/commands'),
+  join(ROOT, '.claude/commands'),
   (n) => n.endsWith('.md'),
 );
 
 const agentsCount = countFiles(
-  join(PATHS.root, '.claude/agents'),
+  join(ROOT, '.claude/agents'),
   (n) => n.endsWith('.md'),
 );
 
 const rulesCount = countFiles(
-  join(PATHS.root, '.claude/rules'),
+  join(ROOT, '.claude/rules'),
   (n) => n.endsWith('.md'),
 );
 
