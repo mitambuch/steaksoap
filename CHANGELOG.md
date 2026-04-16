@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.2.0](https://github.com/mitambuch/steaksoap/compare/v5.1.2...v5.2.0) (2026-04-16)
+
+### ✨ Features
+
+* **seo:** postbuild prerender of per-route static HTML with injected meta ([e2ccb7a](https://github.com/mitambuch/steaksoap/commit/e2ccb7a02cc9e543060782f3bb9c773bd29fc807))
+
+### 🔧 Chores
+
+* **memory:** record v5.1.2 release + session 4 journal ([74dfc62](https://github.com/mitambuch/steaksoap/commit/74dfc62a02414927a1ec3caa1ee237099f08e380))
+
 ## [5.1.2](https://github.com/mitambuch/steaksoap/compare/v5.1.1...v5.1.2) (2026-04-16)
 
 ### 🐛 Bug Fixes
