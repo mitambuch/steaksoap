@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.4.1](https://github.com/mitambuch/steaksoap/compare/v5.4.0...v5.4.1) (2026-04-16)
+
+### 🔧 Chores
+
+* **deps:** safe patch + minor bumps across the dev stack ([13d908f](https://github.com/mitambuch/steaksoap/commit/13d908ff984431770b5e8c04099be7e6fe150aee))
+* **memory:** wrap session 8 + record v5.4.0 ([52f7c97](https://github.com/mitambuch/steaksoap/commit/52f7c9750462021c5546116d1bc36d797ce9a7dd))
+
 ## [5.4.0](https://github.com/mitambuch/steaksoap/compare/v5.3.1...v5.4.0) (2026-04-16)
 
 ### ✨ Features
