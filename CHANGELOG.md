@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.2.2](https://github.com/mitambuch/steaksoap/compare/v5.2.1...v5.2.2) (2026-04-16)
+
+### 🐛 Bug Fixes
+
+* **hooks:** tighten RELEASE_IT=1 bypass with staged-file pattern check ([cbe69c9](https://github.com/mitambuch/steaksoap/commit/cbe69c91dec6696ed492d9ad2e9703412dfc52c8))
+* **lint:** boundary rules now catch relative imports at any depth ([00f54ca](https://github.com/mitambuch/steaksoap/commit/00f54cae172f555f9dc58f7e9061114c1f331528))
+
+### 🔧 Chores
+
+* **memory:** record v5.2.1 release + session 6 journal ([eaa843b](https://github.com/mitambuch/steaksoap/commit/eaa843b98a72ae3adaf1258a91333279f4d00425))
+
 ## [5.2.1](https://github.com/mitambuch/steaksoap/compare/v5.2.0...v5.2.1) (2026-04-16)
 
 ### 🐛 Bug Fixes
