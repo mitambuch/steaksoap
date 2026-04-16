@@ -1,3 +1,9 @@
+# Allow release-it's commit on main (chore(release): v...). Set by scripts/release.js.
+if [ "$RELEASE_IT" = "1" ]; then
+  pnpm lint-staged
+  exit 0
+fi
+
 branch=$(git rev-parse --abbrev-ref HEAD)
 if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
   echo ""
