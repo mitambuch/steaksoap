@@ -11,10 +11,12 @@
      node scripts/memory-index.js
    ═══════════════════════════════════════════════════════════════ */
 
-import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 import { PATHS } from './utils/paths.js';
+
+const CHECK_MODE = process.argv.includes('--check');
 
 // WHY: STEAKSOAP_TEST_ROOT env var lets smoke tests point the script at a
 // temp-dir fixture instead of the real repo root. Production runs don't
@@ -177,10 +179,27 @@ function main() {
   }
   lines.push('');
 
-  writeFileSync(INDEX_PATH, lines.join('\n') + '\n');
-  console.log(`  ✓ Wrote ${relative(ROOT, INDEX_PATH)} (${all.length} entries)`);
+  const next = lines.join('\n') + '\n';
+
+  if (CHECK_MODE) {
+    const current = existsSync(INDEX_PATH) ? readFileSync(INDEX_PATH, 'utf-8') : '';
+    if (current !== next) {
+      console.error(`\n  ✗ ${relative(ROOT, INDEX_PATH)} is out of date. Run \`pnpm memory:index\` and commit the result.`);
+      process.exit(1);
+    }
+    console.log(`  ✓ ${relative(ROOT, INDEX_PATH)} is up to date (${all.length} entries)`);
+  } else {
+    writeFileSync(INDEX_PATH, next);
+    console.log(`  ✓ Wrote ${relative(ROOT, INDEX_PATH)} (${all.length} entries)`);
+  }
+
+  // WHY: closed-set tag vocabulary is a protocol invariant — fail hard rather
+  // than warn, so unknown tags surface in CI before they accumulate.
   if (unknownTags.size > 0) {
-    console.warn(`  ⚠ ${unknownTags.size} unknown tag(s). See INDEX.md for details.`);
+    console.error(`\n  ✗ ${unknownTags.size} unknown tag(s) — not in .claude/memory/TAGS.md:`);
+    for (const [tag, count] of unknownTags) console.error(`    - ${tag} (${count} occurrence${count === 1 ? '' : 's'})`);
+    console.error('\n  Either fix the entries or add the tag to TAGS.md via a decision entry.\n');
+    process.exit(1);
   }
 
   if (errors.length > 0) {

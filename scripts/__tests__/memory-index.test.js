@@ -32,14 +32,14 @@ function writeEntry(folder, name, frontmatter, title = 'Example') {
   writeFileSync(join(dir, name), body);
 }
 
-function run() {
+function run(...args) {
   // Strip case-insensitive npm_config_user_agent to avoid Windows leak.
   const env = {};
   for (const [k, v] of Object.entries(process.env)) {
     if (k.toLowerCase() !== 'npm_config_user_agent') env[k] = v;
   }
   env.STEAKSOAP_TEST_ROOT = root;
-  const r = spawnSync(process.execPath, [scriptPath], { env, encoding: 'utf-8' });
+  const r = spawnSync(process.execPath, [scriptPath, ...args], { env, encoding: 'utf-8' });
   return { ...r, status: r.status ?? (r.error ? 1 : 0) };
 }
 
@@ -96,22 +96,61 @@ describe('memory-index', () => {
     expect(r.stderr).toMatch(/missing or malformed YAML frontmatter/);
   });
 
-  it('warns on unknown tags without failing the build', () => {
+  it('exits 1 on unknown tags (closed-set vocabulary is a hard rule)', () => {
     writeEntry(
       'feedback',
       'unknown.md',
       `id: x\ndate: 2026-01-01\ntype: feedback\ntags: [#template, #feedback, #active, #unlisted-tag]\nscope: template\nstatus: active`,
     );
     const r = run();
-    expect(r.status).toBe(0);
-    const idx = readFileSync(join(root, '.claude/memory/INDEX.md'), 'utf-8');
-    expect(idx).toMatch(/Unknown tags detected/);
-    expect(idx).toContain('#unlisted-tag');
+    expect(r.status).toBe(1);
+    expect(r.stderr).toMatch(/unknown tag/i);
+    expect(r.stderr).toContain('#unlisted-tag');
   });
 
   it('writes INDEX.md to the temp root, not the real repo', () => {
     const r = run();
     expect(r.status).toBe(0);
     expect(existsSync(join(root, '.claude/memory/INDEX.md'))).toBe(true);
+  });
+
+  describe('--check mode', () => {
+    it('exits 0 when INDEX.md is up to date', () => {
+      writeEntry(
+        'decisions',
+        '2026-01-01-test.md',
+        `id: test\ndate: 2026-01-01\ntype: decision\ntags: [#template, #decision, #active]\nscope: template\nstatus: active`,
+        'Test',
+      );
+      expect(run().status).toBe(0);
+      const check = run('--check');
+      expect(check.status).toBe(0);
+      expect(check.stdout).toMatch(/up to date/);
+    });
+
+    it('exits 1 when INDEX.md is missing', () => {
+      const r = run('--check');
+      expect(r.status).toBe(1);
+      expect(r.stderr).toMatch(/out of date/);
+    });
+
+    it('exits 1 when INDEX.md is stale', () => {
+      writeEntry(
+        'decisions',
+        '2026-01-01-test.md',
+        `id: test\ndate: 2026-01-01\ntype: decision\ntags: [#template, #decision, #active]\nscope: template\nstatus: active`,
+        'Test',
+      );
+      expect(run().status).toBe(0);
+      writeEntry(
+        'decisions',
+        '2026-01-02-second.md',
+        `id: second\ndate: 2026-01-02\ntype: decision\ntags: [#template, #decision, #active]\nscope: template\nstatus: active`,
+        'Second',
+      );
+      const r = run('--check');
+      expect(r.status).toBe(1);
+      expect(r.stderr).toMatch(/out of date/);
+    });
   });
 });
