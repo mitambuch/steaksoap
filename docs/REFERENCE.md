@@ -167,7 +167,7 @@ All in `src/components/ui/`. Every component accepts `className` and uses `cn()`
 
 ---
 
-## AI Commands (31)
+## AI Commands (33)
 
 All in `.claude/commands/`.
 
@@ -195,7 +195,7 @@ All in `.claude/agents/`.
 
 ---
 
-## AI Rules (12)
+## AI Rules (17)
 
 All in `.claude/rules/`. Auto-loaded by context.
 
