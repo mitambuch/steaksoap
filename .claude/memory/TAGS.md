@@ -2,7 +2,10 @@
 
 **Strict closed set.** Using a tag not listed here = protocol violation — the indexer warns on unknown tags.
 
-If a new domain is needed: add it here via a `decisions/` entry explaining why, then the tag becomes usable.
+**Template-owned**: this file propagates from the steaksoap template via
+`pnpm base:update` and overwrites any local edits. To add a tag, land the
+change on the steaksoap template with a `decisions/` entry explaining why,
+then re-sync. Tag vocabulary is a shared standard across all derived projects.
 
 ## Domain tags (what area of the product)
 
