@@ -1,5 +1,10 @@
 # Changelog
 
+> Each version below has a matching memory entry in
+> [`.claude/memory/decisions/`](.claude/memory/decisions/) (filename pattern
+> `YYYY-MM-DD-release-vX.Y.Z.md`) capturing the *why* behind the release —
+> beyond what the commit list alone conveys.
+
 ## [5.4.1](https://github.com/mitambuch/steaksoap/compare/v5.4.0...v5.4.1) (2026-04-16)
 
 ### 🔧 Chores

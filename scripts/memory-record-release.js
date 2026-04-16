@@ -16,6 +16,18 @@ import { PATHS } from './utils/paths.js';
 
 const run = (cmd) => execSync(cmd, { cwd: PATHS.root, encoding: 'utf-8' }).trim();
 
+// Extract owner/repo from `git remote get-url origin`. Supports both
+// HTTPS and SSH URLs, falls back to null on detached / no-remote setups.
+function detectRepoSlug() {
+  try {
+    const url = run('git remote get-url origin');
+    const m = url.match(/github\.com[:/]([^/]+)\/([^/.]+)/);
+    return m ? `${m[1]}/${m[2]}` : null;
+  } catch {
+    return null;
+  }
+}
+
 function main() {
   const pkg = JSON.parse(readFileSync(join(PATHS.root, 'package.json'), 'utf-8'));
   const version = pkg.version;
@@ -30,9 +42,10 @@ function main() {
 
   // Collect commits since previous tag
   let commits = '';
+  let previousTag = null;
   try {
     const tags = run('git tag --sort=-v:refname').split('\n').filter(Boolean);
-    const previousTag = tags[1]; // current = tags[0], previous = tags[1]
+    previousTag = tags[1] || null; // current = tags[0], previous = tags[1]
     if (previousTag) {
       commits = run(`git log ${previousTag}..HEAD --pretty=format:"- %s"`);
     } else {
@@ -41,6 +54,21 @@ function main() {
   } catch {
     commits = '(unable to gather commits)';
   }
+
+  // Build cross-reference links so each release entry traces back to the
+  // canonical artifacts (git tag, CHANGELOG anchor, compare diff).
+  const repoSlug = detectRepoSlug();
+  const refs = [];
+  if (repoSlug) {
+    refs.push(`- **Git tag:** [v${version}](https://github.com/${repoSlug}/releases/tag/v${version})`);
+    if (previousTag) {
+      refs.push(`- **Diff:** [${previousTag}…v${version}](https://github.com/${repoSlug}/compare/${previousTag}...v${version})`);
+    }
+  }
+  // CHANGELOG anchor: GitHub strips dots from heading ids ("5.4.1" → "541").
+  const anchor = version.replace(/\./g, '');
+  refs.push(`- **CHANGELOG:** [${version}](../../../CHANGELOG.md#${anchor})`);
+  const refsBlock = `## References\n\n${refs.join('\n')}\n\n`;
 
   // Latest CHANGELOG section (best effort)
   let changelogExcerpt = '';
@@ -65,7 +93,7 @@ status: active
 
 Automated record from \`release-it\` after:release hook.
 
-## Commits since previous tag
+${refsBlock}## Commits since previous tag
 
 ${commits || '(none)'}
 
