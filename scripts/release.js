@@ -16,7 +16,7 @@
    Bad:  "v4.1.0", "release", "update"
    ═══════════════════════════════════════════════════════════════ */
 
-import { execFileSync, execSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 
 const bumpTypes = ['patch', 'minor', 'major'];
 const rawArgs = process.argv.slice(2);
@@ -49,21 +49,22 @@ if (!title || title.length < 5) {
 
 try {
   const token = execSync('gh auth token', { encoding: 'utf-8' }).trim();
-  const args = bump ? [bump, '--ci'] : ['--ci'];
 
-  // WHY: Pass title via CLI override — overrides .release-it.json releaseName
-  args.push(`--github.releaseName=${title}`);
-
-  // WHY: On Windows, npx is npx.cmd — Node's execFileSync doesn't auto-resolve
-  // the .cmd extension. Using shell: true would fix npx but break argument
-  // escaping for titles containing `&` (Windows cmd treats it as separator).
-  // Explicit .cmd on Windows = best of both.
-  const npxBin = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+  // WHY: build a single shell command string so we control quoting ourselves.
+  // Windows cmd splits arguments on `&` (title contains "Floor & Tagged"), and
+  // Node's execFileSync doesn't auto-resolve npx → npx.cmd without shell:true
+  // — which then breaks arg escaping. Single quoted string bypasses both.
+  // The title is double-quoted, inner `"` escaped, to survive any shell.
+  const safeTitle = title.replace(/"/g, '\\"');
+  const parts = ['npx release-it'];
+  if (bump) parts.push(bump);
+  parts.push('--ci');
+  parts.push(`"--github.releaseName=${safeTitle}"`);
 
   // WHY: RELEASE_IT=1 signals to .husky/pre-commit that this commit is a
   // release-it generated commit on main (`chore(release): v${version}`) and
   // should bypass the anti-main gate. Only set by this trusted wrapper.
-  execFileSync(npxBin, ['release-it', ...args], {
+  execSync(parts.join(' '), {
     stdio: 'inherit',
     env: { ...process.env, GITHUB_TOKEN: token, RELEASE_IT: '1' },
   });
