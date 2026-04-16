@@ -11,6 +11,7 @@
     "dev": "vite",
     "prebuild": "node scripts/sync-csp-hash.js",
     "build": "vite build",
+    "postbuild": "node scripts/prerender-meta.js",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
