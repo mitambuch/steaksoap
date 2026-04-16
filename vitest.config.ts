@@ -30,12 +30,14 @@ export default mergeConfig(
           'src/vite-env.d.ts',
           'src/main.tsx',
         ],
-        // WHY: Thresholds ratchet UP only — lock current coverage so it never decreases
+        // WHY: Thresholds ratchet UP only — lock current coverage so it never decreases.
+        // Set ~1–2 pts below the last-observed run (90.15/81.26/90.76/92.37 as of v5.2.0)
+        // so minor per-run jitter doesn't break CI while a real drop is caught.
         thresholds: {
-          statements: 76,
-          branches: 73,
-          functions: 85,
-          lines: 78,
+          statements: 88,
+          branches: 80,
+          functions: 89,
+          lines: 91,
         },
       },
     },
