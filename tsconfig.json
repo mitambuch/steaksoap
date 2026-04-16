@@ -14,6 +14,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Incremental typecheck — caches type-graph so `pnpm typecheck` only
+       re-checks changed files. Cache lives under node_modules (already
+       gitignored) so it never pollutes the repo. */
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/typescript/tsconfig.tsbuildinfo",
+
     /* Strict — aucun compromis */
     "strict": true,
     "noUnusedLocals": true,

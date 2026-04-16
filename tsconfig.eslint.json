@@ -1,7 +1,11 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": true
+    "noEmit": true,
+    // WHY: ESLint doesn't run a separate tsc invocation, and this config has a
+    // wider `include` scope than tsconfig.json — sharing the cache file would
+    // corrupt the typecheck cache. Disable here, keep enabled in tsconfig.json.
+    "incremental": false
   },
   "include": ["src", "*.config.ts", "*.config.js", "scripts", "e2e"]
 }
