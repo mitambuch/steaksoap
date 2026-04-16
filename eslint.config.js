@@ -70,6 +70,11 @@ export default defineConfig([
   },
 
   // ─── Import boundaries — architecture enforcement ──────────
+  // WHY: patterns cover BOTH alias imports (`@features/*`) and relative imports
+  // at any depth. Previously we only blocked `../features/*` and `../../features/*`;
+  // a `../../../features/*` could slip through. `../**/<layer>/**` matches any
+  // number of parent traversals followed by the layer name.
+  //
   // ui/ components are pure visual atoms: no business logic, no page imports
   {
     files: ['src/components/ui/**/*.{ts,tsx}'],
@@ -77,19 +82,19 @@ export default defineConfig([
       'no-restricted-imports': ['error', {
         patterns: [
           {
-            group: ['@features/*', '@features/**', '../features/*', '../../features/*'],
+            group: ['@features/*', '@features/**', '../**/features/*', '../**/features/**'],
             message: 'ui/ components must not import from features/. Move business logic to features/ or hooks/.',
           },
           {
-            group: ['@pages/*', '@pages/**', '../pages/*', '../../pages/*'],
+            group: ['@pages/*', '@pages/**', '../**/pages/*', '../**/pages/**'],
             message: 'ui/ components must not import from pages/. Components should be page-agnostic.',
           },
           {
-            group: ['@app/*', '@app/**'],
+            group: ['@app/*', '@app/**', '../**/app/*', '../**/app/**'],
             message: 'ui/ components must not import from app/. Use props or context instead.',
           },
           {
-            group: ['@workbench/*', '@workbench/**', '../workbench/*', '../../workbench/*'],
+            group: ['@workbench/*', '@workbench/**', '../**/workbench/*', '../**/workbench/**'],
             message: 'ui/ components must not import from workbench/. Workbench consumes ui/, not the reverse.',
           },
         ],
@@ -104,15 +109,15 @@ export default defineConfig([
       'no-restricted-imports': ['error', {
         patterns: [
           {
-            group: ['@pages/*', '@pages/**', '../pages/*', '../../pages/*'],
+            group: ['@pages/*', '@pages/**', '../**/pages/*', '../**/pages/**'],
             message: 'features/ must not import from pages/. Pages orchestrate features, not the reverse.',
           },
           {
-            group: ['@app/routes/*', '@app/routes/**'],
+            group: ['@app/routes/*', '@app/routes/**', '../**/app/routes/*', '../**/app/routes/**'],
             message: 'features/ must not import from routes/. Routes import features, not the reverse.',
           },
           {
-            group: ['@workbench/*', '@workbench/**', '../workbench/*', '../../workbench/*'],
+            group: ['@workbench/*', '@workbench/**', '../**/workbench/*', '../**/workbench/**'],
             message: 'features/ must not import from workbench/. Workbench is a dev tool, not a dependency.',
           },
         ],
@@ -127,19 +132,19 @@ export default defineConfig([
       'no-restricted-imports': ['error', {
         patterns: [
           {
-            group: ['@features/*', '@features/**'],
+            group: ['@features/*', '@features/**', '../**/features/*', '../**/features/**'],
             message: 'hooks/ must not import from features/. Hooks are consumed by features, not the reverse.',
           },
           {
-            group: ['@pages/*', '@pages/**'],
+            group: ['@pages/*', '@pages/**', '../**/pages/*', '../**/pages/**'],
             message: 'hooks/ must not import from pages/.',
           },
           {
-            group: ['@app/*', '@app/**'],
+            group: ['@app/*', '@app/**', '../**/app/*', '../**/app/**'],
             message: 'hooks/ must not import from app/.',
           },
           {
-            group: ['@workbench/*', '@workbench/**'],
+            group: ['@workbench/*', '@workbench/**', '../**/workbench/*', '../**/workbench/**'],
             message: 'hooks/ must not import from workbench/.',
           },
         ],
@@ -154,11 +159,11 @@ export default defineConfig([
       'no-restricted-imports': ['error', {
         patterns: [
           {
-            group: ['@pages/*', '@pages/**'],
+            group: ['@pages/*', '@pages/**', '../**/pages/*', '../**/pages/**'],
             message: 'workbench/ must not import from pages/.',
           },
           {
-            group: ['@app/*', '@app/**'],
+            group: ['@app/*', '@app/**', '../**/app/*', '../**/app/**'],
             message: 'workbench/ must not import from app/.',
           },
         ],

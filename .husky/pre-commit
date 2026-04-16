@@ -1,5 +1,17 @@
-# Allow release-it's commit on main (chore(release): v...). Set by scripts/release.js.
+# Release-it escape hatch (env var + staged-file pattern check).
+# scripts/release.js sets RELEASE_IT=1; release-it only stages package.json
+# + CHANGELOG.md for the `chore(release): v...` commit. Anything else staged
+# under RELEASE_IT=1 is not a real release — fail loudly.
 if [ "$RELEASE_IT" = "1" ]; then
+  staged=$(git diff --cached --name-only | sort | tr '\n' ',' | sed 's/,$//')
+  if [ "$staged" != "CHANGELOG.md,package.json" ]; then
+    echo ""
+    echo "  ✗ RELEASE_IT=1 set but staged files are not the release pattern."
+    echo "  → expected: CHANGELOG.md,package.json"
+    echo "  → got:      $staged"
+    echo ""
+    exit 1
+  fi
   pnpm lint-staged
   exit 0
 fi
