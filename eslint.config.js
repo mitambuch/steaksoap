@@ -166,6 +166,28 @@ export default defineConfig([
     },
   },
 
+  // ─── Sizing limits (warn only — see .claude/rules/sizing.md) ──
+  // Pages: 500 LOC max (warn). Render functions: 150 lines max.
+  // Note: pnpm lint uses --max-warnings 0, so warn → blocking in validate.
+  // To work past intentionally large files: add an inline eslint-disable
+  // comment with a one-line rationale. Re-evaluate after acclimatation.
+  {
+    files: ['src/pages/**/*.{ts,tsx}'],
+    rules: {
+      'max-lines': ['warn', { max: 500, skipBlankLines: true, skipComments: true }],
+      'max-lines-per-function': ['warn', { max: 150, skipBlankLines: true, skipComments: true, IIFEs: true }],
+    },
+  },
+  // Components: 300 LOC max (warn). Per-function 200 (looser than pages —
+  // stateful atoms like Modal/Select/Tabs legitimately need more space).
+  {
+    files: ['src/components/**/*.{ts,tsx}'],
+    rules: {
+      'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
+      'max-lines-per-function': ['warn', { max: 200, skipBlankLines: true, skipComments: true, IIFEs: true }],
+    },
+  },
+
   // Config files (vite, vitest, etc.) → Node globals
   {
     files: ['*.config.{ts,js}', 'scripts/**/*.{ts,js}'],

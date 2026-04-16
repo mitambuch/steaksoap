@@ -1,1 +1,17 @@
 pnpm commitlint --edit $1
+
+# Warn (not block) if feat/fix commits lack a WHY line in the body.
+# Owner preference: "psychopath-level" git log. See .claude/rules/git.md.
+msg_file="$1"
+first_line=$(head -n 1 "$msg_file")
+case "$first_line" in
+  feat*|fix*)
+    if ! grep -qE '^WHY:' "$msg_file"; then
+      echo ""
+      echo "  ⚠ warn: no WHY: line in commit body."
+      echo "    feat/fix commits should include WHY/WHAT/IMPACT/TEST."
+      echo "    See .claude/rules/git.md. Commit proceeds."
+      echo ""
+    fi
+    ;;
+esac

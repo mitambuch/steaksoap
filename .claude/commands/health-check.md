@@ -94,10 +94,32 @@ Check these files exist and are not stale:
 - `docs/ARCHITECTURE.md` — does the folder tree match reality?
 - `docs/SETUP.md` — do the commands still work?
 - `docs/DEPENDENCIES.md` — does it list all current deps?
-- `.claude/decisions.md` — are decisions still accurate?
+- `.claude/decisions.md` — does it point to `.claude/memory/INDEX.md`?
+- `.claude/memory/INDEX.md` — regenerate with `pnpm memory:index` and diff
 - `HANDOFF.md` — does it exist? Is it up to date?
 
 For each doc, compare key claims against reality (file paths, command names, version numbers).
+
+### Phase 5.5 — `.claude/` vs `docs/` drift
+
+`docs/` files summarise `.claude/` with examples. They drift when new commands
+or rules are added without updating the guide.
+
+Run these counts and flag any mismatch:
+
+```bash
+ls .claude/commands/*.md | wc -l          # actual command count
+grep -c '^- `/' docs/REFERENCE.md         # commands listed in REFERENCE
+
+ls .claude/rules/*.md | wc -l              # actual rule count
+grep -c '^- `.claude/rules/' docs/REFERENCE.md || true
+
+ls .claude/agents/*.md | wc -l             # actual agent count
+grep -c '^### ' docs/agents.md            # agents documented
+```
+
+If `.claude/` has MORE than `docs/` → guide needs updating.
+If `docs/` has MORE than `.claude/` → orphan references to removed commands.
 
 ## Phase 6 — Infrastructure Check
 
