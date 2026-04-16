@@ -1,5 +1,22 @@
 # Changelog
 
+## [5.2.1](https://github.com/mitambuch/steaksoap/compare/v5.2.0...v5.2.1) (2026-04-16)
+
+### 🐛 Bug Fixes
+
+* **a11y:** use inert on closed Accordion panels to block Tab focus ([96d0bd9](https://github.com/mitambuch/steaksoap/commit/96d0bd98a766e3dfcfa4c7ed64389e06778016fd))
+* **dx:** ignore playwright output dirs + prerender fail-fast on drift ([fba998b](https://github.com/mitambuch/steaksoap/commit/fba998b3a8900e8e76c9f02672f4db7b6d40448e))
+* **mobile:** Toast no longer overflows on 320px viewports ([517c750](https://github.com/mitambuch/steaksoap/commit/517c750204a1bc9f66739c9ed8db60aeed02d6ef))
+* **tests:** ratchet coverage thresholds to current levels (88/80/89/91) ([78a9360](https://github.com/mitambuch/steaksoap/commit/78a9360851481b3ddb87ab23954a55d05f7d8d8c))
+
+### 📚 Documentation
+
+* **setup:** align Node minimum with package.json engines (22+) ([f77ca56](https://github.com/mitambuch/steaksoap/commit/f77ca56cb50f039a153192b67e2d9c2e286bb136))
+
+### 🔧 Chores
+
+* **memory:** record v5.2.0 release + session 5 journal ([05bffc2](https://github.com/mitambuch/steaksoap/commit/05bffc24f8fcf8278c18ce33f152a1a77b63456d))
+
 ## [5.2.0](https://github.com/mitambuch/steaksoap/compare/v5.1.2...v5.2.0) (2026-04-16)
 
 ### ✨ Features
