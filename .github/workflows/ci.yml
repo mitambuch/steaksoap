@@ -48,14 +48,19 @@ jobs:
           BUILD_SIZE=$(du -sk dist/ | cut -f1)
           echo "📦 Total bundle size: ${BUILD_SIZE}KB"
 
-          # Warn if bundle exceeds 500KB
-          if [ "$BUILD_SIZE" -gt 500 ]; then
-            echo "::warning::Bundle size (${BUILD_SIZE}KB) exceeds 500KB threshold"
-          fi
-
-          # List largest files
+          # List largest files (always — useful for both warn and fail diagnosis)
           echo "📊 Largest files:"
           find dist/ -type f -exec du -sk {} \; | sort -rn | head -10
+
+          # Warn at 500KB, fail at 800KB. Current baseline ~380KB (April 2026)
+          # leaves ~2x headroom before the hard cap.
+          if [ "$BUILD_SIZE" -gt 800 ]; then
+            echo "::error::Bundle size (${BUILD_SIZE}KB) exceeds the 800KB fail threshold"
+            exit 1
+          fi
+          if [ "$BUILD_SIZE" -gt 500 ]; then
+            echo "::warning::Bundle size (${BUILD_SIZE}KB) exceeds the 500KB warn threshold"
+          fi
 
       # WHY: a11y checks (alt text, cursor:none) are handled by eslint-plugin-jsx-a11y
 
