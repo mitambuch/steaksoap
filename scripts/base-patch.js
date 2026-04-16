@@ -16,6 +16,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 import { execSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { PATHS } from './utils/paths.js';
@@ -51,6 +52,19 @@ const ZONES = {
     'src/utils/',
   ],
 };
+
+// Paths NEVER overwritten by base:patch or base:update — client-owned project memory.
+// Must stay in sync with scripts/setup.js --update exclusion list.
+const PROTECTED = [
+  '.claude/memory/decisions/',
+  '.claude/memory/feedback/',
+  '.claude/memory/patterns/',
+  '.claude/memory/frictions/',
+  '.claude/memory/sessions/',
+  '.claude/memory/INDEX.md',
+];
+
+const isProtected = (file) => PROTECTED.some((p) => file.startsWith(p));
 
 const zone = process.argv[2] || '';
 
@@ -129,11 +143,30 @@ if (!zone) {
 // ─── Apply selected zone ────────────────────────────────────
 if (zone === 'all') {
   console.log('\n  → Full merge...');
+  // Pre-save protected paths (client memory) before merge; restore after
+  const protectedBackup = new Map();
+  for (const p of PROTECTED) {
+    try {
+      const list = run(`git ls-files "${p}"`).split('\n').filter(Boolean);
+      for (const f of list) {
+        protectedBackup.set(f, readFileSync(resolve(root, f), 'utf-8'));
+      }
+    } catch {
+      // path may not exist yet — skip
+    }
+  }
   try {
     runVisible(`git merge ${BASE_REMOTE}/main --no-edit`);
     console.log('  ✓ Merge complete');
   } catch {
     console.log('  ⚠ Conflicts detected. Resolve manually.');
+  }
+  // Restore protected files verbatim if merge altered them
+  if (protectedBackup.size > 0) {
+    for (const [file, content] of protectedBackup) {
+      writeFileSync(resolve(root, file), content);
+    }
+    console.log(`  ✓ Restored ${protectedBackup.size} protected memory file(s).`);
   }
 } else {
   const paths = ZONES[zone];
@@ -142,17 +175,27 @@ if (zone === 'all') {
     process.exit(1);
   }
 
-  const filesToPatch = changedFiles.filter((f) =>
+  const rawFilesToPatch = changedFiles.filter((f) =>
     paths.some((z) => f.startsWith(z)),
   );
+  const filesToPatch = rawFilesToPatch.filter((f) => !isProtected(f));
+  const skipped = rawFilesToPatch.filter(isProtected);
 
   if (filesToPatch.length === 0) {
-    console.log(`\n  ✓ No changes in "${zone}" zone.\n`);
+    console.log(`\n  ✓ No changes in "${zone}" zone (after protection filter).\n`);
+    if (skipped.length > 0) {
+      console.log(`  ⓘ ${skipped.length} protected file(s) skipped:`);
+      skipped.forEach((f) => console.log(`    - ${f}`));
+    }
     process.exit(0);
   }
 
   console.log(`\n  → Patching ${filesToPatch.length} files from "${zone}"...`);
   filesToPatch.forEach((f) => console.log(`    ${f}`));
+  if (skipped.length > 0) {
+    console.log(`\n  ⓘ Protected from overwrite (${skipped.length}):`);
+    skipped.forEach((f) => console.log(`    - ${f}`));
+  }
 
   // Checkout specific files from upstream
   for (const file of filesToPatch) {
