@@ -20,6 +20,11 @@ const MEMORY_DIR = join(PATHS.root, '.claude/memory');
 const INDEX_PATH = join(MEMORY_DIR, 'INDEX.md');
 const TAGS_PATH = join(MEMORY_DIR, 'TAGS.md');
 const TYPES = ['decisions', 'feedback', 'patterns', 'frictions', 'sessions'];
+const REQUIRED_FIELDS = ['id', 'date', 'type', 'tags', 'scope', 'status'];
+
+const errors = [];
+const recordError = (file, reason) =>
+  errors.push(`${relative(PATHS.root, file).replace(/\\/g, '/')}: ${reason}`);
 
 // Parse canonical tag vocabulary from TAGS.md
 function loadCanonicalTags() {
@@ -65,7 +70,15 @@ function walk(dir) {
     if (!name.endsWith('.md')) continue;
     const raw = readFileSync(full, 'utf-8');
     const fm = parseFrontmatter(raw);
-    if (!fm) continue;
+    if (!fm) {
+      recordError(full, 'missing or malformed YAML frontmatter (expected leading `---` block)');
+      continue;
+    }
+    const missing = REQUIRED_FIELDS.filter((f) => fm[f] === undefined || fm[f] === '');
+    if (missing.length > 0) {
+      recordError(full, `missing required frontmatter fields: ${missing.join(', ')}`);
+      continue;
+    }
     const titleMatch = raw.slice(raw.indexOf('---', 3) + 3).match(/^\s*#\s+(.+)$/m);
     entries.push({
       path: relative(MEMORY_DIR, full).replace(/\\/g, '/'),
@@ -164,6 +177,13 @@ function main() {
   console.log(`  ✓ Wrote ${relative(PATHS.root, INDEX_PATH)} (${all.length} entries)`);
   if (unknownTags.size > 0) {
     console.warn(`  ⚠ ${unknownTags.size} unknown tag(s). See INDEX.md for details.`);
+  }
+
+  if (errors.length > 0) {
+    console.error(`\n  ✗ ${errors.length} malformed memory entr${errors.length === 1 ? 'y' : 'ies'}:`);
+    for (const e of errors) console.error(`    - ${e}`);
+    console.error('\n  Fix each file per .claude/rules/memory-protocol.md (required frontmatter).\n');
+    process.exit(1);
   }
 }
 
