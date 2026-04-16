@@ -139,8 +139,12 @@ interface AccordionContentProps {
   className?: string;
 }
 
-// WHY: grid-rows trick animates height from 0 to auto without JS measurement.
+// WHY grid-rows: animates height from 0 to auto without JS measurement.
 // grid-template-rows: 0fr → 1fr with overflow hidden on the inner div.
+// WHY inert (React 19): closed panels keep their content in the DOM for the
+// height animation, but focusable children (links, buttons, inputs) must not
+// be Tab-reachable while hidden. aria-hidden alone does NOT block Tab focus.
+// inert does both: blocks focus AND is equivalent to aria-hidden for a11y.
 /** Collapsible content panel with smooth height animation. */
 export function AccordionContent({ children, className }: AccordionContentProps) {
   const { openItems } = useAccordionContext();
@@ -152,7 +156,7 @@ export function AccordionContent({ children, className }: AccordionContentProps)
       id={contentId}
       role="region"
       aria-labelledby={`${contentId}-trigger`}
-      aria-hidden={!isOpen}
+      inert={!isOpen}
       className={cn(
         'duration-base grid transition-[grid-template-rows,opacity] ease-out',
         isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
