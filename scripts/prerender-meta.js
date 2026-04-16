@@ -66,12 +66,25 @@ function extractStringField(src, key) {
 
 function extractPageSeo(pageKey) {
   // Find `export const <pageKey> = { ... };` then the `seo: { ... }` inside.
+  // WHY strict-and-loud: if pages.ts is refactored (constants, template
+  // strings, imports from another file), our regex won't match the new
+  // shape. We throw instead of silently falling back — a stale build that
+  // looks fine but shipped empty meta is worse than a failing build.
   const blockRe = new RegExp(`export const ${pageKey}\\s*=\\s*\\{([\\s\\S]*?)^\\};`, 'm');
   const block = pagesTs.match(blockRe);
-  if (!block) return { title: '', description: '' };
+  if (!block) {
+    throw new Error(
+      `prerender-meta: couldn't locate \`export const ${pageKey} = { ... };\` in src/data/pages.ts.\n` +
+        `  If you refactored pages.ts (constants, imports, template strings), update\n` +
+        `  scripts/prerender-meta.js to match the new shape or use a JSON manifest.`,
+    );
+  }
   const seoRe = /seo:\s*\{([\s\S]*?)\}/;
   const seo = block[1].match(seoRe);
-  if (!seo) return { title: '', description: '' };
+  if (!seo) {
+    // seo: {} is valid (home). No seo field at all = suspect refactor.
+    return { title: '', description: '' };
+  }
   return {
     title: extractStringField(seo[1], 'title'),
     description: extractStringField(seo[1], 'description'),
