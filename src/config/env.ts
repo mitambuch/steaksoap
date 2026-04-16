@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════
    ENV — environment variable access with safe fallbacks
    Dev: everything has a fallback so the app always starts.
-   Prod: VITE_APP_URL is required — prevents localhost in canonical/OG/sitemap.
+   Prod: VITE_APP_URL is enforced at BUILD time in vite.config.ts for
+   initialized client projects. This runtime warn is the last-line guard
+   for the base template + any edge case that bypasses the build check.
    ═══════════════════════════════════════════════════════════════ */
 
-// WHY: in prod, localhost in canonical URLs and OG tags is a silent SEO/social disaster.
-// The base template (initialized: false) is allowed to run without it — client projects are not.
 if (import.meta.env.PROD && !import.meta.env.VITE_APP_URL) {
   console.warn(
     '[env] VITE_APP_URL not set in production — canonical URLs and OG tags will use localhost. Set it in .env.local or your deploy config.',

@@ -40,11 +40,15 @@ function fail(msg) {
 console.log(`\n  ${bold('project doctor')}\n`);
 
 // ─── Node.js version ─────────────────────────────────────────
+// WHY: read the requirement from package.json "engines.node" so this stays
+// in sync with setup.js and the actual engines constraint. Single source.
+const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf-8'));
+const requiredNode = parseInt(pkg.engines?.node?.match(/\d+/)?.[0] ?? '22');
 const nodeVersion = parseInt(process.version.slice(1));
-if (nodeVersion >= 22) {
-  pass(`Node ${process.version} (required: >=22)`);
+if (nodeVersion >= requiredNode) {
+  pass(`Node ${process.version} (required: >=${requiredNode})`);
 } else {
-  fail(`Node ${process.version} — version 22+ required (see package.json engines)`);
+  fail(`Node ${process.version} — version ${requiredNode}+ required (see package.json engines)`);
 }
 
 // ─── pnpm version ────────────────────────────────────────────
