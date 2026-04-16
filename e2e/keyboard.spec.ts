@@ -3,10 +3,21 @@ import { expect, test } from '@playwright/test';
 /* ═══════════════════════════════════════════════════════════════
    KEYBOARD ACCESSIBILITY — verifies the entire site is
    navigable via keyboard alone. Critical for a11y compliance.
+
+   NOTE on WebKit: Safari's default "keyboard navigation" preference
+   only cycles Tab through FORM FIELDS, not links/buttons. That's a
+   macOS system default, not an app defect. We skip Tab-cycling
+   tests on webkit — chromium + firefox cover the assertion.
+   Real-world Safari users who enable "Full keyboard access" get the
+   Chromium/Firefox behavior. Our Enter/focus tests still run on webkit.
    ═══════════════════════════════════════════════════════════════ */
 
 test.describe('Keyboard — focus visibility', () => {
-  test('Tab moves focus through interactive elements on Home', async ({ page }) => {
+  test('Tab moves focus through interactive elements on Home', async ({ page, browserName }) => {
+    test.skip(
+      browserName === 'webkit',
+      'Safari Tab default skips non-form elements — see file header',
+    );
     await page.goto('/');
     // WHY: Focus the skip-link directly to start tab navigation from a known element
     const skipLink = page.getByRole('link', { name: /skip to content/i });
@@ -68,7 +79,11 @@ test.describe('Keyboard — navigation', () => {
 });
 
 test.describe('Keyboard — no focus traps', () => {
-  test('can Tab through entire Home page without getting stuck', async ({ page }) => {
+  test('can Tab through entire Home page without getting stuck', async ({ page, browserName }) => {
+    test.skip(
+      browserName === 'webkit',
+      'Safari Tab default skips non-form elements — see file header',
+    );
     await page.goto('/');
     const skipLink = page.getByRole('link', { name: /skip to content/i });
     await skipLink.focus();
