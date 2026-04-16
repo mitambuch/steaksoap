@@ -69,3 +69,54 @@ src/features/my-feature/
 ├── types.ts         → Feature-specific types
 └── index.ts         → Barrel export
 ```
+
+## Import boundaries (enforced by ESLint)
+
+The codebase follows a strict layered architecture. **Higher layers can import
+from lower layers, never the reverse.** Violations are caught at lint time
+(`no-restricted-imports`) for both alias (`@features/*`) and relative
+(`../**/features/*`) imports at any depth.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  app/             (top — orchestration, providers, routes)   │
+│      ↓                                                       │
+│  pages/           (routes — one file per URL)                │
+│      ↓                                                       │
+│  features/        (business modules — domain logic)          │
+│      ↓                                                       │
+│  hooks/           (pure logic primitives)                    │
+│      ↓                                                       │
+│  components/ui/   (visual atoms — Button, Card, Modal…)      │
+│      ↓                                                       │
+│  utils/, lib/, config/, constants/   (leaves — no imports)   │
+└─────────────────────────────────────────────────────────────┘
+
+  workbench/        (sidecar — dev tool, may import ui/, features/,
+                     hooks/, but NEVER pages/ or app/)
+```
+
+### Allowed-import matrix
+
+|             | app | pages | features | hooks | ui  | workbench | utils/lib/config |
+|-------------|:---:|:-----:|:--------:|:-----:|:---:|:---------:|:----------------:|
+| **app**     |  —  |   ✓   |    ✓     |   ✓   |  ✓  |     ✗     |        ✓         |
+| **pages**   |  ✗  |   —   |    ✓     |   ✓   |  ✓  |     ✗     |        ✓         |
+| **features**|  ✗  |   ✗   |    —     |   ✓   |  ✓  |     ✗     |        ✓         |
+| **hooks**   |  ✗  |   ✗   |    ✗     |   —   |  ✓  |     ✗     |        ✓         |
+| **ui**      |  ✗  |   ✗   |    ✗     |   ✓   |  —  |     ✗     |        ✓         |
+| **workbench** | ✗ |   ✗   |    ✓     |   ✓   |  ✓  |     —     |        ✓         |
+
+### Why each rule exists
+
+- **ui/ ↛ features, pages, app, workbench** — atoms must stay pure visual
+  components. Business logic lives in features/, page composition in pages/.
+- **features/ ↛ pages, app/routes, workbench** — pages orchestrate features,
+  not the reverse. Workbench is a dev-only sidecar.
+- **hooks/ ↛ features, pages, app, workbench** — hooks are consumed by
+  upper layers; they don't reach back up.
+- **workbench/ ↛ pages, app** — workbench demos features but never depends
+  on app composition or routing.
+
+The full ESLint config is in [`eslint.config.js`](../eslint.config.js)
+under `// ─── Import boundaries ───`.
