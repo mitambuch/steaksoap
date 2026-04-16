@@ -14,7 +14,7 @@ import globals from 'globals'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig([
-  globalIgnores(['dist', 'node_modules', 'coverage']),
+  globalIgnores(['dist', 'node_modules', 'coverage', 'test-results', 'playwright-report']),
 
   {
     files: ['**/*.{ts,tsx}'],

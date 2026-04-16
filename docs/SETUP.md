@@ -8,7 +8,7 @@ This guide helps any developer or AI agent get the project running in 5 minutes.
 
 | Tool | Min. version | Why |
 |---|---|---|
-| **Node.js** | 20+ | JavaScript runtime |
+| **Node.js** | 22+ | JavaScript runtime (enforced by `package.json` → `engines.node`) |
 | **pnpm** | 10+ | Package manager (declared in `package.json` → `packageManager`) |
 | **Git** | 2.40+ | Version control |
 | **GitHub CLI** (`gh`) | 2+ | Optional — for repo creation and releases |
@@ -17,8 +17,8 @@ This guide helps any developer or AI agent get the project running in 5 minutes.
 
 ```bash
 # Node.js — via nvm (recommended)
-nvm install 20
-nvm use 20
+nvm install 22
+nvm use 22
 
 # pnpm — via corepack (built into Node.js)
 corepack enable
