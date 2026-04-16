@@ -22,6 +22,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "validate": "pnpm lint && pnpm typecheck && pnpm test:coverage && pnpm build",
+    "validate:full": "pnpm validate && pnpm test:e2e",
     "preinstall": "node scripts/ensure-pnpm.js",
     "postinstall": "node scripts/setup-bootstrap.js --check",
     "prepare": "husky",
