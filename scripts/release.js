@@ -57,6 +57,7 @@ try {
   execFileSync('npx', ['release-it', ...args], {
     stdio: 'inherit',
     env: { ...process.env, GITHUB_TOKEN: token },
+    shell: true,
   });
 } catch (err) {
   console.error(
