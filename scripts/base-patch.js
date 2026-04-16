@@ -30,7 +30,11 @@ const BASE_REPO_NAME = 'steaksoap';
 const BASE_REMOTE = 'base';
 const BASE_URL = `https://github.com/${BASE_REPO_OWNER}/${BASE_REPO_NAME}.git`;
 
-// Zones — paths that belong to each category
+// Zones — paths that belong to each category.
+// WHY: external audit (2026-04-16) found the original infra zone missed
+// deploy configs (netlify/vercel), release config, and playwright config,
+// so "infra" updates silently drifted on client repos. List is now aligned
+// with what actually changes on the template side.
 const ZONES = {
   infra: [
     '.claude/',
@@ -38,10 +42,15 @@ const ZONES = {
     '.github/',
     'eslint.config.js',
     'tsconfig.json',
+    'tsconfig.eslint.json',
     'vite.config.ts',
     'vitest.config.ts',
+    'playwright.config.ts',
     'commitlint.config.js',
     '.prettierrc',
+    '.release-it.json',
+    'netlify.toml',
+    'vercel.json',
     'lighthouserc.json',
   ],
   ui: [

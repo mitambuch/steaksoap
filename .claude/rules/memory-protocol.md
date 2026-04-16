@@ -100,6 +100,20 @@ Never delete entries. Deprecate or supersede. Git history is the audit trail.
 - `#client-specific` entries are **never** written in the steaksoap template repo
 - `scripts/base-patch.js` protects `.claude/memory/decisions|feedback|patterns|frictions|sessions` from overwrite on update
 
+### File-level ownership inside `.claude/memory/`
+
+| Path | Owner | On `base:update` |
+|---|---|---|
+| `TAGS.md` | **template** | propagates (overwrites client) |
+| `README.md` | **template** | propagates (overwrites client) |
+| `INDEX.md` | **client** (auto-generated) | protected |
+| `decisions/` `feedback/` `patterns/` `frictions/` `sessions/` | **client** | protected |
+
+If a client project needs a new tag, DON'T edit `TAGS.md` locally — your
+change will be wiped on the next `pnpm base:update`. Instead: open an
+issue/PR on the steaksoap template, land the tag there, then re-sync.
+Tag vocabulary is a deliberate shared standard across all derived projects.
+
 ## What NOT to write to memory
 
 - Code snippets (the code is the source of truth)

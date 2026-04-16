@@ -32,7 +32,9 @@
   --color-warning-text: #ffd60a;
   --color-danger-text: #ff6b6b;
   --color-info-text: #52b0ff;
-  --color-accent-text: #e05a5a;
+  /* #e05a5a measured at 4.45:1 by axe — failed AA. Lifted to match
+     danger-text's safe value; both sit on the same bg at the same sizes. */
+  --color-accent-text: #ff6b6b;
 
   --font-family-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
