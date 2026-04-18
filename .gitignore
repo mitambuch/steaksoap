@@ -51,6 +51,9 @@ stats.html
 # Sanity backups (local-only safety net — push creates these before writing)
 .sanity-backups/
 
+# Handoff output (regenerated via `pnpm handoff` — no need to track)
+dist-handoff/
+
 # Claude Code (ignore local settings, keep shared commands, rules, agents, decisions, memory, and shared settings)
 .claude/*
 !.claude/commands/
