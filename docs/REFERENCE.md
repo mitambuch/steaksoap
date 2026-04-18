@@ -168,7 +168,7 @@ All in `src/components/ui/`. Every component accepts `className` and uses `cn()`
 
 ---
 
-## AI Commands (33)
+## AI Commands (36)
 
 All in `.claude/commands/`.
 
@@ -179,6 +179,7 @@ All in `.claude/commands/`.
 | **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check`, `/health-check` |
 | **Ship** | `/release`, `/deploy`, `/handoff`, `/pre-delivery`, `/changelog-client` |
 | **Evolve** | `/refactor`, `/migrate`, `/update-deps`, `/legal` |
+| **Content** | `/wire-content`, `/translate`, `/sync-content` |
 | **Delegate** | `/delegate`, `/integrate` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
