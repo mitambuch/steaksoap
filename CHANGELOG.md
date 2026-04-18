@@ -1,5 +1,37 @@
 # Changelog
 
+## [5.5.0](https://github.com/mitambuch/steaksoap/compare/v5.4.1...v5.5.0) (2026-04-18)
+
+### ✨ Features
+
+* **content:** i18n + Sanity app-side scaffolding with nullable-safe client ([863d11e](https://github.com/mitambuch/steaksoap/commit/863d11ea53e5f7c5b8224469b01fb8613c626281)), closes [#4](https://github.com/mitambuch/steaksoap/issues/4)
+
+### 🐛 Bug Fixes
+
+* **a11y:** bump --color-muted to clear WCAG AA on WebKit ([939d450](https://github.com/mitambuch/steaksoap/commit/939d45062792e6be0d09756c996a0e1d4679e666)), closes [#8a8a8a](https://github.com/mitambuch/steaksoap/issues/8a8a8a) [#757575](https://github.com/mitambuch/steaksoap/issues/757575) [#0a0a0a](https://github.com/mitambuch/steaksoap/issues/0a0a0a)
+
+### ♻️  Refactoring
+
+* **build:** derive Vite resolve.alias from tsconfig.json paths ([50dfea0](https://github.com/mitambuch/steaksoap/commit/50dfea0a009042dd335f72e1f6a24bde1719e6e4))
+
+### 📚 Documentation
+
+* **architecture:** document import boundaries with diagram + matrix ([43daa63](https://github.com/mitambuch/steaksoap/commit/43daa63cb5312199b4ea50c75ab9af5ab9d31bf7))
+
+### 🔧 Chores
+
+* **build:** enable incremental typecheck for ~40% faster repeat runs ([6330b47](https://github.com/mitambuch/steaksoap/commit/6330b4799e100597d5cb667aef5c6acb5908b2a1))
+* **ci:** enforce hard bundle-size cap at 800KB (warn stays at 500KB) ([9fcf5be](https://github.com/mitambuch/steaksoap/commit/9fcf5beb2681a9296c5118e0f2dff3e81a47bf4a))
+* **memory:** add [#sanity](https://github.com/mitambuch/steaksoap/issues/sanity) tag + content stack integration decision ([5817a89](https://github.com/mitambuch/steaksoap/commit/5817a89a8f4a9fd72cbf412b65da6e9ae3a9dbb7)), closes [#content](https://github.com/mitambuch/steaksoap/issues/content)
+* **memory:** freeze audit-cycle state + v5.4.1 release journal ([8a3f9e1](https://github.com/mitambuch/steaksoap/commit/8a3f9e128b1af0bcbd0a6ab6f6f01803cafc66a3))
+* **memory:** strict tag validation + integrate index check into validate ([50e5308](https://github.com/mitambuch/steaksoap/commit/50e5308ce338edb3d42d9235f563606af2c97cda))
+* **memory:** wrap session 2026-04-17-0135 + regen index ([6a80fcf](https://github.com/mitambuch/steaksoap/commit/6a80fcf3d48cbc74c31bc991fc5ec90c159a9c20))
+* **memory:** wrap session 2026-04-18-2140 + regen index (27 entries) ([7c4de4e](https://github.com/mitambuch/steaksoap/commit/7c4de4e70d38f0d6e31043b96099f42219197a06))
+* **memory:** wrap session 9 — final close, audit cycle frozen ([5395fb7](https://github.com/mitambuch/steaksoap/commit/5395fb783e963f1c5adc7794e894c6d92e5f25b3))
+* **release:** cross-link memory entries with git tags + CHANGELOG ([2b73f28](https://github.com/mitambuch/steaksoap/commit/2b73f28f979f947d77db1cff825503923be8cca4))
+* **rules:** add always-loaded i18n-sanity rule + client profile template ([396ab98](https://github.com/mitambuch/steaksoap/commit/396ab9801c0d55f503b2388217dc605c02df7ca3))
+* **security:** close stale Dependabot CVE friction (0 open alerts verified) ([787b6f3](https://github.com/mitambuch/steaksoap/commit/787b6f302768f2f22e2cafe597ec03393f968afd))
+
 > Each version below has a matching memory entry in
 > [`.claude/memory/decisions/`](.claude/memory/decisions/) (filename pattern
 > `YYYY-MM-DD-release-vX.Y.Z.md`) capturing the *why* behind the release —
