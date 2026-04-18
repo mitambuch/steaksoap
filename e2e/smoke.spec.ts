@@ -104,7 +104,8 @@ test.describe('Smoke — 404', () => {
   test('404 page links back to home', async ({ page }) => {
     await page.goto('/this-does-not-exist');
     await page.getByRole('link', { name: /back to home/i }).click();
-    await expect(page).toHaveURL('/');
+    // With locale-prefix routing, home canonical URL is /:locale (fr|de|en)
+    await expect(page).toHaveURL(/\/(fr|de|en)\/?$/);
   });
 
   test('has no console errors', async ({ page }) => {
