@@ -405,6 +405,7 @@ async function runUpdate() {
     '.claude/memory/frictions/',
     '.claude/memory/sessions/',
     '.claude/memory/INDEX.md',
+    '.claude/client.md',
   ];
   const protectedBackup = new Map();
   for (const p of PROTECTED) {

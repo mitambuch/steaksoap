@@ -71,6 +71,7 @@ const PROTECTED = [
   '.claude/memory/frictions/',
   '.claude/memory/sessions/',
   '.claude/memory/INDEX.md',
+  '.claude/client.md', // WHY: per-project brand voice consumed by /wire-content — never overwrite
 ];
 
 const isProtected = (file) => PROTECTED.some((p) => file.startsWith(p));

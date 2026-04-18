@@ -125,6 +125,22 @@ Verify after design token changes.
 - `/playground` = structured design system showcase (all tokens, all components)
 - `/lab` = free-form experimentation sandbox (prototypes, ideas, tests)
 
+## Content architecture (i18n + Sanity)
+
+The starter ships with a baked-in content stack: i18next for static UI strings
+and Sanity CMS for editorial content. Taxonomy is strict:
+
+- **Inline in `page`** — unique content per page (hero, intro, CTA contextuel)
+- **Dedicated menu with picto** — repeatable entities (team, testimonials, products)
+- **`siteConfig` singleton** — shared across pages (banner, contact, socials)
+
+Full protocol: `.claude/rules/i18n-sanity.md` (13 lessons, always-loaded).
+Per-project brand voice lives in `.claude/client.md` (client-owned, protected
+from `base:update`). Consumed by `/wire-content`, `/translate`, `/sync-content`.
+
+Never hardcode FR in JSX. Never leave a Sanity field with missing DE/EN in
+production — `pnpm validate` enforces both.
+
 ## Detailed Rules
 See `.claude/rules/` — most loaded automatically based on task type.
-**Always-loaded** (every task, every file): `critical.md`, `memory-protocol.md`, `principles.md`, `releases.md`, `workflow.md`.
+**Always-loaded** (every task, every file): `critical.md`, `i18n-sanity.md`, `memory-protocol.md`, `principles.md`, `releases.md`, `workflow.md`.
