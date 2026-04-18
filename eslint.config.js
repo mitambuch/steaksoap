@@ -14,7 +14,16 @@ import globals from 'globals'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig([
-  globalIgnores(['dist', 'node_modules', 'coverage', 'test-results', 'playwright-report']),
+  globalIgnores([
+    'dist',
+    'node_modules',
+    'coverage',
+    'test-results',
+    'playwright-report',
+    // WHY: studio/ is a standalone @steaksoap/studio package with its own tsconfig and
+    // lint rules — the root ESLint config is for the React app only.
+    'studio',
+  ]),
 
   {
     files: ['**/*.{ts,tsx}'],
