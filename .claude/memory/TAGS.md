@@ -19,6 +19,7 @@ then re-sync. Tag vocabulary is a shared standard across all derived projects.
 | `#perf` | Performance optimizations, bundle size, rendering |
 | `#a11y` | Accessibility — contrast, keyboard, screen readers, ARIA |
 | `#i18n` | Translations, locale handling, content multilingue |
+| `#sanity` | Sanity CMS — schemas, Studio, content push, GROQ queries |
 | `#content` | Copywriting, taxonomy, content strategy |
 | `#security` | Env vars, CSP, sanitization, dependency audit |
 | `#state` | State management, context, data flow |
