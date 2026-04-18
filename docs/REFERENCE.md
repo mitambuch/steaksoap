@@ -197,7 +197,7 @@ All in `.claude/agents/`.
 
 ---
 
-## AI Rules (17)
+## AI Rules (18)
 
 All in `.claude/rules/`. Auto-loaded by context.
 
@@ -205,7 +205,8 @@ Always-loaded rules (`paths: ["**"]`) fire on every task regardless of which fil
 
 | Rule | Load | Scope |
 |------|------|-------|
-| `critical.md` | **always** | Six non-negotiables: branch-first, memory consult, release check, Karpathy, user mobilization, validate-before-commit |
+| `critical.md` | **always** | Seven non-negotiables: branch-first, memory consult, release check, Karpathy, user mobilization, validate-before-commit, content architecture |
+| `i18n-sanity.md` | **always** | Taxonomy (inline/menu/singleton), i18n-vs-sanity arbitrage, 13 HDVA lessons, zero-empty-field rule, content-from-Claude workflow |
 | `memory-protocol.md` | **always** | `.claude/memory/` structure, frontmatter schema, when to read/write, TAGS.md ownership |
 | `principles.md` | **always** | Karpathy four: think before coding, simplicity first, surgical changes, goal-driven execution |
 | `releases.md` | **always** | End-of-session RELEASE CHECK format, when to release, auto-journal |

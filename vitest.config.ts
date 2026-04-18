@@ -29,6 +29,7 @@ export default mergeConfig(
           'src/test/**',
           'src/vite-env.d.ts',
           'src/main.tsx',
+          'src/config/i18n.ts', // WHY: side-effect i18next singleton init — not meaningfully unit-testable
         ],
         // WHY: Thresholds ratchet UP only — lock current coverage so it never decreases.
         // Set ~1–2 pts below the last-observed run (90.15/81.26/90.76/92.37 as of v5.2.0)

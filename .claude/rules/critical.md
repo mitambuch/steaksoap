@@ -44,6 +44,12 @@ LIVRABLE : [what to return]
 ## 6. Validate before commit
 `pnpm validate` must pass (lint + typecheck + test + build). No `--no-verify` escape.
 
+## 7. Content architecture (i18n + Sanity)
+Strict taxonomy: inline in `page` for unique content / dedicated menu for
+repeatable lists / `siteConfig` singleton for shared. Never hardcode FR in JSX.
+Zero empty Sanity field in prod (all 3 locales filled). Full rule:
+`.claude/rules/i18n-sanity.md`. Per-project brand voice: `.claude/client.md`.
+
 ## Why this file exists
 Only `workflow.md` was always-loaded before; other rules were path-triggered.
 Under context fatigue, non-negotiables were forgotten. This file keeps them in context regardless of which files are touched.

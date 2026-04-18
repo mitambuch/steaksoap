@@ -1,4 +1,5 @@
 import './index.css';
+import '@config/i18n'; // WHY: initialise i18next before React renders so t() works on first paint
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';

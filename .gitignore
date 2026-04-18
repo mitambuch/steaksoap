@@ -56,3 +56,4 @@ stats.html
 !.claude/memory/
 !.claude/decisions.md
 !.claude/settings.json
+!.claude/client.md
