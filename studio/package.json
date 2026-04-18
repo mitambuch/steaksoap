@@ -1,0 +1,26 @@
+{
+  "name": "@steaksoap/studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sanity Studio baseline for steaksoap — client-agnostic schemas + deskStructure + Dashboard.",
+  "scripts": {
+    "dev": "sanity dev --port 3333",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "deploy-graphql": "sanity graphql deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sanity/language-filter": "^4.0.5",
+    "@sanity/vision": "^4.11.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "sanity": "^4.11.2",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "typescript": "^5.9.3"
+  }
+}
