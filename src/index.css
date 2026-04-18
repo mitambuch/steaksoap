@@ -16,7 +16,9 @@
   --color-bg: #0a0a0a;
   --color-fg: #f0f0f0;
   --color-accent: #c44040;
-  --color-muted: #8a8a8a;
+  /* WHY: #8a8a8a failed WCAG AA on WebKit (4.29:1 — axe computed fg as #757575
+     against #0a0a0a). #a0a0a0 clears ≥4.5 with safety margin across engines. */
+  --color-muted: #a0a0a0;
   --color-surface: #141414;
   --color-border: #262626;
   --color-on-accent: #ffffff;
