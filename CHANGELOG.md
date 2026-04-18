@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.6.0](https://github.com/mitambuch/steaksoap/compare/v5.5.0...v5.6.0) (2026-04-18)
+
+### ✨ Features
+
+* **studio:** Sanity Studio baseline — schemas, desk, dashboard, guide ([e0a288a](https://github.com/mitambuch/steaksoap/commit/e0a288a1c58af0ed0dcfc0d1afb04a4c4d861b98)), closes [#2](https://github.com/mitambuch/steaksoap/issues/2)
+
+### 🔧 Chores
+
+* **memory:** record v5.5.0 release + regen index (28 entries) ([dfd5d21](https://github.com/mitambuch/steaksoap/commit/dfd5d210b1c02e2581e8b0a49e25f6575ba45841))
+* **workspace:** pnpm monorepo { ., studio } + root shortcuts ([db938fe](https://github.com/mitambuch/steaksoap/commit/db938fe3e827538803b8dd0c5d1ffd4b42a5bf35))
+
 ## [5.5.0](https://github.com/mitambuch/steaksoap/compare/v5.4.1...v5.5.0) (2026-04-18)
 
 ### ✨ Features
