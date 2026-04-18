@@ -50,16 +50,24 @@ export default defineConfig(({ mode }) => {
       react(),
       // Sitemap + robots.txt only in production build (not in dev/preview)
       isProd &&
-        Sitemap({
+        (() => {
           // WHY: initialized client prod builds throw above if VITE_APP_URL is
           // missing. The fallback below only ever runs on the base template
           // (isBaseProject = true), where a localhost sitemap is harmless.
-          hostname: env.VITE_APP_URL || 'http://localhost:5173',
-          // SPA : ajouter ici les routes client-side quand le projet grandit
-          // dynamicRoutes: ['/about', '/contact'],
-          exclude: ['/404'],
-          generateRobotsTxt: true,
-        }),
+          //
+          // Multi-locale sitemap: emit every canonical path under each locale
+          // prefix (i18n-sanity.md lesson #7). Must stay in sync with
+          // SUPPORTED_LOCALES from src/config/i18n.ts.
+          const LOCALES = ['fr', 'de', 'en'] as const;
+          const PATHS = ['', '/playground', '/lab'] as const;
+          const dynamicRoutes = LOCALES.flatMap(l => PATHS.map(p => `/${l}${p}`));
+          return Sitemap({
+            hostname: env.VITE_APP_URL || 'http://localhost:5173',
+            dynamicRoutes,
+            exclude: ['/', '/playground', '/lab', '/404'],
+            generateRobotsTxt: true,
+          });
+        })(),
       isAnalyze &&
         visualizer({
           filename: 'stats.html',
