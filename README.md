@@ -100,7 +100,7 @@ Customize per project via `/init` or edit `src/index.css` directly.
 
 ## AI workflow
 
-33 slash commands, 4 specialized agents, 18 contextual rules — all in `.claude/`.
+36 slash commands, 4 specialized agents, 18 contextual rules — all in `.claude/`.
 
 | Category | Commands |
 |----------|----------|
@@ -109,6 +109,7 @@ Customize per project via `/init` or edit `src/index.css` directly.
 | **Quality** | `/test`, `/review`, `/fix`, `/lighthouse`, `/responsive-check`, `/health-check` |
 | **Ship** | `/release`, `/deploy`, `/handoff`, `/pre-delivery`, `/changelog-client` |
 | **Evolve** | `/refactor`, `/migrate`, `/theme`, `/update-deps`, `/legal` |
+| **Content** | `/wire-content`, `/translate`, `/sync-content` |
 | **Delegate** | `/delegate`, `/integrate` |
 | **Explore** | `/status`, `/discover`, `/connect`, `/install-extension`, `/spec` |
 
