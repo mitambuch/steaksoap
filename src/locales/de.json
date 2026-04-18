@@ -1,0 +1,29 @@
+{
+  "common": {
+    "back": "Zurück",
+    "close": "Schließen",
+    "loading": "Lädt…",
+    "error": "Ein Fehler ist aufgetreten.",
+    "retry": "Erneut versuchen",
+    "empty": "Noch keine Inhalte.",
+    "discover": "Entdecken",
+    "readMore": "Weiterlesen"
+  },
+  "a11y": {
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen",
+    "skipToContent": "Zum Hauptinhalt springen",
+    "languageSwitcher": "Sprache wechseln"
+  },
+  "nav": {
+    "home": "Startseite"
+  },
+  "form": {
+    "required": "Dieses Feld ist erforderlich.",
+    "invalidEmail": "Ungültige E-Mail-Adresse.",
+    "submit": "Senden",
+    "sending": "Wird gesendet…",
+    "success": "Nachricht gesendet.",
+    "failure": "Senden fehlgeschlagen. Bitte gleich nochmal versuchen."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "common": {
+    "back": "Retour",
+    "close": "Fermer",
+    "loading": "Chargement…",
+    "error": "Une erreur est survenue.",
+    "retry": "Réessayer",
+    "empty": "Aucun contenu pour le moment.",
+    "discover": "Découvrir",
+    "readMore": "Lire la suite"
+  },
+  "a11y": {
+    "closeMenu": "Fermer le menu",
+    "openMenu": "Ouvrir le menu",
+    "skipToContent": "Aller au contenu principal",
+    "languageSwitcher": "Changer de langue"
+  },
+  "nav": {
+    "home": "Accueil"
+  },
+  "form": {
+    "required": "Ce champ est requis.",
+    "invalidEmail": "Adresse e-mail invalide.",
+    "submit": "Envoyer",
+    "sending": "Envoi en cours…",
+    "success": "Message envoyé.",
+    "failure": "L'envoi a échoué. Réessaie dans un instant."
+  }
+}
