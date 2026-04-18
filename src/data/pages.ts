@@ -3,9 +3,12 @@
    Edit this file to change page copy without touching components.
    ═══════════════════════════════════════════════════════════════ */
 
+// WHY: __APP_VERSION__ is injected by vite.config.ts `define` from
+// package.json at build time — so every release auto-bumps the tagline
+// shown on /, and steaksoap.app never drifts from the current tag.
 export const homePage = {
   seo: {},
-  tagline: 'v5.0 — production ready',
+  tagline: `v${__APP_VERSION__} — production ready`,
   headline: 'Build something great.',
   subline: "Clean slate, zero bloat. Everything you need, nothing you don't.\nLet's go.",
 };
