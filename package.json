@@ -1,6 +1,6 @@
 {
   "name": "project-base",
-  "version": "5.7.0",
+  "version": "5.8.0",
   "type": "module",
   "description": "Private production base — React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4",
   "author": "Mirco",

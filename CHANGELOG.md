@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.8.0](https://github.com/mitambuch/steaksoap/compare/v5.7.0...v5.8.0) (2026-04-18)
+
+### ✨ Features
+
+* **content:** slash commands + validators + backup-before-push ([1fca48e](https://github.com/mitambuch/steaksoap/commit/1fca48e496886db055bd7aacb2c0d39f5e038865))
+
+### 🔧 Chores
+
+* **memory:** wrap v5.7.0 session + release record ([2f7de78](https://github.com/mitambuch/steaksoap/commit/2f7de78c9d42364d03eec02da058337519702ef8))
+
 ## [5.7.0](https://github.com/mitambuch/steaksoap/compare/v5.6.0...v5.7.0) (2026-04-18)
 
 ### ✨ Features
