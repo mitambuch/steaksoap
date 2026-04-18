@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.7.0](https://github.com/mitambuch/steaksoap/compare/v5.6.0...v5.7.0) (2026-04-18)
+
+### ✨ Features
+
+* **i18n:** locale-aware routing + LocaleProvider + Sanity hooks + hreflang ([316c281](https://github.com/mitambuch/steaksoap/commit/316c281c44180a571f82a4337146c6970469d852)), closes [#6](https://github.com/mitambuch/steaksoap/issues/6)
+
+### 🔧 Chores
+
+* **memory:** wrap v5.6.0 session + release record (30 entries) ([dcda278](https://github.com/mitambuch/steaksoap/commit/dcda278a6217af5cba890225aadf7316cfe31923))
+
 ## [5.6.0](https://github.com/mitambuch/steaksoap/compare/v5.5.0...v5.6.0) (2026-04-18)
 
 ### ✨ Features
