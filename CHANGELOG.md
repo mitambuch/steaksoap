@@ -1,5 +1,15 @@
 # Changelog
 
+## [5.8.1](https://github.com/mitambuch/steaksoap/compare/v5.8.0...v5.8.1) (2026-04-18)
+
+### ✨ Features
+
+* **content:** Phase 5 polish — dynamic version, preview URLs, handoff ([4d13c90](https://github.com/mitambuch/steaksoap/commit/4d13c9034952011aea6a2078c5fd158ded430e0f))
+
+### 🔧 Chores
+
+* **memory:** wrap v5.8.0 session + release record ([a7ffa87](https://github.com/mitambuch/steaksoap/commit/a7ffa870fc6905e8e23f587f631fe24faee1ced0))
+
 ## [5.8.0](https://github.com/mitambuch/steaksoap/compare/v5.7.0...v5.8.0) (2026-04-18)
 
 ### ✨ Features
